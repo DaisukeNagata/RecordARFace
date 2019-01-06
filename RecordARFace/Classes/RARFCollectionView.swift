@@ -11,11 +11,13 @@ import UIKit
 @available(iOS 11.0, *)
 public class RARFCollectionView: UIView {
 
-    public let vm = RARFCollectionViewModel()
+    let vm = RARFCollectionViewModel()
     open lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(RARFCollectionCell().identifier, forCellWithReuseIdentifier: "CollectionCell")
+        collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "CollectionCell")
         collectionView.delegate = self
         collectionView.dataSource = vm
         return collectionView
@@ -34,7 +36,7 @@ public class RARFCollectionView: UIView {
 
     public init() {
         super.init(frame: .zero)
-        
+
         self.frame = UIScreen.main.bounds
         collectionView.frame = self.frame
         scrollView.frame = self.frame
@@ -65,18 +67,5 @@ extension RARFCollectionView: UICollectionViewDelegate {
         addSubview(aView.arscnView)
         addSubview(collectionView)
         collectionView.isHidden = true
-    }
-}
-
-// MARK: UICollectionViewDelegateFlowLayout
-@available(iOS 11.0, *)
-extension RARFCollectionView: UICollectionViewDelegateFlowLayout {
-
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/2-5, height: collectionView.frame.height/2-UINavigationController.init().navigationBar.frame.height)
     }
 }

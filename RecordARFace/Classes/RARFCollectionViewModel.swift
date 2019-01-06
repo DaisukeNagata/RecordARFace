@@ -8,7 +8,7 @@
 
 import UIKit
 
-public enum Images {
+enum Images {
     case whiteImage,blackImage,blueImage,redImage
     var imageSet: String {
         switch self {
@@ -20,18 +20,18 @@ public enum Images {
     }
 }
 
-public  class RARFCollectionViewModel: NSObject {
-    public let imagesRows: [Images] = [.whiteImage, .blackImage,.blueImage,.redImage]
+class RARFCollectionViewModel: NSObject {
+    let imagesRows: [Images] = [.whiteImage, .blackImage,.blueImage,.redImage]
 }
 
 // MARK: UICollectionViewDataSource
 extension RARFCollectionViewModel: UICollectionViewDataSource {
 
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return imagesRows.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RARFCollectionCell
         cell.config(image: UIImage(named:imagesRows[indexPath.row].imageSet)!)
         return cell

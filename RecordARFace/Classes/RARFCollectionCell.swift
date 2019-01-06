@@ -9,9 +9,19 @@
 import UIKit
 import SceneKit
 
-public class RARFCollectionCell: UICollectionViewCell {
+class RARFCollectionCell: UICollectionViewCell {
 
-    @IBOutlet weak var collectionView: UIImageView!
+    let collectionView = UIImageView()
     let identifier: UINib = UINib(nibName: "RARFCollectionCell", bundle: nil)
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        collectionView.frame.size = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
+        self.addSubview(collectionView)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     func config(image: UIImage) { collectionView.image = image }
 }

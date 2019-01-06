@@ -20,6 +20,8 @@ class ViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
+        navigationController?.navigationBar.addSubview(statusBar)
+        print(statusBar)
     }
 
     @objc func startRecording() {
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
 
     @objc func stopRecording() {
         RARFScreenRecorder(vc: self).stopRecording()
-        statusBarUI(st: "Record",color: .white,sec: #selector(startRecording))
+        statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
     }
 
     @objc func collectionSet() {
