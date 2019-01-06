@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RecordARFace_Example' do
+  pod 'RecordARFace', :path => '../'
+
+  target 'RecordARFace_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
