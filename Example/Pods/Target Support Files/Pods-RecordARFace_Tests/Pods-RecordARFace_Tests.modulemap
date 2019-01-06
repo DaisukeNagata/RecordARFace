@@ -1,0 +1,6 @@
+framework module Pods_RecordARFace_Tests {
+  umbrella header "Pods-RecordARFace_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

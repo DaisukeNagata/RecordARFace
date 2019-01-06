@@ -1,0 +1,819 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2BF10CB06128258F9C530B03F8A48074 /* Pods-RecordARFace_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD1EC82B0A21D88F4D13B9EACFDBA6DB /* Pods-RecordARFace_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		463169938EC3D71067907A6D06C7499D /* RecordARFace-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D458D5D9B6F6AF840366939471F22FD /* RecordARFace-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		464692C3357F97D6C9837555907A86DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */; };
+		5772DF7AD1B7F9C6BA0070A29B1B549E /* Pods-RecordARFace_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */; };
+		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		BB4156B121E2302100ABA8E1 /* RARFView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156AF21E2301600ABA8E1 /* RARFView.swift */; };
+		BB4156B321E2308500ABA8E1 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156B221E2308500ABA8E1 /* RARFTexturedFace.swift */; };
+		BB4156B521E2310D00ABA8E1 /* RARFStatusBarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156B421E2310D00ABA8E1 /* RARFStatusBarUI.swift */; };
+		BB4156B721E2313B00ABA8E1 /* RARFScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156B621E2313B00ABA8E1 /* RARFScreenRecorder.swift */; };
+		BB4156B921E2317D00ABA8E1 /* RARFCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156B821E2317D00ABA8E1 /* RARFCollectionViewModel.swift */; };
+		BB4156BB21E231AB00ABA8E1 /* RARFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156BA21E231AB00ABA8E1 /* RARFCollectionView.swift */; };
+		BB4156BF21E231EC00ABA8E1 /* RARFCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4156BE21E231EC00ABA8E1 /* RARFCollectionCell.swift */; };
+		BB4156C321E23E7500ABA8E1 /* RARFCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4156C221E23E7500ABA8E1 /* RARFCollectionCell.xib */; };
+		CB00A02E67D2D0701D6C7F255578260A /* Pods-RecordARFace_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2921D8D0EC6305B7F01D6F1A6837154B /* Pods-RecordARFace_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D5E7ADA23CA2C909DE81CB510FE90FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		F14B0AF427C7A36DAB451BEEECC77AD6 /* RecordARFace-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C823DD25C35701802554E493A79E6C /* RecordARFace-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1011CA51ABDC7C41EB6C53217CC990AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACD83607AF01CE0A01E77943DBF1A8EB;
+			remoteInfo = "Pods-RecordARFace_Example";
+		};
+		683CB1230112DC191E352698D7A57E52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0275B5693F4A42BCDB83CF48E4B4781;
+			remoteInfo = RecordARFace;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0461C2EAA477A7593645BA1817F39CB1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A3F04FA83F6E0CFA86BD377A2B63305 /* RecordARFace.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RecordARFace.modulemap; sourceTree = "<group>"; };
+		2921D8D0EC6305B7F01D6F1A6837154B /* Pods-RecordARFace_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecordARFace_Example-umbrella.h"; sourceTree = "<group>"; };
+		29C823DD25C35701802554E493A79E6C /* RecordARFace-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RecordARFace-dummy.m"; sourceTree = "<group>"; };
+		43D9DB99F4BC995CB569E78C93CD53F1 /* Pods_RecordARFace_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordARFace_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E396A186F43C8A0CAE40E93CFB4D46 /* Pods-RecordARFace_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecordARFace_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		5436C5BF0F098E9DDCBFC407F0D71E67 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		56A3E54FD8FAAC96E06659BAE80D3298 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecordARFace_Tests-dummy.m"; sourceTree = "<group>"; };
+		5CE3FEEB9CC8F1E3CFE6C9DE410AC756 /* RecordARFace.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RecordARFace.xcconfig; sourceTree = "<group>"; };
+		5D458D5D9B6F6AF840366939471F22FD /* RecordARFace-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RecordARFace-umbrella.h"; sourceTree = "<group>"; };
+		771B4D7B98BADA1697C0717579DC5538 /* Pods-RecordARFace_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		81B5C17D6DF71A530A4732A67B874D12 /* RecordARFace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RecordARFace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83227188183E6A0990221CB7FE82D64A /* RecordARFace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = RecordARFace.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		84F704B81B16C62118FF9241C519A350 /* Pods-RecordARFace_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Example-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9FEEE5C436A86FE72B70D05D9141620A /* Pods_RecordARFace_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecordARFace_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA6F2831FF201735AFC27D47837C1347 /* Pods-RecordARFace_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecordARFace_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AB535D750EAAC46F8FDF2A9165759B34 /* Pods-RecordARFace_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecordARFace_Example.release.xcconfig"; sourceTree = "<group>"; };
+		AD1EC82B0A21D88F4D13B9EACFDBA6DB /* Pods-RecordARFace_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecordARFace_Tests-umbrella.h"; sourceTree = "<group>"; };
+		AF9B4FC1B3367D1F4FBA47A575629145 /* Pods-RecordARFace_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Example-frameworks.sh"; sourceTree = "<group>"; };
+		B86F9987CA613C899722E5F5C170D668 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB4156AF21E2301600ABA8E1 /* RARFView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFView.swift; path = RecordARFace/Classes/RARFView.swift; sourceTree = "<group>"; };
+		BB4156B221E2308500ABA8E1 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFTexturedFace.swift; path = RecordARFace/Classes/RARFTexturedFace.swift; sourceTree = "<group>"; };
+		BB4156B421E2310D00ABA8E1 /* RARFStatusBarUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFStatusBarUI.swift; path = RecordARFace/Classes/RARFStatusBarUI.swift; sourceTree = "<group>"; };
+		BB4156B621E2313B00ABA8E1 /* RARFScreenRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFScreenRecorder.swift; path = RecordARFace/Classes/RARFScreenRecorder.swift; sourceTree = "<group>"; };
+		BB4156B821E2317D00ABA8E1 /* RARFCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFCollectionViewModel.swift; path = RecordARFace/Classes/RARFCollectionViewModel.swift; sourceTree = "<group>"; };
+		BB4156BA21E231AB00ABA8E1 /* RARFCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFCollectionView.swift; path = RecordARFace/Classes/RARFCollectionView.swift; sourceTree = "<group>"; };
+		BB4156BE21E231EC00ABA8E1 /* RARFCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RARFCollectionCell.swift; path = RecordARFace/Classes/RARFCollectionCell.swift; sourceTree = "<group>"; };
+		BB4156C221E23E7500ABA8E1 /* RARFCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFCollectionCell.xib; sourceTree = "<group>"; };
+		C9A38D0613C991FCC9F83B492A0E7B6E /* Pods-RecordARFace_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecordARFace_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CB1BA55058EED17B0EF70157000F4205 /* Pods-RecordARFace_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Tests-resources.sh"; sourceTree = "<group>"; };
+		CD8B05B65AB82985BBDB767BF7F74ABF /* Pods-RecordARFace_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RecordARFace_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CEC9B3824D58B63988C57ABFB668C2D7 /* Pods-RecordARFace_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecordARFace_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		D4889D8E4727D3A6C4E230DB26E3AB47 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DBD22F45501CC8A1DE9CDE61A624A317 /* Pods-RecordARFace_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RecordARFace_Tests.modulemap"; sourceTree = "<group>"; };
+		EB1B6AC0CC9C6538ACBD5D2129AB2FAB /* Pods-RecordARFace_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecordARFace_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F38D639327EFAF2244A28AE4DEBCC06B /* Pods-RecordARFace_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-RecordARFace_Example.modulemap"; sourceTree = "<group>"; };
+		F8F505E51DA665284EBB1CA1FF88552D /* Pods-RecordARFace_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RecordARFace_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RecordARFace_Example-dummy.m"; sourceTree = "<group>"; };
+		FC9EB7AAEDC28D94EDF7262E06A4D7E5 /* RecordARFace-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RecordARFace-prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		133B25A632BEE6899161D3EFE6EE6407 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5E7ADA23CA2C909DE81CB510FE90FB7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		37B162F6CE954E4EA046B31ECD89B9D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3445F177C40F621AC71841D8963F15F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				464692C3357F97D6C9837555907A86DD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06395D58AE477B26B8C7FF607184E335 /* RecordARFace */ = {
+			isa = PBXGroup;
+			children = (
+				BB4156AF21E2301600ABA8E1 /* RARFView.swift */,
+				BB4156BA21E231AB00ABA8E1 /* RARFCollectionView.swift */,
+				BB4156C221E23E7500ABA8E1 /* RARFCollectionCell.xib */,
+				BB4156BE21E231EC00ABA8E1 /* RARFCollectionCell.swift */,
+				BB4156B821E2317D00ABA8E1 /* RARFCollectionViewModel.swift */,
+				BB4156B221E2308500ABA8E1 /* RARFTexturedFace.swift */,
+				BB4156B621E2313B00ABA8E1 /* RARFScreenRecorder.swift */,
+				BB4156B421E2310D00ABA8E1 /* RARFStatusBarUI.swift */,
+				8A51C55AABF74C13EE740BD81C635F16 /* Pod */,
+				13B0B5673E396119EF695ACF894AF562 /* Support Files */,
+			);
+			name = RecordARFace;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		13B0B5673E396119EF695ACF894AF562 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B86F9987CA613C899722E5F5C170D668 /* Info.plist */,
+				0A3F04FA83F6E0CFA86BD377A2B63305 /* RecordARFace.modulemap */,
+				5CE3FEEB9CC8F1E3CFE6C9DE410AC756 /* RecordARFace.xcconfig */,
+				29C823DD25C35701802554E493A79E6C /* RecordARFace-dummy.m */,
+				FC9EB7AAEDC28D94EDF7262E06A4D7E5 /* RecordARFace-prefix.pch */,
+				5D458D5D9B6F6AF840366939471F22FD /* RecordARFace-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/RecordARFace";
+			sourceTree = "<group>";
+		};
+		280EB4074C2C9288E872222C97F80643 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9FEEE5C436A86FE72B70D05D9141620A /* Pods_RecordARFace_Example.framework */,
+				43D9DB99F4BC995CB569E78C93CD53F1 /* Pods_RecordARFace_Tests.framework */,
+				81B5C17D6DF71A530A4732A67B874D12 /* RecordARFace.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41BC0D5B8AF92E4604C44E0398976110 /* Pods-RecordARFace_Example */ = {
+			isa = PBXGroup;
+			children = (
+				D4889D8E4727D3A6C4E230DB26E3AB47 /* Info.plist */,
+				F38D639327EFAF2244A28AE4DEBCC06B /* Pods-RecordARFace_Example.modulemap */,
+				AA6F2831FF201735AFC27D47837C1347 /* Pods-RecordARFace_Example-acknowledgements.markdown */,
+				CEC9B3824D58B63988C57ABFB668C2D7 /* Pods-RecordARFace_Example-acknowledgements.plist */,
+				F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */,
+				AF9B4FC1B3367D1F4FBA47A575629145 /* Pods-RecordARFace_Example-frameworks.sh */,
+				84F704B81B16C62118FF9241C519A350 /* Pods-RecordARFace_Example-resources.sh */,
+				2921D8D0EC6305B7F01D6F1A6837154B /* Pods-RecordARFace_Example-umbrella.h */,
+				EB1B6AC0CC9C6538ACBD5D2129AB2FAB /* Pods-RecordARFace_Example.debug.xcconfig */,
+				AB535D750EAAC46F8FDF2A9165759B34 /* Pods-RecordARFace_Example.release.xcconfig */,
+			);
+			name = "Pods-RecordARFace_Example";
+			path = "Target Support Files/Pods-RecordARFace_Example";
+			sourceTree = "<group>";
+		};
+		44D5347904CF754D6785B84253F2574A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				84B555D3AE2B7FBEB1F9D31DA3504FC2 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				280EB4074C2C9288E872222C97F80643 /* Products */,
+				9E9CB494383CEB22B582B195904FE5A2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		84B555D3AE2B7FBEB1F9D31DA3504FC2 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				06395D58AE477B26B8C7FF607184E335 /* RecordARFace */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		8A51C55AABF74C13EE740BD81C635F16 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				5436C5BF0F098E9DDCBFC407F0D71E67 /* LICENSE */,
+				56A3E54FD8FAAC96E06659BAE80D3298 /* README.md */,
+				83227188183E6A0990221CB7FE82D64A /* RecordARFace.podspec */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		9E9CB494383CEB22B582B195904FE5A2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				41BC0D5B8AF92E4604C44E0398976110 /* Pods-RecordARFace_Example */,
+				A838FF0B797F99BAE78AE1C814047EBF /* Pods-RecordARFace_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A838FF0B797F99BAE78AE1C814047EBF /* Pods-RecordARFace_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				0461C2EAA477A7593645BA1817F39CB1 /* Info.plist */,
+				DBD22F45501CC8A1DE9CDE61A624A317 /* Pods-RecordARFace_Tests.modulemap */,
+				CD8B05B65AB82985BBDB767BF7F74ABF /* Pods-RecordARFace_Tests-acknowledgements.markdown */,
+				C9A38D0613C991FCC9F83B492A0E7B6E /* Pods-RecordARFace_Tests-acknowledgements.plist */,
+				5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */,
+				771B4D7B98BADA1697C0717579DC5538 /* Pods-RecordARFace_Tests-frameworks.sh */,
+				CB1BA55058EED17B0EF70157000F4205 /* Pods-RecordARFace_Tests-resources.sh */,
+				AD1EC82B0A21D88F4D13B9EACFDBA6DB /* Pods-RecordARFace_Tests-umbrella.h */,
+				F8F505E51DA665284EBB1CA1FF88552D /* Pods-RecordARFace_Tests.debug.xcconfig */,
+				45E396A186F43C8A0CAE40E93CFB4D46 /* Pods-RecordARFace_Tests.release.xcconfig */,
+			);
+			name = "Pods-RecordARFace_Tests";
+			path = "Target Support Files/Pods-RecordARFace_Tests";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44D5347904CF754D6785B84253F2574A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1ED83FC9C695188E23D3D9A77820E61F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463169938EC3D71067907A6D06C7499D /* RecordARFace-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2495A38414BCC029A8BC02931C456BC6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CB00A02E67D2D0701D6C7F255578260A /* Pods-RecordARFace_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		74E5E2BE4D61CD6A72267074A7194F19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BF10CB06128258F9C530B03F8A48074 /* Pods-RecordARFace_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		32A1D6BF18AAAF47977C2CC507046E4B /* Pods-RecordARFace_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB2AFC9F3F316B53A1792BA9BB4E411D /* Build configuration list for PBXNativeTarget "Pods-RecordARFace_Tests" */;
+			buildPhases = (
+				74E5E2BE4D61CD6A72267074A7194F19 /* Headers */,
+				E5CA443EEDA769E297F65077C113D639 /* Sources */,
+				133B25A632BEE6899161D3EFE6EE6407 /* Frameworks */,
+				22A222EE41CED2BEBAA9061E6C3B9B4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6A496AD85CB17D31E939F26EC8E43180 /* PBXTargetDependency */,
+			);
+			name = "Pods-RecordARFace_Tests";
+			productName = "Pods-RecordARFace_Tests";
+			productReference = 43D9DB99F4BC995CB569E78C93CD53F1 /* Pods_RecordARFace_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		ACD83607AF01CE0A01E77943DBF1A8EB /* Pods-RecordARFace_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD1EF093FB6C20F4997D2B8434582CF9 /* Build configuration list for PBXNativeTarget "Pods-RecordARFace_Example" */;
+			buildPhases = (
+				2495A38414BCC029A8BC02931C456BC6 /* Headers */,
+				5DA21CB8C67247883B3B80D016338451 /* Sources */,
+				37B162F6CE954E4EA046B31ECD89B9D5 /* Frameworks */,
+				980164E387BC8C9AD48C747B3163CD10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6647EDDF6D380F260A13A4E458714B28 /* PBXTargetDependency */,
+			);
+			name = "Pods-RecordARFace_Example";
+			productName = "Pods-RecordARFace_Example";
+			productReference = 9FEEE5C436A86FE72B70D05D9141620A /* Pods_RecordARFace_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F0275B5693F4A42BCDB83CF48E4B4781 /* RecordARFace */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E3744961E87C769FC40C97B160E0E6F /* Build configuration list for PBXNativeTarget "RecordARFace" */;
+			buildPhases = (
+				1ED83FC9C695188E23D3D9A77820E61F /* Headers */,
+				7C7F361A554FFE3DB668484B55CE5513 /* Sources */,
+				C3445F177C40F621AC71841D8963F15F /* Frameworks */,
+				1FED2426A9030892DAE33380D3E688AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RecordARFace;
+			productName = RecordARFace;
+			productReference = 81B5C17D6DF71A530A4732A67B874D12 /* RecordARFace.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					ACD83607AF01CE0A01E77943DBF1A8EB = {
+						LastSwiftMigration = 1010;
+					};
+					F0275B5693F4A42BCDB83CF48E4B4781 = {
+						LastSwiftMigration = 1010;
+					};
+				};
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 280EB4074C2C9288E872222C97F80643 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ACD83607AF01CE0A01E77943DBF1A8EB /* Pods-RecordARFace_Example */,
+				32A1D6BF18AAAF47977C2CC507046E4B /* Pods-RecordARFace_Tests */,
+				F0275B5693F4A42BCDB83CF48E4B4781 /* RecordARFace */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1FED2426A9030892DAE33380D3E688AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB4156C321E23E7500ABA8E1 /* RARFCollectionCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22A222EE41CED2BEBAA9061E6C3B9B4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		980164E387BC8C9AD48C747B3163CD10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5DA21CB8C67247883B3B80D016338451 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C7F361A554FFE3DB668484B55CE5513 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB4156B921E2317D00ABA8E1 /* RARFCollectionViewModel.swift in Sources */,
+				BB4156B521E2310D00ABA8E1 /* RARFStatusBarUI.swift in Sources */,
+				BB4156B321E2308500ABA8E1 /* RARFTexturedFace.swift in Sources */,
+				BB4156BF21E231EC00ABA8E1 /* RARFCollectionCell.swift in Sources */,
+				F14B0AF427C7A36DAB451BEEECC77AD6 /* RecordARFace-dummy.m in Sources */,
+				BB4156B121E2302100ABA8E1 /* RARFView.swift in Sources */,
+				BB4156BB21E231AB00ABA8E1 /* RARFCollectionView.swift in Sources */,
+				BB4156B721E2313B00ABA8E1 /* RARFScreenRecorder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CA443EEDA769E297F65077C113D639 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5772DF7AD1B7F9C6BA0070A29B1B549E /* Pods-RecordARFace_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6647EDDF6D380F260A13A4E458714B28 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RecordARFace;
+			target = F0275B5693F4A42BCDB83CF48E4B4781 /* RecordARFace */;
+			targetProxy = 683CB1230112DC191E352698D7A57E52 /* PBXContainerItemProxy */;
+		};
+		6A496AD85CB17D31E939F26EC8E43180 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-RecordARFace_Example";
+			target = ACD83607AF01CE0A01E77943DBF1A8EB /* Pods-RecordARFace_Example */;
+			targetProxy = 1011CA51ABDC7C41EB6C53217CC990AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0655AC8E4CCA180D36B803232BED10C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB535D750EAAC46F8FDF2A9165759B34 /* Pods-RecordARFace_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecordARFace_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecordARFace_Example/Pods-RecordARFace_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		159EDE94614C70D683E133047EB9F20B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8F505E51DA665284EBB1CA1FF88552D /* Pods-RecordARFace_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecordARFace_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecordARFace_Tests/Pods-RecordARFace_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		50646285DD9FD95AF390BDA3FB1948EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		53E357CE678143E8709E6E0CAC3C6DF4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45E396A186F43C8A0CAE40E93CFB4D46 /* Pods-RecordARFace_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecordARFace_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecordARFace_Tests/Pods-RecordARFace_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58DCB2BA7C34E84C00C38CEF18A96D11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		89F2F4442C25F754C7B539C8C6F65005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1B6AC0CC9C6538ACBD5D2129AB2FAB /* Pods-RecordARFace_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-RecordARFace_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RecordARFace_Example/Pods-RecordARFace_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C01D18514B0BACDCC8744FED23F2D1D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE3FEEB9CC8F1E3CFE6C9DE410AC756 /* RecordARFace.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RecordARFace/RecordARFace-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RecordARFace/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RecordARFace/RecordARFace.modulemap";
+				PRODUCT_MODULE_NAME = RecordARFace;
+				PRODUCT_NAME = RecordARFace;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E3180EA279BD7C3B7317571ED0C55469 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CE3FEEB9CC8F1E3CFE6C9DE410AC756 /* RecordARFace.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RecordARFace/RecordARFace-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RecordARFace/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/RecordARFace/RecordARFace.modulemap";
+				PRODUCT_MODULE_NAME = RecordARFace;
+				PRODUCT_NAME = RecordARFace;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50646285DD9FD95AF390BDA3FB1948EA /* Debug */,
+				58DCB2BA7C34E84C00C38CEF18A96D11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2E3744961E87C769FC40C97B160E0E6F /* Build configuration list for PBXNativeTarget "RecordARFace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3180EA279BD7C3B7317571ED0C55469 /* Debug */,
+				C01D18514B0BACDCC8744FED23F2D1D9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD1EF093FB6C20F4997D2B8434582CF9 /* Build configuration list for PBXNativeTarget "Pods-RecordARFace_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89F2F4442C25F754C7B539C8C6F65005 /* Debug */,
+				0655AC8E4CCA180D36B803232BED10C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB2AFC9F3F316B53A1792BA9BB4E411D /* Build configuration list for PBXNativeTarget "Pods-RecordARFace_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				159EDE94614C70D683E133047EB9F20B /* Debug */,
+				53E357CE678143E8709E6E0CAC3C6DF4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_RecordARFace_Example {
+  umbrella header "Pods-RecordARFace_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
