@@ -25,7 +25,7 @@ class RARFTexturedFace: NSObject, ARSCNDelegate {
             !resource.isEmpty
             else { return nil }
         #if targetEnvironment(simulator)
-        #error("ARKit is not supported in iOS Simulator")
+        #error("supported in iOS Simulator.")
         #else
         let faceGeometry = ARSCNFaceGeometry(device: sceneView.device!)!
         let material = faceGeometry.firstMaterial!
