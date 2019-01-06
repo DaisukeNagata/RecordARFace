@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
         navigationController?.navigationBar.addSubview(statusBar)
-        print(statusBar)
+        view.addSubview(cView)
     }
 
     @objc func startRecording() {
@@ -34,10 +34,7 @@ class ViewController: UIViewController {
         statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
     }
 
-    @objc func collectionSet() {
-        cView.collectionView.isHidden = false
-        view.addSubview(cView)
-    }
+    @objc func collectionSet() { cView.viewHidden() }
 
     func statusBarUI(st: String, color: UIColor, sec: Selector){
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
