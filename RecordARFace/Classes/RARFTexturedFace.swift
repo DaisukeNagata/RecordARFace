@@ -24,7 +24,6 @@ class RARFTexturedFace: NSObject, ARSCNDelegate {
             anchor is ARFaceAnchor,
             !resource.isEmpty
             else { return nil }
-        
         #if targetEnvironment(simulator)
         #error("ARKit is not supported in iOS Simulator")
         #else
