@@ -11,10 +11,10 @@ import SceneKit
 
 @available(iOS 11.0, *)
 class RARFTexturedFace: NSObject, ARSCNDelegate {
-    
+
     var resource: String
     var contentNode: SCNNode?
-    
+
     init(resource: String) {
         self.resource = resource
     }
@@ -32,7 +32,7 @@ class RARFTexturedFace: NSObject, ARSCNDelegate {
 
         material.diffuse.contents = #imageLiteral(resourceName: resource)
         material.lightingModel = .physicallyBased
-        
+
         contentNode = SCNNode(geometry: faceGeometry)
         #endif
         return contentNode
