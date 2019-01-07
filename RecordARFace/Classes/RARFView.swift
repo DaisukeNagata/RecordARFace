@@ -1,11 +1,10 @@
 //
-//  RARFView..swift
+//  RARFView.swift
 //  RecordARFace
 //
 //  Created by 永田大祐 on 2019/01/06.
 //
 
-import Foundation
 import UIKit
 import ARKit
 
@@ -19,7 +18,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-public class RARFView: NSObject, ARSessionDelegate {
+class RARFView: NSObject, ARSessionDelegate {
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
@@ -46,7 +45,7 @@ public class RARFView: NSObject, ARSessionDelegate {
 // MARK: ARSCNViewDelegate
 @available(iOS 11.0, *)
 extension RARFView: ARSCNViewDelegate {
-    public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         currentFaceAnchor = faceAnchor
         if node.childNodes.isEmpty, let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
@@ -54,7 +53,7 @@ extension RARFView: ARSCNViewDelegate {
         }
     }
 
-    public func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard anchor == currentFaceAnchor,
             let contentNode = tx?.contentNode,
             contentNode.parent == node

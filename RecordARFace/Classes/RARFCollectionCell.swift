@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SceneKit
 
 class RARFCollectionCell: UICollectionViewCell {
 

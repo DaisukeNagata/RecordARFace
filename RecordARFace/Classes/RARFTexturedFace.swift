@@ -7,7 +7,6 @@
 //
 
 import ARKit
-import SceneKit
 
 @available(iOS 11.0, *)
 class RARFTexturedFace: NSObject, ARSCNDelegate {
