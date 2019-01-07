@@ -17,7 +17,7 @@ class RARFCollectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        collectionView.frame.size = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
+        collectionView.frame.size = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
         self.addSubview(collectionView)
     }
     required init?(coder aDecoder: NSCoder) {

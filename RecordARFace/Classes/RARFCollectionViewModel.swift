@@ -21,7 +21,7 @@ enum Images {
 }
 
 class RARFCollectionViewModel: NSObject {
-    let imagesRows: [Images] = [.whiteImage, .blackImage,.blueImage,.redImage]
+    let imagesRows: [Images] = [.whiteImage,.blackImage,.blueImage,.redImage]
 }
 
 // MARK: UICollectionViewDataSource
