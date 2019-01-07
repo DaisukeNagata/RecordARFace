@@ -12,7 +12,7 @@ It operates on actual machine.
 We can authenticate the face, mask the face with AR, and record the masked image.
 
 ## Image
-![](https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif)<img src="https://user-images.githubusercontent.com/16457165/50743460-7a054380-125b-11e9-91e1-a7c86f84795e.JPG" width="500" height="720">
+![](https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif)<img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="330" height="720">
 
 ## Installation
 
