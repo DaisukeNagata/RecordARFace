@@ -10,12 +10,12 @@ import UIKit
 
 enum Images {
     case whiteImage,blackImage,blueImage,redImage
-    var imageSet: String {
+    var imageSet: UIColor {
         switch self {
-        case .whiteImage: return "whiteImage"
-        case .blackImage: return "blackImage"
-        case .blueImage: return "blueImage"
-        case .redImage: return "redImage"
+        case .whiteImage: return .white
+        case .blackImage: return .black
+        case .blueImage: return .blue
+        case .redImage: return .red
         }
     }
 }
@@ -33,7 +33,7 @@ extension RARFCollectionViewModel: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RARFCollectionCell
-        cell.config(image: UIImage(named:imagesRows[indexPath.row].imageSet)!)
+        cell.config(color: imagesRows[indexPath.row].imageSet)
         return cell
     }
 }

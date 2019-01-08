@@ -11,7 +11,7 @@ import ARKit
 @available(iOS 11.0, *)
 protocol ARSCNDelegate: ARSCNViewDelegate {
     var contentNode: SCNNode? { get set }
-    var resource: String { get set }
+    var resource: UIColor { get set }
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode?
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor)
 }
@@ -32,8 +32,8 @@ class RARFView: NSObject, ARSessionDelegate {
     var tx: RARFTexturedFace?
 
 
-    func resetTracking(st: String) {
-        tx = RARFTexturedFace(resource: st)
+    func resetTracking(color: UIColor) {
+        tx = RARFTexturedFace(resource: color)
         UIApplication.shared.isIdleTimerDisabled = true
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()

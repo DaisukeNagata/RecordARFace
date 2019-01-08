@@ -64,7 +64,7 @@ extension RARFCollectionView: UICollectionViewDelegate {
         collectionView.isHidden = true
         aView.arscnView.removeFromSuperview()
         aView = RARFView()
-        aView.resetTracking(st: vm.imagesRows[indexPath.row].imageSet)
+        aView.resetTracking(color: vm.imagesRows[indexPath.row].imageSet)
         addSubview(aView.arscnView)
     }
 }

@@ -11,24 +11,24 @@ import ARKit
 @available(iOS 11.0, *)
 class RARFTexturedFace: NSObject, ARSCNDelegate {
 
-    var resource: String
+    var resource: UIColor
     var contentNode: SCNNode?
 
-    init(resource: String) {
+    init(resource: UIColor) {
         self.resource = resource
     }
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         guard let sceneView = renderer as? ARSCNView,
             anchor is ARFaceAnchor,
-            !resource.isEmpty
+            resource != .clear
             else { return nil }
         #if targetEnvironment(simulator)
         #else
         let faceGeometry = ARSCNFaceGeometry(device: sceneView.device!)!
         let material = faceGeometry.firstMaterial!
 
-        material.diffuse.contents = #imageLiteral(resourceName: resource)
+        material.diffuse.contents = resource
         material.lightingModel = .physicallyBased
 
         contentNode = SCNNode(geometry: faceGeometry)

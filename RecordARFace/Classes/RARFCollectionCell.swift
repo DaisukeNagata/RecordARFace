@@ -22,5 +22,5 @@ class RARFCollectionCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    func config(image: UIImage) { collectionView.image = image }
+    func config(color: UIColor) { collectionView.backgroundColor = color }
 }
