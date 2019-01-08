@@ -9,7 +9,7 @@
 import ARKit
 
 @available(iOS 11.0, *)
-class RARFTexturedFace: NSObject, ARSCNDelegate {
+final class RARFTexturedFace: NSObject, ARSCNDelegate {
 
     var resource: UIColor
     var contentNode: SCNNode?

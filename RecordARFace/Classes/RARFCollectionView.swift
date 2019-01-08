@@ -9,10 +9,10 @@
 import UIKit
 
 @available(iOS 11.0, *)
-public class RARFCollectionView: UIView {
+public final class RARFCollectionView: UIView {
 
     let vm = RARFCollectionViewModel()
-    open lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

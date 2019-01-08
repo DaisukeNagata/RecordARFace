@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RARFCollectionCell: UICollectionViewCell {
+final class RARFCollectionCell: UICollectionViewCell {
 
     let collectionView = UIImageView()
     let identifier: UINib = UINib(nibName: "RARFCollectionCell", bundle: nil)

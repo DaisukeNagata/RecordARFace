@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class RARFStatusBarUI: UIView {
+public final class RARFStatusBarUI: UIView {
 
     public var statusBar: UIView = {
         let statusBar = UIView(frame:CGRect(x: 0.0, y: -UIApplication.shared.statusBarFrame.height, width: UIScreen.main.bounds.width, height: UIApplication.shared.statusBarFrame.height))

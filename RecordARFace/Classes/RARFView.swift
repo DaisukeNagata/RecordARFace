@@ -5,7 +5,6 @@
 //  Created by 永田大祐 on 2019/01/06.
 //
 
-import UIKit
 import ARKit
 
 @available(iOS 11.0, *)
@@ -18,7 +17,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-class RARFView: NSObject, ARSessionDelegate {
+final class RARFView: NSObject, ARSessionDelegate {
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
