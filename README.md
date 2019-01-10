@@ -1,9 +1,9 @@
 # RecordARFace
-
-[![CI Status](https://img.shields.io/travis/daisukenagata/RecordARFace.svg?style=flat)](https://travis-ci.org/daisukenagata/RecordARFace)
+[![Platform](https://img.shields.io/cocoapods/p/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
+![arkit](https://img.shields.io/badge/ARKit-2.0-brightgreen.svg) 
+![swift](https://img.shields.io/badge/swift-4.2-orange.svg) 
 [![Version](https://img.shields.io/cocoapods/v/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
 [![License](https://img.shields.io/cocoapods/l/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
-[![Platform](https://img.shields.io/cocoapods/p/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
 
 ## Example
 
