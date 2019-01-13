@@ -32,6 +32,7 @@ public final class RARFCollectionView: UIView {
         let aView = RARFView()
         return aView
     }()
+    private var index = 0
 
     public init() {
         super.init(frame: .zero)
@@ -41,7 +42,6 @@ public final class RARFCollectionView: UIView {
         scrollView.frame = self.bounds
         aView.arscnView.frame = self.bounds
         aView.arscnView.isHidden = true
-
         addSubview(collectionView)
     }
 
@@ -54,6 +54,14 @@ public final class RARFCollectionView: UIView {
         aView.arscnView.isHidden = true
         collectionView.isHidden = false
     }
+
+    public func viewEyesTracking() {
+        collectionView.isHidden = true
+        aView.arscnView.removeFromSuperview()
+        aView = RARFView()
+        addSubview(aView.arscnView)
+        aView.eyeTracking(color: vm.imagesRows[index].imageSet)
+    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -64,7 +72,8 @@ extension RARFCollectionView: UICollectionViewDelegate {
         collectionView.isHidden = true
         aView.arscnView.removeFromSuperview()
         aView = RARFView()
-        aView.resetTracking(color: vm.imagesRows[indexPath.row].imageSet)
+        aView.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
+        index = indexPath.row
         addSubview(aView.arscnView)
     }
 }
