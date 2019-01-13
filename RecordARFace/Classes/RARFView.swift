@@ -64,14 +64,18 @@ final class RARFView: NSObject, ARSessionDelegate {
     }
 
     func eyeTracking(color: UIColor) {
+        #if targetEnvironment(simulator)
+        #else
         eView.backgroundColor = color
-        let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
+        let device = arscnView.device!
+        let eyeGeometry = ARSCNFaceGeometry(device: device)
         rf = RARFEyeData(geometry: eyeGeometry!)
         arscnView.scene.rootNode.addChildNode(rf!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
         phoneNode.addChildNode(screenNode)
         resetTracking()
+        #endif
     }
 }
 
