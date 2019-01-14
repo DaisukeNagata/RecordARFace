@@ -18,7 +18,6 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 @available(iOS 11.0, *)
 final class RARFView: NSObject, ARSessionDelegate {
-
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
@@ -30,8 +29,8 @@ final class RARFView: NSObject, ARSessionDelegate {
     }()
     private lazy var eView: UIView = {
         let eView = UIView()
-        eView.frame = CGRect.init(x: 0,y:0 ,width:25 ,height:25)
-        eView.layer.cornerRadius = 12.5
+        eView.frame = CGRect(x: 0,y:0 ,width:25 ,height:25)
+        eView.layer.cornerRadius = eView.frame.height/2
         return eView
     }()
     private var phoneNode: SCNNode = SCNNode()
@@ -66,9 +65,8 @@ final class RARFView: NSObject, ARSessionDelegate {
     func eyeTracking(color: UIColor) {
         #if targetEnvironment(simulator)
         #else
-        eView.backgroundColor = color
-        let device = arscnView.device!
-        let eyeGeometry = ARSCNFaceGeometry(device: device)
+        eView = RARFFlameView(eView: eView, color: color).eViews
+        let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
         rf = RARFEyeData(geometry: eyeGeometry!)
         arscnView.scene.rootNode.addChildNode(rf!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
@@ -83,24 +81,24 @@ final class RARFView: NSObject, ARSessionDelegate {
 @available(iOS 11.0, *)
 extension RARFView: ARSCNViewDelegate {
      func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
 
-        if node.childNodes.isEmpty, let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
-            node.addChildNode(contentNode)
-        } else  if node.childNodes.isEmpty, let contentNode = rf?.renderer(renderer, nodeFor: faceAnchor) {
-            node.addChildNode(contentNode)
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        guard tx?.renderer(renderer, nodeFor: faceAnchor) == nil else {
+             node.addChildNode((tx?.contentNode)!)
+            return
         }
+        node.addChildNode((rf?.contentNode)!)
+
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let contentNode = tx?.contentNode,
-            contentNode.parent == node
-            else {
-                rf?.transform = node.transform
-                rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: anchor)
-                return
+
+        guard tx?.contentNode == nil else {
+            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: anchor)
+            return
         }
-        tx?.renderer(renderer, didUpdate: contentNode, for: anchor)
+        rf?.transform = node.transform
+        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
