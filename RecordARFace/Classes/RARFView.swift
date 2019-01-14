@@ -92,13 +92,13 @@ extension RARFView: ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         guard tx?.contentNode == nil else {
-            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: anchor)
+            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: faceAnchor)
             return
         }
         rf?.transform = node.transform
-        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: anchor)
+        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: faceAnchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
