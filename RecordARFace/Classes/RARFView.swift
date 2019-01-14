@@ -120,7 +120,7 @@ extension RARFView: ARSCNViewDelegate {
 
             guard  leftEye.count == 0 else {
                 var coords = rf?.eyePosition(leftEye[0], secondResult:rightEye[0])
-                self.eView.frame.origin = CGPoint(x: CGFloat(coords!.x), y:CGFloat(coords!.y))
+                DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords!.x), y:CGFloat(coords!.y)) }
                 return
             }
             return

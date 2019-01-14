@@ -51,7 +51,7 @@ public final class RARFCollectionView: UIView {
 
     public func viewHidden() {
 
-        aView.arscnView.isHidden = true
+        aView.arscnView.removeFromSuperview()
         collectionView.isHidden = false
     }
 
