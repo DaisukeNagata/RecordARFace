@@ -82,8 +82,7 @@ final class RARFView: NSObject, ARSessionDelegate {
 extension RARFView: ARSCNViewDelegate {
      func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-        guard tx?.renderer(renderer, nodeFor: faceAnchor) == nil else {
+        guard tx?.renderer(renderer, nodeFor: anchor) == nil else {
              node.addChildNode((tx?.contentNode)!)
             return
         }
@@ -92,13 +91,12 @@ extension RARFView: ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         guard tx?.contentNode == nil else {
-            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: faceAnchor)
+            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: anchor)
             return
         }
         rf?.transform = node.transform
-        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: faceAnchor)
+        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -122,10 +120,11 @@ extension RARFView: ARSCNViewDelegate {
 
             guard  leftEye.count == 0 else {
                 var coords = rf?.eyePosition(leftEye[0], secondResult:rightEye[0])
-                DispatchQueue.main.async{ self.eView.frame.origin = CGPoint(x: CGFloat(coords!.x), y:CGFloat(coords!.y)) }
+                self.eView.frame.origin = CGPoint(x: CGFloat(coords!.x), y:CGFloat(coords!.y))
                 return
             }
             return
         }
     }
 }
+
