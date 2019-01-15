@@ -14,6 +14,7 @@ final class RARFTexturedFace: NSObject, ARSCNDelegate {
     var resource: UIColor
     var contentNode: SCNNode?
 
+
     init(resource: UIColor) {
         self.resource = resource
     }

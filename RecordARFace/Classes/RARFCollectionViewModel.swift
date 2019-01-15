@@ -10,6 +10,7 @@ import UIKit
 
 enum Images {
     case whiteImage,blackImage,blueImage,redImage
+
     var imageSet: UIColor {
         switch self {
         case .whiteImage: return .white

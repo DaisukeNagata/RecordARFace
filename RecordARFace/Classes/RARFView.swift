@@ -118,7 +118,7 @@ extension RARFView: ARSCNViewDelegate {
                 to:  phoneNode.convertPosition(rf!.rightEyeEnd.worldPosition, from:nil),
                 options: options)
 
-            guard let coords = rf?.eyePosition(leftEye[0], secondResult:rightEye[0]) else { return }
+            guard let coords = rf?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
             DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y)) }
             return
         }

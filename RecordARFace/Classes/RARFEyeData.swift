@@ -64,7 +64,7 @@ extension RARFEyeData {
 
         var total = simd_float2(0,0)
         for pos in positions { total += pos }
-        total /= Float(positions.count)
+        total /= Float( positions.count )
 
         return total
     }
@@ -73,7 +73,7 @@ extension RARFEyeData {
 // MARK: ARSCNViewDelegate
 @available(iOS 11.0, *)
 extension RARFEyeData: ARSCNDelegate {
- 
+
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         #if targetEnvironment(simulator)
         #else

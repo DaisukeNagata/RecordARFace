@@ -12,6 +12,7 @@ import UIKit
 public final class RARFCollectionView: UIView {
 
     let vm = RARFCollectionViewModel()
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
@@ -22,17 +23,21 @@ public final class RARFCollectionView: UIView {
         collectionView.dataSource = vm
         return collectionView
     }()
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.addSubview(collectionView)
         addSubview(scrollView)
         return scrollView
     }()
+
     private lazy var aView: RARFView = {
         let aView = RARFView()
         return aView
     }()
+
     private var index = 0
+
 
     public init() {
         super.init(frame: .zero)
