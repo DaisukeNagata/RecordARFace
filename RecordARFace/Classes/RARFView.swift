@@ -42,6 +42,7 @@ final class RARFView: NSObject, ARSessionDelegate {
         return SCNNode(geometry: screenNode)
     }()
 
+    private var nodeFace = SCNNode()
     private var phoneNode: SCNNode = SCNNode()
     private var tx: RARFTexturedFace?
     private var rf: RARFEyeData?
@@ -84,25 +85,28 @@ final class RARFView: NSObject, ARSessionDelegate {
 // MARK: ARSCNViewDelegate
 @available(iOS 11.0, *)
 extension RARFView: ARSCNViewDelegate {
+
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-        if let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
+        guard tx?.renderer(renderer, nodeFor: anchor) == nil else {
+            guard let contentNode = tx?.renderer(renderer, nodeFor: anchor) else { return }
+        
+            nodeFace = contentNode
             node.addChildNode(contentNode)
-        } else if let contentNode = rf?.renderer(renderer, nodeFor: faceAnchor) {
-            node.addChildNode(contentNode)
+            return
         }
+        guard let contentNode = tx?.renderer(renderer, nodeFor: anchor) else { return }
+        nodeFace = contentNode
+        node.addChildNode(contentNode)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
-        if let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
-            tx?.renderer(renderer, didUpdate: contentNode, for: faceAnchor)
-        }  else if let contentNode = rf?.renderer(renderer, nodeFor: faceAnchor) {
-            rf?.transform = node.transform
-            rf?.renderer(renderer, didUpdate: contentNode, for: faceAnchor)
+        guard tx?.contentNode == nil else {
+            tx?.renderer(renderer, didUpdate: nodeFace, for: anchor)
+            return
         }
+        rf?.transform = nodeFace.transform
+        rf?.renderer(renderer, didUpdate: nodeFace, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
