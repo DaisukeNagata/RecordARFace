@@ -86,20 +86,22 @@ final class RARFView: NSObject, ARSessionDelegate {
 extension RARFView: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
-        if let contentNode = tx?.renderer(renderer, nodeFor: anchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        if let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
             node.addChildNode(contentNode)
-        } else if let contentNode = rf?.renderer(renderer, nodeFor: anchor) {
+        } else if let contentNode = rf?.renderer(renderer, nodeFor: faceAnchor) {
             node.addChildNode(contentNode)
         }
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
 
-        if let contentNode = tx?.renderer(renderer, nodeFor: anchor) {
-            tx?.renderer(renderer, didUpdate: contentNode, for: anchor)
-        }  else if let contentNode = rf?.renderer(renderer, nodeFor: anchor) {
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return }
+        if let contentNode = tx?.renderer(renderer, nodeFor: faceAnchor) {
+            tx?.renderer(renderer, didUpdate: contentNode, for: faceAnchor)
+        }  else if let contentNode = rf?.renderer(renderer, nodeFor: faceAnchor) {
             rf?.transform = node.transform
-            rf?.renderer(renderer, didUpdate: contentNode, for: anchor)
+            rf?.renderer(renderer, didUpdate: contentNode, for: faceAnchor)
         }
     }
 
