@@ -95,7 +95,7 @@ extension RARFView: ARSCNViewDelegate {
             node.addChildNode(contentNode)
             return
         }
-        guard let contentNode = tx?.renderer(renderer, nodeFor: anchor) else { return }
+        guard let contentNode = rf?.renderer(renderer, nodeFor: anchor) else { return }
         nodeFace = contentNode
         node.addChildNode(contentNode)
     }
@@ -105,8 +105,8 @@ extension RARFView: ARSCNViewDelegate {
             tx?.renderer(renderer, didUpdate: nodeFace, for: anchor)
             return
         }
-        rf?.transform = nodeFace.transform
-        rf?.renderer(renderer, didUpdate: nodeFace, for: anchor)
+        rf?.transform = node.transform
+        rf?.renderer(renderer, didUpdate: node, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
