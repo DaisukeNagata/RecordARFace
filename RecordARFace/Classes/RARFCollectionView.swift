@@ -15,7 +15,8 @@ public final class RARFCollectionView: UIView {
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5, height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2,
+                                 height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(RARFCollectionCell().identifier, forCellWithReuseIdentifier: "CollectionCell")
         collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "CollectionCell")
@@ -55,7 +56,6 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewHidden() {
-
         aView.arscnView.removeFromSuperview()
         collectionView.isHidden = false
     }
@@ -72,6 +72,7 @@ public final class RARFCollectionView: UIView {
 // MARK: UICollectionViewDelegate
 @available(iOS 11.0, *)
 extension RARFCollectionView: UICollectionViewDelegate {
+
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.isHidden = true

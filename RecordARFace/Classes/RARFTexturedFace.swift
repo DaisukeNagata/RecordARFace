@@ -20,6 +20,7 @@ final class RARFTexturedFace: NSObject, ARSCNDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+
         guard let sceneView = renderer as? ARSCNView,
             anchor is ARFaceAnchor,
             resource != .clear
@@ -38,6 +39,7 @@ final class RARFTexturedFace: NSObject, ARSCNDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+
         guard let faceGeometry = node.geometry as? ARSCNFaceGeometry,
             let faceAnchor = anchor as? ARFaceAnchor
             else { return }

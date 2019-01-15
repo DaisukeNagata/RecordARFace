@@ -18,6 +18,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 @available(iOS 11.0, *)
 final class RARFView: NSObject, ARSessionDelegate {
+
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
@@ -27,18 +28,21 @@ final class RARFView: NSObject, ARSessionDelegate {
         arscnView.frame = UIScreen.main.bounds
         return arscnView
     }()
+
     private lazy var eView: UIView = {
         let eView = UIView()
         eView.frame = CGRect(x: 0,y:0 ,width:25 ,height:25)
         eView.layer.cornerRadius = eView.frame.height/2
         return eView
     }()
-    private var phoneNode: SCNNode = SCNNode()
+
     private var screenNode: SCNNode = {
         let screenNode = SCNPlane(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         screenNode.firstMaterial?.isDoubleSided = true
         return SCNNode(geometry: screenNode)
     }()
+
+    private var phoneNode: SCNNode = SCNNode()
     private var tx: RARFTexturedFace?
     private var rf: RARFEyeData?
 
@@ -100,6 +104,7 @@ extension RARFView: ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+
         guard rf?.contentNode == nil else {
             phoneNode.transform = (arscnView.pointOfView?.transform)!
 

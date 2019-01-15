@@ -20,6 +20,7 @@ final class RARFFlameView {
         self.color = color
         commonInit()
     }
+
     // TODO: Expansion of design
     private func commonInit() {
         let gradientLayer = CAGradientLayer()
