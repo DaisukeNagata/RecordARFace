@@ -12,7 +12,7 @@ final class RARFFlameView {
     private let flameEmitterLayer = CAEmitterLayer()
     private let flameEmitterCell = CAEmitterCell()
     private var color = UIColor()
-    var eViews = UIView()
+    var eViews: UIView
 
 
     init(eView: UIView,color: UIColor) {
