@@ -80,23 +80,23 @@ final class RARFView: NSObject, ARSessionDelegate {
 // MARK: ARSCNViewDelegate
 @available(iOS 11.0, *)
 extension RARFView: ARSCNViewDelegate {
-     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
-        guard tx?.renderer(renderer, nodeFor: anchor) == nil else {
-             node.addChildNode((tx?.contentNode)!)
-            return
+        if let contentNode = tx?.renderer(renderer, nodeFor: anchor) {
+            node.addChildNode(contentNode)
+        } else if let contentNode = rf?.renderer(renderer, nodeFor: anchor) {
+            node.addChildNode(contentNode)
         }
-        node.addChildNode((rf?.contentNode)!)
-
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard tx?.contentNode == nil else {
-            tx?.renderer(renderer, didUpdate: (tx?.contentNode)!, for: anchor)
-            return
+
+        if let contentNode = tx?.renderer(renderer, nodeFor: anchor) {
+            tx?.renderer(renderer, didUpdate: contentNode, for: anchor)
+        }  else if let contentNode = rf?.renderer(renderer, nodeFor: anchor) {
+            rf?.transform = node.transform
+            rf?.renderer(renderer, didUpdate: contentNode, for: anchor)
         }
-        rf?.transform = node.transform
-        rf?.renderer(renderer, didUpdate: (rf?.contentNode)!, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -118,13 +118,9 @@ extension RARFView: ARSCNViewDelegate {
                 to:  phoneNode.convertPosition(rf!.rightEyeEnd.worldPosition, from:nil),
                 options: options)
 
-            guard  leftEye.count == 0 else {
-                var coords = rf?.eyePosition(leftEye[0], secondResult:rightEye[0])
-                DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords!.x), y:CGFloat(coords!.y)) }
-                return
-            }
+            guard let coords = rf?.eyePosition(leftEye[0], secondResult:rightEye[0]) else { return }
+            DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y)) }
             return
         }
     }
 }
-
