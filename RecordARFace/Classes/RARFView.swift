@@ -90,7 +90,7 @@ extension RARFView: ARSCNViewDelegate {
 
         guard tx?.renderer(renderer, nodeFor: anchor) == nil else {
             guard let contentNode = tx?.renderer(renderer, nodeFor: anchor) else { return }
-        
+
             nodeFace = contentNode
             node.addChildNode(contentNode)
             return
