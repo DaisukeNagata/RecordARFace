@@ -17,7 +17,7 @@
 		5E33C062C786C379688597CE38A45933 /* RARFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016FD7098DC0D1F7DBEDB2437AAF17BD /* RARFCollectionView.swift */; };
 		77CC109F7C7C0BFC93B76F9A00E1BB70 /* RARFCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2A979B4826908513AB2EB56CF7DB9 /* RARFCollectionViewModel.swift */; };
 		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		BB0364FD21EFDC53004CA185 /* RARFFlameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0364FC21EFDC53004CA185 /* RARFFlameView.swift */; };
+		BB0364FE21EFDCED004CA185 /* RARFFlameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0364FC21EFDC53004CA185 /* RARFFlameView.swift */; };
 		BB2E2BE721EB4D2E00AD0E29 /* RARFEyeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E2BE521EB4BFA00AD0E29 /* RARFEyeData.swift */; };
 		BD58794318131A19099F0562E7A29E80 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34EB90E0BFEBC099F5B6EE13766FAABB /* RARFTexturedFace.swift */; };
 		BEB33E7B11D5483E7074351E92E5738B /* RecordARFace-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BAD95B96FE4C072200E630F818413D5 /* RecordARFace-dummy.m */; };
@@ -400,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */,
-				BB0364FD21EFDC53004CA185 /* RARFFlameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +416,7 @@
 				BD58794318131A19099F0562E7A29E80 /* RARFTexturedFace.swift in Sources */,
 				0F58ED051474B2F6CDBD497FF5DB6E10 /* RARFView.swift in Sources */,
 				BEB33E7B11D5483E7074351E92E5738B /* RecordARFace-dummy.m in Sources */,
+				BB0364FE21EFDCED004CA185 /* RARFFlameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
