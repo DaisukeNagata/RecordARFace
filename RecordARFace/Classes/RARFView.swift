@@ -44,8 +44,8 @@ final class RARFView: NSObject, ARSessionDelegate {
 
     private var nodeFace = SCNNode()
     private var phoneNode: SCNNode = SCNNode()
-    private var tx: RARFTexturedFace?
-    private var rf: RARFEyeData?
+    private var texturedFace: RARFTexturedFace?
+    private var eyeData: RARFEyeData?
 
 
     override init() {
@@ -64,7 +64,7 @@ final class RARFView: NSObject, ARSessionDelegate {
 
     func texturedFace(color: UIColor) {
         resetTracking()
-        tx = RARFTexturedFace(resource: color)
+        texturedFace = RARFTexturedFace(resource: color)
     }
 
     func eyeTracking(color: UIColor) {
@@ -72,8 +72,8 @@ final class RARFView: NSObject, ARSessionDelegate {
         #else
         eView = RARFFlameView(eView: eView, color: color).eViews
         let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
-        rf = RARFEyeData(geometry: eyeGeometry!)
-        arscnView.scene.rootNode.addChildNode(rf!)
+        eyeData = RARFEyeData(geometry: eyeGeometry!)
+        arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
         phoneNode.addChildNode(screenNode)
@@ -88,30 +88,30 @@ extension RARFView: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
-        guard tx?.renderer(renderer, nodeFor: anchor) == nil else {
-            guard let contentNode = tx?.renderer(renderer, nodeFor: anchor) else { return }
+        guard texturedFace?.renderer(renderer, nodeFor: anchor) == nil else {
+            guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
 
             nodeFace = contentNode
             node.addChildNode(contentNode)
             return
         }
-        guard let contentNode = rf?.renderer(renderer, nodeFor: anchor) else { return }
+        guard let contentNode = eyeData?.renderer(renderer, nodeFor: anchor) else { return }
         nodeFace = contentNode
         node.addChildNode(contentNode)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        guard tx?.contentNode == nil else {
-            tx?.renderer(renderer, didUpdate: nodeFace, for: anchor)
+        guard texturedFace?.contentNode == nil else {
+            texturedFace?.renderer(renderer, didUpdate: nodeFace, for: anchor)
             return
         }
-        rf?.transform = node.transform
-        rf?.renderer(renderer, didUpdate: node, for: anchor)
+        eyeData?.transform = node.transform
+        eyeData?.renderer(renderer, didUpdate: node, for: anchor)
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
-        guard rf?.contentNode == nil else {
+        guard eyeData?.contentNode == nil else {
             phoneNode.transform = (arscnView.pointOfView?.transform)!
 
             let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
@@ -120,16 +120,16 @@ extension RARFView: ARSCNViewDelegate {
                                            SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
 
             let leftEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(rf!.leftEye.worldPosition, from:nil),
-                to:  phoneNode.convertPosition(rf!.leftEyeEnd.worldPosition, from:nil),
+                from: phoneNode.convertPosition(eyeData!.leftEye.worldPosition, from:nil),
+                to:  phoneNode.convertPosition(eyeData!.leftEyeEnd.worldPosition, from:nil),
                 options: options)
 
             let rightEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(rf!.rightEye.worldPosition, from:nil),
-                to:  phoneNode.convertPosition(rf!.rightEyeEnd.worldPosition, from:nil),
+                from: phoneNode.convertPosition(eyeData!.rightEye.worldPosition, from:nil),
+                to:  phoneNode.convertPosition(eyeData!.rightEyeEnd.worldPosition, from:nil),
                 options: options)
 
-            guard let coords = rf?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
+            guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
             DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y)) }
             return
         }
