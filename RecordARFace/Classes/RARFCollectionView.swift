@@ -43,11 +43,12 @@ public final class RARFCollectionView: UIView {
     public init() {
         super.init(frame: .zero)
 
-        self.frame = UIScreen.main.bounds
-        collectionView.frame = self.bounds
-        scrollView.frame = self.bounds
-        aView.arscnView.frame = self.bounds
         aView.arscnView.isHidden = true
+
+        self.frame = UIScreen.main.bounds
+        scrollView.frame = self.bounds
+        collectionView.frame = self.bounds
+        aView.arscnView.frame = self.bounds
         addSubview(collectionView)
     }
 
