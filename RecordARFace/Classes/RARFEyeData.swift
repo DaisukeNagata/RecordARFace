@@ -32,10 +32,10 @@ final class RARFEyeData: SCNNode {
         resource = UIColor()
 
         leftEye.addChildNode(leftEyeEnd)
-        leftEyeEnd.simdPosition = simd_float3(0,0, floatRaycastDistance);
+        leftEyeEnd.simdPosition = simd_float3(0,0, floatRaycastDistance)
 
         rightEye.addChildNode(rightEyeEnd)
-        rightEyeEnd.simdPosition = simd_float3(0,0, floatRaycastDistance);
+        rightEyeEnd.simdPosition = simd_float3(0,0, floatRaycastDistance)
 
         super.init()
 

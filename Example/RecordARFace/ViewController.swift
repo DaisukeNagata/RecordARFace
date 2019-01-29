@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     @objc func collectionSet() { cView.viewHidden() }
     @objc func eyesTracking() { cView.viewEyesTracking() }
 
-    func statusBarUI(st: String, color: UIColor, sec: Selector){
+    func statusBarUI(st: String, color: UIColor, sec: Selector) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
         statusBar.backgroundColor = color
     }
