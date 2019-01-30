@@ -6,6 +6,7 @@
 //
 
 import ARKit
+import UIKit
 
 @available(iOS 11.0, *)
 protocol ARSCNDelegate: ARSCNViewDelegate {
@@ -17,7 +18,14 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-final class RARFView: NSObject, ARSessionDelegate {
+public final class RARFView: NSObject, ARSessionDelegate {
+
+    public lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.frame = UIScreen.main.bounds
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        return tableView
+    }()
 
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
@@ -31,7 +39,7 @@ final class RARFView: NSObject, ARSessionDelegate {
 
     private lazy var eView: UIView = {
         let eView = UIView()
-        eView.frame = CGRect(x: 0,y:0 ,width:25 ,height:25)
+        eView.frame = CGRect(x: 0,y: 0 ,width:25 ,height:25)
         eView.layer.cornerRadius = eView.frame.height/2
         return eView
     }()
@@ -52,7 +60,9 @@ final class RARFView: NSObject, ARSessionDelegate {
         super.init()
 
         arscnView.addSubview(eView)
+        arscnView.addSubview(tableView)
     }
+
 
     func resetTracking() {
         UIApplication.shared.isIdleTimerDisabled = true
@@ -61,7 +71,7 @@ final class RARFView: NSObject, ARSessionDelegate {
         configuration.isLightEstimationEnabled = true
         arscnView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
-
+        
     func texturedFace(color: UIColor) {
         resetTracking()
         texturedFace = RARFTexturedFace(resource: color)
@@ -70,6 +80,7 @@ final class RARFView: NSObject, ARSessionDelegate {
     func eyeTracking(color: UIColor) {
         #if targetEnvironment(simulator)
         #else
+        tableView.isHidden = false
         eView = RARFFlameView(eView: eView, color: color).eViews
         let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
         eyeData = RARFEyeData(geometry: eyeGeometry!)
@@ -86,7 +97,7 @@ final class RARFView: NSObject, ARSessionDelegate {
 @available(iOS 11.0, *)
 extension RARFView: ARSCNViewDelegate {
 
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+    public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
         guard texturedFace?.renderer(renderer, nodeFor: anchor) == nil else {
             guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
@@ -100,7 +111,7 @@ extension RARFView: ARSCNViewDelegate {
         node.addChildNode(contentNode)
     }
 
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+   public func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard texturedFace?.contentNode == nil else {
             texturedFace?.renderer(renderer, didUpdate: nodeFace, for: anchor)
             return
@@ -109,7 +120,7 @@ extension RARFView: ARSCNViewDelegate {
         eyeData?.renderer(renderer, didUpdate: node, for: anchor)
     }
 
-    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+    public func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
         guard eyeData?.contentNode == nil else {
             phoneNode.transform = (arscnView.pointOfView?.transform)!
@@ -130,7 +141,11 @@ extension RARFView: ARSCNViewDelegate {
                 options: options)
 
             guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-            DispatchQueue.main.sync{ self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y)) }
+            DispatchQueue.main.sync {
+                self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
+                let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y*2)+tableView.frame.height/2)
+                tableView.setContentOffset(offset, animated: true)
+            }
             return
         }
     }

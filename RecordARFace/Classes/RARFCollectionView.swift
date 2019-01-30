@@ -11,6 +11,11 @@ import UIKit
 @available(iOS 11.0, *)
 public final class RARFCollectionView: UIView {
 
+    public lazy var aView: RARFView = {
+        let aView = RARFView()
+        return aView
+    }()
+    
     let vm = RARFCollectionViewModel()
 
     private lazy var collectionView: UICollectionView = {
@@ -32,10 +37,6 @@ public final class RARFCollectionView: UIView {
         return scrollView
     }()
 
-    private lazy var aView: RARFView = {
-        let aView = RARFView()
-        return aView
-    }()
 
     private var index = 0
 
@@ -82,5 +83,6 @@ extension RARFCollectionView: UICollectionViewDelegate {
         aView.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
         index = indexPath.row
         addSubview(aView.arscnView)
+        aView.tableView.isHidden = true
     }
 }
