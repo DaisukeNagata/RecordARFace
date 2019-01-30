@@ -31,13 +31,11 @@ public class RARFScreenRecorder: NSObject,RPPreviewViewControllerDelegate {
     }
 
     public func stopRecording() {
-        DispatchQueue.main.async {
-            self.recorder.stopRecording { (preview, error) in
-                guard preview == nil else {
-                    preview?.previewControllerDelegate = self
-                    self.vc.present(preview!, animated: true)
-                    return
-                }
+        self.recorder.stopRecording { (preview, error) in
+            guard preview == nil else {
+                preview?.previewControllerDelegate = self
+                self.vc.present(preview!, animated: true)
+                return
             }
         }
     }
