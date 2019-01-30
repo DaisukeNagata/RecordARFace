@@ -5,6 +5,10 @@
 [![Version](https://img.shields.io/cocoapods/v/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
 [![License](https://img.shields.io/cocoapods/l/RecordARFace.svg?style=flat)](https://cocoapods.org/pods/RecordARFace)
 
+## Introduction
+
+0.4 ~ The new function is being expanded the function to scroll the screen by the movement of face and eyes.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
