@@ -131,19 +131,19 @@ extension RARFView: ARSCNViewDelegate {
                                            SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
 
             let leftEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(eyeData!.leftEye.worldPosition, from:nil),
-                to:  phoneNode.convertPosition(eyeData!.leftEyeEnd.worldPosition, from:nil),
+                from: phoneNode.convertPosition(eyeData!.leftEye.worldPosition, from: nil),
+                to:  phoneNode.convertPosition(eyeData!.leftEyeEnd.worldPosition, from: nil),
                 options: options)
 
             let rightEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(eyeData!.rightEye.worldPosition, from:nil),
-                to:  phoneNode.convertPosition(eyeData!.rightEyeEnd.worldPosition, from:nil),
+                from: phoneNode.convertPosition(eyeData!.rightEye.worldPosition, from: nil),
+                to:  phoneNode.convertPosition(eyeData!.rightEyeEnd.worldPosition, from: nil),
                 options: options)
 
             guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
             DispatchQueue.main.sync {
                 self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y*2)+tableView.frame.height/2)
+                let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+tableView.frame.height/2)
                 tableView.setContentOffset(offset, animated: true)
             }
             return
