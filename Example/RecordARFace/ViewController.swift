@@ -41,11 +41,13 @@ class ViewController: UIViewController {
     @objc func stopRecording() {
         RARFScreenRecorder(vc: self).stopRecording()
         statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
+        collectionSet()
     }
 
     @objc func collectionSet() { cView.viewHidden()
         cView.aView.tableView.isHidden = true
     }
+
     @objc func eyesTracking() { cView.viewEyesTracking()
         // Version 0.4.3
         cView.aView.indexNumber = 10
