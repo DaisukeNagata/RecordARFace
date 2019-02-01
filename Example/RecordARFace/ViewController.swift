@@ -14,8 +14,6 @@ class ViewController: UIViewController {
     private var statusBar = RARFStatusBarUI().statusBar
     private lazy var cView: RARFCollectionView = {
         let cView = RARFCollectionView()
-        cView.aView.tableView.delegate = self
-        cView.aView.tableView.dataSource = self
         return cView
     }()
 
@@ -50,7 +48,7 @@ class ViewController: UIViewController {
         cView.aView.tableView.isHidden = true
     }
     @objc func eyesTracking() { cView.viewEyesTracking()
-        // Version 0.4
+        cView.aView.indexNumber = 10
         cView.aView.tableView.alpha = 0.7
         cView.aView.tableView.rowHeight = 100
         cView.aView.tableView.backgroundColor = .black
@@ -59,18 +57,5 @@ class ViewController: UIViewController {
     func statusBarUI(st: String, color: UIColor, sec: Selector) {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
         statusBar.backgroundColor = color
-    }
-}
-
-// MARK: UITableViewDataSource, UITableViewDelegate
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
     }
 }

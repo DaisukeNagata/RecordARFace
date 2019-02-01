@@ -32,7 +32,7 @@ extension RARFCollectionViewModel: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! RARFCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RARFCollectionCell", for: indexPath) as! RARFCollectionCell
         cell.config(color: imagesRows[indexPath.row].imageSet)
         return cell
     }

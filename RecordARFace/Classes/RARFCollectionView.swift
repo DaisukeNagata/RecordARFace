@@ -23,8 +23,8 @@ public final class RARFCollectionView: UIView {
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5,
                                  height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(RARFCollectionCell().identifier, forCellWithReuseIdentifier: "CollectionCell")
-        collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "CollectionCell")
+        collectionView.register(RARFCollectionCell().identifier, forCellWithReuseIdentifier: "RARFCollectionCell")
+        collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "RARFCollectionCell")
         collectionView.delegate = self
         collectionView.dataSource = vm
         return collectionView

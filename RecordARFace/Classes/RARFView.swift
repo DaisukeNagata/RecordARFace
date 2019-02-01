@@ -20,10 +20,12 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 public final class RARFView: NSObject, ARSessionDelegate {
 
+    public var indexNumber = 0
+
     public lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.frame = UIScreen.main.bounds
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RARFCell")
         return tableView
     }()
 
@@ -81,6 +83,8 @@ public final class RARFView: NSObject, ARSessionDelegate {
         #if targetEnvironment(simulator)
         #else
         tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
         eView = RARFFlameView(eView: eView, color: color).eViews
         let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
         eyeData = RARFEyeData(geometry: eyeGeometry!)
@@ -150,3 +154,18 @@ extension RARFView: ARSCNViewDelegate {
         }
     }
 }
+
+// MARK: UITableViewDataSource, UITableViewDelegate
+@available(iOS 11.0, *)
+extension RARFView: UITableViewDataSource, UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
+        return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return indexNumber
+    }
+}
+
