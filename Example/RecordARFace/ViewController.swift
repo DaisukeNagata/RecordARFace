@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         let cView = RARFCollectionView()
         return cView
     }()
+    private var RepeatedHits = false
 
 
     override func viewDidLoad() {
@@ -45,15 +46,20 @@ class ViewController: UIViewController {
     }
 
     @objc func collectionSet() { cView.viewHidden()
+        // Version 0.4.5
+        RepeatedHits = false
         cView.aView.tableView.isHidden = true
     }
 
-    @objc func eyesTracking() { cView.viewEyesTracking()
-        // Version 0.4.3
-        cView.aView.indexNumber = 10
-        cView.aView.tableView.alpha = 0.7
-        cView.aView.tableView.rowHeight = 100
-        cView.aView.tableView.backgroundColor = .black
+    @objc func eyesTracking() {
+        if RepeatedHits == false {
+            RepeatedHits = true
+            cView.viewEyesTracking()
+            cView.aView.indexNumber = 10
+            cView.aView.tableView.alpha = 0.7
+            cView.aView.tableView.rowHeight = 100
+            cView.aView.tableView.backgroundColor = .black
+        }
     }
 
     func statusBarUI(st: String, color: UIColor, sec: Selector) {
