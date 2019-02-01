@@ -44,10 +44,10 @@ class ViewController: UIViewController {
     }
 
     @objc func collectionSet() { cView.viewHidden()
-        // Version 0.4
         cView.aView.tableView.isHidden = true
     }
     @objc func eyesTracking() { cView.viewEyesTracking()
+        // Version 0.4.3
         cView.aView.indexNumber = 10
         cView.aView.tableView.alpha = 0.7
         cView.aView.tableView.rowHeight = 100
