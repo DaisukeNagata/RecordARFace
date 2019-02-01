@@ -46,7 +46,6 @@ class ViewController: UIViewController {
     }
 
     @objc func collectionSet() { cView.viewHidden()
-        // Version 0.4.5
         RepeatedHits = false
         cView.aView.tableView.isHidden = true
     }
