@@ -8,6 +8,7 @@
 ## Introduction
 
 0.4 ~ The new function is being expanded the function to scroll the screen by the movement of face and eyes.
+If the recording function does not work please restart iphone.
 
 ## Example
 
