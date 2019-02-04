@@ -98,6 +98,7 @@ public class RARFNumberKeyboard: UIView {
                 if total != nil {
                     let totalNumber = Int(textView.text!)! + Int(total!)!
                     textView.text! = totalNumber.description
+                    plusNumber = ""
                     total = nil
                 }
             }
