@@ -17,8 +17,7 @@ class ViewController: UIViewController {
         return cView
     }()
     private var RepeatedHits = false
-    private var key = RARFNumberKeyboard()
-
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,7 +31,6 @@ class ViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
         navigationController?.navigationBar.addSubview(statusBar)
         view.addSubview(cView)
-        view.addSubview(key)
     }
 
     @objc func startRecording() {
@@ -55,7 +53,7 @@ class ViewController: UIViewController {
         if RepeatedHits == false {
             RepeatedHits = true
             cView.viewEyesTracking()
-            cView.aView.indexNumber = 10
+            cView.aView.indexNumber = 1
             cView.aView.tableView.alpha = 0.7
             cView.aView.tableView.rowHeight = 100
             cView.aView.tableView.backgroundColor = .black

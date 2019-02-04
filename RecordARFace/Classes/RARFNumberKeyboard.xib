@@ -22,6 +22,7 @@
                 <outlet property="plus" destination="fEf-36-exZ" id="K8W-gN-5Ys"/>
                 <outlet property="seven" destination="hyV-gI-zsA" id="XmS-3w-N6T"/>
                 <outlet property="six" destination="Eri-wL-Z9I" id="w7T-M0-ZJp"/>
+                <outlet property="textView" destination="fbL-zh-qYB" id="xS6-Dw-oSx"/>
                 <outlet property="three" destination="iXt-in-H5u" id="YUc-xX-OEI"/>
                 <outlet property="two" destination="rYg-j4-K4R" id="XQS-Wn-iza"/>
                 <outlet property="zero" destination="khx-Wd-u6w" id="bhL-He-5h2"/>
@@ -29,14 +30,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="398"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="527"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fjM-YG-T7Q">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="398"/>
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="527"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRS-C4-NuP" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="101" height="100"/>
+                            <rect key="frame" x="0.0" y="129" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="zEQ-qp-sGq"/>
@@ -55,7 +56,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rYg-j4-K4R" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="101" y="0.0" width="101" height="100"/>
+                            <rect key="frame" x="101" y="129" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="2"/>
                             <userDefinedRuntimeAttributes>
@@ -71,7 +72,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXt-in-H5u" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="202" y="0.0" width="101" height="100"/>
+                            <rect key="frame" x="202" y="129" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="3"/>
                             <userDefinedRuntimeAttributes>
@@ -87,7 +88,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dhu-92-65i" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="100" width="101" height="100"/>
+                            <rect key="frame" x="0.0" y="229" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="3Qr-ic-rbj"/>
@@ -106,7 +107,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnl-ya-A8l" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="101" y="100" width="101" height="100"/>
+                            <rect key="frame" x="101" y="229" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="5"/>
                             <userDefinedRuntimeAttributes>
@@ -122,7 +123,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eri-wL-Z9I" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="202" y="100" width="101" height="100"/>
+                            <rect key="frame" x="202" y="229" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="6"/>
                             <userDefinedRuntimeAttributes>
@@ -138,7 +139,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyV-gI-zsA" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="200" width="101" height="100"/>
+                            <rect key="frame" x="0.0" y="329" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="CD2-Y4-rJ5"/>
@@ -157,7 +158,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBg-dN-ZOf" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="101" y="200" width="101" height="100"/>
+                            <rect key="frame" x="101" y="329" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="8"/>
                             <userDefinedRuntimeAttributes>
@@ -173,7 +174,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVB-sC-Cr6" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="202" y="200" width="101" height="100"/>
+                            <rect key="frame" x="202" y="329" width="101" height="100"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="9"/>
                             <userDefinedRuntimeAttributes>
@@ -189,7 +190,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffs-yR-p2X" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="303" y="0.0" width="97" height="150"/>
+                            <rect key="frame" x="303" y="129" width="97" height="150"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="0Dz-NG-xf9"/>
@@ -208,7 +209,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEf-36-exZ" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="303" y="150" width="97" height="150"/>
+                            <rect key="frame" x="303" y="279" width="97" height="150"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="150" id="9oA-BK-gen"/>
@@ -228,7 +229,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khx-Wd-u6w" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="300" width="202" height="98"/>
+                            <rect key="frame" x="0.0" y="429" width="202" height="98"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="98" id="6B4-Gm-KpW"/>
@@ -247,7 +248,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fW8-Hu-8fe" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="202" y="300" width="198" height="98"/>
+                            <rect key="frame" x="202" y="429" width="198" height="98"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="98" id="x25-9J-T7Q"/>
@@ -265,13 +266,18 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-zh-qYB">
+                            <rect key="frame" x="0.0" y="0.0" width="400" height="129"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Dhu-92-65i" firstAttribute="baseline" secondItem="Eri-wL-Z9I" secondAttribute="firstBaseline" id="1rd-eL-JdU"/>
                         <constraint firstItem="Dhu-92-65i" firstAttribute="top" secondItem="lnl-ya-A8l" secondAttribute="top" id="1zh-3E-7VA"/>
                         <constraint firstItem="GBg-dN-ZOf" firstAttribute="leading" secondItem="rYg-j4-K4R" secondAttribute="leading" id="2nF-VE-9Zx"/>
-                        <constraint firstItem="iXt-in-H5u" firstAttribute="top" secondItem="fjM-YG-T7Q" secondAttribute="top" id="3w8-Rn-mzb"/>
                         <constraint firstItem="Eri-wL-Z9I" firstAttribute="top" secondItem="iXt-in-H5u" secondAttribute="bottom" id="AlM-gP-hAj"/>
                         <constraint firstItem="fEf-36-exZ" firstAttribute="width" secondItem="ffs-yR-p2X" secondAttribute="width" id="Clj-zv-5Oq"/>
                         <constraint firstItem="Dhu-92-65i" firstAttribute="top" secondItem="Eri-wL-Z9I" secondAttribute="top" id="Fvr-ph-MkV"/>
@@ -281,6 +287,7 @@
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="baseline" secondItem="GBg-dN-ZOf" secondAttribute="firstBaseline" id="JQg-2b-FGx"/>
                         <constraint firstItem="YVB-sC-Cr6" firstAttribute="width" secondItem="hyV-gI-zsA" secondAttribute="width" id="JYS-6m-GlV"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="top" secondItem="YVB-sC-Cr6" secondAttribute="top" id="LnO-rw-DFs"/>
+                        <constraint firstItem="iXt-in-H5u" firstAttribute="top" secondItem="ffs-yR-p2X" secondAttribute="top" id="NRQ-dg-s00"/>
                         <constraint firstItem="lnl-ya-A8l" firstAttribute="leading" secondItem="Dhu-92-65i" secondAttribute="trailing" id="OC0-t9-vh5"/>
                         <constraint firstItem="Eri-wL-Z9I" firstAttribute="leading" secondItem="lnl-ya-A8l" secondAttribute="trailing" id="Qib-Kt-cfB"/>
                         <constraint firstItem="mRS-C4-NuP" firstAttribute="baseline" secondItem="rYg-j4-K4R" secondAttribute="firstBaseline" id="RzK-qy-Xqh"/>
@@ -295,27 +302,31 @@
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="top" secondItem="Dhu-92-65i" secondAttribute="bottom" id="Wm8-5e-pr8"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="leading" secondItem="mRS-C4-NuP" secondAttribute="leading" id="XZ1-AV-Pck"/>
                         <constraint firstItem="rYg-j4-K4R" firstAttribute="width" secondItem="mRS-C4-NuP" secondAttribute="width" id="a1X-Ms-sBi"/>
+                        <constraint firstItem="mRS-C4-NuP" firstAttribute="top" secondItem="fbL-zh-qYB" secondAttribute="bottom" id="a33-pY-S4g"/>
+                        <constraint firstItem="fbL-zh-qYB" firstAttribute="top" secondItem="fjM-YG-T7Q" secondAttribute="topMargin" constant="-28" id="avZ-sj-Qkf"/>
                         <constraint firstItem="iXt-in-H5u" firstAttribute="width" secondItem="mRS-C4-NuP" secondAttribute="width" id="cKl-be-NXW"/>
                         <constraint firstItem="GBg-dN-ZOf" firstAttribute="leading" secondItem="lnl-ya-A8l" secondAttribute="leading" id="cVx-6w-6r7"/>
                         <constraint firstItem="rYg-j4-K4R" firstAttribute="leading" secondItem="mRS-C4-NuP" secondAttribute="trailing" id="cXJ-OS-DpO"/>
+                        <constraint firstItem="fbL-zh-qYB" firstAttribute="leading" secondItem="fjM-YG-T7Q" secondAttribute="leadingMargin" constant="-8" id="dKu-Z4-ket"/>
                         <constraint firstItem="Dhu-92-65i" firstAttribute="baseline" secondItem="lnl-ya-A8l" secondAttribute="firstBaseline" id="eHR-5P-F64"/>
                         <constraint firstAttribute="bottomMargin" secondItem="fW8-Hu-8fe" secondAttribute="bottom" constant="-8" id="fbP-Mr-94Y"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="leading" secondItem="Dhu-92-65i" secondAttribute="leading" id="gWM-9Z-bFg"/>
                         <constraint firstItem="iXt-in-H5u" firstAttribute="leading" secondItem="rYg-j4-K4R" secondAttribute="trailing" id="hHg-fr-xH7"/>
-                        <constraint firstItem="ffs-yR-p2X" firstAttribute="top" secondItem="fjM-YG-T7Q" secondAttribute="top" id="hjo-nd-Oi9"/>
+                        <constraint firstItem="ffs-yR-p2X" firstAttribute="top" secondItem="fjM-YG-T7Q" secondAttribute="top" constant="129" id="hjo-nd-Oi9"/>
                         <constraint firstAttribute="trailing" secondItem="ffs-yR-p2X" secondAttribute="trailing" id="ibJ-6m-CZy"/>
                         <constraint firstItem="khx-Wd-u6w" firstAttribute="top" secondItem="hyV-gI-zsA" secondAttribute="bottom" id="jxn-FQ-qiC"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="baseline" secondItem="YVB-sC-Cr6" secondAttribute="firstBaseline" id="kQ3-hM-WY6"/>
                         <constraint firstItem="fW8-Hu-8fe" firstAttribute="top" secondItem="YVB-sC-Cr6" secondAttribute="bottom" id="luD-Wy-svx"/>
                         <constraint firstItem="YVB-sC-Cr6" firstAttribute="bottom" secondItem="fEf-36-exZ" secondAttribute="bottom" id="m7A-0Z-CH3"/>
-                        <constraint firstItem="rYg-j4-K4R" firstAttribute="top" secondItem="fjM-YG-T7Q" secondAttribute="top" id="nCd-Bw-tWX"/>
                         <constraint firstItem="fW8-Hu-8fe" firstAttribute="leading" secondItem="khx-Wd-u6w" secondAttribute="trailing" id="pKv-Ni-qaT"/>
                         <constraint firstItem="YVB-sC-Cr6" firstAttribute="leading" secondItem="GBg-dN-ZOf" secondAttribute="trailing" id="r6l-f2-Pq9"/>
                         <constraint firstItem="Eri-wL-Z9I" firstAttribute="width" secondItem="Dhu-92-65i" secondAttribute="width" id="sv1-Vr-cMy"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="leading" secondItem="khx-Wd-u6w" secondAttribute="leading" id="vNB-aI-kwK"/>
                         <constraint firstItem="lnl-ya-A8l" firstAttribute="top" secondItem="rYg-j4-K4R" secondAttribute="bottom" id="vO1-rF-DRE"/>
                         <constraint firstItem="mRS-C4-NuP" firstAttribute="leading" secondItem="fjM-YG-T7Q" secondAttribute="leading" id="vly-yV-v4c"/>
+                        <constraint firstItem="mRS-C4-NuP" firstAttribute="baseline" secondItem="rYg-j4-K4R" secondAttribute="baseline" id="w60-W7-O2A"/>
                         <constraint firstItem="hyV-gI-zsA" firstAttribute="top" secondItem="GBg-dN-ZOf" secondAttribute="top" id="wkO-hE-jov"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="fbL-zh-qYB" secondAttribute="trailing" constant="-8" id="ya7-08-KYS"/>
                     </constraints>
                 </view>
             </subviews>
@@ -327,7 +338,7 @@
                 <constraint firstItem="fjM-YG-T7Q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="v8i-a2-o5r"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="106" y="172"/>
+            <point key="canvasLocation" x="105.59999999999999" y="115.59220389805098"/>
         </view>
     </objects>
 </document>

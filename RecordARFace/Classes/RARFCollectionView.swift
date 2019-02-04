@@ -37,9 +37,7 @@ public final class RARFCollectionView: UIView {
         return scrollView
     }()
 
-
     private var index = 0
-
 
     public init() {
         super.init(frame: .zero)

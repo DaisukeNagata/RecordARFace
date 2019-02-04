@@ -8,8 +8,8 @@
 
 import UIKit
 
-public final class RARFNumberKeyboard: UIView {
-    
+public class RARFNumberKeyboard: UIView {
+
     @IBOutlet weak var one: RARFNumberButton!
     @IBOutlet weak var two: RARFNumberButton!
     @IBOutlet weak var three: RARFNumberButton!
@@ -23,29 +23,87 @@ public final class RARFNumberKeyboard: UIView {
     @IBOutlet weak var minus: RARFNumberButton!
     @IBOutlet weak var plus: RARFNumberButton!
     @IBOutlet weak var enter: RARFNumberButton!
-    
+    @IBOutlet weak var textView: UILabel!
     @IBOutlet weak var abc: UIView!
-
-
-
+    private var timerFlg = false
+    private var plusNumber = ""
+    private var total: String?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds
         loadNib()
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
-
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
     }
-
-    func loadNib(){
-        let view = Bundle.main.loadNibNamed("RARFNumberKeyboard", owner: self, options: nil)?.first as! UIView
+    
+    public func loadNib() {
+        let bundle = Bundle(for: RARFNumberKeyboard.self)
+        let view = bundle.loadNibNamed("RARFNumberKeyboard", owner: self, options: nil)?.first as! UIView
+        
         view.frame = UIScreen.main.bounds
-        view.frame.origin.y = UIScreen.main.bounds.height
-        UIView.animate(withDuration: 1.0) {
-            view.frame.origin.y -= UIScreen.main.bounds.height/1.5
-            self.addSubview(view)
+        view.frame.origin.y = one.frame.height/2
+        self.addSubview(view)
+        
+    }
+    
+    func originTextField(rect: CGRect) {
+        if timerFlg == false {
+            
+            var rectFrame = rect
+            rectFrame.origin.y -= one.frame.height/2
+            
+            if one.frame.contains(rectFrame) {
+                plusNumber += 1.description
+                textView.text = plusNumber }
+            if two.frame.contains(rectFrame) {
+                plusNumber += 2.description
+                textView.text = plusNumber }
+            if three.frame.contains(rectFrame) {
+                plusNumber += 3.description
+                textView.text = plusNumber }
+            if four.frame.contains(rectFrame) {
+                plusNumber += 4.description
+                textView.text = plusNumber }
+            if five.frame.contains(rectFrame) {
+                plusNumber += 5.description
+                textView.text = plusNumber }
+            if six.frame.contains(rectFrame) {
+                plusNumber += 6.description
+                textView.text = plusNumber }
+            if seven.frame.contains(rectFrame) {
+                plusNumber += 7.description
+                textView.text = plusNumber }
+            if eight.frame.contains(rectFrame) {
+                plusNumber += 8.description
+                textView.text = plusNumber }
+            if nine.frame.contains(rectFrame) {
+                plusNumber += 9.description
+                textView.text = plusNumber }
+            if zero.frame.contains(rectFrame) {
+                plusNumber += 0.description
+                textView.text = plusNumber }
+            if minus.frame.contains(rectFrame) {
+                plusNumber = String(textView.text!.dropLast(1))
+                textView.text = String(textView.text!.dropLast(1)) }
+            if plus.frame.contains(rectFrame) {
+                plusNumber = ""
+                total = textView.text!
+            }
+            if enter.frame.contains(rectFrame) {
+                if total != nil {
+                    let totalNumber = Int(textView.text!)! + Int(total!)!
+                    textView.text! = totalNumber.description
+                    total = nil
+                }
+            }
+            timerFlg = true
         }
     }
+
+    @objc func timerUpdate() { timerFlg = false }
 }

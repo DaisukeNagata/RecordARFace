@@ -56,7 +56,7 @@ public final class RARFView: NSObject, ARSessionDelegate {
     private var phoneNode: SCNNode = SCNNode()
     private var texturedFace: RARFTexturedFace?
     private var eyeData: RARFEyeData?
-
+    var key: RARFNumberKeyboard = RARFNumberKeyboard()
 
     override init() {
         super.init()
@@ -145,10 +145,12 @@ extension RARFView: ARSCNViewDelegate {
                 options: options)
 
             guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+tableView.frame.height/2)
-                tableView.setContentOffset(offset, animated: true)
+                let offset = CGPoint(x: 0, y: 0)
+                self.tableView.setContentOffset(offset, animated: true)
+                self.tableView.addSubview(self.key)
+                self.key.originTextField(rect: self.eView.frame)
             }
             return
         }

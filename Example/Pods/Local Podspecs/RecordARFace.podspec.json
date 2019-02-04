@@ -1,8 +1,7 @@
 {
   "name": "RecordARFace",
-  "version": "0.1.0",
-  "summary": "A short description of RecordARFace.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.4.6",
+  "summary": "It is an application to mask the face with AR.",
   "homepage": "https://github.com/daisukenagata/RecordARFace",
   "license": {
     "type": "MIT",
@@ -13,10 +12,14 @@
   },
   "source": {
     "git": "https://github.com/daisukenagata/RecordARFace.git",
-    "tag": "0.1.0"
+    "tag": "0.4.6"
   },
+  "social_media_url": "https://twitter.com/dbank0208",
   "platforms": {
-    "ios": "8.0"
+    "ios": "11.0"
   },
-  "source_files": "RecordARFace/Classes/**/*"
+  "source_files": "RecordARFace/Classes/**/*",
+  "resources": [
+    "RecordARFace/*.xib"
+  ]
 }
