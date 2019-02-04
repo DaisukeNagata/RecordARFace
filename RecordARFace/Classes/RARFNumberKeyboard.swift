@@ -24,7 +24,7 @@ public class RARFNumberKeyboard: UIView {
     @IBOutlet weak var plus: RARFNumberButton!
     @IBOutlet weak var enter: RARFNumberButton!
     @IBOutlet weak var textView: UILabel!
-    @IBOutlet weak var abc: UIView!
+    @IBOutlet weak var views: UIView!
     private var timerFlg = false
     private var plusNumber = ""
     private var total: String?

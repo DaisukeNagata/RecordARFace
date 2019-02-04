@@ -11,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RARFNumberKeyboard" customModule="RecordARFace" customModuleProvider="target">
             <connections>
-                <outlet property="abc" destination="fjM-YG-T7Q" id="lFk-Sy-p1u"/>
                 <outlet property="eight" destination="GBg-dN-ZOf" id="kj6-3g-UBt"/>
                 <outlet property="enter" destination="fW8-Hu-8fe" id="QUR-p4-Iwf"/>
                 <outlet property="five" destination="lnl-ya-A8l" id="rkv-ND-dDN"/>
@@ -25,6 +24,7 @@
                 <outlet property="textView" destination="fbL-zh-qYB" id="xS6-Dw-oSx"/>
                 <outlet property="three" destination="iXt-in-H5u" id="YUc-xX-OEI"/>
                 <outlet property="two" destination="rYg-j4-K4R" id="XQS-Wn-iza"/>
+                <outlet property="views" destination="fjM-YG-T7Q" id="FRI-Jl-O19"/>
                 <outlet property="zero" destination="khx-Wd-u6w" id="bhL-He-5h2"/>
             </connections>
         </placeholder>
@@ -266,7 +266,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-zh-qYB">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbL-zh-qYB">
                             <rect key="frame" x="0.0" y="0.0" width="400" height="129"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
