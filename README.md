@@ -21,7 +21,7 @@ Face tracking is available only on iOS devices with a front-facing TrueDepth cam
 The function of tracking eye movements can be confirmed on the actual machine from ios 12.
 
 ## Image
-<img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="290" height="720"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="290" height="720"><img src="https://user-images.githubusercontent.com/16457165/52247959-679c2980-292f-11e9-91bd-97a836c357f7.gif"  width="290"  height="720">
+<img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="290" height="720"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="290" height="720"><img src="https://user-images.githubusercontent.com/16457165/52259146-0d1dc000-2965-11e9-9860-232657a7ba9d.gif"  width="290"  height="720">
 
 ## Installation
 
