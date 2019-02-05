@@ -56,7 +56,7 @@ public class RARFNumberKeyboard: UIView {
             var rectFrame = rect
             rectFrame.origin.y -= one.frame.height
 
-            if one.frame.contains(rect) {
+            if one.frame.contains(rectFrame) {
                 plusNumber += 1.description
                 textView.text = plusNumber }
             if two.frame.contains(rectFrame) {
