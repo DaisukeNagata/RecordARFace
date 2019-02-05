@@ -1,5 +1,5 @@
 //
-//  RARFNumberKeyboard.swift
+//  RARFNumberKeyboardView.swift
 //  SamapleKeyBoard
 //
 //  Created by 永田大祐 on 2019/02/03.
@@ -10,7 +10,7 @@ import UIKit
 
 enum Calculator: Int { case plus, minus, division, multiplication }
 
-public class RARFNumberKeyboard: UIView {
+public class RARFNumberKeyboardView: UIView {
 
     @IBOutlet weak var one: RARFNumberButton!
     @IBOutlet weak var two: RARFNumberButton!
@@ -27,7 +27,9 @@ public class RARFNumberKeyboard: UIView {
     @IBOutlet weak var multiplication: RARFNumberButton!
     @IBOutlet weak var divite: RARFNumberButton!
     @IBOutlet weak var enter: RARFNumberButton!
-    @IBOutlet weak var textView: UILabel!
+    @IBOutlet weak var claer: RARFNumberButton!
+    @IBOutlet weak var allClaer: RARFNumberButton!
+    @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var views: UIView!
     private var timerFlg = false
     private var plusNumber = ""
@@ -48,8 +50,8 @@ public class RARFNumberKeyboard: UIView {
     }
 
     public func loadNib() {
-        let bundle = Bundle(for: RARFNumberKeyboard.self)
-        let view = bundle.loadNibNamed("RARFNumberKeyboard", owner: self, options: nil)?.first as! UIView
+        let bundle = Bundle(for: RARFNumberKeyboardView.self)
+        let view = bundle.loadNibNamed("RARFNumberKeyboardView", owner: self, options: nil)?.first as! UIView
         view.frame = UIScreen.main.bounds
         view.frame.origin.y = one.frame.height
         self.addSubview(view)
@@ -63,69 +65,86 @@ public class RARFNumberKeyboard: UIView {
 
             if one.frame.contains(rectFrame) {
                 plusNumber += 1.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if two.frame.contains(rectFrame) {
                 plusNumber += 2.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if three.frame.contains(rectFrame) {
                 plusNumber += 3.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if four.frame.contains(rectFrame) {
                 plusNumber += 4.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if five.frame.contains(rectFrame) {
                 plusNumber += 5.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if six.frame.contains(rectFrame) {
                 plusNumber += 6.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if seven.frame.contains(rectFrame) {
                 plusNumber += 7.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if eight.frame.contains(rectFrame) {
                 plusNumber += 8.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if nine.frame.contains(rectFrame) {
                 plusNumber += 9.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if zero.frame.contains(rectFrame) {
                 plusNumber += 0.description
-                textView.text = plusNumber }
+                textLabel.text = plusNumber
+            }
             if minus.frame.contains(rectFrame) {
-                plusNumber = String(textView.text!.dropLast(1))
-                textView.text = String(textView.text!.dropLast(1)) }
-            
+                plusNumber = ""
+                total = textLabel.text!
+                calculatorNum = Calculator.minus.rawValue
+            }
             if plus.frame.contains(rectFrame) {
                 plusNumber = ""
-                total = textView.text!
+                total = textLabel.text!
                 calculatorNum = Calculator.plus.rawValue
             }
             if multiplication.frame.contains(rectFrame) {
                 plusNumber = ""
-                total = textView.text!
+                total = textLabel.text!
                 calculatorNum = Calculator.multiplication.rawValue
             }
             if divite.frame.contains(rectFrame) {
                 plusNumber = ""
-                total = textView.text!
+                total = textLabel.text!
                 calculatorNum = Calculator.division.rawValue
             }
-           
+            if claer.frame.contains(rectFrame) {
+                plusNumber = String(textLabel.text!.dropLast(1))
+                textLabel.text = String(textLabel.text!.dropLast(1))
+            }
+            if allClaer.frame.contains(rectFrame) {
+                plusNumber = ""
+                textLabel.text! = ""
+                total = ""
+            }
             if enter.frame.contains(rectFrame) {
                 if total != nil {
-                    let indexNumber = calculator(index: calculatorNum!, txtNumber: Int(textView.text!)!, txtNumber2: Int(total!)!)
-                    textView.text! = indexNumber.description
-                    
+                    let indexNumber = calculator(index: calculatorNum!, txtNumber:  Float(total!)!, txtNumber2: Float(textLabel.text!)!)
+                    textLabel.text! = indexNumber.description
                     plusNumber = ""
                     total = nil
                 }
             }
-            
             timerFlg = true
         }
     }
 
-    func calculator(index: Int, txtNumber: Int, txtNumber2: Int) -> Int {
+    func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
         switch index {
         case Calculator.plus.rawValue:
             return txtNumber + txtNumber2
@@ -136,7 +155,7 @@ public class RARFNumberKeyboard: UIView {
         case Calculator.division.rawValue:
             return txtNumber / txtNumber2
         default:
-            return Int()
+            return Float()
         }
     }
 

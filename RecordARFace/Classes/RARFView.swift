@@ -56,7 +56,7 @@ public final class RARFView: NSObject, ARSessionDelegate {
     private var phoneNode: SCNNode = SCNNode()
     private var texturedFace: RARFTexturedFace?
     private var eyeData: RARFEyeData?
-    var key: RARFNumberKeyboard = RARFNumberKeyboard()
+    var key: RARFNumberKeyboardView = RARFNumberKeyboardView()
 
     override init() {
         super.init()
