@@ -28,36 +28,35 @@ public class RARFNumberKeyboard: UIView {
     private var timerFlg = false
     private var plusNumber = ""
     private var total: String?
-    
+
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds
         loadNib()
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
     }
-    
+
     public func loadNib() {
         let bundle = Bundle(for: RARFNumberKeyboard.self)
         let view = bundle.loadNibNamed("RARFNumberKeyboard", owner: self, options: nil)?.first as! UIView
-        
         view.frame = UIScreen.main.bounds
-        view.frame.origin.y = one.frame.height/2
+        view.frame.origin.y = one.frame.height
         self.addSubview(view)
-        
     }
-    
+
     func originTextField(rect: CGRect) {
         if timerFlg == false {
-            
+
             var rectFrame = rect
-            rectFrame.origin.y -= one.frame.height/2
-            
-            if one.frame.contains(rectFrame) {
+            rectFrame.origin.y -= one.frame.height
+
+            if one.frame.contains(rect) {
                 plusNumber += 1.description
                 textView.text = plusNumber }
             if two.frame.contains(rectFrame) {
