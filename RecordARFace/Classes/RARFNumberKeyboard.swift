@@ -8,6 +8,8 @@
 
 import UIKit
 
+enum Calculator: Int { case plus, minus, division, multiplication }
+
 public class RARFNumberKeyboard: UIView {
 
     @IBOutlet weak var one: RARFNumberButton!
@@ -22,12 +24,15 @@ public class RARFNumberKeyboard: UIView {
     @IBOutlet weak var zero: RARFNumberButton!
     @IBOutlet weak var minus: RARFNumberButton!
     @IBOutlet weak var plus: RARFNumberButton!
+    @IBOutlet weak var multiplication: RARFNumberButton!
+    @IBOutlet weak var divite: RARFNumberButton!
     @IBOutlet weak var enter: RARFNumberButton!
     @IBOutlet weak var textView: UILabel!
     @IBOutlet weak var views: UIView!
     private var timerFlg = false
     private var plusNumber = ""
     private var total: String?
+    private var calculatorNum: Int?
 
 
     public override init(frame: CGRect) {
@@ -89,19 +94,49 @@ public class RARFNumberKeyboard: UIView {
             if minus.frame.contains(rectFrame) {
                 plusNumber = String(textView.text!.dropLast(1))
                 textView.text = String(textView.text!.dropLast(1)) }
+            
             if plus.frame.contains(rectFrame) {
                 plusNumber = ""
                 total = textView.text!
+                calculatorNum = Calculator.plus.rawValue
             }
+            if multiplication.frame.contains(rectFrame) {
+                plusNumber = ""
+                total = textView.text!
+                calculatorNum = Calculator.multiplication.rawValue
+            }
+            if divite.frame.contains(rectFrame) {
+                plusNumber = ""
+                total = textView.text!
+                calculatorNum = Calculator.division.rawValue
+            }
+           
             if enter.frame.contains(rectFrame) {
                 if total != nil {
-                    let totalNumber = Int(textView.text!)! + Int(total!)!
-                    textView.text! = totalNumber.description
+                    let indexNumber = calculator(index: calculatorNum!, txtNumber: Int(textView.text!)!, txtNumber2: Int(total!)!)
+                    textView.text! = indexNumber.description
+                    
                     plusNumber = ""
                     total = nil
                 }
             }
+            
             timerFlg = true
+        }
+    }
+
+    func calculator(index: Int, txtNumber: Int, txtNumber2: Int) -> Int {
+        switch index {
+        case Calculator.plus.rawValue:
+            return txtNumber + txtNumber2
+        case Calculator.minus.rawValue:
+            return txtNumber - txtNumber2
+        case Calculator.multiplication.rawValue:
+            return txtNumber * txtNumber2
+        case Calculator.division.rawValue:
+            return txtNumber / txtNumber2
+        default:
+            return Int()
         }
     }
 
