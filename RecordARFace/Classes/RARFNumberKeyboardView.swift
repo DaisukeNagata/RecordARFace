@@ -41,7 +41,7 @@ public class RARFNumberKeyboardView: UIView {
         super.init(frame: frame)
         self.frame = UIScreen.main.bounds
         loadNib()
-        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -58,93 +58,67 @@ public class RARFNumberKeyboardView: UIView {
     }
 
     func originTextField(rect: CGRect) {
+
         if timerFlg == false {
+        var rectFrame = rect
+        rectFrame.origin.y -= one.frame.height
 
-            var rectFrame = rect
-            rectFrame.origin.y -= one.frame.height
+            if one.frame.contains(rectFrame) { number(index: 1) }
+            if two.frame.contains(rectFrame) { number(index: 2) }
+            if three.frame.contains(rectFrame) { number(index: 3) }
+            if four.frame.contains(rectFrame) { number(index: 4) }
+            if five.frame.contains(rectFrame) { number(index: 5) }
+            if six.frame.contains(rectFrame) { number(index: 6) }
+            if seven.frame.contains(rectFrame) { number(index: 7) }
+            if eight.frame.contains(rectFrame) { number(index: 8) }
+            if nine.frame.contains(rectFrame) { number(index: 9) }
+            if zero.frame.contains(rectFrame) { number(index: 0) }
 
-            if one.frame.contains(rectFrame) {
-                plusNumber += 1.description
-                textLabel.text = plusNumber
-            }
-            if two.frame.contains(rectFrame) {
-                plusNumber += 2.description
-                textLabel.text = plusNumber
-            }
-            if three.frame.contains(rectFrame) {
-                plusNumber += 3.description
-                textLabel.text = plusNumber
-            }
-            if four.frame.contains(rectFrame) {
-                plusNumber += 4.description
-                textLabel.text = plusNumber
-            }
-            if five.frame.contains(rectFrame) {
-                plusNumber += 5.description
-                textLabel.text = plusNumber
-            }
-            if six.frame.contains(rectFrame) {
-                plusNumber += 6.description
-                textLabel.text = plusNumber
-            }
-            if seven.frame.contains(rectFrame) {
-                plusNumber += 7.description
-                textLabel.text = plusNumber
-            }
-            if eight.frame.contains(rectFrame) {
-                plusNumber += 8.description
-                textLabel.text = plusNumber
-            }
-            if nine.frame.contains(rectFrame) {
-                plusNumber += 9.description
-                textLabel.text = plusNumber
-            }
-            if zero.frame.contains(rectFrame) {
-                plusNumber += 0.description
-                textLabel.text = plusNumber
-            }
-            if minus.frame.contains(rectFrame) {
-                plusNumber = ""
-                total = textLabel.text!
-                calculatorNum = Calculator.minus.rawValue
-            }
-            if plus.frame.contains(rectFrame) {
-                plusNumber = ""
-                total = textLabel.text!
-                calculatorNum = Calculator.plus.rawValue
-            }
-            if multiplication.frame.contains(rectFrame) {
-                plusNumber = ""
-                total = textLabel.text!
-                calculatorNum = Calculator.multiplication.rawValue
-            }
-            if divite.frame.contains(rectFrame) {
-                plusNumber = ""
-                total = textLabel.text!
-                calculatorNum = Calculator.division.rawValue
-            }
+            if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
+            if plus.frame.contains(rectFrame) { calculatorValue(index: Calculator.plus.rawValue) }
+            if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
+            if divite.frame.contains(rectFrame) { calculatorValue(index: Calculator.division.rawValue) }
+
             if claer.frame.contains(rectFrame) {
                 plusNumber = String(textLabel.text!.dropLast(1))
                 textLabel.text = String(textLabel.text!.dropLast(1))
             }
+
             if allClaer.frame.contains(rectFrame) {
                 plusNumber = ""
                 textLabel.text! = ""
                 total = ""
+                timerFlg = true
             }
+
             if enter.frame.contains(rectFrame) {
                 if total != nil {
                     let indexNumber = calculator(index: calculatorNum!, txtNumber:  Float(total!)!, txtNumber2: Float(textLabel.text!)!)
                     textLabel.text! = indexNumber.description
                     plusNumber = ""
                     total = nil
+                    timerFlg = true
                 }
             }
-            timerFlg = true
         }
+        timerFlg = true
     }
 
-    func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
+    @objc func timerUpdate() { timerFlg = false }
+
+    private func number(index: Int) {
+        plusNumber += index.description
+        textLabel.text = plusNumber
+        timerFlg = true
+    }
+
+    private func calculatorValue(index: Int) {
+        total = textLabel.text!
+        plusNumber = ""
+        calculatorNum = index
+    }
+
+    private func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
         switch index {
         case Calculator.plus.rawValue:
             return txtNumber + txtNumber2
@@ -158,6 +132,4 @@ public class RARFNumberKeyboardView: UIView {
             return Float()
         }
     }
-
-    @objc func timerUpdate() { timerFlg = false }
 }
