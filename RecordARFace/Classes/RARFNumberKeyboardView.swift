@@ -88,7 +88,6 @@ public class RARFNumberKeyboardView: UIView {
                 plusNumber = ""
                 textLabel.text! = ""
                 total = ""
-                timerFlg = true
             }
 
             if enter.frame.contains(rectFrame) {
@@ -97,7 +96,6 @@ public class RARFNumberKeyboardView: UIView {
                     textLabel.text! = indexNumber.description
                     plusNumber = ""
                     total = nil
-                    timerFlg = true
                 }
             }
         }
@@ -109,7 +107,6 @@ public class RARFNumberKeyboardView: UIView {
     private func number(index: Int) {
         plusNumber += index.description
         textLabel.text = plusNumber
-        timerFlg = true
     }
 
     private func calculatorValue(index: Int) {
