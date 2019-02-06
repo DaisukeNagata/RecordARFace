@@ -34,14 +34,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="cXL-1h-5HF">
-            <rect key="frame" x="0.0" y="0.0" width="296" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPY-5b-U5z">
-                    <rect key="frame" x="0.0" y="0.0" width="296" height="600"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duy-cd-Des" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="kwe-tc-miP"/>
                             </constraints>
@@ -59,7 +59,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mtk-ML-wbu" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="0.0" width="99" height="100"/>
+                            <rect key="frame" x="100" y="0.0" width="100" height="100"/>
                             <state key="normal" title="2"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -74,7 +74,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMO-g3-IRq" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="197.5" y="0.0" width="98.5" height="100"/>
+                            <rect key="frame" x="200" y="0.0" width="100" height="100"/>
                             <state key="normal" title="3"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -89,7 +89,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Te8-Vz-PKb" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="100" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="100" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="bDa-vX-obY"/>
                             </constraints>
@@ -107,7 +107,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XcN-js-rih" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="100" width="99" height="100"/>
+                            <rect key="frame" x="100" y="100" width="100" height="100"/>
                             <state key="normal" title="5"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -122,7 +122,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m7z-vE-buK" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="197.5" y="100" width="98.5" height="100"/>
+                            <rect key="frame" x="200" y="100" width="100" height="100"/>
                             <state key="normal" title="6"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -137,7 +137,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IL6-Jv-w4g" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="200" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="200" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="QmW-hN-ac9"/>
                             </constraints>
@@ -155,7 +155,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tt-JM-p71" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="200" width="99" height="100"/>
+                            <rect key="frame" x="100" y="200" width="100" height="100"/>
                             <state key="normal" title="8"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -170,7 +170,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0TD-Cm-9yv" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="197.5" y="200" width="98.5" height="100"/>
+                            <rect key="frame" x="200" y="200" width="100" height="100"/>
                             <state key="normal" title="9"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -185,7 +185,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQx-42-ISU" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="300" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="300" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="99" id="ren-tv-C9V"/>
                                 <constraint firstAttribute="height" constant="100" id="y8S-B4-ZR7"/>
@@ -204,7 +204,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9D-5x-lDu" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="300" width="99" height="100"/>
+                            <rect key="frame" x="100" y="300" width="100" height="100"/>
                             <state key="normal" title="-"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -219,7 +219,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7t-8z-Fcr" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="197.5" y="300" width="98.5" height="100"/>
+                            <rect key="frame" x="200" y="300" width="100" height="100"/>
                             <state key="normal" title="+"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -234,7 +234,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8p-hX-4ul" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="400" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="400" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="n03-Oz-ZGv"/>
                             </constraints>
@@ -252,7 +252,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siP-G6-HAJ" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="400" width="99" height="100"/>
+                            <rect key="frame" x="100" y="400" width="100" height="100"/>
                             <state key="normal" title="/"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -267,7 +267,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srT-WZ-gVd" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="197.5" y="400" width="98.5" height="100"/>
+                            <rect key="frame" x="200" y="400" width="100" height="100"/>
                             <state key="normal" title="C"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -282,7 +282,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wdo-ji-ptv" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="500" width="98.5" height="100"/>
+                            <rect key="frame" x="0.0" y="500" width="100" height="100"/>
                             <state key="normal" title="&lt;-"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -297,7 +297,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIa-6h-2oa" customClass="RARFNumberButton" customModule="RecordARFace" customModuleProvider="target">
-                            <rect key="frame" x="98.5" y="500" width="197.5" height="100"/>
+                            <rect key="frame" x="100" y="500" width="200" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="cJg-LV-2ce"/>
                             </constraints>
@@ -315,7 +315,7 @@
                             </userDefinedRuntimeAttributes>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXd-JF-UTj">
-                            <rect key="frame" x="0.0" y="200" width="296" height="200"/>
+                            <rect key="frame" x="0.0" y="200" width="300" height="200"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="200" id="Ay6-ak-5Ga"/>
                             </constraints>
