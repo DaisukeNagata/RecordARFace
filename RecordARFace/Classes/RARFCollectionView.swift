@@ -60,12 +60,14 @@ public final class RARFCollectionView: UIView {
         collectionView.isHidden = false
     }
 
-    public func viewEyesTracking() {
+    public func viewEyesTracking(alpha: CGFloat) {
         collectionView.isHidden = true
         aObject.arscnView.removeFromSuperview()
         aObject = RARFObject()
         addSubview(aObject.arscnView)
         aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
+        aObject.tableView.separatorStyle = .none
+        aObject.tableView.alpha = alpha
     }
 }
 

@@ -52,8 +52,7 @@ class ViewController: UIViewController {
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
-            cView.viewEyesTracking()
-            cView.aObject.tableView.alpha = 0.7
+            cView.viewEyesTracking(alpha: 0.7)
         }
     }
 

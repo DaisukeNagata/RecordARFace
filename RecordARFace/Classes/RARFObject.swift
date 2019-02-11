@@ -144,7 +144,7 @@ extension RARFObject: ARSCNViewDelegate {
                 options: options)
 
             guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.main.sync {
                 self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
                 let offset = CGPoint(x: 0, y: 0)
                 self.tableView.setContentOffset(offset, animated: true)
