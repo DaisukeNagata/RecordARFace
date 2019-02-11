@@ -1,5 +1,5 @@
 //
-//  RARFView.swift
+//  RARFObject.swift
 //  RecordARFace
 //
 //  Created by 永田大祐 on 2019/01/06.
@@ -18,7 +18,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-public final class RARFView: NSObject, ARSessionDelegate {
+public final class RARFObject: NSObject, ARSessionDelegate {
 
     public var indexNumber = 0
 
@@ -99,7 +99,7 @@ public final class RARFView: NSObject, ARSessionDelegate {
 
 // MARK: ARSCNViewDelegate
 @available(iOS 11.0, *)
-extension RARFView: ARSCNViewDelegate {
+extension RARFObject: ARSCNViewDelegate {
 
     public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
@@ -128,7 +128,6 @@ extension RARFView: ARSCNViewDelegate {
 
         guard eyeData?.contentNode == nil else {
             if let arscnView = arscnView.pointOfView { phoneNode.transform = arscnView.transform }
-
             let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
                                            SCNHitTestOption.searchMode.rawValue: 1,
                                            SCNHitTestOption.ignoreChildNodes.rawValue : false,
@@ -159,7 +158,7 @@ extension RARFView: ARSCNViewDelegate {
 
 // MARK: UITableViewDataSource, UITableViewDelegate
 @available(iOS 11.0, *)
-extension RARFView: UITableViewDataSource, UITableViewDelegate {
+extension RARFObject: UITableViewDataSource, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)

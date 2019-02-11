@@ -46,17 +46,17 @@ class ViewController: UIViewController {
 
     @objc func collectionSet() { cView.viewHidden()
         RepeatedHits = false
-        cView.aView.tableView.isHidden = true
+        cView.aObject.tableView.isHidden = true
     }
 
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
             cView.viewEyesTracking()
-            cView.aView.indexNumber = 1
-            cView.aView.tableView.alpha = 0.7
-            cView.aView.tableView.rowHeight = 100
-            cView.aView.tableView.backgroundColor = .black
+            cView.aObject.indexNumber = 1
+            cView.aObject.tableView.alpha = 0.7
+            cView.aObject.tableView.rowHeight = 100
+            cView.aObject.tableView.backgroundColor = .black
         }
     }
 

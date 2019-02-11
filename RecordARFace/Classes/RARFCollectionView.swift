@@ -11,9 +11,9 @@ import UIKit
 @available(iOS 11.0, *)
 public final class RARFCollectionView: UIView {
 
-    public lazy var aView: RARFView = {
-        let aView = RARFView()
-        return aView
+    public lazy var aObject: RARFObject = {
+        let aObject = RARFObject()
+        return aObject
     }()
     
     let vm = RARFCollectionViewModel()
@@ -42,12 +42,12 @@ public final class RARFCollectionView: UIView {
     public init() {
         super.init(frame: .zero)
 
-        aView.arscnView.isHidden = true
+        aObject.arscnView.isHidden = true
 
         self.frame = UIScreen.main.bounds
         scrollView.frame = self.bounds
         collectionView.frame = self.bounds
-        aView.arscnView.frame = self.bounds
+        aObject.arscnView.frame = self.bounds
         addSubview(collectionView)
     }
 
@@ -56,16 +56,16 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewHidden() {
-        aView.arscnView.removeFromSuperview()
+        aObject.arscnView.removeFromSuperview()
         collectionView.isHidden = false
     }
 
     public func viewEyesTracking() {
         collectionView.isHidden = true
-        aView.arscnView.removeFromSuperview()
-        aView = RARFView()
-        addSubview(aView.arscnView)
-        aView.eyeTracking(color: vm.imagesRows[index].imageSet)
+        aObject.arscnView.removeFromSuperview()
+        aObject = RARFObject()
+        addSubview(aObject.arscnView)
+        aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
     }
 }
 
@@ -76,11 +76,11 @@ extension RARFCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.isHidden = true
-        aView.arscnView.removeFromSuperview()
-        aView = RARFView()
-        aView.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
+        aObject.arscnView.removeFromSuperview()
+        aObject = RARFObject()
+        aObject.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
         index = indexPath.row
-        addSubview(aView.arscnView)
-        aView.tableView.isHidden = true
+        addSubview(aObject.arscnView)
+        aObject.tableView.isHidden = true
     }
 }
