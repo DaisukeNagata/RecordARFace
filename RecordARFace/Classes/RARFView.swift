@@ -127,7 +127,7 @@ extension RARFView: ARSCNViewDelegate {
     public func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
         guard eyeData?.contentNode == nil else {
-            if let arscnView = arscnView.pointOfView { phoneNode.transform = (arscnView.transform) }
+            if let arscnView = arscnView.pointOfView { phoneNode.transform = arscnView.transform }
 
             let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
                                            SCNHitTestOption.searchMode.rawValue: 1,
