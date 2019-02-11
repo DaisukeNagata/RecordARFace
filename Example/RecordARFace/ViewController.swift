@@ -44,9 +44,9 @@ class ViewController: UIViewController {
         collectionSet()
     }
 
-    @objc func collectionSet() { cView.viewHidden()
+    @objc func collectionSet() {
+        cView.viewHidden()
         RepeatedHits = false
-        cView.aObject.tableView.isHidden = true
     }
 
     @objc func eyesTracking() {
