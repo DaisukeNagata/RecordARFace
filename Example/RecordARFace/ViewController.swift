@@ -53,10 +53,7 @@ class ViewController: UIViewController {
         if RepeatedHits == false {
             RepeatedHits = true
             cView.viewEyesTracking()
-            cView.aObject.indexNumber = 1
             cView.aObject.tableView.alpha = 0.7
-            cView.aObject.tableView.rowHeight = 100
-            cView.aObject.tableView.backgroundColor = .black
         }
     }
 

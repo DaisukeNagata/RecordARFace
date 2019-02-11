@@ -39,7 +39,6 @@ public class RARFNumberKeyboardView: UIView {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.frame = UIScreen.main.bounds
         loadNib()
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
