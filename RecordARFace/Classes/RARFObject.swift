@@ -143,13 +143,15 @@ extension RARFObject: ARSCNViewDelegate {
                 to:  phoneNode.convertPosition(eyeData!.rightEyeEnd.worldPosition, from: nil),
                 options: options)
 
-            guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-            DispatchQueue.main.sync {
-                self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                let offset = CGPoint(x: 0, y: 0)
-                self.tableView.setContentOffset(offset, animated: true)
-                self.tableView.addSubview(self.key)
-                self.key.originTextField(rect: self.eView.frame)
+            if !leftEye.isEmpty && !rightEye.isEmpty {
+                guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
+                DispatchQueue.main.sync {
+                    self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
+                    let offset = CGPoint(x: 0, y: 0)
+                    self.tableView.setContentOffset(offset, animated: true)
+                    self.tableView.addSubview(self.key)
+                    self.key.originTextField(rect: self.eView.frame)
+                }
             }
             return
         }
