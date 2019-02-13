@@ -11,7 +11,7 @@ import UIKit
 @available(iOS 11.0, *)
 public final class RARFCollectionView: UIView {
 
-    public lazy var aObject: RARFObject = {
+    lazy var aObject: RARFObject = {
         let aObject = RARFObject()
         return aObject
     }()

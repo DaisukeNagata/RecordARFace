@@ -10,7 +10,7 @@ import UIKit
 
 enum Calculator: Int { case plus, minus, division, multiplication }
 
-public class RARFNumberKeyboardView: UIView {
+class RARFNumberKeyboardView: UIView {
 
     @IBOutlet weak var one: RARFNumberButton!
     @IBOutlet weak var two: RARFNumberButton!
@@ -37,18 +37,18 @@ public class RARFNumberKeyboardView: UIView {
     private var calculatorNum: Int?
 
 
-    public override init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadNib()
     }
 
-    public func loadNib() {
+    func loadNib() {
         let bundle = Bundle(for: RARFNumberKeyboardView.self)
         let view = bundle.loadNibNamed("RARFNumberKeyboardView", owner: self, options: nil)?.first as! UIView
         view.frame = UIScreen.main.bounds

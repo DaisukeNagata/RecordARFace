@@ -22,7 +22,7 @@ public final class RARFObject: NSObject, ARSessionDelegate {
 
     public var indexNumber = 0
 
-    public lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.frame = UIScreen.main.bounds
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RARFCell")
@@ -54,9 +54,9 @@ public final class RARFObject: NSObject, ARSessionDelegate {
 
     private var nodeFace = SCNNode()
     private var phoneNode: SCNNode = SCNNode()
-    private var texturedFace: RARFTexturedFace?
     private var eyeData: RARFEyeData?
-    var key: RARFNumberKeyboardView = RARFNumberKeyboardView()
+    private var texturedFace: RARFTexturedFace?
+    private var key: RARFNumberKeyboardView = RARFNumberKeyboardView()
 
     override init() {
         super.init()
@@ -72,6 +72,7 @@ public final class RARFObject: NSObject, ARSessionDelegate {
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
         arscnView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+
     }
         
     func texturedFace(color: UIColor) {
@@ -86,8 +87,7 @@ public final class RARFObject: NSObject, ARSessionDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         eView = RARFFlameView(eView: eView, color: color).eViews
-        let eyeGeometry = ARSCNFaceGeometry(device: arscnView.device!)
-        eyeData = RARFEyeData(geometry: eyeGeometry!)
+        eyeData = RARFEyeData()
         arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true

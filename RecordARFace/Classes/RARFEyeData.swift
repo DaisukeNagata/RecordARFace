@@ -22,7 +22,7 @@ final class RARFEyeData: SCNNode {
     private var positions: Array<simd_float2> = Array()
 
 
-    init(geometry: ARSCNFaceGeometry) {
+    override init() {
 
         leftEye = SCNNode()
         rightEye = SCNNode()
@@ -44,7 +44,7 @@ final class RARFEyeData: SCNNode {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
