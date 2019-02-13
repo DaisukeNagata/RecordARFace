@@ -116,14 +116,10 @@ public class RARFNumberKeyboardView: UIView {
 
     private func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
         switch index {
-        case Calculator.plus.rawValue:
-            return txtNumber + txtNumber2
-        case Calculator.minus.rawValue:
-            return txtNumber - txtNumber2
-        case Calculator.multiplication.rawValue:
-            return txtNumber * txtNumber2
-        case Calculator.division.rawValue:
-            return txtNumber / txtNumber2
+        case Calculator.plus.rawValue: return txtNumber + txtNumber2
+        case Calculator.minus.rawValue: return txtNumber - txtNumber2
+        case Calculator.multiplication.rawValue: return txtNumber * txtNumber2
+        case Calculator.division.rawValue: return txtNumber / txtNumber2
         default:
             return Float()
         }

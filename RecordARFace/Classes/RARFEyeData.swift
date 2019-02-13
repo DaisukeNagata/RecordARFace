@@ -26,10 +26,10 @@ final class RARFEyeData: SCNNode {
 
         leftEye = SCNNode()
         rightEye = SCNNode()
+        resource = UIColor()
         leftEyeEnd = SCNNode()
         rightEyeEnd = SCNNode()
         contentNode = SCNNode()
-        resource = UIColor()
 
         leftEye.addChildNode(leftEyeEnd)
         leftEyeEnd.simdPosition = simd_float3(0 , 0, floatRaycastDistance)
@@ -44,7 +44,7 @@ final class RARFEyeData: SCNNode {
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 }
 
