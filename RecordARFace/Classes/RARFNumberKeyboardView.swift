@@ -52,7 +52,7 @@ class RARFNumberKeyboardView: UIView {
         let bundle = Bundle(for: RARFNumberKeyboardView.self)
         let view = bundle.loadNibNamed("RARFNumberKeyboardView", owner: self, options: nil)?.first as! UIView
         view.frame = UIScreen.main.bounds
-        view.frame.origin.y = one.frame.height
+        view.frame.origin.y = UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
         self.addSubview(view)
     }
 
@@ -60,7 +60,7 @@ class RARFNumberKeyboardView: UIView {
 
         if timerFlg == false {
         var rectFrame = rect
-        rectFrame.origin.y -= one.frame.height
+        rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
             if one.frame.contains(rectFrame) { number(index: 1) }
             if two.frame.contains(rectFrame) { number(index: 2) }
@@ -84,9 +84,9 @@ class RARFNumberKeyboardView: UIView {
             }
 
             if allClaer.frame.contains(rectFrame) {
+                total = ""
                 plusNumber = ""
                 textLabel.text! = ""
-                total = ""
             }
 
             if enter.frame.contains(rectFrame) {
