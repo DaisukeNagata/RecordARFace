@@ -52,7 +52,6 @@ class RARFNumberKeyboardView: UIView {
         let bundle = Bundle(for: RARFNumberKeyboardView.self)
         let view = bundle.loadNibNamed("RARFNumberKeyboardView", owner: self, options: nil)?.first as! UIView
         view.frame = UIScreen.main.bounds
-        view.frame.origin.y = UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
         self.addSubview(view)
     }
 
@@ -60,8 +59,7 @@ class RARFNumberKeyboardView: UIView {
 
         if timerFlg == false {
         var rectFrame = rect
-        rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
-
+            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height
             if one.frame.contains(rectFrame) { number(index: 1) }
             if two.frame.contains(rectFrame) { number(index: 2) }
             if three.frame.contains(rectFrame) { number(index: 3) }
@@ -91,7 +89,9 @@ class RARFNumberKeyboardView: UIView {
 
             if enter.frame.contains(rectFrame) {
                 if total != nil {
-                    let indexNumber = calculator(index: calculatorNum!, txtNumber:  Float(total!)!, txtNumber2: Float(textLabel.text!)!)
+                    let indexNumber = calculator(index: calculatorNum!,
+                                                 txtNumber:  Float(total!)!,
+                                                 txtNumber2: Float(textLabel.text!)!)
                     textLabel.text! = indexNumber.description
                     plusNumber = ""
                     total = nil
@@ -109,9 +109,9 @@ class RARFNumberKeyboardView: UIView {
     }
 
     private func calculatorValue(index: Int) {
-        total = textLabel.text!
         plusNumber = ""
         calculatorNum = index
+        total = textLabel.text!
     }
 
     private func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
