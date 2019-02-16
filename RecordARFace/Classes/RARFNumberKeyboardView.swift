@@ -59,7 +59,8 @@ class RARFNumberKeyboardView: UIView {
 
         if timerFlg == false {
         var rectFrame = rect
-            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height
+            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+
             if one.frame.contains(rectFrame) { number(index: 1) }
             if two.frame.contains(rectFrame) { number(index: 2) }
             if three.frame.contains(rectFrame) { number(index: 3) }
