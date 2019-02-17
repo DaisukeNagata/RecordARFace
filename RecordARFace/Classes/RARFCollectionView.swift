@@ -39,6 +39,7 @@ public final class RARFCollectionView: UIView {
 
     private var index = 0
 
+
     public init() {
         super.init(frame: .zero)
 

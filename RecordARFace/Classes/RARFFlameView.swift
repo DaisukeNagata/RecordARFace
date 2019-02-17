@@ -8,11 +8,11 @@
 import UIKit
 final class RARFFlameView {
 
+    var eViews: UIView
     private let rootLayer = CALayer()
     private let flameEmitterLayer = CAEmitterLayer()
     private let flameEmitterCell = CAEmitterCell()
     private var color = UIColor()
-    var eViews: UIView
 
 
     init(eView: UIView,color: UIColor) {

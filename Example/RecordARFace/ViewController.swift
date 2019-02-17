@@ -17,7 +17,8 @@ class ViewController: UIViewController {
         return cView
     }()
     private var RepeatedHits = false
- 
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

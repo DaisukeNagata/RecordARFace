@@ -18,7 +18,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-public final class RARFObject: NSObject, ARSessionDelegate {
+final class RARFObject: NSObject, ARSessionDelegate {
 
     public var indexNumber = 0
 
@@ -57,6 +57,7 @@ public final class RARFObject: NSObject, ARSessionDelegate {
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
     private var key: RARFNumberKeyboardView = RARFNumberKeyboardView()
+
 
     override init() {
         super.init()
@@ -101,7 +102,7 @@ public final class RARFObject: NSObject, ARSessionDelegate {
 @available(iOS 11.0, *)
 extension RARFObject: ARSCNViewDelegate {
 
-    public func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
 
         guard texturedFace?.renderer(renderer, nodeFor: anchor) == nil else {
             guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
@@ -115,7 +116,7 @@ extension RARFObject: ARSCNViewDelegate {
         node.addChildNode(contentNode)
     }
 
-   public func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard texturedFace?.contentNode == nil else {
             texturedFace?.renderer(renderer, didUpdate: nodeFace, for: anchor)
             return
@@ -124,7 +125,7 @@ extension RARFObject: ARSCNViewDelegate {
         eyeData?.renderer(renderer, didUpdate: node, for: anchor)
     }
 
-    public func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
 
         guard eyeData?.contentNode == nil else {
             if let arscnView = arscnView.pointOfView { phoneNode.transform = arscnView.transform }
@@ -162,12 +163,12 @@ extension RARFObject: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 extension RARFObject: UITableViewDataSource, UITableViewDelegate {
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return indexNumber
     }
 }
