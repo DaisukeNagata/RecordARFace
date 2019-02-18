@@ -38,13 +38,14 @@ public final class RARFCollectionView: UIView {
     }()
 
     private var index = 0
+    private var alphaSet: CGFloat!
 
 
-    public init() {
+    public init(alphaSets: CGFloat) {
         super.init(frame: .zero)
 
+        alphaSet = alphaSets
         aObject.arscnView.isHidden = true
-
         self.frame = UIScreen.main.bounds
         scrollView.frame = self.bounds
         collectionView.frame = self.bounds
@@ -61,14 +62,14 @@ public final class RARFCollectionView: UIView {
         collectionView.isHidden = false
     }
 
-    public func viewEyesTracking(alpha: CGFloat) {
+    public func viewEyesTracking() {
         collectionView.isHidden = true
         aObject.arscnView.removeFromSuperview()
         aObject = RARFObject()
         addSubview(aObject.arscnView)
         aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
         aObject.tableView.separatorStyle = .none
-        aObject.tableView.alpha = alpha
+        aObject.tableView.alpha = alphaSet
     }
 }
 

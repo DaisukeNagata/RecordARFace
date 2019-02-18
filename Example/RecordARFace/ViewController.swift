@@ -12,11 +12,11 @@ import RecordARFace
 class ViewController: UIViewController {
 
     private var statusBar = RARFStatusBarUI().statusBar
+    private var RepeatedHits = false
     private lazy var cView: RARFCollectionView = {
-        let cView = RARFCollectionView()
+         let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
-    private var RepeatedHits = false
 
 
     override func viewDidLoad() {
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
-            cView.viewEyesTracking(alpha: 0.7)
+            cView.viewEyesTracking()
         }
     }
 

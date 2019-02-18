@@ -35,6 +35,7 @@ class RARFNumberKeyboardView: UIView {
     private var plusNumber = ""
     private var total: String?
     private var calculatorNum: Int?
+    private var totalNumber: Float?
 
 
     override init(frame: CGRect) {
@@ -58,8 +59,9 @@ class RARFNumberKeyboardView: UIView {
     func originTextField(rect: CGRect) {
 
         if timerFlg == false {
-        var rectFrame = rect
-            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height
+            var rectFrame = rect
+            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+
             if one.frame.contains(rectFrame) { number(index: 1) }
             if two.frame.contains(rectFrame) { number(index: 2) }
             if three.frame.contains(rectFrame) { number(index: 3) }
@@ -71,10 +73,10 @@ class RARFNumberKeyboardView: UIView {
             if nine.frame.contains(rectFrame) { number(index: 9) }
             if zero.frame.contains(rectFrame) { number(index: 0) }
 
-            if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
             if plus.frame.contains(rectFrame) { calculatorValue(index: Calculator.plus.rawValue) }
-            if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
+            if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
             if divite.frame.contains(rectFrame) { calculatorValue(index: Calculator.division.rawValue) }
+            if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
 
             if claer.frame.contains(rectFrame) {
                 plusNumber = String(textLabel.text!.dropLast(1))
@@ -82,7 +84,7 @@ class RARFNumberKeyboardView: UIView {
             }
 
             if allClaer.frame.contains(rectFrame) {
-                total = ""
+                total = nil
                 plusNumber = ""
                 textLabel.text! = ""
             }
@@ -92,9 +94,9 @@ class RARFNumberKeyboardView: UIView {
                     let indexNumber = calculator(index: calculatorNum!,
                                                  txtNumber:  Float(total!)!,
                                                  txtNumber2: Float(textLabel.text!)!)
-                    textLabel.text! = indexNumber.description
-                    plusNumber = ""
                     total = nil
+                    plusNumber = ""
+                    textLabel.text! = indexNumber.description
                 }
             }
         }
@@ -109,17 +111,25 @@ class RARFNumberKeyboardView: UIView {
     }
 
     private func calculatorValue(index: Int) {
-        plusNumber = ""
-        calculatorNum = index
-        total = textLabel.text!
+        if total != nil {
+            totalNumber = calculator(index: index,
+                                     txtNumber:  Float(total!)!,
+                                     txtNumber2: Float(textLabel.text!)!)
+            total = totalNumber?.description
+            textLabel.text = totalNumber?.description
+        } else {
+            total = textLabel.text
+        }
+          plusNumber = ""
+          calculatorNum = index
     }
 
     private func calculator(index: Int, txtNumber: Float, txtNumber2: Float) -> Float {
         switch index {
         case Calculator.plus.rawValue: return txtNumber + txtNumber2
         case Calculator.minus.rawValue: return txtNumber - txtNumber2
-        case Calculator.multiplication.rawValue: return txtNumber * txtNumber2
         case Calculator.division.rawValue: return txtNumber / txtNumber2
+        case Calculator.multiplication.rawValue: return txtNumber * txtNumber2
         default:
             return Float()
         }
