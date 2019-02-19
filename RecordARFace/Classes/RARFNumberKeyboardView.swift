@@ -30,7 +30,8 @@ class RARFNumberKeyboardView: UIView {
     @IBOutlet weak var claer: RARFNumberButton!
     @IBOutlet weak var allClaer: RARFNumberButton!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var views: UIView!
+    @IBOutlet weak var alphaViews: UIView!
+    
     private var timerFlg = false
     private var plusNumber = ""
     private var total: String?
@@ -99,6 +100,8 @@ class RARFNumberKeyboardView: UIView {
                     textLabel.text! = indexNumber.description
                 }
             }
+        } else {
+            alphaViews.alpha = 0
         }
         timerFlg = true
     }
@@ -121,6 +124,7 @@ class RARFNumberKeyboardView: UIView {
             total = textLabel.text
         }
           plusNumber = ""
+          alphaViews.alpha = 1
           calculatorNum = index
     }
 
