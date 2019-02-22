@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RARFNumberKeyboardView" customModule="RecordARFace" customModuleProvider="target">
             <connections>
                 <outlet property="allClaer" destination="srT-WZ-gVd" id="vvW-na-a54"/>
-                <outlet property="alphaViews" destination="Q4B-pt-P7o" id="ZpZ-32-Xyr"/>
                 <outlet property="claer" destination="Wdo-ji-ptv" id="6HA-2U-Sfl"/>
                 <outlet property="divite" destination="siP-G6-HAJ" id="1uo-zk-2sq"/>
                 <outlet property="eight" destination="4tt-JM-p71" id="Kgi-ZY-Yba"/>
@@ -323,10 +322,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q4B-pt-P7o">
-                            <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -371,12 +366,10 @@
                         <constraint firstItem="JQx-42-ISU" firstAttribute="baseline" secondItem="F7t-8z-Fcr" secondAttribute="firstBaseline" id="aaI-t5-kPo"/>
                         <constraint firstItem="JQx-42-ISU" firstAttribute="baseline" secondItem="c9D-5x-lDu" secondAttribute="firstBaseline" id="aef-f9-6al"/>
                         <constraint firstItem="Mtk-ML-wbu" firstAttribute="leading" secondItem="Duy-cd-Des" secondAttribute="trailing" id="afy-6B-mdt"/>
-                        <constraint firstAttribute="bottom" secondItem="Q4B-pt-P7o" secondAttribute="bottom" id="b6S-SU-c1g"/>
                         <constraint firstAttribute="trailing" secondItem="UXd-JF-UTj" secondAttribute="trailing" id="b80-uS-grS"/>
                         <constraint firstAttribute="bottom" secondItem="Wdo-ji-ptv" secondAttribute="bottom" id="cR7-SY-J2M"/>
                         <constraint firstItem="srT-WZ-gVd" firstAttribute="leading" secondItem="siP-G6-HAJ" secondAttribute="trailing" id="css-1x-OY1"/>
                         <constraint firstAttribute="trailing" secondItem="VIa-6h-2oa" secondAttribute="trailing" id="dnu-p4-s8U"/>
-                        <constraint firstAttribute="trailing" secondItem="Q4B-pt-P7o" secondAttribute="trailing" id="eeG-pE-dvZ"/>
                         <constraint firstItem="Mtk-ML-wbu" firstAttribute="width" secondItem="Duy-cd-Des" secondAttribute="width" id="eqm-bI-tZT"/>
                         <constraint firstItem="Te8-Vz-PKb" firstAttribute="baseline" secondItem="XcN-js-rih" secondAttribute="firstBaseline" id="etH-vE-UW5"/>
                         <constraint firstItem="JQx-42-ISU" firstAttribute="leading" secondItem="IL6-Jv-w4g" secondAttribute="leading" id="hEP-HG-rmb"/>
@@ -384,7 +377,6 @@
                         <constraint firstItem="Wdo-ji-ptv" firstAttribute="trailing" secondItem="k8p-hX-4ul" secondAttribute="trailing" id="icD-M5-UkK"/>
                         <constraint firstItem="k8p-hX-4ul" firstAttribute="top" secondItem="JQx-42-ISU" secondAttribute="bottom" id="jEx-Pb-vgf"/>
                         <constraint firstItem="JQx-42-ISU" firstAttribute="top" secondItem="F7t-8z-Fcr" secondAttribute="top" id="k9e-MI-foH"/>
-                        <constraint firstItem="Q4B-pt-P7o" firstAttribute="leading" secondItem="gPY-5b-U5z" secondAttribute="leading" id="l7f-eM-IOw"/>
                         <constraint firstItem="JQx-42-ISU" firstAttribute="top" secondItem="c9D-5x-lDu" secondAttribute="top" id="nBK-iw-9fs"/>
                         <constraint firstItem="Wdo-ji-ptv" firstAttribute="top" secondItem="k8p-hX-4ul" secondAttribute="bottom" id="nBr-sQ-jxh"/>
                         <constraint firstAttribute="trailing" secondItem="F7t-8z-Fcr" secondAttribute="trailing" id="paq-Tf-AmX"/>
@@ -398,7 +390,6 @@
                         <constraint firstItem="Mtk-ML-wbu" firstAttribute="top" secondItem="gPY-5b-U5z" secondAttribute="top" id="t3Q-dN-oaw"/>
                         <constraint firstAttribute="trailing" secondItem="dMO-g3-IRq" secondAttribute="trailing" id="t8J-WP-4Of"/>
                         <constraint firstItem="Duy-cd-Des" firstAttribute="top" secondItem="dMO-g3-IRq" secondAttribute="top" id="uGG-n0-5IM"/>
-                        <constraint firstItem="Q4B-pt-P7o" firstAttribute="top" secondItem="gPY-5b-U5z" secondAttribute="top" id="utB-zp-7FU"/>
                         <constraint firstItem="m7z-vE-buK" firstAttribute="leading" secondItem="XcN-js-rih" secondAttribute="trailing" id="vsf-qa-Avs"/>
                         <constraint firstItem="k8p-hX-4ul" firstAttribute="top" secondItem="UXd-JF-UTj" secondAttribute="bottom" id="wad-sr-G4y"/>
                         <constraint firstItem="IL6-Jv-w4g" firstAttribute="top" secondItem="Te8-Vz-PKb" secondAttribute="bottom" id="xUG-JY-hKW"/>

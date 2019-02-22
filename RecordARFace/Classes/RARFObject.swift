@@ -64,8 +64,12 @@ final class RARFObject: NSObject, ARSessionDelegate {
 
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
+        tableView.addSubview(self.key)
+        key.originTextField(rect: self.eView.frame)
+        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
+    @objc func timerUpdate() { key.originTextField(rect: self.eView.frame) }
 
     func resetTracking() {
         UIApplication.shared.isIdleTimerDisabled = true
@@ -148,8 +152,6 @@ extension RARFObject: ARSCNViewDelegate {
                 guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                 DispatchQueue.main.sync {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                    self.tableView.addSubview(self.key)
-                    self.key.originTextField(rect: self.eView.frame)
                 }
             }
             return

@@ -30,9 +30,7 @@ class RARFNumberKeyboardView: UIView {
     @IBOutlet weak var claer: RARFNumberButton!
     @IBOutlet weak var allClaer: RARFNumberButton!
     @IBOutlet weak var textLabel: UILabel!
-    @IBOutlet weak var alphaViews: UIView!
-    
-    private var timerFlg = false
+
     private var plusNumber = ""
     private var total: String?
     private var calculatorNum: Int?
@@ -42,7 +40,6 @@ class RARFNumberKeyboardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
-        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,54 +56,47 @@ class RARFNumberKeyboardView: UIView {
 
     func originTextField(rect: CGRect) {
 
-        if timerFlg == false {
-            var rectFrame = rect
-            rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+        var rectFrame = rect
+        rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
-            if one.frame.contains(rectFrame) { number(index: 1) }
-            if two.frame.contains(rectFrame) { number(index: 2) }
-            if three.frame.contains(rectFrame) { number(index: 3) }
-            if four.frame.contains(rectFrame) { number(index: 4) }
-            if five.frame.contains(rectFrame) { number(index: 5) }
-            if six.frame.contains(rectFrame) { number(index: 6) }
-            if seven.frame.contains(rectFrame) { number(index: 7) }
-            if eight.frame.contains(rectFrame) { number(index: 8) }
-            if nine.frame.contains(rectFrame) { number(index: 9) }
-            if zero.frame.contains(rectFrame) { number(index: 0) }
+        if one.frame.contains(rectFrame) { number(index: 1) }
+        if two.frame.contains(rectFrame) { number(index: 2) }
+        if three.frame.contains(rectFrame) { number(index: 3) }
+        if four.frame.contains(rectFrame) { number(index: 4) }
+        if five.frame.contains(rectFrame) { number(index: 5) }
+        if six.frame.contains(rectFrame) { number(index: 6) }
+        if seven.frame.contains(rectFrame) { number(index: 7) }
+        if eight.frame.contains(rectFrame) { number(index: 8) }
+        if nine.frame.contains(rectFrame) { number(index: 9) }
+        if zero.frame.contains(rectFrame) { number(index: 0) }
 
-            if plus.frame.contains(rectFrame) { calculatorValue(index: Calculator.plus.rawValue) }
-            if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
-            if divite.frame.contains(rectFrame) { calculatorValue(index: Calculator.division.rawValue) }
-            if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
+        if plus.frame.contains(rectFrame) { calculatorValue(index: Calculator.plus.rawValue) }
+        if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
+        if divite.frame.contains(rectFrame) { calculatorValue(index: Calculator.division.rawValue) }
+        if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
 
-            if claer.frame.contains(rectFrame) {
-                plusNumber = String(textLabel.text!.dropLast(1))
-                textLabel.text = String(textLabel.text!.dropLast(1))
-            }
+        if claer.frame.contains(rectFrame) {
+            plusNumber = String(textLabel.text!.dropLast(1))
+            textLabel.text = String(textLabel.text!.dropLast(1))
+        }
 
-            if allClaer.frame.contains(rectFrame) {
+        if allClaer.frame.contains(rectFrame) {
+            total = nil
+            plusNumber = ""
+            textLabel.text! = ""
+        }
+
+        if enter.frame.contains(rectFrame) {
+            if total != nil {
+                let indexNumber = calculator(index: calculatorNum!,
+                                             txtNumber:  Float(total!)!,
+                                             txtNumber2: Float(textLabel.text!)!)
                 total = nil
                 plusNumber = ""
-                textLabel.text! = ""
+                textLabel.text! = indexNumber.description
             }
-
-            if enter.frame.contains(rectFrame) {
-                if total != nil {
-                    let indexNumber = calculator(index: calculatorNum!,
-                                                 txtNumber:  Float(total!)!,
-                                                 txtNumber2: Float(textLabel.text!)!)
-                    total = nil
-                    plusNumber = ""
-                    textLabel.text! = indexNumber.description
-                }
-            }
-        } else {
-            alphaViews.alpha = 0
         }
-        timerFlg = true
     }
-
-    @objc func timerUpdate() { timerFlg = false }
 
     private func number(index: Int) {
         plusNumber += index.description
@@ -124,7 +114,6 @@ class RARFNumberKeyboardView: UIView {
             total = textLabel.text
         }
           plusNumber = ""
-          alphaViews.alpha = 1
           calculatorNum = index
     }
 
