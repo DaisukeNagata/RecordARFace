@@ -32,7 +32,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
-        arscnView.frame = UIScreen.main.bounds
         arscnView.delegate = self
         arscnView.session.delegate = self
         arscnView.frame = UIScreen.main.bounds
@@ -65,7 +64,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
         tableView.addSubview(self.key)
-        key.originTextField(rect: self.eView.frame)
         Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
@@ -77,7 +75,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
         arscnView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-
     }
         
     func texturedFace(color: UIColor) {
@@ -150,7 +147,7 @@ extension RARFObject: ARSCNViewDelegate {
 
             if !leftEye.isEmpty && !rightEye.isEmpty {
                 guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
                 }
             }
