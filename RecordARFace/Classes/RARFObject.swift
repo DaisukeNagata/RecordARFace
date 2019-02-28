@@ -20,6 +20,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 final class RARFObject: NSObject, ARSessionDelegate {
 
+    var timer: Timer?
     public var indexNumber = 0
 
     lazy var tableView: UITableView = {
@@ -64,7 +65,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
         tableView.addSubview(self.key)
-        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
     }
 
     @objc func timerUpdate() { key.originTextField(rect: self.eView.frame) }
