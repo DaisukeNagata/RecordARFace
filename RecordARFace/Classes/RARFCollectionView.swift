@@ -64,6 +64,7 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewEyesTracking() {
+        aObject.timer!.invalidate()
         collectionView.isHidden = true
         aObject.arscnView.removeFromSuperview()
         aObject = RARFObject()
