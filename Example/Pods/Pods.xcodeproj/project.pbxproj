@@ -13,18 +13,18 @@
 		5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */; };
 		5772DF7AD1B7F9C6BA0070A29B1B549E /* Pods-RecordARFace_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */; };
 		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		BBABDF4D222AB17800959558 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF4C222AB17800959558 /* RARFTexturedFace.swift */; };
-		BBABDF4F222AB18E00959558 /* RARFEyeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF4E222AB18D00959558 /* RARFEyeData.swift */; };
-		BBABDF51222AB1A000959558 /* RARFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF50222AB1A000959558 /* RARFObject.swift */; };
-		BBABDF55222AB1B400959558 /* RARFCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF52222AB1B400959558 /* RARFCollectionCell.swift */; };
-		BBABDF56222AB1B400959558 /* RARFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF53222AB1B400959558 /* RARFCollectionView.swift */; };
-		BBABDF57222AB1B400959558 /* RARFCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF54222AB1B400959558 /* RARFCollectionViewModel.swift */; };
-		BBABDF5A222AB1C000959558 /* RARFNumberKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF58222AB1C000959558 /* RARFNumberKeyboardView.xib */; };
-		BBABDF5B222AB1C000959558 /* RARFNumberKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF59222AB1C000959558 /* RARFNumberKeyboardView.swift */; };
-		BBABDF5F222AB1CD00959558 /* RARFStatusBarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF5C222AB1CD00959558 /* RARFStatusBarUI.swift */; };
-		BBABDF60222AB1CD00959558 /* RARFNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF5D222AB1CD00959558 /* RARFNumberButton.swift */; };
-		BBABDF61222AB1CD00959558 /* RARFFlameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF5E222AB1CD00959558 /* RARFFlameView.swift */; };
-		BBABDF63222AB1D800959558 /* RARFScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF62222AB1D800959558 /* RARFScreenRecorder.swift */; };
+		BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF73222AC29600959558 /* RARFTexturedFace.swift */; };
+		BBABDF86222AC29700959558 /* RARFNumberKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */; };
+		BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */; };
+		BBABDF88222AC29700959558 /* RARFScreenRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF78222AC29700959558 /* RARFScreenRecorder.swift */; };
+		BBABDF89222AC29700959558 /* RARFCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF7A222AC29700959558 /* RARFCollectionView.swift */; };
+		BBABDF8A222AC29700959558 /* RARFCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF7B222AC29700959558 /* RARFCollectionViewModel.swift */; };
+		BBABDF8B222AC29700959558 /* RARFCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF7C222AC29700959558 /* RARFCollectionCell.swift */; };
+		BBABDF8C222AC29700959558 /* RARFObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF7E222AC29700959558 /* RARFObject.swift */; };
+		BBABDF8D222AC29700959558 /* RARFEyeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF80222AC29700959558 /* RARFEyeData.swift */; };
+		BBABDF8E222AC29700959558 /* RARFNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF82222AC29700959558 /* RARFNumberButton.swift */; };
+		BBABDF8F222AC29700959558 /* RARFFlameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF83222AC29700959558 /* RARFFlameView.swift */; };
+		BBABDF90222AC29700959558 /* RARFStatusBarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */; };
 		BF9297F9CC3A886605806E78F0A4BFC5 /* RecordARFace-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C116DB69C1AD0CA1903DF248BE13A0C /* RecordARFace-dummy.m */; };
 		CB00A02E67D2D0701D6C7F255578260A /* Pods-RecordARFace_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2921D8D0EC6305B7F01D6F1A6837154B /* Pods-RecordARFace_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5E7ADA23CA2C909DE81CB510FE90FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
@@ -69,18 +69,18 @@
 		AD1EC82B0A21D88F4D13B9EACFDBA6DB /* Pods-RecordARFace_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecordARFace_Tests-umbrella.h"; sourceTree = "<group>"; };
 		AF9B4FC1B3367D1F4FBA47A575629145 /* Pods-RecordARFace_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B483F71F85C9F72D31C83D4C1FB4B2BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BBABDF4C222AB17800959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFTexturedFace.swift; path = ../RecordARFace/Classes/FaceTracking/RARFTexturedFace.swift; sourceTree = "<group>"; };
-		BBABDF4E222AB18D00959558 /* RARFEyeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFEyeData.swift; path = ../RecordARFace/Classes/EyeData/RARFEyeData.swift; sourceTree = "<group>"; };
-		BBABDF50222AB1A000959558 /* RARFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFObject.swift; path = ../RecordARFace/Classes/Object/RARFObject.swift; sourceTree = "<group>"; };
-		BBABDF52222AB1B400959558 /* RARFCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFCollectionCell.swift; path = ../RecordARFace/Classes/Collection/RARFCollectionCell.swift; sourceTree = "<group>"; };
-		BBABDF53222AB1B400959558 /* RARFCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFCollectionView.swift; path = ../RecordARFace/Classes/Collection/RARFCollectionView.swift; sourceTree = "<group>"; };
-		BBABDF54222AB1B400959558 /* RARFCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFCollectionViewModel.swift; path = ../RecordARFace/Classes/Collection/RARFCollectionViewModel.swift; sourceTree = "<group>"; };
-		BBABDF58222AB1C000959558 /* RARFNumberKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RARFNumberKeyboardView.xib; path = ../RecordARFace/Classes/KeyBoard/RARFNumberKeyboardView.xib; sourceTree = "<group>"; };
-		BBABDF59222AB1C000959558 /* RARFNumberKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFNumberKeyboardView.swift; path = ../RecordARFace/Classes/KeyBoard/RARFNumberKeyboardView.swift; sourceTree = "<group>"; };
-		BBABDF5C222AB1CD00959558 /* RARFStatusBarUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFStatusBarUI.swift; path = ../RecordARFace/Classes/UI/RARFStatusBarUI.swift; sourceTree = "<group>"; };
-		BBABDF5D222AB1CD00959558 /* RARFNumberButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFNumberButton.swift; path = ../RecordARFace/Classes/UI/RARFNumberButton.swift; sourceTree = "<group>"; };
-		BBABDF5E222AB1CD00959558 /* RARFFlameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFFlameView.swift; path = ../RecordARFace/Classes/UI/RARFFlameView.swift; sourceTree = "<group>"; };
-		BBABDF62222AB1D800959558 /* RARFScreenRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFScreenRecorder.swift; path = ../RecordARFace/Classes/Recorder/RARFScreenRecorder.swift; sourceTree = "<group>"; };
+		BBABDF73222AC29600959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTexturedFace.swift; sourceTree = "<group>"; };
+		BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberKeyboardView.swift; sourceTree = "<group>"; };
+		BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFNumberKeyboardView.xib; sourceTree = "<group>"; };
+		BBABDF78222AC29700959558 /* RARFScreenRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFScreenRecorder.swift; sourceTree = "<group>"; };
+		BBABDF7A222AC29700959558 /* RARFCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFCollectionView.swift; sourceTree = "<group>"; };
+		BBABDF7B222AC29700959558 /* RARFCollectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFCollectionViewModel.swift; sourceTree = "<group>"; };
+		BBABDF7C222AC29700959558 /* RARFCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFCollectionCell.swift; sourceTree = "<group>"; };
+		BBABDF7E222AC29700959558 /* RARFObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFObject.swift; sourceTree = "<group>"; };
+		BBABDF80222AC29700959558 /* RARFEyeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFEyeData.swift; sourceTree = "<group>"; };
+		BBABDF82222AC29700959558 /* RARFNumberButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberButton.swift; sourceTree = "<group>"; };
+		BBABDF83222AC29700959558 /* RARFFlameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFFlameView.swift; sourceTree = "<group>"; };
+		BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFStatusBarUI.swift; sourceTree = "<group>"; };
 		C1FD28C8F5AD3610D8BF45DFC103CB63 /* RecordARFace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = RecordARFace.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C9A38D0613C991FCC9F83B492A0E7B6E /* Pods-RecordARFace_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecordARFace_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB1BA55058EED17B0EF70157000F4205 /* Pods-RecordARFace_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -230,65 +230,72 @@
 			path = "Target Support Files/Pods-RecordARFace_Tests";
 			sourceTree = "<group>";
 		};
-		BBABDF45222AB00E00959558 /* Collection */ = {
+		BBABDF72222AC29600959558 /* FaceTracking */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF52222AB1B400959558 /* RARFCollectionCell.swift */,
-				BBABDF53222AB1B400959558 /* RARFCollectionView.swift */,
-				BBABDF54222AB1B400959558 /* RARFCollectionViewModel.swift */,
+				BBABDF73222AC29600959558 /* RARFTexturedFace.swift */,
 			);
-			path = Collection;
+			name = FaceTracking;
+			path = RecordARFace/Classes/FaceTracking;
 			sourceTree = "<group>";
 		};
-		BBABDF46222AB02A00959558 /* KeyBoard */ = {
+		BBABDF74222AC29600959558 /* KeyBoard */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF59222AB1C000959558 /* RARFNumberKeyboardView.swift */,
-				BBABDF58222AB1C000959558 /* RARFNumberKeyboardView.xib */,
+				BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */,
+				BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */,
 			);
-			path = KeyBoard;
+			name = KeyBoard;
+			path = RecordARFace/Classes/KeyBoard;
 			sourceTree = "<group>";
 		};
-		BBABDF47222AB05400959558 /* Recorder */ = {
+		BBABDF77222AC29700959558 /* Recorder */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF62222AB1D800959558 /* RARFScreenRecorder.swift */,
+				BBABDF78222AC29700959558 /* RARFScreenRecorder.swift */,
 			);
-			path = Recorder;
+			name = Recorder;
+			path = RecordARFace/Classes/Recorder;
 			sourceTree = "<group>";
 		};
-		BBABDF48222AB08400959558 /* Object */ = {
+		BBABDF79222AC29700959558 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF50222AB1A000959558 /* RARFObject.swift */,
+				BBABDF7A222AC29700959558 /* RARFCollectionView.swift */,
+				BBABDF7B222AC29700959558 /* RARFCollectionViewModel.swift */,
+				BBABDF7C222AC29700959558 /* RARFCollectionCell.swift */,
 			);
-			path = Object;
+			name = Collection;
+			path = RecordARFace/Classes/Collection;
 			sourceTree = "<group>";
 		};
-		BBABDF49222AB09700959558 /* EyeData */ = {
+		BBABDF7D222AC29700959558 /* Object */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF4E222AB18D00959558 /* RARFEyeData.swift */,
+				BBABDF7E222AC29700959558 /* RARFObject.swift */,
 			);
-			path = EyeData;
+			name = Object;
+			path = RecordARFace/Classes/Object;
 			sourceTree = "<group>";
 		};
-		BBABDF4A222AB0A800959558 /* FaceTracking */ = {
+		BBABDF7F222AC29700959558 /* EyeData */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF4C222AB17800959558 /* RARFTexturedFace.swift */,
+				BBABDF80222AC29700959558 /* RARFEyeData.swift */,
 			);
-			path = FaceTracking;
+			name = EyeData;
+			path = RecordARFace/Classes/EyeData;
 			sourceTree = "<group>";
 		};
-		BBABDF4B222AB12000959558 /* UI */ = {
+		BBABDF81222AC29700959558 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF5E222AB1CD00959558 /* RARFFlameView.swift */,
-				BBABDF5D222AB1CD00959558 /* RARFNumberButton.swift */,
-				BBABDF5C222AB1CD00959558 /* RARFStatusBarUI.swift */,
+				BBABDF82222AC29700959558 /* RARFNumberButton.swift */,
+				BBABDF83222AC29700959558 /* RARFFlameView.swift */,
+				BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */,
 			);
-			path = UI;
+			name = UI;
+			path = RecordARFace/Classes/UI;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -302,13 +309,13 @@
 		FCC836FB764E6DD90B493A877BFC11B6 /* RecordARFace */ = {
 			isa = PBXGroup;
 			children = (
-				BBABDF4A222AB0A800959558 /* FaceTracking */,
-				BBABDF49222AB09700959558 /* EyeData */,
-				BBABDF48222AB08400959558 /* Object */,
-				BBABDF45222AB00E00959558 /* Collection */,
-				BBABDF46222AB02A00959558 /* KeyBoard */,
-				BBABDF4B222AB12000959558 /* UI */,
-				BBABDF47222AB05400959558 /* Recorder */,
+				BBABDF79222AC29700959558 /* Collection */,
+				BBABDF7F222AC29700959558 /* EyeData */,
+				BBABDF7D222AC29700959558 /* Object */,
+				BBABDF72222AC29600959558 /* FaceTracking */,
+				BBABDF74222AC29600959558 /* KeyBoard */,
+				BBABDF77222AC29700959558 /* Recorder */,
+				BBABDF81222AC29700959558 /* UI */,
 				20C257C6B0CBF064C5391E519C887D1B /* Pod */,
 				422F66E4082E13C0B85A5D9D11BBAFD0 /* Support Files */,
 			);
@@ -435,7 +442,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBABDF5A222AB1C000959558 /* RARFNumberKeyboardView.xib in Resources */,
+				BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,18 +467,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBABDF56222AB1B400959558 /* RARFCollectionView.swift in Sources */,
-				BBABDF55222AB1B400959558 /* RARFCollectionCell.swift in Sources */,
-				BBABDF4D222AB17800959558 /* RARFTexturedFace.swift in Sources */,
-				BBABDF5B222AB1C000959558 /* RARFNumberKeyboardView.swift in Sources */,
-				BBABDF51222AB1A000959558 /* RARFObject.swift in Sources */,
-				BBABDF63222AB1D800959558 /* RARFScreenRecorder.swift in Sources */,
-				BBABDF60222AB1CD00959558 /* RARFNumberButton.swift in Sources */,
-				BBABDF5F222AB1CD00959558 /* RARFStatusBarUI.swift in Sources */,
-				BBABDF57222AB1B400959558 /* RARFCollectionViewModel.swift in Sources */,
-				BBABDF4F222AB18E00959558 /* RARFEyeData.swift in Sources */,
+				BBABDF90222AC29700959558 /* RARFStatusBarUI.swift in Sources */,
+				BBABDF8A222AC29700959558 /* RARFCollectionViewModel.swift in Sources */,
+				BBABDF8F222AC29700959558 /* RARFFlameView.swift in Sources */,
+				BBABDF8D222AC29700959558 /* RARFEyeData.swift in Sources */,
+				BBABDF86222AC29700959558 /* RARFNumberKeyboardView.swift in Sources */,
+				BBABDF89222AC29700959558 /* RARFCollectionView.swift in Sources */,
+				BBABDF8C222AC29700959558 /* RARFObject.swift in Sources */,
+				BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */,
+				BBABDF8E222AC29700959558 /* RARFNumberButton.swift in Sources */,
+				BBABDF8B222AC29700959558 /* RARFCollectionCell.swift in Sources */,
 				BF9297F9CC3A886605806E78F0A4BFC5 /* RecordARFace-dummy.m in Sources */,
-				BBABDF61222AB1CD00959558 /* RARFFlameView.swift in Sources */,
+				BBABDF88222AC29700959558 /* RARFScreenRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
