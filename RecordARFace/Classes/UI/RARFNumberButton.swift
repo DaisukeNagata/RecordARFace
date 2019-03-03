@@ -1,6 +1,6 @@
 //
 //  RARFNumberButton.swift
-//  SamapleKeyBoard
+//  RecordARFace
 //
 //  Created by 永田大祐 on 2019/02/03.
 //  Copyright © 2019 永田大祐. All rights reserved.

@@ -39,6 +39,11 @@ final class RARFObject: NSObject, ARSessionDelegate {
         return arscnView
     }()
 
+    var flg = false
+    var numberKey = RARFNumberKeyboardView()
+    var luangageKey = RARFLuangageKeyBoard()
+    var spellKey = RARFSpellAndKeyBoard()
+
     private lazy var eView: UIView = {
         let eView = UIView()
         eView.frame = CGRect(x: 0,y: 0 ,width:25 ,height:25)
@@ -56,19 +61,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     private var phoneNode: SCNNode = SCNNode()
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
-    private var key: RARFNumberKeyboardView = RARFNumberKeyboardView()
 
-
-    override init() {
-        super.init()
-
-        arscnView.addSubview(eView)
-        arscnView.addSubview(tableView)
-        tableView.addSubview(self.key)
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
-    }
-
-    @objc func timerUpdate() { key.originTextField(rect: self.eView.frame) }
 
     func resetTracking() {
         UIApplication.shared.isIdleTimerDisabled = true
@@ -86,6 +79,16 @@ final class RARFObject: NSObject, ARSessionDelegate {
     func eyeTracking(color: UIColor) {
         #if targetEnvironment(simulator)
         #else
+        if flg == false {
+            tableView.addSubview(numberKey)
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
+        } else {
+            tableView.addSubview(luangageKey)
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
+        }
+
+        arscnView.addSubview(eView)
+        arscnView.addSubview(tableView)
         tableView.isHidden = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -98,6 +101,9 @@ final class RARFObject: NSObject, ARSessionDelegate {
         resetTracking()
         #endif
     }
+
+     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
+     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame) }
 }
 
 // MARK: ARSCNViewDelegate

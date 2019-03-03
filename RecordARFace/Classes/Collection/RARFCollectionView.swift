@@ -15,16 +15,18 @@ public final class RARFCollectionView: UIView {
         let aObject = RARFObject()
         return aObject
     }()
-    
+
     let vm = RARFCollectionViewModel()
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5,
                                  height: UIScreen.main.bounds.height/2-UINavigationController.init().navigationBar.frame.height)
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(RARFCollectionCell().identifier, forCellWithReuseIdentifier: "RARFCollectionCell")
         collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "RARFCollectionCell")
+        collectionView.frame = self.bounds
         collectionView.delegate = self
         collectionView.dataSource = vm
         return collectionView
@@ -32,9 +34,19 @@ public final class RARFCollectionView: UIView {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.frame = self.bounds
         scrollView.addSubview(collectionView)
         addSubview(scrollView)
         return scrollView
+    }()
+
+    let ob = RARFTableData()
+
+    private lazy var tView: RARFTView = {
+        let tView = RARFTView()
+        tView.table.dataSource = ob
+        tView.table.delegate = self
+        return tView
     }()
 
     private var index = 0
@@ -44,12 +56,12 @@ public final class RARFCollectionView: UIView {
     public init(alphaSets: CGFloat) {
         super.init(frame: .zero)
 
+        self.frame = UIScreen.main.bounds
+
         alphaSet = alphaSets
         aObject.arscnView.isHidden = true
-        self.frame = UIScreen.main.bounds
-        scrollView.frame = self.bounds
-        collectionView.frame = self.bounds
-        aObject.arscnView.frame = self.bounds
+    
+        addSubview(tView.table)
         addSubview(collectionView)
     }
 
@@ -58,20 +70,38 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewHidden() {
-        aObject.timer!.invalidate()
+        if aObject.timer?.isValid == true {
+            aObject.timer!.invalidate()
+        }
         aObject.arscnView.removeFromSuperview()
+        tView.table.frame.origin.y -= self.frame.height
         collectionView.isHidden = false
     }
 
     public func viewEyesTracking() {
-        aObject.timer!.invalidate()
+        collectionView.isHidden = true
+        guard tView.table.frame.origin.y == 0 else {
+            UIView.animate(withDuration: 0.5) {
+                self.tView.table.frame.origin.y = 0
+            }
+            return
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.tView.table.frame.origin.y -= self.frame.height
+        }
+    }
+    
+    private func eyeTrackStart(flg: Bool) {
+        if aObject.timer?.isValid == true {
+            aObject.timer!.invalidate()
+        }
         collectionView.isHidden = true
         aObject.arscnView.removeFromSuperview()
         aObject = RARFObject()
-        addSubview(aObject.arscnView)
-        aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
-        aObject.tableView.separatorStyle = .none
+        aObject.flg = flg
         aObject.tableView.alpha = alphaSet
+        aObject.tableView.separatorStyle = .none
+        aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
     }
 }
 
@@ -88,5 +118,18 @@ extension RARFCollectionView: UICollectionViewDelegate {
         index = indexPath.row
         addSubview(aObject.arscnView)
         aObject.tableView.isHidden = true
+    }
+}
+
+// TODO MARK: UITableViewDelegate
+extension RARFCollectionView: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == KeyboardCount.number.rawValue {
+            eyeTrackStart(flg: false)
+            addSubview(aObject.arscnView)
+        } else if indexPath.row == KeyboardCount.luangage.rawValue {
+            eyeTrackStart(flg: true)
+            addSubview(aObject.arscnView)
+        }
     }
 }
