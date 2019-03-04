@@ -98,10 +98,9 @@ public final class RARFCollectionView: UIView {
         collectionView.isHidden = true
         aObject.arscnView.removeFromSuperview()
         aObject = RARFObject()
-        aObject.flg = flg
         aObject.tableView.alpha = alphaSet
         aObject.tableView.separatorStyle = .none
-        aObject.eyeTracking(color: vm.imagesRows[index].imageSet)
+        aObject.eyeTracking(color: vm.imagesRows[index].imageSet, flg: flg)
     }
 }
 

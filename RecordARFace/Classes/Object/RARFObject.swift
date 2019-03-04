@@ -39,9 +39,8 @@ final class RARFObject: NSObject, ARSessionDelegate {
         return arscnView
     }()
 
-    var flg = false
+    var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
-    var luangageKey = RARFLuangageKeyBoard()
     var spellKey = RARFSpellAndKeyBoard()
 
     private lazy var eView: UIView = {
@@ -62,6 +61,14 @@ final class RARFObject: NSObject, ARSessionDelegate {
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
 
+    override init() {
+        super.init()
+
+        spellKey = RARFSpellAndKeyBoard()
+        luangageKey = RARFLuangageKeyBoard(spellKey: spellKey)
+        tableView.addSubview(spellKey)
+        tableView.addSubview(luangageKey!)
+    }
 
     func resetTracking() {
         UIApplication.shared.isIdleTimerDisabled = true
@@ -76,14 +83,13 @@ final class RARFObject: NSObject, ARSessionDelegate {
         texturedFace = RARFTexturedFace(resource: color)
     }
 
-    func eyeTracking(color: UIColor) {
+    func eyeTracking(color: UIColor, flg: Bool) {
         #if targetEnvironment(simulator)
         #else
         if flg == false {
             tableView.addSubview(numberKey)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
-            tableView.addSubview(luangageKey)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
 
@@ -103,7 +109,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
      @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
-     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame) }
+     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
 }
 
 // MARK: ARSCNViewDelegate

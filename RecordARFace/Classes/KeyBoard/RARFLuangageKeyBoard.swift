@@ -12,7 +12,8 @@ final class RARFLuangageKeyBoard: UIView {
 
     var flg = false
     var rectFrame: CGRect!
-    var spell = RARFSpellAndKeyBoard()
+    var spellTimer: Timer?
+    var spell: RARFSpellAndKeyBoard!
 
     @IBOutlet weak var arrow: RARFNumberButton!
     @IBOutlet weak var reload: RARFNumberButton!
@@ -36,8 +37,9 @@ final class RARFLuangageKeyBoard: UIView {
     @IBOutlet weak var what: RARFNumberButton!
 
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+     init(spellKey: RARFSpellAndKeyBoard) {
+        spell = spellKey
+        super.init(frame: .zero)
         self.frame = UIScreen.main.bounds
         loadNib()
     }
@@ -58,14 +60,13 @@ final class RARFLuangageKeyBoard: UIView {
         self.addSubview(view)
     }
 
-    @objc func originTextField(rect: CGRect) {
+    @objc func originTextField(rect: CGRect,timer: Timer) {
         rectFrame = rect
         rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
-        
-        if flg == false {
-            if arrow.frame.contains(rectFrame) { symbolSpell() }
-            if aColumn.frame.contains(rectFrame) { aColumnSpell() }
-            if dColumn.frame.contains(rectFrame) { dColumnSpell() }
+
+            if arrow.frame.contains(rectFrame) { symbolSpell()}
+            if aColumn.frame.contains(rectFrame) { aColumnSpell()}
+            if dColumn.frame.contains(rectFrame) { dColumnSpell()}
             if gColumn.frame.contains(rectFrame) { gColumnSpell() }
             if jColumn.frame.contains(rectFrame) { jColumnSpell() }
             if mColumn.frame.contains(rectFrame) { mColumnSpell() }
@@ -76,82 +77,71 @@ final class RARFLuangageKeyBoard: UIView {
             if what.frame.contains(rectFrame) { whatSpell() }
             if lower.frame.contains(rectFrame) { lowerMentod() }
             if space.frame.contains(rectFrame) { spaceMentod() }
-        }
-        aColumnSpell()
+    
+            spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
     }
 
-    func symbolSpell() {
-        spellMentod()
+    // TODO: Logic
+    @objc func spellKeyUpdate() {
+        spell.originTextField(rect: rectFrame, timer: spellTimer!)
+    }
+
+    func symbolSpell(){
         spell.addKVO(view: spell, kvo)
-        spell.symbol(view: self)
+        spell.symbol(rect: rectFrame)
+        self.isHidden = true
     }
 
+    // TODO: Logic
     func aColumnSpell() {
-        spellMentod()
-        flg =  true
         spell.addKVO(view: spell, kvo)
-        spell.aColumn(view: self, rect: rectFrame)
+        spell.aColumn()
     }
 
-    func dColumnSpell() {
-        spellMentod()
+    func dColumnSpell(){
         spell.addKVO(view: spell, kvo)
-        spell.dColumn(view: self)
+        spell.dColumn(rect: rectFrame)
+        self.alpha = 0
     }
     
     func gColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.gColumn(view: self)
     }
 
     func jColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.jColumn(view: self)
     }
 
     func mColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.mColumn(view: self)
     }
     
     func pColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.pColumn(view: self)
     }
     
     func tColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.tColumn(view: self)
     }
     
     func wColumnSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.wColumn(view: self)
     }
 
     func darkSpotSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.darkSpot(view: self)
     }
 
     func whatSpell() {
-        spellMentod()
         spell.addKVO(view: spell, kvo)
         spell.what(view: self)
-    }
-
-    // TODO:  Segue Method
-    func spellMentod() {
-//        spell.removeFromSuperview()
-//        spell = RARFSpellAndKeyBoard()
-        self.addSubview(spell)
     }
 
     func spaceMentod() { self.spaceBt() }
