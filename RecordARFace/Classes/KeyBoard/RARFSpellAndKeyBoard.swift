@@ -13,6 +13,7 @@ struct Global { static var texFlg = false }
 final class RARFSpellAndKeyBoard: UIView {
 
     var originFrame: CGRect?
+    var views: RARFLuangageKeyBoard?
 
     @IBOutlet weak var upKey: RARFNumberButton!
     @IBOutlet weak var centerKey: RARFNumberButton!
@@ -21,13 +22,14 @@ final class RARFSpellAndKeyBoard: UIView {
     @IBOutlet weak var leftKey: RARFNumberButton!
 
     private var keyValueObservations = [NSKeyValueObservation]()
+     private var keyValueObservations2 = [NSKeyValueObservation]()
 
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+   override init(frame: CGRect) {
+        super.init(frame: .zero)
         self.frame = UIScreen.main.bounds
         loadNib()
         removeKVO()
+        self.alpha = 0
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -46,9 +48,8 @@ final class RARFSpellAndKeyBoard: UIView {
     func originTextField(rect: CGRect,timer: Timer) {
         originFrame = rect
         originFrame!.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
-
         if centerKey.title(for: .normal) == "＠" { symbol(rect: originFrame!) }
-        if centerKey.title(for: .normal) == "A" { aColumn()}
+        if centerKey.title(for: .normal) == "A" { aColumn(view: views!)}
         if centerKey.title(for: .normal) == "D" { dColumn(rect: originFrame!) }
     }
 
@@ -83,33 +84,42 @@ final class RARFSpellAndKeyBoard: UIView {
         }
     }
     // TODO: Logic
-    func aColumn() {
+    func aColumn(view: RARFLuangageKeyBoard) {
         if originFrame != nil {
-            if self.centerKey.frame.contains(originFrame!) {
-                print("A")
-                self.centerKey.setTitle("", for: .normal)
-                _ = RARFSpellAndKeyBoard()
+            if self.alpha == 0 {
+                UIView.animate(withDuration: 0.4) {
+                    self.centerKey.setTitle("A", for: .normal)
+                    self.leftKey.setTitle("B", for: .normal)
+                    self.upKey.setTitle("C", for: .normal)
+                    self.rightKey.alpha = 0
+                    self.underKey.alpha = 0
+                    self.alpha = 1
+                }
+            } else if self.alpha == 1 {
+                if self.centerKey.frame.contains(originFrame!) {
+                    self.centerKey.setTitle("", for: .normal)
+                    print("A")
+                    self.alpha = 0
+                    view.alpha = 1
+                }
+                if self.leftKey.frame.contains(originFrame!) {
+                    self.centerKey.setTitle("", for: .normal)
+                    print("B")
+                    self.alpha = 0
+                    view.alpha = 1
+                }
+                if self.upKey.frame.contains(originFrame!) {
+                    self.centerKey.setTitle("", for: .normal)
+                    print("C")
+                    self.alpha = 0
+                    view.alpha = 1
+                }
             }
-            if self.leftKey.frame.contains(originFrame!) {
-                print("B")
-                self.centerKey.setTitle("", for: .normal)
-                _ = RARFSpellAndKeyBoard()
-            }
-            if self.upKey.frame.contains(originFrame!) {
-                print("C")
-                self.centerKey.setTitle("", for: .normal)
-                _ = RARFSpellAndKeyBoard()
-            }
-        }
-        UIView.animate(withDuration: 0.4) {
-            self.centerKey.setTitle("A", for: .normal)
-            self.leftKey.setTitle("B", for: .normal)
-            self.upKey.setTitle("C", for: .normal)
-            self.rightKey.alpha = 0
-            self.underKey.alpha = 0
         }
     }
-    
+
+    func kvo() { self.alpha = 1 }
+
     func dColumn(rect: CGRect) {
         if self.alpha == 1 {
             self.centerKey.setTitle("", for: .normal)

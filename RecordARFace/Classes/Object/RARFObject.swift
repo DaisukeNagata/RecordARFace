@@ -21,6 +21,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 final class RARFObject: NSObject, ARSessionDelegate {
 
     var timer: Timer?
+    var spellTimer: Timer?
     public var indexNumber = 0
 
     lazy var tableView: UITableView = {
@@ -90,6 +91,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
             tableView.addSubview(numberKey)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
+            spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
 
@@ -109,7 +111,8 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
      @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
-     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
+     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame) }
+     @objc func spellKeyUpdate() { spellKey.originTextField(rect: self.eView.frame, timer: spellTimer!) }
 }
 
 // MARK: ARSCNViewDelegate

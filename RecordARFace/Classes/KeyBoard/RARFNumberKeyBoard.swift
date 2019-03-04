@@ -10,8 +10,6 @@ import UIKit
 
 final class RARFNumberKeyboard: UIView {
 
-    var timer: Timer?
-
     @IBOutlet weak var centerKey: RARFNumberButton!
     @IBOutlet weak var leftKey: RARFNumberButton!
     @IBOutlet weak var rightKey: RARFNumberButton!
