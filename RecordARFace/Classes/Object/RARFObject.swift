@@ -91,7 +91,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
             tableView.addSubview(numberKey)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
-            spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
+            spellTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
 

@@ -65,6 +65,7 @@ final class RARFLuangageKeyBoard: UIView {
         rectFrame = rect
         rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
+        if flg == false {
             if arrow.frame.contains(rectFrame) { symbolSpell()}
             if aColumn.frame.contains(rectFrame) { aColumnSpell()}
             if dColumn.frame.contains(rectFrame) { dColumnSpell()}
@@ -78,9 +79,9 @@ final class RARFLuangageKeyBoard: UIView {
             if what.frame.contains(rectFrame) { whatSpell() }
             if lower.frame.contains(rectFrame) { lowerMentod() }
             if space.frame.contains(rectFrame) { spaceMentod() }
+        }
     }
 
-    // TODO: Logic
     @objc func spellKeyUpdate() {
         spell.originTextField(rect: rectFrame, timer: spellTimer!)
     }
@@ -93,9 +94,10 @@ final class RARFLuangageKeyBoard: UIView {
 
     // TODO: Logic
     func aColumnSpell() {
-        spell.addKVO(view: spell, kvo)
+//        spell.addKVO(view: spell, kvo)
         spell.aColumn(view: self)
         self.alpha = 0
+        flg = true
     }
 
     func dColumnSpell(){

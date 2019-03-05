@@ -85,40 +85,46 @@ final class RARFSpellAndKeyBoard: UIView {
     }
     // TODO: Logic
     func aColumn(view: RARFLuangageKeyBoard) {
-        if originFrame != nil {
+        views = view
+        if originFrame != nil  {
             if self.alpha == 0 {
-                UIView.animate(withDuration: 0.4) {
                     self.centerKey.setTitle("A", for: .normal)
                     self.leftKey.setTitle("B", for: .normal)
                     self.upKey.setTitle("C", for: .normal)
                     self.rightKey.alpha = 0
                     self.underKey.alpha = 0
                     self.alpha = 1
-                }
+                    view.alpha = 1
+                    view.flg = true
             } else if self.alpha == 1 {
                 if self.centerKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
                     print("A")
+                    self.underKey.setTitle("A", for: .normal)
                     self.alpha = 0
                     view.alpha = 1
-                }
+                    view.flg = false
+                } else
                 if self.leftKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
                     print("B")
+                    self.underKey.setTitle("B", for: .normal)
                     self.alpha = 0
                     view.alpha = 1
-                }
+                    view.flg = false
+                } else
                 if self.upKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
+                    self.underKey.setTitle("C", for: .normal)
                     print("C")
-                    self.alpha = 0
                     view.alpha = 1
+                    self.alpha = 0
+                    view.flg = false
                 }
             }
         }
     }
 
-    func kvo() { self.alpha = 1 }
 
     func dColumn(rect: CGRect) {
         if self.alpha == 1 {
