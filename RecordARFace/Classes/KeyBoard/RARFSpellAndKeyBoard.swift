@@ -100,25 +100,25 @@ final class RARFSpellAndKeyBoard: UIView {
                 if self.centerKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
                     print("A")
-                    self.underKey.setTitle("A", for: .normal)
                     self.alpha = 0
                     view.alpha = 1
+                    view.testLabel.text = "A"
                     view.flg = false
                 } else
                 if self.leftKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
                     print("B")
-                    self.underKey.setTitle("B", for: .normal)
                     self.alpha = 0
                     view.alpha = 1
+                    view.testLabel.text = "B"
                     view.flg = false
                 } else
                 if self.upKey.frame.contains(originFrame!) {
                     self.centerKey.setTitle("", for: .normal)
-                    self.underKey.setTitle("C", for: .normal)
                     print("C")
                     view.alpha = 1
                     self.alpha = 0
+                    view.testLabel.text = "C"
                     view.flg = false
                 }
             }

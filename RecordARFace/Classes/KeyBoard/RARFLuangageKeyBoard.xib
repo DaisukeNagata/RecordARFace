@@ -30,6 +30,7 @@
                 <outlet property="space" destination="Jbg-px-21O" id="v8M-H6-ijR"/>
                 <outlet property="symbol" destination="eji-lA-sUe" id="Qyb-YD-PfR"/>
                 <outlet property="tColumn" destination="WgU-hT-FAM" id="eue-NH-aoM"/>
+                <outlet property="testLabel" destination="bEu-pq-Pjx" id="9i9-FK-NrP"/>
                 <outlet property="wColumn" destination="A8y-77-cVL" id="Qxt-rk-Rft"/>
                 <outlet property="what" destination="suw-e4-4uq" id="uB1-oG-yh4"/>
             </connections>
@@ -301,6 +302,13 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEu-pq-Pjx">
+                    <rect key="frame" x="168" y="162" width="154" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

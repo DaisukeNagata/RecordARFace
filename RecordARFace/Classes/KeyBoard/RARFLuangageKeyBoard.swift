@@ -35,6 +35,9 @@ final class RARFLuangageKeyBoard: UIView {
     @IBOutlet weak var lower: RARFNumberButton!
     @IBOutlet weak var darkSpot: RARFNumberButton!
     @IBOutlet weak var what: RARFNumberButton!
+    
+    @IBOutlet weak var testLabel: UILabel!
+    
 
 
      init(spellKey: RARFSpellAndKeyBoard) {
