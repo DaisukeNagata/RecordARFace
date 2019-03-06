@@ -90,63 +90,69 @@ final class RARFLuangageKeyBoard: UIView {
     }
 
     func symbolSpell(){
-        spell.addKVO(view: spell, kvo)
-        spell.symbol(rect: rectFrame)
-        self.isHidden = true
+        spell.symbol(view: self)
+        self.alpha = 0
+        flg = true
     }
 
     // TODO: Logic
     func aColumnSpell() {
-//        spell.addKVO(view: spell, kvo)
         spell.aColumn(view: self)
         self.alpha = 0
         flg = true
     }
 
     func dColumnSpell(){
-        spell.addKVO(view: spell, kvo)
-        spell.dColumn(rect: rectFrame)
+        spell.dColumn(view: self)
         self.alpha = 0
+        flg = true
     }
     
     func gColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.gColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
-
     func jColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.jColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
 
     func mColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.mColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
     
     func pColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.pColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
     
     func tColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.tColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
     
     func wColumnSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.wColumn(view: self)
+        self.alpha = 0
+        flg = true
     }
 
     func darkSpotSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.darkSpot(view: self)
+        self.alpha = 0
+        flg = true
     }
 
     func whatSpell() {
-        spell.addKVO(view: spell, kvo)
         spell.what(view: self)
+        self.alpha = 0
+        flg = true
     }
 
     func spaceMentod() { self.spaceBt() }
