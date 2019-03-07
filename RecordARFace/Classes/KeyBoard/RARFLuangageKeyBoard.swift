@@ -12,7 +12,6 @@ final class RARFLuangageKeyBoard: UIView {
 
     var flg = false
     var rectFrame: CGRect!
-    var spellTimer: Timer?
     var spell: RARFSpellAndKeyBoard!
 
     @IBOutlet weak var arrow: RARFNumberButton!
@@ -39,7 +38,6 @@ final class RARFLuangageKeyBoard: UIView {
     @IBOutlet weak var testLabel: UILabel!
     
 
-
      init(spellKey: RARFSpellAndKeyBoard) {
         spell = spellKey
         super.init(frame: .zero)
@@ -64,100 +62,49 @@ final class RARFLuangageKeyBoard: UIView {
         self.addSubview(view)
     }
 
-    @objc func originTextField(rect: CGRect) {
+    @objc func originTextField(rect: CGRect,timer: Timer) {
         rectFrame = rect
         rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
-        if flg == false {
-            if arrow.frame.contains(rectFrame) { symbolSpell()}
-            if aColumn.frame.contains(rectFrame) { aColumnSpell()}
-            if dColumn.frame.contains(rectFrame) { dColumnSpell()}
-            if gColumn.frame.contains(rectFrame) { gColumnSpell() }
-            if jColumn.frame.contains(rectFrame) { jColumnSpell() }
-            if mColumn.frame.contains(rectFrame) { mColumnSpell() }
-            if pColumn.frame.contains(rectFrame) { pColumnSpell() }
-            if tColumn.frame.contains(rectFrame) { tColumnSpell() }
-            if wColumn.frame.contains(rectFrame) { wColumnSpell() }
-            if darkSpot.frame.contains(rectFrame) { darkSpotSpell() }
-            if what.frame.contains(rectFrame) { whatSpell() }
-            if lower.frame.contains(rectFrame) { lowerMentod() }
-            if space.frame.contains(rectFrame) { spaceMentod() }
-        }
+            if arrow.frame.contains(rectFrame) { symbolSpell(timer: timer)}
+            if aColumn.frame.contains(rectFrame) { aColumnSpell(timer: timer)}
+            if dColumn.frame.contains(rectFrame) { dColumnSpell(timer: timer)}
+            if gColumn.frame.contains(rectFrame) { gColumnSpell(timer: timer)}
+            if jColumn.frame.contains(rectFrame) { jColumnSpell(timer: timer)}
+            if mColumn.frame.contains(rectFrame) { mColumnSpell(timer: timer)}
+            if pColumn.frame.contains(rectFrame) { pColumnSpell(timer: timer)}
+            if tColumn.frame.contains(rectFrame) { tColumnSpell(timer: timer)}
+            if wColumn.frame.contains(rectFrame) { wColumnSpell(timer: timer)}
+            if darkSpot.frame.contains(rectFrame) { darkSpotSpell(timer: timer)}
+            if what.frame.contains(rectFrame) { whatSpell(timer: timer)}
+            if lower.frame.contains(rectFrame) { lowerMentod()}
+            if space.frame.contains(rectFrame) { spaceMentod()}
     }
 
-    @objc func spellKeyUpdate() {
-        spell.originTextField(rect: rectFrame, timer: spellTimer!)
-    }
+    func symbolSpell(timer: Timer) { spell.symbol(view: self, timer: timer) }
 
-    func symbolSpell(){
-        spell.symbol(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func aColumnSpell(timer: Timer) { spell.aColumn(view: self, timer: timer) }
 
-    // TODO: Logic
-    func aColumnSpell() {
-        spell.aColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
-
-    func dColumnSpell(){
-        spell.dColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func dColumnSpell(timer: Timer) { spell.dColumn(view: self, timer: timer) }
     
-    func gColumnSpell() {
-        spell.gColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
-    func jColumnSpell() {
-        spell.jColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func gColumnSpell(timer: Timer) { spell.gColumn(view: self, timer: timer) }
 
-    func mColumnSpell() {
-        spell.mColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
-    
-    func pColumnSpell() {
-        spell.pColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
-    
-    func tColumnSpell() {
-        spell.tColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
-    
-    func wColumnSpell() {
-        spell.wColumn(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func jColumnSpell(timer: Timer) { spell.jColumn(view: self, timer: timer) }
 
-    func darkSpotSpell() {
-        spell.darkSpot(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func mColumnSpell(timer: Timer) { spell.mColumn(view: self, timer: timer) }
+    
+    func pColumnSpell(timer: Timer) { spell.pColumn(view: self, timer: timer) }
+    
+    func tColumnSpell(timer: Timer) { spell.tColumn(view: self, timer: timer) }
+    
+    func wColumnSpell(timer: Timer) { spell.wColumn(view: self, timer: timer) }
 
-    func whatSpell() {
-        spell.what(view: self)
-        self.alpha = 0
-        flg = true
-    }
+    func darkSpotSpell(timer: Timer) { spell.darkSpot(view: self, timer: timer) }
+
+    func whatSpell(timer: Timer) {  spell.what(view: self, timer: timer) }
 
     func spaceMentod() { self.spaceBt() }
 
     func lowerMentod() { self.backColumnBt() }
 
-    func kvo() { self.alpha = 1 }
 }

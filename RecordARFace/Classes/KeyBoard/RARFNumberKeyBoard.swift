@@ -170,15 +170,6 @@ final class RARFNumberKeyboard: UIView {
         UIView.animate(withDuration: 0.4) { self.alpha = 1.0 }
     }
 
-
-    func texConversion() {
-        if Global.texFlg == false {
-            Global.texFlg = true
-        } else {
-            Global.texFlg = false
-        }
-    }
-
     func addKVO(view: RARFSpellAndKeyBoard, _ closure: @escaping ()->Void)  {
         let keyValueObservation = self.observe(\.alpha, options: [.new, .old])
         { _, change in
