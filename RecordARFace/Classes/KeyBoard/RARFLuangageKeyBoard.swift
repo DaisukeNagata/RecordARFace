@@ -71,6 +71,20 @@ final class RARFLuangageKeyBoard: UIView {
             spell.texLabel = testLabel.text!
         }
 
+        if reload.frame.contains(rectFrame) {
+            if symbol.title(for: .normal) == "1" {
+                number.selfAlpha(view: self,timer: timer)
+                number.centerKey.setTitle(String(testLabel.text!.suffix(1)), for: .normal)
+                testLabel.text = String(testLabel.text!.dropLast(1))
+                number.texLabel = testLabel.text!
+            } else {
+                spell.selfAlpha(view: self,timer: timer)
+                spell.centerKey.setTitle(String(testLabel.text!.suffix(1)), for: .normal)
+                testLabel.text = String(testLabel.text!.dropLast(1))
+                spell.texLabel = testLabel.text!
+            }
+        }
+
         if backColumn.frame.contains(rectFrame) {
             testLabel.text = ""
             spell.texLabel = ""

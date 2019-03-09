@@ -16,11 +16,11 @@ final class RARFNumberChangeKeyBoardView: UIView {
     @IBOutlet weak var upKey: RARFNumberButton!
     @IBOutlet weak var underKey: RARFNumberButton!
 
-    var views: RARFLuangageKeyBoard?
-    var texLabel = String()
     private var originFrame: CGRect?
-    private var rARFObject:  RARFObject?
 
+    var texLabel = String()
+    var rARFObject:  RARFObject?
+    var views: RARFLuangageKeyBoard?
 
     init(ob: RARFObject) {
         super.init(frame: .zero)

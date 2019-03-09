@@ -16,10 +16,11 @@ final class RARFSpellAndKeyBoard: UIView {
     @IBOutlet weak var rightKey: RARFNumberButton!
     @IBOutlet weak var leftKey: RARFNumberButton!
 
-    var views: RARFLuangageKeyBoard?
-    var texLabel = String()
     private var originFrame: CGRect?
-    private var rARFObject:  RARFObject?
+    
+    var texLabel = String()
+    var rARFObject:  RARFObject?
+    var views: RARFLuangageKeyBoard?
     
 
     init(ob: RARFObject) {
