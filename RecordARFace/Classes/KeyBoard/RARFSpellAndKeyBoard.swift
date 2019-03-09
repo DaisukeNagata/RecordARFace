@@ -32,6 +32,7 @@ final class RARFSpellAndKeyBoard: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
         loadNib()
     }
 
@@ -63,262 +64,100 @@ final class RARFSpellAndKeyBoard: UIView {
 
     func symbol(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "＠", l: "#", r: "&", up: "/", under: "-")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "＠")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "#")
-                } else
-                    if self.rightKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "&")
-                    } else
-                        if self.upKey.frame.contains(originFrame!) {
-                            rARFObject?.upDateluangageKey()
-                            alphaMethod(view: view, timer: timer, st: "/")
-                        } else
-                            if self.underKey.frame.contains(originFrame!) {
-                                rARFObject?.upDateluangageKey()
-                                alphaMethod(view: view, timer: timer, st: "-")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "＠", l: "#", r: "&", up: "/", under: "-", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "＠") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "#") }
+        if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "&") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "/") }
+        if underKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "-") }
     }
 
     func aColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "A", l: "B", r: "", up: "C", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "A")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "B")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "C")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "A", l: "B", r: "", up: "C", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "A") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "B") }
+        if upKey.frame.contains(originFrame!) {  alphaMethod(view: view, timer: timer, st: "C") }
     }
 
     func dColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "D", l: "E", r: "", up: "F", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "D")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "E")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "F")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "D", l: "E", r: "", up: "F", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "D") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "E") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "F") }
     }
 
     func gColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "G", l: "H", r: "", up: "I", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "G")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "H")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "I")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "G", l: "H", r: "", up: "I", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "G") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "H") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "I") }
     }
 
     func jColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "J", l: "K", r: "", up: "L", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "J")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "K")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "L")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "J", l: "K", r: "", up: "L", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "J") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "K") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "L") }
     }
 
     func mColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "M", l: "N", r: "", up: "O", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "M")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "N")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "O")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "M", l: "N", r: "", up: "O", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "M") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "N") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "O") }
     }
 
     func pColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "P", l: "Q", r: "S", up: "R", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "P")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "Q")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "R")
-
-                    } else
-                        if self.rightKey.frame.contains(originFrame!) {
-                            rARFObject?.upDateluangageKey()
-                            alphaMethod(view: view, timer: timer, st: "S")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "P", l: "Q", r: "S", up: "R", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "P") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "Q") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "R")}
+        if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "S") }
     }
 
     func tColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "T", l: "U", r: "", up: "V", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "T")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "U")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "V")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "T", l: "U", r: "", up: "V", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "T") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "U") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "V") }
     }
 
     func wColumn(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "W", l: "X", r: "Z", up: "Y", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "W")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "X")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "Y")
-                    } else
-                        if self.rightKey.frame.contains(originFrame!) {
-                            rARFObject?.upDateluangageKey()
-                            alphaMethod(view: view, timer: timer, st: "Z")
-                            
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "W", l: "X", r: "Z", up: "Y", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "W") }
+        if leftKey.frame.contains(originFrame!) {alphaMethod(view: view, timer: timer, st: "X") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "Y") }
+        if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "Z") }
     }
 
     func darkSpot(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: "\'", l: "\"", r: ")", up: "(", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: "\'")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: "\"")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: ")")
-                    } else
-                        if self.upKey.frame.contains(originFrame!) {
-                            rARFObject?.upDateluangageKey()
-                            alphaMethod(view: view, timer: timer, st: "(")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: "\'", l: "\"", r: ")", up: "(", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "\'") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "\"") }
+        if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ")") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "(") }
     }
 
     func what(view: RARFLuangageKeyBoard, timer: Timer) {
         views = view
-        if self.alpha == 0 {
-            setTitle(c: ".", l: ",", r: "!", up: "?", under: "")
-            selfAlpha(view: view, timer: timer)
-        } else if self.alpha == 1 {
-            if self.centerKey.frame.contains(originFrame!) {
-                rARFObject?.upDateluangageKey()
-                alphaMethod(view: view, timer: timer, st: ".")
-            } else
-                if self.leftKey.frame.contains(originFrame!) {
-                    rARFObject?.upDateluangageKey()
-                    alphaMethod(view: view, timer: timer, st: ",")
-                } else
-                    if self.upKey.frame.contains(originFrame!) {
-                        rARFObject?.upDateluangageKey()
-                        alphaMethod(view: view, timer: timer, st: "!")
-                    } else
-                        if self.upKey.frame.contains(originFrame!) {
-                            rARFObject?.upDateluangageKey()
-                            alphaMethod(view: view, timer: timer, st: "?")
-            }
-        }
+        guard self.alpha == 1 else { setTitle(c: ".", l: ",", r: "!", up: "?", under: "", view: views!, timer: timer); return }
+        if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ".") }
+        if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ",") }
+        if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "!") }
+        if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "?") }
     }
     
-    func setTitle(c: String, l: String, r: String, up: String, under: String) {
+    func setTitle(c: String, l: String, r: String, up: String, under: String, view: RARFLuangageKeyBoard, timer: Timer) {
+        selfAlpha(view: view, timer: timer)
         centerKey.setTitle(c, for: .normal)
         leftKey.setTitle(l, for: .normal)
         rightKey.setTitle(r, for: .normal)
@@ -335,7 +174,7 @@ final class RARFSpellAndKeyBoard: UIView {
 
     func alphaMethod(view: RARFLuangageKeyBoard,timer: Timer, st: String) {
         timer.invalidate()
-        self.centerKey.setTitle("", for: .normal)
+        rARFObject?.upDateluangageKey()
         self.alpha = 0
         view.alpha = 1
         texLabel += st

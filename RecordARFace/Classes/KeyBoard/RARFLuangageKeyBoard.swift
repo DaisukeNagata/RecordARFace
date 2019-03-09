@@ -69,19 +69,18 @@ final class RARFLuangageKeyBoard: UIView {
         if arrow.frame.contains(rectFrame) {
             testLabel.text = String(testLabel.text!.dropLast(1))
             spell.texLabel = testLabel.text!
+            number.texLabel = testLabel.text!
         }
 
         if reload.frame.contains(rectFrame) {
             if symbol.title(for: .normal) == "1" {
-                number.selfAlpha(view: self,timer: timer)
-                number.centerKey.setTitle(String(testLabel.text!.suffix(1)), for: .normal)
                 testLabel.text = String(testLabel.text!.dropLast(1))
                 number.texLabel = testLabel.text!
+                number.selfAlpha(view: self, timer: timer)
             } else {
-                spell.selfAlpha(view: self,timer: timer)
-                spell.centerKey.setTitle(String(testLabel.text!.suffix(1)), for: .normal)
                 testLabel.text = String(testLabel.text!.dropLast(1))
                 spell.texLabel = testLabel.text!
+                spell.selfAlpha(view: self, timer: timer)
             }
         }
 
@@ -175,7 +174,8 @@ final class RARFLuangageKeyBoard: UIView {
         if pColumn.frame.contains(rectFrame) { numSevenColumnSpell(timer: timer)}
         if tColumn.frame.contains(rectFrame) { numEightColumnSpell(timer: timer)}
         if wColumn.frame.contains(rectFrame) { numNineColumnSpell(timer: timer)}
-        if darkSpot.frame.contains(rectFrame) { numDarkSpotSpell(timer: timer)}
+        if darkSpot.frame.contains(rectFrame) { numZeroColumnSpell(timer: timer)}
+        if lower.frame.contains(rectFrame) { numlowerColumnSpell(timer: timer)}
     }
 
     func whatSpell(timer: Timer) {  spell.what(view: self, timer: timer) }
@@ -217,6 +217,8 @@ final class RARFLuangageKeyBoard: UIView {
     func numEightColumnSpell(timer: Timer) { number.eightColumn(view: self, timer: timer) }
 
     func numNineColumnSpell(timer: Timer) { number.nineColumn(view: self, timer: timer) }
+    
+    func numZeroColumnSpell(timer: Timer) { number.zeroColumn(view: self, timer: timer) }
 
-    func numDarkSpotSpell(timer: Timer) { number.darkSpotColumn(view: self, timer: timer) }
+    func numlowerColumnSpell(timer: Timer) { number.lowerColumn(view: self, timer: timer) }
 }
