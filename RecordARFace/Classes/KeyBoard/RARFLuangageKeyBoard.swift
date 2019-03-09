@@ -75,7 +75,7 @@ final class RARFLuangageKeyBoard: UIView {
     }
 
     // TODO: if lower.frame.contains(rectFrame) { lowerMentod()} func lowerMentod() { self.backColumnBt() }
-    func numMentod() {
+    func numMethod() {
         if  symbol.title(for: .normal) != "1" {
             symbol.setTitle("1", for: .normal)
             aColumn.setTitle("2", for: .normal)
@@ -107,7 +107,7 @@ final class RARFLuangageKeyBoard: UIView {
 
     func spell(timer: Timer) {
         if space.frame.contains(rectFrame) { spaceMentod()}
-        if numColumn.frame.contains(rectFrame) { numMentod()}
+        if numColumn.frame.contains(rectFrame) { numMethod()}
         if what.frame.contains(rectFrame) { whatSpell(timer: timer)}
         if symbol.frame.contains(rectFrame) { symbolSpell(timer: timer)}
         if aColumn.frame.contains(rectFrame) { aColumnSpell(timer: timer)}
@@ -123,7 +123,7 @@ final class RARFLuangageKeyBoard: UIView {
     
     func number(timer: Timer) {
         if space.frame.contains(rectFrame) { spaceMentod()}
-        if numColumn.frame.contains(rectFrame) { spaceMentod()}
+        if numColumn.frame.contains(rectFrame) { numMethod()}
         if symbol.frame.contains(rectFrame) { numOneColumnSpell(timer: timer)}
         if aColumn.frame.contains(rectFrame) { numTwoColumnSpell(timer: timer)}
         if dColumn.frame.contains(rectFrame) { numThreeColumnSpell(timer: timer)}
