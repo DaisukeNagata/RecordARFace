@@ -22,6 +22,15 @@ extension RARFTableData: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
+        switch KeyboardCount(rawValue: indexPath.row) {
+        case .number?:
+            cell.textLabel?.text = "Calculator"
+            return cell
+        case .luangage?:
+            cell.textLabel?.text = "luangage"
+            return cell
+        default: break
+        }
         return cell
     }
 }

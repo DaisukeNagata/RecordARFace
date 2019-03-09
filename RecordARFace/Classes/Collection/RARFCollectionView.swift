@@ -40,7 +40,7 @@ public final class RARFCollectionView: UIView {
         return scrollView
     }()
 
-    let ob = RARFTableData()
+    private let ob = RARFTableData()
 
     private lazy var tView: RARFTView = {
         let tView = RARFTView()
