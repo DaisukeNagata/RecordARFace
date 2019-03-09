@@ -25,14 +25,14 @@
 		BBABDF8E222AC29700959558 /* RARFNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF82222AC29700959558 /* RARFNumberButton.swift */; };
 		BBABDF8F222AC29700959558 /* RARFFlameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF83222AC29700959558 /* RARFFlameView.swift */; };
 		BBABDF90222AC29700959558 /* RARFStatusBarUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */; };
-		BBABDF9B222B641B00959558 /* RARFNumberKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF95222B641A00959558 /* RARFNumberKeyboard.xib */; };
 		BBABDF9C222B641B00959558 /* RARFSpellAndKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF96222B641A00959558 /* RARFSpellAndKeyBoard.swift */; };
-		BBABDF9D222B641B00959558 /* RARFNumberKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF97222B641B00959558 /* RARFNumberKeyBoard.swift */; };
 		BBABDF9E222B641B00959558 /* RARFSpellAndKeyBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF98222B641B00959558 /* RARFSpellAndKeyBoard.xib */; };
 		BBABDF9F222B641B00959558 /* RARFLuangageKeyBoard.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF99222B641B00959558 /* RARFLuangageKeyBoard.xib */; };
 		BBABDFA0222B641B00959558 /* RARFLuangageKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF9A222B641B00959558 /* RARFLuangageKeyBoard.swift */; };
 		BBABDFA2222B920400959558 /* RARFTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDFA1222B920400959558 /* RARFTView.swift */; };
 		BBABDFA4222B922600959558 /* RARFTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDFA3222B922600959558 /* RARFTableData.swift */; };
+		BBABDFE32233306B00959558 /* RARFNumberChangeKeyBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDFE12233306B00959558 /* RARFNumberChangeKeyBoardView.swift */; };
+		BBABDFE42233306B00959558 /* RARFNumberChangeKeyBoardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDFE22233306B00959558 /* RARFNumberChangeKeyBoardView.xib */; };
 		BF9297F9CC3A886605806E78F0A4BFC5 /* RecordARFace-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C116DB69C1AD0CA1903DF248BE13A0C /* RecordARFace-dummy.m */; };
 		CB00A02E67D2D0701D6C7F255578260A /* Pods-RecordARFace_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2921D8D0EC6305B7F01D6F1A6837154B /* Pods-RecordARFace_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5E7ADA23CA2C909DE81CB510FE90FB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
@@ -89,14 +89,14 @@
 		BBABDF82222AC29700959558 /* RARFNumberButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberButton.swift; sourceTree = "<group>"; };
 		BBABDF83222AC29700959558 /* RARFFlameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFFlameView.swift; sourceTree = "<group>"; };
 		BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFStatusBarUI.swift; sourceTree = "<group>"; };
-		BBABDF95222B641A00959558 /* RARFNumberKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFNumberKeyboard.xib; sourceTree = "<group>"; };
 		BBABDF96222B641A00959558 /* RARFSpellAndKeyBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFSpellAndKeyBoard.swift; sourceTree = "<group>"; };
-		BBABDF97222B641B00959558 /* RARFNumberKeyBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberKeyBoard.swift; sourceTree = "<group>"; };
 		BBABDF98222B641B00959558 /* RARFSpellAndKeyBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFSpellAndKeyBoard.xib; sourceTree = "<group>"; };
 		BBABDF99222B641B00959558 /* RARFLuangageKeyBoard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFLuangageKeyBoard.xib; sourceTree = "<group>"; };
 		BBABDF9A222B641B00959558 /* RARFLuangageKeyBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFLuangageKeyBoard.swift; sourceTree = "<group>"; };
 		BBABDFA1222B920400959558 /* RARFTView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTView.swift; sourceTree = "<group>"; };
 		BBABDFA3222B922600959558 /* RARFTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTableData.swift; sourceTree = "<group>"; };
+		BBABDFE12233306B00959558 /* RARFNumberChangeKeyBoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberChangeKeyBoardView.swift; sourceTree = "<group>"; };
+		BBABDFE22233306B00959558 /* RARFNumberChangeKeyBoardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFNumberChangeKeyBoardView.xib; sourceTree = "<group>"; };
 		C1FD28C8F5AD3610D8BF45DFC103CB63 /* RecordARFace.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = RecordARFace.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C9A38D0613C991FCC9F83B492A0E7B6E /* Pods-RecordARFace_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RecordARFace_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		CB1BA55058EED17B0EF70157000F4205 /* Pods-RecordARFace_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Tests-resources.sh"; sourceTree = "<group>"; };
@@ -262,10 +262,10 @@
 				BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */,
 				BBABDF9A222B641B00959558 /* RARFLuangageKeyBoard.swift */,
 				BBABDF99222B641B00959558 /* RARFLuangageKeyBoard.xib */,
-				BBABDF97222B641B00959558 /* RARFNumberKeyBoard.swift */,
-				BBABDF95222B641A00959558 /* RARFNumberKeyboard.xib */,
 				BBABDF96222B641A00959558 /* RARFSpellAndKeyBoard.swift */,
 				BBABDF98222B641B00959558 /* RARFSpellAndKeyBoard.xib */,
+				BBABDFE12233306B00959558 /* RARFNumberChangeKeyBoardView.swift */,
+				BBABDFE22233306B00959558 /* RARFNumberChangeKeyBoardView.xib */,
 			);
 			name = KeyBoard;
 			path = RecordARFace/Classes/KeyBoard;
@@ -466,8 +466,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBABDFE42233306B00959558 /* RARFNumberChangeKeyBoardView.xib in Resources */,
 				BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */,
-				BBABDF9B222B641B00959558 /* RARFNumberKeyboard.xib in Resources */,
 				BBABDF9F222B641B00959558 /* RARFLuangageKeyBoard.xib in Resources */,
 				BBABDF9E222B641B00959558 /* RARFSpellAndKeyBoard.xib in Resources */,
 			);
@@ -494,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBABDFE32233306B00959558 /* RARFNumberChangeKeyBoardView.swift in Sources */,
 				BBABDF90222AC29700959558 /* RARFStatusBarUI.swift in Sources */,
 				BBABDF8A222AC29700959558 /* RARFCollectionViewModel.swift in Sources */,
 				BBABDF8F222AC29700959558 /* RARFFlameView.swift in Sources */,
@@ -508,7 +509,6 @@
 				BBABDFA0222B641B00959558 /* RARFLuangageKeyBoard.swift in Sources */,
 				BBABDFA4222B922600959558 /* RARFTableData.swift in Sources */,
 				BBABDF8B222AC29700959558 /* RARFCollectionCell.swift in Sources */,
-				BBABDF9D222B641B00959558 /* RARFNumberKeyBoard.swift in Sources */,
 				BF9297F9CC3A886605806E78F0A4BFC5 /* RecordARFace-dummy.m in Sources */,
 				BBABDF88222AC29700959558 /* RARFScreenRecorder.swift in Sources */,
 			);

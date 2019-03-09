@@ -20,6 +20,7 @@ final class RARFSpellAndKeyBoard: UIView {
     private var originFrame: CGRect?
     private var rARFObject:  RARFObject?
     
+
     init(ob: RARFObject) {
         super.init(frame: .zero)
 
@@ -65,25 +66,24 @@ final class RARFSpellAndKeyBoard: UIView {
             selfAlpha(view: view, timer: timer)
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
-                self.centerKey.setTitle("", for: .normal)
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "＠")
+                alphaMethod(view: view, timer: timer, st: "＠")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "#")
+                    alphaMethod(view: view, timer: timer, st: "#")
                 } else
-                    if self.upKey.frame.contains(originFrame!) {
+                    if self.rightKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "&")
+                        alphaMethod(view: view, timer: timer, st: "&")
                     } else
                         if self.upKey.frame.contains(originFrame!) {
                             rARFObject?.upDateluangageKey()
-                            alphaMetthod(view: view, timer: timer, st: "/")
+                            alphaMethod(view: view, timer: timer, st: "/")
                         } else
-                            if self.upKey.frame.contains(originFrame!) {
+                            if self.underKey.frame.contains(originFrame!) {
                                 rARFObject?.upDateluangageKey()
-                                alphaMetthod(view: view, timer: timer, st: "/")
+                                alphaMethod(view: view, timer: timer, st: "-")
             }
         }
     }
@@ -96,15 +96,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "A")
+                alphaMethod(view: view, timer: timer, st: "A")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "B")
+                    alphaMethod(view: view, timer: timer, st: "B")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "C")
+                        alphaMethod(view: view, timer: timer, st: "C")
             }
         }
     }
@@ -117,15 +117,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "D")
+                alphaMethod(view: view, timer: timer, st: "D")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "E")
+                    alphaMethod(view: view, timer: timer, st: "E")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "F")
+                        alphaMethod(view: view, timer: timer, st: "F")
             }
         }
     }
@@ -138,15 +138,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "G")
+                alphaMethod(view: view, timer: timer, st: "G")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "H")
+                    alphaMethod(view: view, timer: timer, st: "H")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "I")
+                        alphaMethod(view: view, timer: timer, st: "I")
             }
         }
     }
@@ -159,15 +159,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "J")
+                alphaMethod(view: view, timer: timer, st: "J")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "K")
+                    alphaMethod(view: view, timer: timer, st: "K")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "L")
+                        alphaMethod(view: view, timer: timer, st: "L")
             }
         }
     }
@@ -180,15 +180,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "M")
+                alphaMethod(view: view, timer: timer, st: "M")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "N")
+                    alphaMethod(view: view, timer: timer, st: "N")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "O")
+                        alphaMethod(view: view, timer: timer, st: "O")
             }
         }
     }
@@ -201,20 +201,20 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "P")
+                alphaMethod(view: view, timer: timer, st: "P")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "Q")
+                    alphaMethod(view: view, timer: timer, st: "Q")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "R")
+                        alphaMethod(view: view, timer: timer, st: "R")
 
                     } else
                         if self.rightKey.frame.contains(originFrame!) {
                             rARFObject?.upDateluangageKey()
-                            alphaMetthod(view: view, timer: timer, st: "S")
+                            alphaMethod(view: view, timer: timer, st: "S")
             }
         }
     }
@@ -227,15 +227,15 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "T")
+                alphaMethod(view: view, timer: timer, st: "T")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "U")
+                    alphaMethod(view: view, timer: timer, st: "U")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "V")
+                        alphaMethod(view: view, timer: timer, st: "V")
             }
         }
     }
@@ -248,19 +248,19 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "W")
+                alphaMethod(view: view, timer: timer, st: "W")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "X")
+                    alphaMethod(view: view, timer: timer, st: "X")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "Y")
+                        alphaMethod(view: view, timer: timer, st: "Y")
                     } else
                         if self.rightKey.frame.contains(originFrame!) {
                             rARFObject?.upDateluangageKey()
-                            alphaMetthod(view: view, timer: timer, st: "Z")
+                            alphaMethod(view: view, timer: timer, st: "Z")
                             
             }
         }
@@ -274,19 +274,19 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: "\'")
+                alphaMethod(view: view, timer: timer, st: "\'")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: "\"")
+                    alphaMethod(view: view, timer: timer, st: "\"")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: ")")
+                        alphaMethod(view: view, timer: timer, st: ")")
                     } else
                         if self.upKey.frame.contains(originFrame!) {
                             rARFObject?.upDateluangageKey()
-                            alphaMetthod(view: view, timer: timer, st: "(")
+                            alphaMethod(view: view, timer: timer, st: "(")
             }
         }
     }
@@ -299,23 +299,22 @@ final class RARFSpellAndKeyBoard: UIView {
         } else if self.alpha == 1 {
             if self.centerKey.frame.contains(originFrame!) {
                 rARFObject?.upDateluangageKey()
-                alphaMetthod(view: view, timer: timer, st: ".")
+                alphaMethod(view: view, timer: timer, st: ".")
             } else
                 if self.leftKey.frame.contains(originFrame!) {
                     rARFObject?.upDateluangageKey()
-                    alphaMetthod(view: view, timer: timer, st: ",")
+                    alphaMethod(view: view, timer: timer, st: ",")
                 } else
                     if self.upKey.frame.contains(originFrame!) {
                         rARFObject?.upDateluangageKey()
-                        alphaMetthod(view: view, timer: timer, st: "!")
+                        alphaMethod(view: view, timer: timer, st: "!")
                     } else
                         if self.upKey.frame.contains(originFrame!) {
                             rARFObject?.upDateluangageKey()
-                            alphaMetthod(view: view, timer: timer, st: "?")
+                            alphaMethod(view: view, timer: timer, st: "?")
             }
         }
     }
-    
     
     func setTitle(c: String, l: String, r: String, up: String, under: String) {
         centerKey.setTitle(c, for: .normal)
@@ -327,12 +326,12 @@ final class RARFSpellAndKeyBoard: UIView {
     
     func selfAlpha(view: RARFLuangageKeyBoard,  timer: Timer) {
         timer.invalidate()
-        rARFObject?.eyeTest()
+        rARFObject?.updateSpellKey()
         view.alpha = 0
         self.alpha = 1
     }
 
-    func alphaMetthod(view: RARFLuangageKeyBoard,timer: Timer, st: String) {
+    func alphaMethod(view: RARFLuangageKeyBoard,timer: Timer, st: String) {
         timer.invalidate()
         self.centerKey.setTitle("", for: .normal)
         self.alpha = 0

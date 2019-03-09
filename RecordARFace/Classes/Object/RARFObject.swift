@@ -22,6 +22,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
 
     var timer: Timer?
     var spellTimer: Timer?
+    var numTimer: Timer?
     public var indexNumber = 0
 
     lazy var tableView: UITableView = {
@@ -43,6 +44,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
     var spellKey: RARFSpellAndKeyBoard?
+    var numberChangeView: RARFNumberChangeKeyBoardView?
 
     private lazy var eView: UIView = {
         let eView = UIView()
@@ -58,17 +60,20 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }()
 
     private var nodeFace = SCNNode()
-    private var phoneNode: SCNNode = SCNNode()
+    private var phoneNode = SCNNode()
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
+
 
     override init() {
         super.init()
 
         spellKey = RARFSpellAndKeyBoard(ob: self)
-        luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!)
+        numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
+        luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!  ,numberKey: numberChangeView!)
         tableView.addSubview(spellKey!)
         tableView.addSubview(luangageKey!)
+        tableView.addSubview(numberChangeView!)
     }
 
     func resetTracking() {
@@ -109,17 +114,23 @@ final class RARFObject: NSObject, ARSessionDelegate {
         #endif
     }
     
-    func eyeTest() {
+    func updateSpellKey() {
         spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
     }
     
     func upDateluangageKey() {
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
     }
+    
+    func updateNumber() {
+        numTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true)
+    }
+    
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
     @objc func spellKeyUpdate() { spellKey!.originTextField(rect: self.eView.frame, timer: spellTimer!) }
+    @objc func numBarUpdate() { numberChangeView!.originTextField(rect: self.eView.frame, timer: numTimer!) }
 }
 
 // MARK: ARSCNViewDelegate

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RARFNumberKeyboard" customModule="RecordARFace" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RARFNumberChangeKeyBoardView" customModule="RecordARFace" customModuleProvider="target">
             <connections>
                 <outlet property="centerKey" destination="Z4Q-3z-7z0" id="pXU-sB-yaw"/>
                 <outlet property="leftKey" destination="5PF-ZG-WG3" id="Iv3-ni-40e"/>
