@@ -63,6 +63,7 @@ public final class RARFCollectionView: UIView {
     
         addSubview(tView.table)
         addSubview(collectionView)
+        addSubview(aObject.arscnView)
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -73,9 +74,9 @@ public final class RARFCollectionView: UIView {
         if aObject.timer?.isValid == true {
             aObject.timer!.invalidate()
         }
-        aObject.arscnView.removeFromSuperview()
         tView.table.frame.origin.y -= self.frame.height
         collectionView.isHidden = false
+        aObject.arscnView.isHidden = true
     }
 
     public func viewEyesTracking() {
@@ -96,8 +97,6 @@ public final class RARFCollectionView: UIView {
             aObject.timer!.invalidate()
         }
         collectionView.isHidden = true
-        aObject.arscnView.removeFromSuperview()
-        aObject = RARFObject()
         aObject.tableView.alpha = alphaSet
         aObject.tableView.separatorStyle = .none
         aObject.eyeTracking(color: vm.imagesRows[index].imageSet, flg: flg)
@@ -111,11 +110,9 @@ extension RARFCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         collectionView.isHidden = true
-        aObject.arscnView.removeFromSuperview()
-        aObject = RARFObject()
         aObject.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
         index = indexPath.row
-        addSubview(aObject.arscnView)
+        aObject.arscnView.isHidden = false
         aObject.tableView.isHidden = true
     }
 }
@@ -125,10 +122,10 @@ extension RARFCollectionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == KeyboardCount.number.rawValue {
             eyeTrackStart(flg: false)
-            addSubview(aObject.arscnView)
+            aObject.arscnView.isHidden = false
         } else if indexPath.row == KeyboardCount.luangage.rawValue {
             eyeTrackStart(flg: true)
-            addSubview(aObject.arscnView)
+            aObject.arscnView.isHidden = false
         }
     }
 }
