@@ -35,6 +35,7 @@ final class RARFLuangageKeyBoard: UIView {
     @IBOutlet weak var lower: RARFNumberButton!
     @IBOutlet weak var darkSpot: RARFNumberButton!
     @IBOutlet weak var what: RARFNumberButton!
+    @IBOutlet weak var openWeb: RARFNumberButton!
 
     @IBOutlet weak var testLabel: UILabel!
 
@@ -65,7 +66,29 @@ final class RARFLuangageKeyBoard: UIView {
         rectFrame = rect
         rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
-        if arrow.frame.contains(rectFrame) { testLabel.text = String(testLabel.text!.dropLast(1)) }
+        if arrow.frame.contains(rectFrame) {
+            testLabel.text = String(testLabel.text!.dropLast(1))
+            spell.texLabel = testLabel.text!
+        }
+
+        if backColumn.frame.contains(rectFrame) {
+            testLabel.text = ""
+            spell.texLabel = ""
+            number.texLabel = ""
+        }
+        
+        if space.frame.contains(rectFrame) {
+            spell.texLabel += " "
+            number.texLabel += " "
+        }
+
+        if openWeb.frame.contains(rectFrame){
+            if let url = URL(string: "https://www.google.co.jp/search?q=" + testLabel.text!) {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url)
+                }
+            }
+        }
 
         if symbol.title(for: .normal) == "1" {
             number(timer: timer)
@@ -74,7 +97,6 @@ final class RARFLuangageKeyBoard: UIView {
         }
     }
 
-    // TODO: if lower.frame.contains(rectFrame) { lowerMentod()} func lowerMentod() { self.backColumnBt() }
     func numMethod() {
         if  symbol.title(for: .normal) != "1" {
             symbol.setTitle("1", for: .normal)
@@ -106,7 +128,6 @@ final class RARFLuangageKeyBoard: UIView {
     }
 
     func spell(timer: Timer) {
-        if space.frame.contains(rectFrame) { spaceMentod()}
         if numColumn.frame.contains(rectFrame) { numMethod()}
         if what.frame.contains(rectFrame) { whatSpell(timer: timer)}
         if symbol.frame.contains(rectFrame) { symbolSpell(timer: timer)}
@@ -122,7 +143,6 @@ final class RARFLuangageKeyBoard: UIView {
     }
     
     func number(timer: Timer) {
-        if space.frame.contains(rectFrame) { spaceMentod()}
         if numColumn.frame.contains(rectFrame) { numMethod()}
         if symbol.frame.contains(rectFrame) { numOneColumnSpell(timer: timer)}
         if aColumn.frame.contains(rectFrame) { numTwoColumnSpell(timer: timer)}
@@ -135,8 +155,6 @@ final class RARFLuangageKeyBoard: UIView {
         if wColumn.frame.contains(rectFrame) { numNineColumnSpell(timer: timer)}
         if darkSpot.frame.contains(rectFrame) { numDarkSpotSpell(timer: timer)}
     }
-
-    func spaceMentod() { testLabel.text = " " }
 
     func whatSpell(timer: Timer) {  spell.what(view: self, timer: timer) }
 

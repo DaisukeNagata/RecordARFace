@@ -24,6 +24,7 @@
                 <outlet property="mColumn" destination="DIx-jT-ECJ" id="oQG-BL-rSF"/>
                 <outlet property="numColumn" destination="s9y-XI-YSX" id="nBC-7t-JMJ"/>
                 <outlet property="openColumn" destination="to2-u9-dSp" id="uEc-fE-Bah"/>
+                <outlet property="openWeb" destination="to2-u9-dSp" id="q3h-Qj-1OP"/>
                 <outlet property="pColumn" destination="QIp-Rc-dTj" id="xfV-TU-XBC"/>
                 <outlet property="reload" destination="rlQ-oI-Gec" id="zMT-rj-VfM"/>
                 <outlet property="reloadColumn" destination="rlQ-oI-Gec" id="kM4-XT-0kL"/>

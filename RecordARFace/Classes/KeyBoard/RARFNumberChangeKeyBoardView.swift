@@ -17,6 +17,7 @@ final class RARFNumberChangeKeyBoardView: UIView {
     @IBOutlet weak var underKey: RARFNumberButton!
 
     var views: RARFLuangageKeyBoard?
+    var texLabel = String()
     private var originFrame: CGRect?
     private var rARFObject:  RARFObject?
 
@@ -376,6 +377,7 @@ final class RARFNumberChangeKeyBoardView: UIView {
         self.centerKey.setTitle("", for: .normal)
         self.alpha = 0
         view.alpha = 1
-        view.testLabel.text = st
+        texLabel += st
+        view.testLabel.text = texLabel
     }
 }
