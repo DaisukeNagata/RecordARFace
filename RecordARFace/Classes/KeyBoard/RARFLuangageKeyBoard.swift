@@ -81,6 +81,14 @@ final class RARFLuangageKeyBoard: UIView {
             spell.texLabel += " "
             number.texLabel += " "
         }
+        
+        if lower.frame.contains(rectFrame) {
+            if testLabel.text == testLabel.text!.applyingTransform(.fullwidthToHalfwidth, reverse: true) {
+                testLabel.text  = testLabel.text!.applyingTransform(.fullwidthToHalfwidth, reverse: false)
+            } else {
+                testLabel.text  = testLabel.text!.applyingTransform(.fullwidthToHalfwidth, reverse: true)
+            }
+        }
 
         if openWeb.frame.contains(rectFrame){
             if let url = URL(string: "https://www.google.co.jp/search?q=" + testLabel.text!) {
