@@ -71,6 +71,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!  ,numberKey: numberChangeView!)
+        tableView.addSubview(numberKey)
         tableView.addSubview(spellKey!)
         tableView.addSubview(luangageKey!)
         tableView.addSubview(numberChangeView!)
@@ -93,9 +94,16 @@ final class RARFObject: NSObject, ARSessionDelegate {
         #if targetEnvironment(simulator)
         #else
         if flg == false {
-            tableView.addSubview(numberKey)
+            numberKey.isHidden = false
+            spellKey?.isHidden = true
+            luangageKey?.isHidden = true
+            numberChangeView?.isHidden = true
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
+            numberKey.isHidden = true
+            spellKey?.isHidden = false
+            luangageKey?.isHidden = false
+            numberChangeView?.isHidden = false
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
 
@@ -196,4 +204,3 @@ extension RARFObject: UITableViewDataSource, UITableViewDelegate {
         return indexNumber
     }
 }
-
