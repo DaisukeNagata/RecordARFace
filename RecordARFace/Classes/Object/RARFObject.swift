@@ -20,10 +20,11 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 final class RARFObject: NSObject, ARSessionDelegate {
 
+    public var indexNumber = 0
     var timer: Timer?
     var spellTimer: Timer?
     var numTimer: Timer?
-    public var indexNumber = 0
+    var anchors: ARAnchor?
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -78,19 +79,23 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
     func resetTracking() {
+        if anchors != nil { arscnView.session.remove(anchor: anchors!) }
         UIApplication.shared.isIdleTimerDisabled = true
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
-        arscnView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        arscnView.session.run(configuration, options: [.resetTracking])
     }
         
     func texturedFace(color: UIColor) {
+        eView.isHidden = true
         resetTracking()
         texturedFace = RARFTexturedFace(resource: color)
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
+        eView.isHidden = false
+        texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
         #else
         if flg == false {
@@ -139,7 +144,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
 extension RARFObject: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-
+        anchors = anchor
         guard texturedFace?.renderer(renderer, nodeFor: anchor) == nil else {
             guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
 
