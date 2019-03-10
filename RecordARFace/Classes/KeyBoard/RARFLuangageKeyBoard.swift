@@ -8,6 +8,8 @@
 
 import UIKit
 
+public var RARFUrlPath = String()
+
 final class RARFLuangageKeyBoard: UIView {
 
     var flg = false
@@ -103,8 +105,8 @@ final class RARFLuangageKeyBoard: UIView {
             }
         }
 
-        if openWeb.frame.contains(rectFrame){
-            if let url = URL(string: "https://www.google.co.jp/search?q=" + testLabel.text!) {
+        if openWeb.frame.contains(rectFrame) {
+            if let url = URL(string: RARFUrlPath + testLabel.text!) {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
                 }
@@ -132,6 +134,7 @@ final class RARFLuangageKeyBoard: UIView {
             lower.setTitle("()[]", for: .normal)
             darkSpot.setTitle("0", for: .normal)
             what.setTitle(".,-/", for: .normal)
+            number.texLabel = spell.texLabel
         } else {
             symbol.setTitle("＠＃/&", for: .normal)
             aColumn.setTitle("ABC", for: .normal)
@@ -145,6 +148,7 @@ final class RARFLuangageKeyBoard: UIView {
             lower.setTitle("a/A", for: .normal)
             darkSpot.setTitle("'()", for: .normal)
             what.setTitle(".,?!", for: .normal)
+            spell.texLabel = number.texLabel
         }
     }
 

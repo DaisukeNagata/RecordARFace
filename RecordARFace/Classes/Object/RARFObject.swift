@@ -114,19 +114,12 @@ final class RARFObject: NSObject, ARSessionDelegate {
         #endif
     }
     
-    func updateSpellKey() {
-        spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true)
-    }
+    func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
     
-    func upDateluangageKey() {
-        timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
-    }
+    func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
     
-    func updateNumber() {
-        numTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true)
-    }
+    func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
     
-
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
     @objc func spellKeyUpdate() { spellKey!.originTextField(rect: self.eView.frame, timer: spellTimer!) }

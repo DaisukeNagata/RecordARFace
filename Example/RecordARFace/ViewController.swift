@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // URLSetting
+        RARFUrlPath = "https://www.google.co.jp/search?q="
+
         let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
         button.setTitle("EyesTrack", for: UIControl.State.normal)
