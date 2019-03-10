@@ -109,6 +109,7 @@ final class RARFLuangageKeyBoard: UIView {
             if let url = URL(string: RARFUrlPath + testLabel.text!) {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
+                    rectFrame = CGRect()
                 }
             }
         }
