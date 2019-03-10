@@ -20,7 +20,6 @@ final class RARFSpellAndKeyBoard: UIView {
     
     var texLabel = String()
     var rARFObject:  RARFObject?
-    var views: RARFLuangageKeyBoard?
     
 
     init(ob: RARFObject) {
@@ -46,25 +45,24 @@ final class RARFSpellAndKeyBoard: UIView {
         self.addSubview(view)
     }
 
-    func originTextField(rect: CGRect,timer: Timer) {
+    func originTextField(rect: CGRect,timer: Timer, view: RARFLuangageKeyBoard) {
         originFrame = rect
         originFrame!.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
-        if centerKey.title(for: .normal) == "＠" { symbol(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "A" { aColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "D" { dColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "G" { gColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "J" { jColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "M" { mColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "P" { pColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "T" { tColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "W" { wColumn(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "\'" { darkSpot(view: views!, timer: timer)}
-        if centerKey.title(for: .normal) == "." { what(view: views!, timer: timer)}
+        if centerKey.title(for: .normal) == "＠" { symbol(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "A" { aColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "D" { dColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "G" { gColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "J" { jColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "M" { mColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "P" { pColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "T" { tColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "W" { wColumn(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "\'" { darkSpot(view: view, timer: timer)}
+        if centerKey.title(for: .normal) == "." { what(view: view, timer: timer)}
     }
 
     func symbol(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "＠", l: "#", r: "&", up: "/", under: "-", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "＠", l: "#", r: "&", up: "/", under: "-", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "＠") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "#") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "&") }
@@ -73,48 +71,42 @@ final class RARFSpellAndKeyBoard: UIView {
     }
 
     func aColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "A", l: "B", r: "C", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "A", l: "B", r: "C", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "A") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "B") }
         if rightKey.frame.contains(originFrame!) {  alphaMethod(view: view, timer: timer, st: "C") }
     }
 
     func dColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "D", l: "E", r: "F", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "D", l: "E", r: "F", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "D") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "E") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "F") }
     }
 
     func gColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "G", l: "H", r: "I", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "G", l: "H", r: "I", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "G") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "H") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "I") }
     }
 
     func jColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "J", l: "K", r: "L", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "J", l: "K", r: "L", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "J") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "K") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "L") }
     }
 
     func mColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "M", l: "N", r: "O", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "M", l: "N", r: "O", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "M") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "N") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "O") }
     }
 
     func pColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "P", l: "Q", r: "S", up: "R", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "P", l: "Q", r: "S", up: "R", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "P") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "Q") }
         if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "R")}
@@ -122,16 +114,14 @@ final class RARFSpellAndKeyBoard: UIView {
     }
 
     func tColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "T", l: "U", r: "V", up: "", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "T", l: "U", r: "V", up: "", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "T") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "U") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "V") }
     }
 
     func wColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "W", l: "X", r: "Z", up: "Y", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "W", l: "X", r: "Z", up: "Y", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "W") }
         if leftKey.frame.contains(originFrame!) {alphaMethod(view: view, timer: timer, st: "X") }
         if upKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "Y") }
@@ -139,8 +129,7 @@ final class RARFSpellAndKeyBoard: UIView {
     }
 
     func darkSpot(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: "\'", l: "\"", r: ")", up: "(", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: "\'", l: "\"", r: ")", up: "(", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "\'") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "\"") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ")") }
@@ -148,8 +137,7 @@ final class RARFSpellAndKeyBoard: UIView {
     }
 
     func what(view: RARFLuangageKeyBoard, timer: Timer) {
-        views = view
-        guard self.alpha == 1 else { setTitle(c: ".", l: ",", r: "!", up: "?", under: "", view: views!, timer: timer); return }
+        guard self.alpha == 1 else { setTitle(c: ".", l: ",", r: "!", up: "?", under: "", view: view, timer: timer); return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ".") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: ",") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "!") }

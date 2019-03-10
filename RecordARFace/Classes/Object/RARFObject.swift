@@ -47,7 +47,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     var spellKey: RARFSpellAndKeyBoard?
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
-    private lazy var eView: UIView = {
+    lazy var eView: UIView = {
         let eView = UIView()
         eView.frame = CGRect(x: 0,y: 0 ,width:25 ,height:25)
         eView.layer.cornerRadius = eView.frame.height/2
@@ -135,7 +135,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
-    @objc func spellKeyUpdate() { spellKey!.originTextField(rect: self.eView.frame, timer: spellTimer!) }
+    @objc func spellKeyUpdate() { spellKey!.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
     @objc func numBarUpdate() { numberChangeView!.originTextField(rect: self.eView.frame, timer: numTimer!) }
 }
 

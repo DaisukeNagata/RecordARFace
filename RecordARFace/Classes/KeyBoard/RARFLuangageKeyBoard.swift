@@ -47,7 +47,6 @@ final class RARFLuangageKeyBoard: UIView {
         self.frame = UIScreen.main.bounds
         loadNib()
         spell = spellKey
-        spell.views = self
         number = numberKey
         number.views = self
     }
@@ -107,9 +106,11 @@ final class RARFLuangageKeyBoard: UIView {
 
         if openWeb.frame.contains(rectFrame) {
             if let url = URL(string: RARFUrlPath + testLabel.text!) {
-                if UIApplication.shared.canOpenURL(url) {
+ 
+                guard !UIApplication.shared.canOpenURL(url) else {
                     UIApplication.shared.open(url)
-                    rectFrame = CGRect()
+                    rectFrame.origin.y = 0
+                    return
                 }
             }
         }
@@ -184,46 +185,25 @@ final class RARFLuangageKeyBoard: UIView {
     }
 
     func whatSpell(timer: Timer) {  spell.what(view: self, timer: timer) }
-
     func symbolSpell(timer: Timer) { spell.symbol(view: self, timer: timer) }
-
     func aColumnSpell(timer: Timer) { spell.aColumn(view: self, timer: timer) }
-
     func dColumnSpell(timer: Timer) { spell.dColumn(view: self, timer: timer) }
-
     func gColumnSpell(timer: Timer) { spell.gColumn(view: self, timer: timer) }
-
     func jColumnSpell(timer: Timer) { spell.jColumn(view: self, timer: timer) }
-
     func mColumnSpell(timer: Timer) { spell.mColumn(view: self, timer: timer) }
-
     func pColumnSpell(timer: Timer) { spell.pColumn(view: self, timer: timer) }
-
     func tColumnSpell(timer: Timer) { spell.tColumn(view: self, timer: timer) }
-
     func wColumnSpell(timer: Timer) { spell.wColumn(view: self, timer: timer) }
-
     func darkSpotSpell(timer: Timer) { spell.darkSpot(view: self, timer: timer) }
-    
     func numOneColumnSpell(timer: Timer) { number.oneColumn(view: self, timer: timer) }
-
     func numTwoColumnSpell(timer: Timer) { number.twoColumn(view: self, timer: timer) }
-
     func numThreeColumnSpell(timer: Timer) { number.threeColumn(view: self, timer: timer) }
-
     func numFourColumnSpell(timer: Timer) { number.fourColumn(view: self, timer: timer) }
-
     func numFiveColumnSpell(timer: Timer) { number.fiveColumn(view: self, timer: timer) }
-
     func numSixColumnSpell(timer: Timer) { number.sixColumn(view: self, timer: timer) }
-
     func numSevenColumnSpell(timer: Timer) { number.sevenColumn(view: self, timer: timer) }
-
     func numEightColumnSpell(timer: Timer) { number.eightColumn(view: self, timer: timer) }
-
     func numNineColumnSpell(timer: Timer) { number.nineColumn(view: self, timer: timer) }
-    
     func numZeroColumnSpell(timer: Timer) { number.zeroColumn(view: self, timer: timer) }
-
     func numlowerColumnSpell(timer: Timer) { number.lowerColumn(view: self, timer: timer) }
 }
