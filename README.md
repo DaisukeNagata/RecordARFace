@@ -8,6 +8,7 @@
 ## Introduction
 
 0.5 ~ I added the input program of the keyboard with my eyes.
+To change the mode of AR, please light the space, then track your face and eyes.
 
 ## Example
 
