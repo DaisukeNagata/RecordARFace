@@ -69,6 +69,18 @@ public final class RARFCollectionView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    public func onlyCalculator() {
+        viewEyesTracking()
+        eyeTrackStart(flg: false)
+        aObject.arscnView.isHidden = false
+    }
+
+    public func onlyEyeData() {
+        viewEyesTracking()
+        eyeTrackStart(flg: true)
+        aObject.arscnView.isHidden = false
+    }
 
     public func viewHidden() {
         if aObject.timer?.isValid == true {

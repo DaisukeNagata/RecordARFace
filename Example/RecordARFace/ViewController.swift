@@ -35,6 +35,10 @@ class ViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
         navigationController?.navigationBar.addSubview(statusBar)
         view.addSubview(cView)
+        // onlyCalculator
+        //cView.onlyCalculator()
+        // onlyEyeData
+        //cView.onlyEyeData()
     }
 
     @objc func startRecording() {
@@ -56,6 +60,7 @@ class ViewController: UIViewController {
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
+            // TableData
             cView.viewEyesTracking()
         }
     }
