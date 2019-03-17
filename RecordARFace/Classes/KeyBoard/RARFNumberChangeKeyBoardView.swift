@@ -63,7 +63,7 @@ final class RARFNumberChangeKeyBoardView: UIView {
     }
 
     func oneColumn(view: RARFLuangageKeyBoard, timer: Timer) {
-        guard self.alpha == 1 else { setTitle(c: "1", l: "☆", r: "➡︎", up: "", under: "♪", back: "back",  view: view, timer: timer); underKey.alpha = 0; return }
+        guard self.alpha == 1 else { setTitle(c: "1", l: "☆", r: "➡︎", up: "♪", under: " ", back: "back",  view: view, timer: timer); underKey.alpha = 0; return }
         if centerKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "1") }
         if leftKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "☆") }
         if rightKey.frame.contains(originFrame!) { alphaMethod(view: view, timer: timer, st: "➡︎") }
