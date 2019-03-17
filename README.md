@@ -23,7 +23,7 @@ The function of tracking eye movements can be confirmed on the actual machine fr
 ## Image
 <img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="330" height="720"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="330" height="720">
 
-<img src="https://user-images.githubusercontent.com/16457165/52259146-0d1dc000-2965-11e9-9860-232657a7ba9d.gif"  width="330"  height="720"><img src="https://user-images.githubusercontent.com/16457165/54079126-abf95b80-4319-11e9-8645-c6d57c3093de.gif"  width="330"  height="720">
+<img src="https://user-images.githubusercontent.com/16457165/52259146-0d1dc000-2965-11e9-9860-232657a7ba9d.gif"  width="330"  height="720"><img src="https://user-images.githubusercontent.com/16457165/54484843-70c6d180-48b1-11e9-93c5-9968d8dac99b.gif"  width="330"  height="720">
 ## Installation
 
 RecordARFace is available through [CocoaPods](https://cocoapods.org). To install
