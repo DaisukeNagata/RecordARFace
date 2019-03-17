@@ -10,6 +10,18 @@
 0.5 ~ I added the input program of the keyboard with my eyes.
 To change the mode of AR, please light the space, then track your face and eyes.
 
+It is in the sample ViewDidload.
+
+### Calculator function
+```ruby
+cView.onlyCalculator ()
+```
+
+### keyboard function
+```ruby
+cView.onlyEyeData () 
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
