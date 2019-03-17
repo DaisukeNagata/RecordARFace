@@ -14,12 +14,12 @@ It is in the sample ViewDidload.
 
 ### Calculator function
 ```ruby
-cView.onlyCalculator ()
+cView.onlyCalculator()
 ```
 
 ### keyboard function
 ```ruby
-cView.onlyEyeData () 
+cView.onlyEyeData() 
 ```
 
 ## Example
