@@ -135,8 +135,8 @@ final class RARFObject: NSObject, ARSessionDelegate {
     
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
-    @objc func spellKeyUpdate() { spellKey!.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
-    @objc func numBarUpdate() { numberChangeView!.originTextField(rect: self.eView.frame, timer: numTimer!) }
+    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
+    @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
 }
 
 // MARK: ARSCNViewDelegate
