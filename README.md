@@ -22,6 +22,15 @@ cView.onlyCalculator()
 cView.onlyEyeData() 
 ```
 
+### table function
+```ruby
+// Table Scroll Mehtod ->This feature hides calculator and keyboard functions.
+cView.tableScrollTrue(color: .black)
+let table = cView.tableMerge()
+table.rowHeight = 100
+table.backgroundColor = .white
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
