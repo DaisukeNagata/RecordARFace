@@ -63,7 +63,10 @@ class ViewController: UIViewController {
             // TableData
             cView.viewEyesTracking()
             // Table Scroll Mehtod ->This feature hides calculator and keyboard functions.
-            cView.tableScrollTrue()
+            cView.tableScrollTrue(color: .black)
+            let table = cView.tableMerge()
+            table.rowHeight = 100
+            table.backgroundColor = .white
         }
     }
 

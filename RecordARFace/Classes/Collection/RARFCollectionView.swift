@@ -70,10 +70,14 @@ public final class RARFCollectionView: UIView {
         super.init(coder: aDecoder)
     }
 
-    public func tableScrollTrue() {
+    public func tableScrollTrue(color: UIColor) {
         aObject.tableFlg = true
-        aObject.eyeTrackingTableScroll()
+        aObject.eyeTrackingTableScroll(color: color)
         aObject.arscnView.isHidden = false
+    }
+    
+    public func tableMerge() -> UITableView {
+        return aObject.tableView
     }
 
     public func tableScrollFalse() {
