@@ -50,6 +50,7 @@ public final class RARFCollectionView: UIView {
     }()
 
     private var index = 0
+
     private var alphaSet: CGFloat!
 
 
@@ -70,18 +71,14 @@ public final class RARFCollectionView: UIView {
         super.init(coder: aDecoder)
     }
 
+    public func tableScrollFalse() {  aObject.tableFlg = false }
+
+    public func tableMerge() -> UITableView {  return aObject.tableView }
+
     public func tableScrollTrue(color: UIColor) {
         aObject.tableFlg = true
         aObject.eyeTrackingTableScroll(color: color)
         aObject.arscnView.isHidden = false
-    }
-    
-    public func tableMerge() -> UITableView {
-        return aObject.tableView
-    }
-
-    public func tableScrollFalse() {
-        aObject.tableFlg = false
     }
 
     public func onlyCalculator() {
@@ -117,7 +114,7 @@ public final class RARFCollectionView: UIView {
             self.tView.table.frame.origin.y -= self.frame.height
         }
     }
-    
+
     private func eyeTrackStart(flg: Bool) {
         if aObject.timer?.isValid == true {
             aObject.timer!.invalidate()
