@@ -62,6 +62,8 @@ class ViewController: UIViewController {
             RepeatedHits = true
             // TableData
             cView.viewEyesTracking()
+            // Table Scroll Mehtod ->This feature hides calculator and keyboard functions.
+            cView.tableScrollTrue()
         }
     }
 

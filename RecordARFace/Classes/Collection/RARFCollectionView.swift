@@ -69,7 +69,17 @@ public final class RARFCollectionView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
+    public func tableScrollTrue() {
+        aObject.tableFlg = true
+        aObject.eyeTrackingTableScroll()
+        aObject.arscnView.isHidden = false
+    }
+
+    public func tableScrollFalse() {
+        aObject.tableFlg = false
+    }
+
     public func onlyCalculator() {
         viewEyesTracking()
         eyeTrackStart(flg: false)
@@ -131,7 +141,9 @@ extension RARFCollectionView: UICollectionViewDelegate {
 
 // TODO MARK: UITableViewDelegate
 extension RARFCollectionView: UITableViewDelegate {
+
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         if indexPath.row == KeyboardCount.number.rawValue {
             eyeTrackStart(flg: false)
             aObject.arscnView.isHidden = false

@@ -21,9 +21,11 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 final class RARFObject: NSObject, ARSessionDelegate {
 
     public var indexNumber = 0
+    public var tableFlg = false
+
     var timer: Timer?
-    var spellTimer: Timer?
     var numTimer: Timer?
+    var spellTimer: Timer?
     var anchors: ARAnchor?
 
     lazy var tableView: UITableView = {
@@ -42,9 +44,9 @@ final class RARFObject: NSObject, ARSessionDelegate {
         return arscnView
     }()
 
+    var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
-    var spellKey: RARFSpellAndKeyBoard?
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
     lazy var eView: UIView = {
@@ -127,6 +129,33 @@ final class RARFObject: NSObject, ARSessionDelegate {
         #endif
     }
     
+    func eyeTrackingTableScroll(color: UIColor? = .white) {
+        #if targetEnvironment(simulator)
+        #else
+        numberKey.isHidden = true
+        spellKey?.isHidden = true
+        luangageKey?.isHidden = true
+        numberChangeView?.isHidden = true
+        numberKey.isHidden = true
+        spellKey?.isHidden = true
+        luangageKey?.isHidden = true
+        numberChangeView?.isHidden = true
+        
+        arscnView.addSubview(eView)
+        arscnView.addSubview(tableView)
+        tableView.isHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
+        eView = RARFFlameView(eView: eView, color: color!).eViews
+        eyeData = RARFEyeData()
+        arscnView.scene.rootNode.addChildNode(eyeData!)
+        arscnView.scene.rootNode.addChildNode(phoneNode)
+        phoneNode.geometry?.firstMaterial?.isDoubleSided = true
+        phoneNode.addChildNode(screenNode)
+        resetTracking()
+        #endif
+    }
+    
     func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
     
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
@@ -135,8 +164,8 @@ final class RARFObject: NSObject, ARSessionDelegate {
     
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
-    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
+    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
 }
 
 // MARK: ARSCNViewDelegate
@@ -189,6 +218,10 @@ extension RARFObject: ARSCNViewDelegate {
                 guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                 DispatchQueue.main.async {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
+                    if self.tableFlg == true {
+                        let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+self.tableView.frame.height/2)
+                        self.tableView.setContentOffset(offset, animated: true)
+                    }
                 }
             }
             return
