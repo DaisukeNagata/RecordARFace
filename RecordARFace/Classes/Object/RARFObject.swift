@@ -26,6 +26,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     public var indexNumber = 0
     public var contentOffSetY: CGFloat = 0
 
+    var y: CGFloat = 0
     var webFlg = false
     var tableFlg = false
 
@@ -81,7 +82,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
 
-    private var y: CGFloat = 0
 
     override init() {
         super.init()
