@@ -85,7 +85,6 @@ class ViewController: UIViewController {
              cView.webScrollTrue(color: .black)
              cView.contentOffSetY(y: 3)
              let w = cView.webViewMerge()
-             w.frame.origin.y = (navigationController?.navigationBar.frame.height)!
              view.addSubview(w)
         }
     }
