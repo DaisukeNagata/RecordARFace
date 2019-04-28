@@ -44,19 +44,21 @@ class ViewController: UIViewController {
     }
 
     @objc func startRecording() {
-//        RARFScreenRecorder(vc: self).startRecording()
-//        statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+        // RARFScreenRecorder(vc: self).startRecording()
+        //statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+        // Web Scroll function
         cView.webForward(web: w)
     }
 
     @objc func stopRecording() {
-//        RARFScreenRecorder(vc: self).stopRecording()
-//        statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
-//        collectionSet()
+        // RARFScreenRecorder(vc: self).stopRecording()
+        // statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
+        // collectionSet()
     }
 
     @objc func collectionSet() {
-//        cView.viewHidden()
+        // cView.viewHidden()
+        // Web Scroll function
         cView.webBack(web: w)
         RepeatedHits = false
     }
