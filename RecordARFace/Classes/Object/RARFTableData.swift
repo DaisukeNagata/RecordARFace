@@ -27,7 +27,7 @@ extension RARFTableData: UITableViewDataSource {
             cell.textLabel?.text = "Calculator"
             return cell
         case .luangage?:
-            cell.textLabel?.text = "luangage"
+            cell.textLabel?.text = "Luangage"
             return cell
         default: break
         }

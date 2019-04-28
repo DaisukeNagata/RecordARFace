@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 @available(iOS 11.0, *)
 public final class RARFCollectionView: UIView {
@@ -71,13 +72,25 @@ public final class RARFCollectionView: UIView {
         super.init(coder: aDecoder)
     }
 
+    public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
+
     public func tableScrollFalse() {  aObject.tableFlg = false }
+
+    public func webViewMerge() -> WKWebView { return aObject.webView }
 
     public func tableMerge() -> UITableView {  return aObject.tableView }
 
     public func tableScrollTrue(color: UIColor) {
         aObject.tableFlg = true
-        aObject.eyeTrackingTableScroll(color: color)
+        aObject.eyeTrackingScroll(color: color)
+        aObject.arscnView.isHidden = false
+    }
+
+    public func webScrollTrue(color: UIColor) {
+        aObject.webFlg = true
+        aObject.eyeTrackingWebView(color: color)
+        aObject.webView.scrollView.contentOffset.y = 0
+        aObject.webView.isHidden = false
         aObject.arscnView.isHidden = false
     }
 
@@ -99,7 +112,9 @@ public final class RARFCollectionView: UIView {
         }
         tView.table.frame.origin.y -= self.frame.height
         collectionView.isHidden = false
+        aObject.webView.isHidden = true
         aObject.arscnView.isHidden = true
+        aObject.tableView.isHidden = true
     }
 
     public func viewEyesTracking() {
@@ -110,9 +125,23 @@ public final class RARFCollectionView: UIView {
             }
             return
         }
-        UIView.animate(withDuration: 0.5) {
-            self.tView.table.frame.origin.y -= self.frame.height
-        }
+        UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y -= self.frame.height }
+    }
+
+    public func webForward(web: WKWebView) {
+        aObject.webView.goForward()
+        aObject.webFlg = false
+        aObject.eView.frame.origin.y = aObject.webView.scrollView.contentOffset.y
+        let offset = CGPoint(x: 0, y: 0)
+        aObject.webView.scrollView.setContentOffset(offset, animated: false)
+    }
+
+    public func webBack(web: WKWebView) {
+        aObject.webView.goBack()
+        aObject.webFlg = false
+        aObject.eView.frame.origin.y = aObject.webView.scrollView.contentOffset.y
+        let offset = CGPoint(x: 0, y: 0)
+        aObject.webView.scrollView.setContentOffset(offset, animated: false)
     }
 
     private func eyeTrackStart(flg: Bool) {

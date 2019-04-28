@@ -8,6 +8,7 @@
 
 import UIKit
 import RecordARFace
+import WebKit
 
 class ViewController: UIViewController {
 
@@ -18,6 +19,7 @@ class ViewController: UIViewController {
         return cView
     }()
 
+    private var w = WKWebView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,31 +44,47 @@ class ViewController: UIViewController {
     }
 
     @objc func startRecording() {
-        RARFScreenRecorder(vc: self).startRecording()
-        statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+//        RARFScreenRecorder(vc: self).startRecording()
+//        statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+        cView.webForward(web: w)
     }
 
     @objc func stopRecording() {
-        RARFScreenRecorder(vc: self).stopRecording()
-        statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
-        collectionSet()
+//        RARFScreenRecorder(vc: self).stopRecording()
+//        statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
+//        collectionSet()
     }
 
     @objc func collectionSet() {
-        cView.viewHidden()
+//        cView.viewHidden()
+        cView.webBack(web: w)
         RepeatedHits = false
     }
 
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
-            // TableData
-            cView.viewEyesTracking()
-            // Table Scroll Mehtod ->This feature hides calculator and keyboard functions.
-            cView.tableScrollTrue(color: .black)
-            let table = cView.tableMerge()
-            table.rowHeight = 100
-            table.backgroundColor = .white
+            /*
+          // Calculator or Luangage function
+          cView.viewEyesTracking()
+          */
+
+            /*
+          // Table Scroll function
+          cView.tableScrollTrue(color: .black)
+          let table = cView.tableMerge()
+          table.rowHeight = 100
+          table.backgroundColor = .white
+          view.addSubview(table)
+          */
+
+             // Web Scroll function
+             RASRFWebUrlPath = "https://www.google.co.jp/"
+             cView.webScrollTrue(color: .black)
+             cView.contentOffSetY(y: 3)
+             let w = cView.webViewMerge()
+             w.frame.origin.y = (navigationController?.navigationBar.frame.height)!
+             view.addSubview(w)
         }
     }
 

@@ -7,6 +7,9 @@
 
 import ARKit
 import UIKit
+import WebKit
+
+public var RASRFWebUrlPath = String()
 
 @available(iOS 11.0, *)
 protocol ARSCNDelegate: ARSCNViewDelegate {
@@ -21,12 +24,28 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 final class RARFObject: NSObject, ARSessionDelegate {
 
     public var indexNumber = 0
-    public var tableFlg = false
+    public var contentOffSetY: CGFloat = 0
+
+    var webFlg = false
+    var tableFlg = false
 
     var timer: Timer?
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
+    var spellKey: RARFSpellAndKeyBoard?
+    var numberKey = RARFNumberKeyboardView()
+    var luangageKey: RARFLuangageKeyBoard!
+    var numberChangeView: RARFNumberChangeKeyBoardView?
+
+    lazy var webView: WKWebView = {
+        var webView = WKWebView()
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: webConfiguration)
+        webView.scrollView.delegate = self
+        webView.allowsBackForwardNavigationGestures = true
+        return webView
+    }()
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -44,14 +63,9 @@ final class RARFObject: NSObject, ARSessionDelegate {
         return arscnView
     }()
 
-    var spellKey: RARFSpellAndKeyBoard?
-    var luangageKey: RARFLuangageKeyBoard!
-    var numberKey = RARFNumberKeyboardView()
-    var numberChangeView: RARFNumberChangeKeyBoardView?
-
     lazy var eView: UIView = {
         let eView = UIView()
-        eView.frame = CGRect(x: 0,y: 0 ,width:25 ,height:25)
+        eView.frame = CGRect(x: 0,y: 0 ,width: 25, height: 25)
         eView.layer.cornerRadius = eView.frame.height/2
         return eView
     }()
@@ -67,6 +81,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
 
+    private var y: CGFloat = 0
 
     override init() {
         super.init()
@@ -80,6 +95,13 @@ final class RARFObject: NSObject, ARSessionDelegate {
         tableView.addSubview(numberChangeView!)
     }
 
+    func webReload() {
+        webFlg = true
+        guard let url = URL(string: RASRFWebUrlPath) else { fatalError() }
+        let request = URLRequest(url: url)
+        webView.load(request)
+    }
+
     func resetTracking() {
         if anchors != nil { arscnView.session.remove(anchor: anchors!) }
         UIApplication.shared.isIdleTimerDisabled = true
@@ -88,7 +110,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         configuration.isLightEstimationEnabled = true
         arscnView.session.run(configuration, options: [.resetTracking])
     }
-        
+
     func texturedFace(color: UIColor) {
         eView.isHidden = true
         resetTracking()
@@ -129,23 +151,11 @@ final class RARFObject: NSObject, ARSessionDelegate {
         #endif
     }
     
-    func eyeTrackingTableScroll(color: UIColor? = .white) {
-        #if targetEnvironment(simulator)
-        #else
+    func eyeTrackDataSet(color: UIColor? = .white) {
         numberKey.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
-        numberKey.isHidden = true
-        spellKey?.isHidden = true
-        luangageKey?.isHidden = true
-        numberChangeView?.isHidden = true
-        
-        arscnView.addSubview(eView)
-        arscnView.addSubview(tableView)
-        tableView.isHidden = false
-        tableView.delegate = self
-        tableView.dataSource = self
         eView = RARFFlameView(eView: eView, color: color!).eViews
         eyeData = RARFEyeData()
         arscnView.scene.rootNode.addChildNode(eyeData!)
@@ -153,15 +163,66 @@ final class RARFObject: NSObject, ARSessionDelegate {
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
         phoneNode.addChildNode(screenNode)
         resetTracking()
+    }
+
+    func eyeTrackingScroll(color: UIColor? = .white) {
+        #if targetEnvironment(simulator)
+        #else
+        tableView.isHidden = false
+
+        tableView.addSubview(eView)
+        arscnView.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        eyeTrackDataSet(color: color)
         #endif
     }
-    
+
+    func eyeTrackingWebView(color: UIColor? = .white) {
+        #if targetEnvironment(simulator)
+        #else
+        tableView.isHidden = true
+
+        webReload()
+        webView.addSubview(eView)
+        arscnView.addSubview(webView)
+        eyeTrackDataSet(color: color)
+        #endif
+    }
+
+    func tableContentOff(tableFlg: Bool) {
+        if tableFlg == true {
+            let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+self.tableView.frame.height/2)
+            self.tableView.setContentOffset(offset, animated: true)
+        }
+    }
+
+    func webEViewSet(contentOffSetY: CGFloat) {
+        if self.webFlg == true && self.eView.frame.origin.y > -0 {
+            self.y = contentOffSetY
+            let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
+            self.webView.scrollView.setContentOffset(offset, animated: true)
+        } else {
+            self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
+        }
+    }
+
+    func webContentOffX() {
+        if self.eView.frame.origin.x < 0 {
+            self.webFlg = false
+            self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
+        } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
+            self.eView.frame.origin.y = self.webView.scrollView.contentOffset.y
+            self.webFlg = true
+        }
+    }
+
     func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
-    
+
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
-    
+
     func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
-    
+
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
@@ -218,10 +279,14 @@ extension RARFObject: ARSCNViewDelegate {
                 guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                 DispatchQueue.main.async {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                    if self.tableFlg == true {
-                        let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+self.tableView.frame.height/2)
-                        self.tableView.setContentOffset(offset, animated: true)
+                    self.tableContentOff(tableFlg: self.tableFlg)
+                    if self.eView.frame.origin.y > self.webView.frame.height/2  {
+                        self.y += self.contentOffSetY
+                    } else {
+                        self.y -= self.contentOffSetY
                     }
+                    self.webEViewSet(contentOffSetY: self.y)
+                    self.webContentOffX()
                 }
             }
             return
@@ -237,7 +302,7 @@ extension RARFObject: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return indexNumber
     }
