@@ -212,7 +212,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
             self.webFlg = false
             self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
         } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.eView.frame.origin.y = self.webView.scrollView.contentOffset.y
             self.webFlg = true
         }
     }

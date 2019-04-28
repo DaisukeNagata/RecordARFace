@@ -131,7 +131,7 @@ public final class RARFCollectionView: UIView {
     public func webForward(web: WKWebView) {
         aObject.webView.goForward()
         aObject.webFlg = false
-        aObject.eView.frame.origin.y = aObject.webView.scrollView.contentOffset.y
+        aObject.eView.frame.origin.y = 0
         let offset = CGPoint(x: 0, y: 0)
         aObject.webView.scrollView.setContentOffset(offset, animated: false)
     }
@@ -139,7 +139,7 @@ public final class RARFCollectionView: UIView {
     public func webBack(web: WKWebView) {
         aObject.webView.goBack()
         aObject.webFlg = false
-        aObject.eView.frame.origin.y = aObject.webView.scrollView.contentOffset.y
+        aObject.eView.frame.origin.y = 0
         let offset = CGPoint(x: 0, y: 0)
         aObject.webView.scrollView.setContentOffset(offset, animated: false)
     }
