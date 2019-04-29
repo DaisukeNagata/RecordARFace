@@ -32,6 +32,15 @@ let table = cView.tableMerge()
 table.rowHeight = 100
 table.backgroundColor = .white
 ```
+### web scroll function
+```ruby
+RASRFWebUrlPath = "https://www.google.co.jp/"
+cView.webScrollTrue(color: .black)
+//scroll speed set
+cView.contentOffSetY(y: 3)
+let w = cView.webViewMerge()
+view.addSubview(w)
+```
 
 ## Example
 
