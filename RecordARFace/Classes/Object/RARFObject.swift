@@ -21,7 +21,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-final class RARFObject: NSObject, ARSessionDelegate {
+final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     public var indexNumber = 0
     public var contentOffSetY: CGFloat = 0
@@ -44,6 +44,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         var webView = WKWebView()
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: webConfiguration)
+        webView.navigationDelegate = self
         webView.scrollView.delegate = self
         webView.allowsBackForwardNavigationGestures = true
         return webView
@@ -241,6 +242,13 @@ final class RARFObject: NSObject, ARSessionDelegate {
         }
     }
 
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        decisionHandler(WKNavigationActionPolicy.allow)
+        self.y = 0
+        let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+        self.webView.scrollView.setContentOffset(offset, animated: false)
+    }
+
     func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
 
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
@@ -248,8 +256,11 @@ final class RARFObject: NSObject, ARSessionDelegate {
     func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
+
     @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
+
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
+
     @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
 }
 
@@ -322,7 +333,7 @@ extension RARFObject: ARSCNViewDelegate {
 // MARK: UITableViewDataSource, UITableViewDelegate
 @available(iOS 11.0, *)
 extension RARFObject: UITableViewDataSource, UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
         return cell
