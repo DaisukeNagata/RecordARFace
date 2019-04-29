@@ -27,27 +27,32 @@ class ViewController: UIViewController {
         // URLSetting
         RARFUrlPath = "https://www.google.co.jp/search?q="
 
-        let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
-        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        button.setTitle("EyesTrack", for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
-        self.navigationItem.titleView = button
+        // let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
+        // button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        // button.setTitle("EyesTrack", for: UIControl.State.normal)
+        // button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
+        // self.navigationItem.titleView = button
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
-        navigationController?.navigationBar.addSubview(statusBar)
+        // navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
+        // navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
+        // navigationController?.navigationBar.addSubview(statusBar)
         view.addSubview(cView)
+        // Web Scroll function
+        RASRFWebUrlPath = "https://www.google.co.jp/"
+        cView.webScrollTrue(color: .black)
+        cView.contentOffSetY(y: 3)
+        let w = cView.webViewMerge()
+        view.addSubview(w)
         // onlyCalculator
-        //cView.onlyCalculator()
+        // cView.onlyCalculator()
         // onlyEyeData
-        //cView.onlyEyeData()
+        // cView.onlyEyeData()
     }
 
     @objc func startRecording() {
         // RARFScreenRecorder(vc: self).startRecording()
-        //statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+        // statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
         // Web Scroll function
-        cView.webForward(web: w)
     }
 
     @objc func stopRecording() {
@@ -59,7 +64,6 @@ class ViewController: UIViewController {
     @objc func collectionSet() {
         // cView.viewHidden()
         // Web Scroll function
-        cView.webBack(web: w)
         RepeatedHits = false
     }
 

@@ -34,6 +34,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
+    var rARFWebUIView: RARFWebUIView!
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
@@ -86,6 +87,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
     override init() {
         super.init()
 
+        rARFWebUIView = RARFWebUIView()
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!  ,numberKey: numberChangeView!)
@@ -184,6 +186,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         tableView.isHidden = true
 
         webReload()
+        webView.addSubview(rARFWebUIView)
         webView.addSubview(eView)
         arscnView.addSubview(webView)
         eyeTrackDataSet(color: color)
@@ -197,12 +200,35 @@ final class RARFObject: NSObject, ARSessionDelegate {
         }
     }
 
+    func webForward() {
+        if self.webFlg == true {
+            self.webFlg = false
+            webView.goForward()
+            self.y = 0
+            eView.frame.origin.y = UIScreen.main.bounds.width / 2
+            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+            self.webView.scrollView.setContentOffset(offset, animated: true)
+        }
+    }
+
+    func webBack() {
+        if self.webFlg == true {
+            self.webFlg = false
+            webView.goBack()
+            self.y = 0
+            eView.frame.origin.y = UIScreen.main.bounds.width / 2
+            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+            self.webView.scrollView.setContentOffset(offset, animated: true)
+        }
+    }
+
     func webEViewSet(contentOffSetY: CGFloat) {
         DispatchQueue.main.async {
             if self.webFlg == true && self.eView.frame.origin.y > -0 {
                 self.y = contentOffSetY
                 let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
                 self.webView.scrollView.setContentOffset(offset, animated: true)
+                self.rARFWebUIView.originTextField(rect: self.eView.frame, rARFObject: self)
             } else {
                 self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
             }
@@ -287,13 +313,6 @@ extension RARFObject: ARSCNViewDelegate {
                         self.y += self.contentOffSetY
                     } else {
                         self.y -= self.contentOffSetY
-                    }
-
-                    if self.webView.scrollView.contentOffset.y < -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-                        UIView.animate(withDuration: 0) {
-                            self.webFlg = false
-                             self.webView.scrollView.contentOffset.y = -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height)
-                        }
                     }
 
                     self.webContentOffSetX()

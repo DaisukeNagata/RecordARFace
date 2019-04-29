@@ -13,6 +13,9 @@
 		5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */; };
 		5772DF7AD1B7F9C6BA0070A29B1B549E /* Pods-RecordARFace_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */; };
 		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
+		BB07580622772E4B0014B66D /* RARFWebUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB07580522772E4B0014B66D /* RARFWebUIView.xib */; };
+		BB07580922772E690014B66D /* RARFWebUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07580722772E640014B66D /* RARFWebUIView.swift */; };
+		BB07580A227736CD0014B66D /* RARFWebUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB07580522772E4B0014B66D /* RARFWebUIView.xib */; };
 		BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF73222AC29600959558 /* RARFTexturedFace.swift */; };
 		BBABDF86222AC29700959558 /* RARFNumberKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */; };
 		BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */; };
@@ -77,6 +80,8 @@
 		AD1EC82B0A21D88F4D13B9EACFDBA6DB /* Pods-RecordARFace_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RecordARFace_Tests-umbrella.h"; sourceTree = "<group>"; };
 		AF9B4FC1B3367D1F4FBA47A575629145 /* Pods-RecordARFace_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RecordARFace_Example-frameworks.sh"; sourceTree = "<group>"; };
 		B483F71F85C9F72D31C83D4C1FB4B2BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BB07580522772E4B0014B66D /* RARFWebUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFWebUIView.xib; sourceTree = "<group>"; };
+		BB07580722772E640014B66D /* RARFWebUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFWebUIView.swift; sourceTree = "<group>"; };
 		BBABDF73222AC29600959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTexturedFace.swift; sourceTree = "<group>"; };
 		BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberKeyboardView.swift; sourceTree = "<group>"; };
 		BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFNumberKeyboardView.xib; sourceTree = "<group>"; };
@@ -317,6 +322,8 @@
 				BBABDF82222AC29700959558 /* RARFNumberButton.swift */,
 				BBABDF83222AC29700959558 /* RARFFlameView.swift */,
 				BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */,
+				BB07580522772E4B0014B66D /* RARFWebUIView.xib */,
+				BB07580722772E640014B66D /* RARFWebUIView.swift */,
 			);
 			name = UI;
 			path = RecordARFace/Classes/UI;
@@ -442,6 +449,9 @@
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 1020;
 				TargetAttributes = {
+					ACD83607AF01CE0A01E77943DBF1A8EB = {
+						LastSwiftMigration = 1020;
+					};
 					F0275B5693F4A42BCDB83CF48E4B4781 = {
 						LastSwiftMigration = 1020;
 					};
@@ -472,6 +482,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB07580A227736CD0014B66D /* RARFWebUIView.xib in Resources */,
 				BBABDFE42233306B00959558 /* RARFNumberChangeKeyBoardView.xib in Resources */,
 				BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */,
 				BBABDF9F222B641B00959558 /* RARFLuangageKeyBoard.xib in Resources */,
@@ -490,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB07580622772E4B0014B66D /* RARFWebUIView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +523,7 @@
 				BBABDF9C222B641B00959558 /* RARFSpellAndKeyBoard.swift in Sources */,
 				BBABDF8C222AC29700959558 /* RARFObject.swift in Sources */,
 				BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */,
+				BB07580922772E690014B66D /* RARFWebUIView.swift in Sources */,
 				BBABDF8E222AC29700959558 /* RARFNumberButton.swift in Sources */,
 				BBABDFA0222B641B00959558 /* RARFLuangageKeyBoard.swift in Sources */,
 				BBABDFA4222B922600959558 /* RARFTableData.swift in Sources */,
@@ -653,6 +666,7 @@
 			baseConfigurationReference = EB1B6AC0CC9C6538ACBD5D2129AB2FAB /* Pods-RecordARFace_Example.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -676,6 +690,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -856,6 +872,7 @@
 			baseConfigurationReference = AB535D750EAAC46F8FDF2A9165759B34 /* Pods-RecordARFace_Example.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -879,6 +896,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

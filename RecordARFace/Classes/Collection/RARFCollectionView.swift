@@ -120,36 +120,16 @@ public final class RARFCollectionView: UIView {
     public func viewEyesTracking() {
         collectionView.isHidden = true
         guard tView.table.frame.origin.y == 0 else {
-            UIView.animate(withDuration: 0.5) {
-                self.tView.table.frame.origin.y = 0
-            }
+            UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y = 0 }
             return
         }
         UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y -= self.frame.height }
     }
 
-    public func webForward(web: WKWebView) {
-        aObject.webView.goForward()
-        aObject.webFlg = false
-        aObject.y = 0
-        aObject.eView.frame.origin.y = 0
-        let offset = CGPoint(x: 0, y: 0)
-        aObject.webView.scrollView.setContentOffset(offset, animated: false)
-    }
-
-    public func webBack(web: WKWebView) {
-        aObject.webView.goBack()
-        aObject.webFlg = false
-        aObject.y = 0
-        aObject.eView.frame.origin.y = 0
-        let offset = CGPoint(x: 0, y: 0)
-        aObject.webView.scrollView.setContentOffset(offset, animated: false)
-    }
 
     private func eyeTrackStart(flg: Bool) {
-        if aObject.timer?.isValid == true {
-            aObject.timer!.invalidate()
-        }
+        if aObject.timer?.isValid == true { aObject.timer!.invalidate() }
+
         collectionView.isHidden = true
         aObject.tableView.alpha = alphaSet
         aObject.tableView.separatorStyle = .none
