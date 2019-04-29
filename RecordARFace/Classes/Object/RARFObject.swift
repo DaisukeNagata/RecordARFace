@@ -282,11 +282,20 @@ extension RARFObject: ARSCNViewDelegate {
                 DispatchQueue.main.async {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
                     self.tableContentOff(tableFlg: self.tableFlg)
+
                     if self.eView.frame.origin.y > self.webView.frame.height/2 {
                         self.y += self.contentOffSetY
                     } else {
                         self.y -= self.contentOffSetY
                     }
+
+                    if self.webView.scrollView.contentOffset.y < -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
+                        self.webFlg = false
+                        self.webView.scrollView.contentOffset.y = -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height)
+                    } else {
+                        self.webFlg = true
+                    }
+
                     self.webEViewSet(contentOffSetY: self.y)
                     self.webContentOffSetX()
                 }
