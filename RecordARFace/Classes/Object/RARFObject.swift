@@ -236,12 +236,10 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
     func webContentOffSetX() {
-        DispatchQueue.main.async {
-            if self.eView.frame.origin.x < 0 {
-                self.webFlg = false
-            } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
-                self.webFlg = true
-            }
+        if self.eView.frame.origin.x < 0 {
+            self.webFlg = false
+        } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
+            self.webFlg = true
         }
     }
 
@@ -310,11 +308,14 @@ extension RARFObject: ARSCNViewDelegate {
                     self.tableContentOff(tableFlg: self.tableFlg)
 
                     if self.eView.frame.origin.y > self.webView.frame.height/2 {
-                        self.y += self.contentOffSetY
+                            self.y += self.contentOffSetY
                     } else {
-                        self.y -= self.contentOffSetY
+                        if self.eView.frame.origin.y > self.webView.frame.height/5 {
+                            self.y -= self.contentOffSetY
+                        } else {
+                            self.y = self.webView.frame.origin.y
+                        }
                     }
-
                     self.webContentOffSetX()
                     self.webEViewSet(contentOffSetY: self.y)
                 }
