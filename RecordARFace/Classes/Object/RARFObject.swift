@@ -105,12 +105,12 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
     func resetTracking() {
-        if anchors != nil { arscnView.session.remove(anchor: anchors!) }
+        if self.anchors != nil { self.arscnView.session.remove(anchor: self.anchors!) }
         UIApplication.shared.isIdleTimerDisabled = true
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
-        arscnView.session.run(configuration, options: [.resetTracking])
+        self.arscnView.session.run(configuration, options: [.resetTracking])
     }
 
     func texturedFace(color: UIColor) {
@@ -204,7 +204,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
         if self.webFlg == true {
             self.webFlg = false
             webView.goForward()
-            self.y = 0
             eView.frame.origin.y = UIScreen.main.bounds.width / 2
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
             self.webView.scrollView.setContentOffset(offset, animated: true)
@@ -215,7 +214,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
         if self.webFlg == true {
             self.webFlg = false
             webView.goBack()
-            self.y = 0
             eView.frame.origin.y = UIScreen.main.bounds.width / 2
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
             self.webView.scrollView.setContentOffset(offset, animated: true)
@@ -225,7 +223,6 @@ final class RARFObject: NSObject, ARSessionDelegate {
     func webEViewSet(contentOffSetY: CGFloat) {
         DispatchQueue.main.async {
             if self.webFlg == true && self.eView.frame.origin.y > -0 {
-                self.y = contentOffSetY
                 let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
                 self.webView.scrollView.setContentOffset(offset, animated: true)
                 self.rARFWebUIView.originTextField(rect: self.eView.frame, rARFObject: self)
@@ -239,6 +236,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         if self.eView.frame.origin.x < 0 {
             self.webFlg = false
         } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
+            self.y = self.webView.scrollView.contentOffset.y
             self.webFlg = true
         }
     }
@@ -308,13 +306,9 @@ extension RARFObject: ARSCNViewDelegate {
                     self.tableContentOff(tableFlg: self.tableFlg)
 
                     if self.eView.frame.origin.y > self.webView.frame.height/2 {
-                            self.y += self.contentOffSetY
+                        self.y += self.contentOffSetY
                     } else {
-                        if self.eView.frame.origin.y > self.webView.frame.height/5 {
-                            self.y -= self.contentOffSetY
-                        } else {
-                            self.y = self.webView.frame.origin.y
-                        }
+                        self.y -= self.contentOffSetY
                     }
                     self.webContentOffSetX()
                     self.webEViewSet(contentOffSetY: self.y)
