@@ -35,8 +35,8 @@ final class RARFObject: NSObject, ARSessionDelegate {
     var spellTimer: Timer?
     var anchors: ARAnchor?
     var spellKey: RARFSpellAndKeyBoard?
-    var numberKey = RARFNumberKeyboardView()
     var luangageKey: RARFLuangageKeyBoard!
+    var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
     lazy var webView: WKWebView = {
@@ -150,7 +150,7 @@ final class RARFObject: NSObject, ARSessionDelegate {
         resetTracking()
         #endif
     }
-    
+
     func eyeTrackDataSet(color: UIColor? = .white) {
         numberKey.isHidden = true
         spellKey?.isHidden = true
@@ -198,20 +198,24 @@ final class RARFObject: NSObject, ARSessionDelegate {
     }
 
     func webEViewSet(contentOffSetY: CGFloat) {
-        if self.webFlg == true && self.eView.frame.origin.y > -0 {
-            self.y = contentOffSetY
-            let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
-            self.webView.scrollView.setContentOffset(offset, animated: true)
-        } else {
-            self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
+        DispatchQueue.main.async {
+            if self.webFlg == true && self.eView.frame.origin.y > -0 {
+                self.y = contentOffSetY
+                let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
+                self.webView.scrollView.setContentOffset(offset, animated: true)
+            } else {
+                self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
+            }
         }
     }
 
-    func webContentOffX() {
-        if self.eView.frame.origin.x < 0 {
-            self.webFlg = false
-        } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.webFlg = true
+    func webContentOffSetX() {
+        DispatchQueue.main.async {
+            if self.eView.frame.origin.x < 0 {
+                self.webFlg = false
+            } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
+                self.webFlg = true
+            }
         }
     }
 
@@ -278,13 +282,13 @@ extension RARFObject: ARSCNViewDelegate {
                 DispatchQueue.main.async {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
                     self.tableContentOff(tableFlg: self.tableFlg)
-                    if self.eView.frame.origin.y > self.webView.frame.height/2  {
+                    if self.eView.frame.origin.y > self.webView.frame.height/2 {
                         self.y += self.contentOffSetY
                     } else {
                         self.y -= self.contentOffSetY
                     }
                     self.webEViewSet(contentOffSetY: self.y)
-                    self.webContentOffX()
+                    self.webContentOffSetX()
                 }
             }
             return

@@ -41,8 +41,6 @@ public final class RARFCollectionView: UIView {
         return scrollView
     }()
 
-    private let ob = RARFTableData()
-
     private lazy var tView: RARFTView = {
         let tView = RARFTView()
         tView.table.dataSource = ob
@@ -51,6 +49,8 @@ public final class RARFCollectionView: UIView {
     }()
 
     private var index = 0
+
+    private let ob = RARFTableData()
 
     private var alphaSet: CGFloat!
 
@@ -62,7 +62,7 @@ public final class RARFCollectionView: UIView {
 
         alphaSet = alphaSets
         aObject.arscnView.isHidden = true
-    
+
         addSubview(tView.table)
         addSubview(collectionView)
         addSubview(aObject.arscnView)
