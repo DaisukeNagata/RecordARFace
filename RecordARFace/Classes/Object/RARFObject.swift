@@ -245,6 +245,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(WKNavigationActionPolicy.allow)
         self.y = 0
+        self.webFlg = false
         let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
         self.webView.scrollView.setContentOffset(offset, animated: false)
     }
