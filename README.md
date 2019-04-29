@@ -7,8 +7,10 @@
 
 ## Introduction
 
-0.5 ~ I added the input program of the keyboard with my eyes.
+Version 0.5 ~ I added the input program of the keyboard with my eyes.
 To change the mode of AR, please light the space, then track your face and eyes.
+
+Version 0.6 ~ Added the ability to make web transitions from a point of view. Please refer to the gif animation for the behavior of the scroll
 
 It is in the sample ViewDidload.
 
