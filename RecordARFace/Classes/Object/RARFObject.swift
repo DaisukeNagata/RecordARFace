@@ -290,14 +290,14 @@ extension RARFObject: ARSCNViewDelegate {
                     }
 
                     if self.webView.scrollView.contentOffset.y < -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-                        self.webFlg = false
-                        self.webView.scrollView.contentOffset.y = -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height)
-                    } else {
-                        self.webFlg = true
+                        UIView.animate(withDuration: 0) {
+                            self.webFlg = false
+                             self.webView.scrollView.contentOffset.y = -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height)
+                        }
                     }
 
-                    self.webEViewSet(contentOffSetY: self.y)
                     self.webContentOffSetX()
+                    self.webEViewSet(contentOffSetY: self.y)
                 }
             }
             return
