@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         // URLSetting
-        RARFUrlPath = "https://www.google.co.jp/search?q="
+        // RARFUrlPath = "https://www.google.co.jp/search?q="
 
         // let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
         // button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         RASRFWebUrlPath = "https://www.google.co.jp/"
         cView.webScrollTrue(color: .black)
         cView.contentOffSetY(y: 3)
-        let w = cView.webViewMerge()
+        w = cView.webViewMerge()
         view.addSubview(w)
         // onlyCalculator
         // cView.onlyCalculator()
@@ -70,12 +70,12 @@ class ViewController: UIViewController {
     @objc func eyesTracking() {
         if RepeatedHits == false {
             RepeatedHits = true
-            /*
+          /*
           // Calculator or Luangage function
           cView.viewEyesTracking()
           */
 
-            /*
+          /*
           // Table Scroll function
           cView.tableScrollTrue(color: .black)
           let table = cView.tableMerge()
@@ -84,12 +84,14 @@ class ViewController: UIViewController {
           view.addSubview(table)
           */
 
-             // Web Scroll function
-             RASRFWebUrlPath = "https://www.google.co.jp/"
-             cView.webScrollTrue(color: .black)
-             cView.contentOffSetY(y: 3)
-             let w = cView.webViewMerge()
-             view.addSubview(w)
+          /*
+          // Web Scroll function
+          RASRFWebUrlPath = "https://www.google.co.jp/"
+          cView.webScrollTrue(color: .black)
+          cView.contentOffSetY(y: 3)
+          w = cView.webViewMerge()
+          view.addSubview(w)
+          */
         }
     }
 
