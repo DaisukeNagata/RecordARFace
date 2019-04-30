@@ -71,6 +71,10 @@ public final class RARFCollectionView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    public func collectionIsHeddenFalse() { collectionView.isHidden = false }
+
+    public func collectionIsHeddenTrue() { collectionView.isHidden = true }
 
     public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
 
