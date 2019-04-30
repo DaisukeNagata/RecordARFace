@@ -12,7 +12,7 @@ import WebKit
 
 class ViewController: UIViewController {
 
-    private var statusBar = RARFStatusBarUI().statusBar
+    // private var statusBar = RARFStatusBarUI().statusBar
     private var RepeatedHits = false
     private lazy var cView: RARFCollectionView = {
          let cView = RARFCollectionView(alphaSets: 0.7)
@@ -95,8 +95,8 @@ class ViewController: UIViewController {
         }
     }
 
-    func statusBarUI(st: String, color: UIColor, sec: Selector) {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
-        statusBar.backgroundColor = color
-    }
+    // func statusBarUI(st: String, color: UIColor, sec: Selector) {
+    // navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
+    // statusBar.backgroundColor = color
+    // }
 }
