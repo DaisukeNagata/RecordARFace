@@ -216,14 +216,21 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func webBack() {
         if webFlg == true {
-            webView.alpha = 0
-            arscnView.alpha = 0
-            webView.goBack()
-            eView.frame.origin.y = UIScreen.main.bounds.width / 2
-            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
-            webView.scrollView.setContentOffset(offset, animated: true)
-            UIView.animate(withDuration: 0.2) { self.webView.alpha = 1 }
-            UIView.animate(withDuration: 0.6) { self.arscnView.alpha = 1 }
+            print(webView.backForwardList.backList.count )
+            if webView.backForwardList.backList.count == 0 {
+                webFlg = false
+                webView.alpha = 0
+                arscnView.alpha = 0
+            } else {
+                webView.alpha = 0
+                arscnView.alpha = 0
+                webView.goBack()
+                eView.frame.origin.y = UIScreen.main.bounds.width / 2
+                let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+                webView.scrollView.setContentOffset(offset, animated: true)
+                UIView.animate(withDuration: 0.2) { self.webView.alpha = 1 }
+                UIView.animate(withDuration: 0.6) { self.arscnView.alpha = 1 }
+            }
         }
     }
 
