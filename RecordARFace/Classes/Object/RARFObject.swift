@@ -205,7 +205,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         if webFlg == true {
             webView.alpha = 0
             arscnView.alpha = 0
-            webFlg = false
             webView.goForward()
             eView.frame.origin.y = UIScreen.main.bounds.width / 2
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
@@ -217,7 +216,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func webBack() {
         if webFlg == true {
-            webFlg = false
             webView.alpha = 0
             arscnView.alpha = 0
             webView.goBack()
