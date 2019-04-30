@@ -90,6 +90,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) { self.stView.table.frame.origin.y -= self.view.frame.height }
         switch Count(rawValue: indexPath.row) {
         case .number?:
             // Web Scroll function
@@ -99,9 +100,10 @@ extension ViewController: UITableViewDelegate {
              w = cView.webViewMerge(vc: self)
              view.addSubview(w)
         case .keyBoard?:
-            UIView.animate(withDuration: 0.3) { self.stView.table.frame.origin.y -= self.view.frame.height }
+            cView.tableScrollFaleFlg()
             cView.viewEyesTracking()
         case .table?:
+            cView.tableScrollTrueFlg()
              cView.tableScrollTrue(color: .black)
              let table = cView.tableMerge()
              table.rowHeight = 100

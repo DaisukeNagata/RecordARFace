@@ -78,7 +78,9 @@ public final class RARFCollectionView: UIView {
 
     public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
 
-    public func tableScrollFalse() {  aObject.tableFlg = false }
+    public func tableScrollFaleFlg() {  aObject.tableFlg = false }
+    
+    public func tableScrollTrueFlg() {  aObject.tableFlg = true }
 
     public func webViewMerge(vc: UIViewController) -> WKWebView {
         aObject.vc = vc
