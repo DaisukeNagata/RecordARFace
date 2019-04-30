@@ -84,31 +84,47 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
         statusBar.backgroundColor = color
     }
+    
+    func cViewSet() {
+        cView.removeFromSuperview()
+        cView = RARFCollectionView(alphaSets: 0.7)
+        view.addSubview(cView)
+        
+        stView.removeFromSuperview()
+        stView = {
+            let stView = SampleTableView()
+            stView.table.dataSource = ob
+            stView.table.delegate = self
+            return stView
+        }()
+        view.addSubview(stView.table)
+    }
 }
 
 // TODO MARK: UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.3) { self.stView.table.frame.origin.y -= self.view.frame.height }
         switch Count(rawValue: indexPath.row) {
         case .number?:
             // Web Scroll function
-             RASRFWebUrlPath = "https://www.google.co.jp/"
-             cView.webScrollTrue(color: .black)
-             cView.contentOffSetY(y: 3)
-             w = cView.webViewMerge(vc: self)
-             view.addSubview(w)
+            RASRFWebUrlPath = "https://www.google.co.jp/"
+            cViewSet()
+            cView.webScrollTrue(color: .black)
+            cView.contentOffSetY(y: 3)
+            w = cView.webViewMerge(vc: self)
+            view.addSubview(w)
         case .keyBoard?:
-            cView.tableScrollFaleFlg()
+            cViewSet()
             cView.viewEyesTracking()
         case .table?:
-            cView.tableScrollTrueFlg()
-             cView.tableScrollTrue(color: .black)
-             let table = cView.tableMerge()
-             table.rowHeight = 100
-             table.backgroundColor = .white
-             view.addSubview(table)
+            cViewSet()
+            cView.tableScrollTrue(color: .black)
+            let table = cView.tableMerge()
+            table.rowHeight = 100
+            table.backgroundColor = .white
+            view.addSubview(table)
         default: break
         }
     }

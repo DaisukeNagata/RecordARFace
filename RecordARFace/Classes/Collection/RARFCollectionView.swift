@@ -78,10 +78,6 @@ public final class RARFCollectionView: UIView {
 
     public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
 
-    public func tableScrollFaleFlg() {  aObject.tableFlg = false }
-    
-    public func tableScrollTrueFlg() {  aObject.tableFlg = true }
-
     public func webViewMerge(vc: UIViewController) -> WKWebView {
         aObject.vc = vc
         return aObject.webView
@@ -128,6 +124,7 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewEyesTracking() {
+        aObject.tableFlg = false
         collectionView.isHidden = true
         guard tView.table.frame.origin.y == 0 else {
             UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y = 0 }
