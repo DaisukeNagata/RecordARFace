@@ -87,6 +87,8 @@ public final class RARFCollectionView: UIView {
     }
 
     public func webScrollTrue(color: UIColor) {
+        collectionView.isHidden = true
+
         aObject.webFlg = true
         aObject.eyeTrackingWebView(color: color)
         aObject.webView.scrollView.contentOffset.y = 0
@@ -107,9 +109,8 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewHidden() {
-        if aObject.timer?.isValid == true {
-            aObject.timer!.invalidate()
-        }
+        if aObject.timer?.isValid == true { aObject.timer!.invalidate() }
+
         tView.table.frame.origin.y -= self.frame.height
         collectionView.isHidden = false
         aObject.webView.isHidden = true
@@ -142,8 +143,8 @@ public final class RARFCollectionView: UIView {
 extension RARFCollectionView: UICollectionViewDelegate {
 
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
         collectionView.isHidden = true
+
         aObject.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
         index = indexPath.row
         aObject.arscnView.isHidden = false
