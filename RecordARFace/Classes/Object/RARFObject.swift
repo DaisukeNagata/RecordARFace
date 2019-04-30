@@ -34,6 +34,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
+    var vc = UIViewController()
     var rARFWebUIView: RARFWebUIView!
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
@@ -203,43 +204,54 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func webForward() {
         if webFlg == true {
+            vc.view.alpha = 0
             webView.alpha = 0
             arscnView.alpha = 0
             webView.goForward()
             eView.frame.origin.y = UIScreen.main.bounds.width / 2
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
             webView.scrollView.setContentOffset(offset, animated: true)
-            UIView.animate(withDuration: 0.2) { self.webView.alpha = 1 }
-            UIView.animate(withDuration: 0.6) { self.arscnView.alpha = 1 }
+            UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
+            UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
+            UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
         }
     }
 
     func webBack() {
         if webFlg == true {
-            print(webView.backForwardList.backList.count )
             if webView.backForwardList.backList.count == 0 {
                 webFlg = false
                 webView.alpha = 0
                 arscnView.alpha = 0
             } else {
+                vc.view.alpha = 0
                 webView.alpha = 0
                 arscnView.alpha = 0
                 webView.goBack()
                 eView.frame.origin.y = UIScreen.main.bounds.width / 2
                 let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
                 webView.scrollView.setContentOffset(offset, animated: true)
-                UIView.animate(withDuration: 0.2) { self.webView.alpha = 1 }
-                UIView.animate(withDuration: 0.6) { self.arscnView.alpha = 1 }
+                UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
+                UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
+                UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
             }
         }
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(WKNavigationActionPolicy.allow)
-        self.y = 0
-        self.webFlg = false
-        let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
-        self.webView.scrollView.setContentOffset(offset, animated: false)
+        if webFlg == true {
+            self.webFlg = false
+            self.y = 0
+            vc.view.alpha = 0
+            webView.alpha = 0
+            arscnView.alpha = 0
+            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+            self.webView.scrollView.setContentOffset(offset, animated: false)
+            UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
+            UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
+            UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
+        }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }

@@ -7,43 +7,49 @@
 //
 
 import UIKit
-import RecordARFace
 import WebKit
+import RecordARFace
+
 
 class ViewController: UIViewController {
 
-    // private var statusBar = RARFStatusBarUI().statusBar
-    // private var RepeatedHits = false
+    private var w = WKWebView()
+
+    private let ob = SampleTableData()
+
+    private var statusBar = RARFStatusBarUI().statusBar
+
     private lazy var cView: RARFCollectionView = {
-         let cView = RARFCollectionView(alphaSets: 0.7)
+        let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
 
-    private var w = WKWebView()
+    private lazy var stView: SampleTableView = {
+        let stView = SampleTableView()
+        stView.table.dataSource = ob
+        stView.table.delegate = self
+        return stView
+    }()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // URLSetting
-        // RARFUrlPath = "https://www.google.co.jp/search?q="
+         RARFUrlPath = "https://www.google.co.jp/search?q="
 
-        // let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
-        // button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-        // button.setTitle("EyesTrack", for: UIControl.State.normal)
-        // button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
-        // self.navigationItem.titleView = button
+         let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
+         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+         button.setTitle("EyesTrack", for: UIControl.State.normal)
+         button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
+         self.navigationItem.titleView = button
 
-        // navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
-        // navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
-        // navigationController?.navigationBar.addSubview(statusBar)
-        view.addSubview(cView)
-        // Web Scroll function
-        RASRFWebUrlPath = "https://www.google.co.jp/"
-        cView.webScrollTrue(color: .black)
-        cView.contentOffSetY(y: 3)
-        // webViewGetting
-        // w = cView.webViewMerge()
+         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
+         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
+         navigationController?.navigationBar.addSubview(statusBar)
+         view.addSubview(cView)
+         view.addSubview(stView.table)
+
         // onlyCalculator
         // cView.onlyCalculator()
         // onlyEyeData
@@ -51,53 +57,108 @@ class ViewController: UIViewController {
     }
 
     @objc func startRecording() {
-        // RARFScreenRecorder(vc: self).startRecording()
-        // statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
-        // Web Scroll function
+         RARFScreenRecorder(vc: self).startRecording()
+         statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
     }
 
     @objc func stopRecording() {
-        // RARFScreenRecorder(vc: self).stopRecording()
-        // statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
-        // collectionSet()
+         RARFScreenRecorder(vc: self).stopRecording()
+         statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
+         collectionSet()
     }
 
     @objc func collectionSet() {
-        // cView.viewHidden()
-        // Web Scroll function
-        // RepeatedHits = false
+         cView.viewHidden()
     }
 
     @objc func eyesTracking() {
-        // if RepeatedHits == false {
-        // RepeatedHits = true
-          /*
-          // Calculator or Luangage function
-          cView.viewEyesTracking()
-          */
-
-          /*
-          // Table Scroll function
-          cView.tableScrollTrue(color: .black)
-          let table = cView.tableMerge()
-          table.rowHeight = 100
-          table.backgroundColor = .white
-          view.addSubview(table)
-          */
-
-          /*
-          // Web Scroll function
-          RASRFWebUrlPath = "https://www.google.co.jp/"
-          cView.webScrollTrue(color: .black)
-          cView.contentOffSetY(y: 3)
-          w = cView.webViewMerge()
-          view.addSubview(w)
-          */
-        }
+             //cView.viewEyesTracking()
+            guard stView.table.frame.origin.y == 0 else {
+                UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y = 0 }
+                return
+            }
+            UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y -= self.view.frame.height }
     }
 
-    // func statusBarUI(st: String, color: UIColor, sec: Selector) {
-    // navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
-    // statusBar.backgroundColor = color
-    // }
-// }
+    func statusBarUI(st: String, color: UIColor, sec: Selector) {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
+        statusBar.backgroundColor = color
+    }
+}
+
+// TODO MARK: UITableViewDelegate
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch Count(rawValue: indexPath.row) {
+        case .number?:
+            // Web Scroll function
+             RASRFWebUrlPath = "https://www.google.co.jp/"
+             cView.webScrollTrue(color: .black)
+             cView.contentOffSetY(y: 3)
+             w = cView.webViewMerge(vc: self)
+             view.addSubview(w)
+        case .keyBoard?:
+            UIView.animate(withDuration: 0.3) { self.stView.table.frame.origin.y -= self.view.frame.height }
+            cView.viewEyesTracking()
+        case .table?:
+             cView.tableScrollTrue(color: .black)
+             let table = cView.tableMerge()
+             table.rowHeight = 100
+             table.backgroundColor = .white
+             view.addSubview(table)
+        default: break
+        }
+    }
+}
+
+final class SampleTableView: UIView {
+
+    lazy var table: UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
+        table.rowHeight = 80
+        return table
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        self.frame = UIScreen.main.bounds
+        table.frame = self.frame
+        table.frame.origin.y = -self.frame.height
+        self.addSubview(table)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+}
+
+enum Count: Int { case number, keyBoard, table, index }
+
+final class SampleTableData: NSObject {}
+
+// TODO MARK: UITableViewDataSource
+extension SampleTableData: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Count.index.rawValue
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
+        switch Count(rawValue: indexPath.row) {
+        case .number?:
+            cell.textLabel?.text = "WebScroll"
+            return cell
+        case .keyBoard?:
+            cell.textLabel?.text = "Calculator or Luangage function"
+            return cell
+        case .table?:
+            cell.textLabel?.text = "Table Scroll"
+            return cell
+        default: break
+        }
+        return cell
+    }
+}

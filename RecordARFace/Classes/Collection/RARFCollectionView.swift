@@ -80,7 +80,10 @@ public final class RARFCollectionView: UIView {
 
     public func tableScrollFalse() {  aObject.tableFlg = false }
 
-    public func webViewMerge() -> WKWebView { return aObject.webView }
+    public func webViewMerge(vc: UIViewController) -> WKWebView {
+        aObject.vc = vc
+        return aObject.webView
+    }
 
     public func tableMerge() -> UITableView {  return aObject.tableView }
 
