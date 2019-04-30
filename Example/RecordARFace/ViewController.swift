@@ -42,8 +42,8 @@ class ViewController: UIViewController {
         RASRFWebUrlPath = "https://www.google.co.jp/"
         cView.webScrollTrue(color: .black)
         cView.contentOffSetY(y: 3)
-        w = cView.webViewMerge()
-        view.addSubview(w)
+        // webViewGetting
+        // w = cView.webViewMerge()
         // onlyCalculator
         // cView.onlyCalculator()
         // onlyEyeData
