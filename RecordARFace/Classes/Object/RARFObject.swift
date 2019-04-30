@@ -221,7 +221,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         }
     }
 
-    func webEViewSet(contentOffSetY: CGFloat) {
+    func webEViewSet() {
         DispatchQueue.main.async {
             if self.webFlg == true && self.eView.frame.origin.y > -0 {
                 let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
@@ -323,7 +323,7 @@ extension RARFObject: ARSCNViewDelegate {
                         self.y -= self.contentOffSetY
                     }
                     self.webContentOffSetX()
-                    self.webEViewSet(contentOffSetY: self.y)
+                    self.webEViewSet()
                 }
             }
             return
