@@ -89,7 +89,7 @@ public final class RARFCollectionView: UIView {
     public func webScrollTrue(color: UIColor) {
         collectionView.isHidden = true
 
-        aObject.webFlg = true
+        aObject.webFlg = false
         aObject.eyeTrackingWebView(color: color)
         aObject.webView.scrollView.contentOffset.y = 0
         aObject.webView.isHidden = false

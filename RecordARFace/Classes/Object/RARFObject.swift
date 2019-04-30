@@ -227,27 +227,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         }
     }
 
-    func webEViewSet() {
-        DispatchQueue.main.async {
-            if self.webFlg == true && self.eView.frame.origin.y > -0 {
-                let offset = CGPoint(x: 0, y: self.eView.frame.origin.y + self.y)
-                self.webView.scrollView.setContentOffset(offset, animated: true)
-                self.rARFWebUIView.originTextField(rect: self.eView.frame, rARFObject: self)
-            } else {
-                self.webView.scrollView.setContentOffset(self.webView.scrollView.contentOffset, animated: true)
-            }
-        }
-    }
-
-    func webContentOffSetX() {
-        if self.eView.frame.origin.x < 0 {
-            self.webFlg = false
-        } else if self.eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.y = self.webView.scrollView.contentOffset.y
-            self.webFlg = true
-        }
-    }
-
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(WKNavigationActionPolicy.allow)
         self.y = 0
@@ -256,19 +235,39 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         self.webView.scrollView.setContentOffset(offset, animated: false)
     }
 
+    @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
+    
+    @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
+    
+    @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
+    
+    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
+
+    func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
+
     func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
 
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
 
-    func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
+    private func webEViewSet() {
+        if webFlg == true && eView.frame.origin.y > -0 {
+            let offset = CGPoint(x: 0, y: eView.frame.origin.y + self.y)
+            webView.scrollView.setContentOffset(offset, animated: true)
+            rARFWebUIView.originTextField(rect: eView.frame, rARFObject: self)
+        } else {
+            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+            webView.scrollView.setContentOffset(offset, animated: true)
+        }
+    }
 
-    @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
-
-    @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
-
-    @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
-
-    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
+    private func webContentOffSetX() {
+        if self.eView.frame.origin.x < 0 {
+            webFlg = false
+        } else if eView.frame.origin.x > UIScreen.main.bounds.width {
+            self.y = webView.scrollView.contentOffset.y
+            webFlg = true
+        }
+    }
 }
 
 // MARK: ARSCNViewDelegate
