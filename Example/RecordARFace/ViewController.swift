@@ -13,13 +13,14 @@ import WebKit
 class ViewController: UIViewController {
 
     // private var statusBar = RARFStatusBarUI().statusBar
-    private var RepeatedHits = false
+    // private var RepeatedHits = false
     private lazy var cView: RARFCollectionView = {
          let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
 
     private var w = WKWebView()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,12 +65,12 @@ class ViewController: UIViewController {
     @objc func collectionSet() {
         // cView.viewHidden()
         // Web Scroll function
-        RepeatedHits = false
+        // RepeatedHits = false
     }
 
     @objc func eyesTracking() {
-        if RepeatedHits == false {
-            RepeatedHits = true
+        // if RepeatedHits == false {
+        // RepeatedHits = true
           /*
           // Calculator or Luangage function
           cView.viewEyesTracking()
@@ -99,4 +100,4 @@ class ViewController: UIViewController {
     // navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
     // statusBar.backgroundColor = color
     // }
-}
+// }
