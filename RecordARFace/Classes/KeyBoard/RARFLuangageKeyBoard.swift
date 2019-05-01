@@ -65,6 +65,7 @@ final class RARFLuangageKeyBoard: UIView {
 
     @objc func originTextField(rect: CGRect,timer: Timer) {
         rectFrame = rect
+        rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
 
         if arrow.frame.contains(rectFrame) {
             testLabel.text = String(testLabel.text!.dropLast(1))

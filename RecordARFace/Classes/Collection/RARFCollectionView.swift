@@ -156,7 +156,7 @@ extension RARFCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.isHidden = true
 
-        if aObject.arscnView.frame.width == 1.0 {
+        if aObject.arscnView.frame.width == 0.1 {
             aObject.arscnView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         }
         aObject.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
