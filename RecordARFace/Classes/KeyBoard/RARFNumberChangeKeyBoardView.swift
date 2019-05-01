@@ -47,7 +47,7 @@ final class RARFNumberChangeKeyBoardView: UIView {
     
     func originTextField(rect: CGRect,timer: Timer) {
         originFrame = rect
-        originFrame!.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+
         if centerKey.title(for: .normal) == "1" { oneColumn(view: views!, timer: timer)}
         if centerKey.title(for: .normal) == "2" { twoColumn(view: views!, timer: timer)}
         if centerKey.title(for: .normal) == "3" { threeColumn(view: views!, timer: timer)}

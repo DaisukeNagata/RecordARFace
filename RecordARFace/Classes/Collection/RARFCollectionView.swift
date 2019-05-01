@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import ARKit
 
 @available(iOS 11.0, *)
 public final class RARFCollectionView: UIView {
@@ -71,7 +72,7 @@ public final class RARFCollectionView: UIView {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     public func collectionIsHeddenFalse() { collectionView.isHidden = false }
 
     public func collectionIsHeddenTrue() { collectionView.isHidden = true }
@@ -133,14 +134,18 @@ public final class RARFCollectionView: UIView {
         UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y -= self.frame.height }
     }
 
-
-    private func eyeTrackStart(flg: Bool) {
+    private func eyeTrackStart(flg: Bool, color: UIColor? = .black) {
         if aObject.timer?.isValid == true { aObject.timer!.invalidate() }
 
+        tView.table.isHidden = true
         collectionView.isHidden = true
         aObject.tableView.alpha = alphaSet
         aObject.tableView.separatorStyle = .none
-        aObject.eyeTracking(color: vm.imagesRows[index].imageSet, flg: flg)
+        aObject.eyeTracking(color: color!, flg: flg)
+    }
+
+    deinit {
+        layoutSubviews()
     }
 }
 
@@ -151,6 +156,9 @@ extension RARFCollectionView: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.isHidden = true
 
+        if arscnView.frame.width == 1.0 {
+            arscnView.frame.size = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
         aObject.texturedFace(color: vm.imagesRows[indexPath.row].imageSet)
         index = indexPath.row
         aObject.arscnView.isHidden = false
@@ -164,10 +172,10 @@ extension RARFCollectionView: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         if indexPath.row == KeyboardCount.number.rawValue {
-            eyeTrackStart(flg: false)
+            eyeTrackStart(flg: true, color: .black)
             aObject.arscnView.isHidden = false
         } else if indexPath.row == KeyboardCount.luangage.rawValue {
-            eyeTrackStart(flg: true)
+            eyeTrackStart(flg: true, color: .black)
             aObject.arscnView.isHidden = false
         }
     }

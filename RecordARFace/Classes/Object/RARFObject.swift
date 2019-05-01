@@ -60,10 +60,9 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
-        arscnView.automaticallyUpdatesLighting = true
         arscnView.delegate = self
         arscnView.session.delegate = self
-        arscnView.frame = UIScreen.main.bounds
+        arscnView.automaticallyUpdatesLighting = true
         return arscnView
     }()
 
@@ -117,13 +116,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func texturedFace(color: UIColor) {
         eView.isHidden = true
-        resetTracking()
         texturedFace = RARFTexturedFace(resource: color)
+        resetTracking()
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
         eView.isHidden = false
-        texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
         #else
         if flg == false {
@@ -140,8 +138,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
 
-        arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
+        tableView.addSubview(eView)
         tableView.isHidden = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -174,8 +172,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         #else
         tableView.isHidden = false
 
-        tableView.addSubview(eView)
         arscnView.addSubview(tableView)
+        tableView.addSubview(eView)
         tableView.delegate = self
         tableView.dataSource = self
         eyeTrackDataSet(color: color)
@@ -190,7 +188,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         webReload()
         webView.addSubview(rARFWebUIView)
         webView.addSubview(eView)
-        arscnView.addSubview(webView)
         eyeTrackDataSet(color: color)
         #endif
     }
@@ -205,14 +202,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
     func webForward() {
         if webFlg == true {
             vc.view.alpha = 0
-            webView.alpha = 0
-            arscnView.alpha = 0
             webView.goForward()
-            eView.frame.origin.y = UIScreen.main.bounds.width / 2
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
             webView.scrollView.setContentOffset(offset, animated: true)
             UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
-            UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
             UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
         }
     }
@@ -222,17 +215,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
             if webView.backForwardList.backList.count == 0 {
                 webFlg = false
                 webView.alpha = 0
-                arscnView.alpha = 0
             } else {
                 vc.view.alpha = 0
-                webView.alpha = 0
-                arscnView.alpha = 0
                 webView.goBack()
-                eView.frame.origin.y = UIScreen.main.bounds.width / 2
                 let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
                 webView.scrollView.setContentOffset(offset, animated: true)
                 UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
-                UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
                 UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
             }
         }
@@ -244,12 +232,9 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
             self.webFlg = false
             self.y = 0
             vc.view.alpha = 0
-            webView.alpha = 0
-            arscnView.alpha = 0
             let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
             self.webView.scrollView.setContentOffset(offset, animated: false)
             UIView.animate(withDuration: 0.3) { self.webView.alpha = 1 }
-            UIView.animate(withDuration: 0.5) { self.arscnView.alpha = 1 }
             UIView.animate(withDuration: 0.6) { self.vc.view.alpha = 1 }
         }
     }
