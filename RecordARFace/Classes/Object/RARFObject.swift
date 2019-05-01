@@ -21,7 +21,7 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
+final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     public var indexNumber = 0
     public var contentOffSetY: CGFloat = 0
@@ -34,17 +34,17 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
-    var vc = UIViewController()
     var rARFWebUIView: RARFWebUIView!
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
-
+    var vc = UIViewController()
     lazy var webView: WKWebView = {
         var webView = WKWebView()
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: webConfiguration)
+        webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.delegate = self
         webView.allowsBackForwardNavigationGestures = true
@@ -60,9 +60,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
+        arscnView.automaticallyUpdatesLighting = true
         arscnView.delegate = self
         arscnView.session.delegate = self
-        arscnView.automaticallyUpdatesLighting = true
+        arscnView.frame.size = CGSize(width: 0.1, height: 0.1)
         return arscnView
     }()
 
@@ -96,6 +97,16 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         tableView.addSubview(spellKey!)
         tableView.addSubview(luangageKey!)
         tableView.addSubview(numberChangeView!)
+        
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                 name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification?) {
+        webFlg = false
+        let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
+        webView.scrollView.setContentOffset(offset, animated: false)
     }
 
     func webReload() {
@@ -116,8 +127,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func texturedFace(color: UIColor) {
         eView.isHidden = true
-        texturedFace = RARFTexturedFace(resource: color)
         resetTracking()
+        texturedFace = RARFTexturedFace(resource: color)
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
@@ -138,9 +149,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
             numberChangeView?.isHidden = false
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
-
+        arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
-        tableView.addSubview(eView)
         tableView.isHidden = false
         tableView.delegate = self
         tableView.dataSource = self
@@ -173,8 +183,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         #else
         tableView.isHidden = false
 
-        arscnView.addSubview(tableView)
         tableView.addSubview(eView)
+        arscnView.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         eyeTrackDataSet(color: color)
@@ -187,8 +197,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
         tableView.isHidden = true
 
         webReload()
-        webView.addSubview(rARFWebUIView)
         webView.addSubview(eView)
+        webView.addSubview(rARFWebUIView)
         eyeTrackDataSet(color: color)
         #endif
     }
@@ -255,13 +265,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
 
     private func webEViewSet() {
-        if webFlg == true && eView.frame.origin.y > -0 {
+        if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
             let offset = CGPoint(x: 0, y: eView.frame.origin.y + self.y)
             webView.scrollView.setContentOffset(offset, animated: true)
+            rARFWebUIView.goBt.frame.origin.y = UIScreen.main.bounds.height/2
+            rARFWebUIView.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
             rARFWebUIView.originTextField(rect: eView.frame, rARFObject: self)
-        } else {
-            let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
-            webView.scrollView.setContentOffset(offset, animated: true)
         }
     }
 
@@ -303,30 +312,29 @@ extension RARFObject: ARSCNViewDelegate {
     }
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
-
-        guard eyeData?.contentNode == nil else {
-            if let arscnView = arscnView.pointOfView { phoneNode.transform = arscnView.transform }
-            let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
-                                           SCNHitTestOption.searchMode.rawValue: 1,
-                                           SCNHitTestOption.ignoreChildNodes.rawValue : false,
-                                           SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
-
-            let leftEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(eyeData!.leftEye.worldPosition, from: nil),
-                to:  phoneNode.convertPosition(eyeData!.leftEyeEnd.worldPosition, from: nil),
-                options: options)
-
-            let rightEye = phoneNode.hitTestWithSegment (
-                from: phoneNode.convertPosition(eyeData!.rightEye.worldPosition, from: nil),
-                to:  phoneNode.convertPosition(eyeData!.rightEyeEnd.worldPosition, from: nil),
-                options: options)
-
-            if !leftEye.isEmpty && !rightEye.isEmpty {
-                guard let coords = eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-                DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            guard self.eyeData?.contentNode == nil else {
+                if let arscnView = self.arscnView.pointOfView { self.phoneNode.transform = arscnView.transform }
+                let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
+                                               SCNHitTestOption.searchMode.rawValue: 1,
+                                               SCNHitTestOption.ignoreChildNodes.rawValue : false,
+                                               SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
+                
+                let leftEye = self.phoneNode.hitTestWithSegment (
+                    from: self.phoneNode.convertPosition(self.eyeData!.leftEye.worldPosition, from: nil),
+                    to:  self.phoneNode.convertPosition(self.eyeData!.leftEyeEnd.worldPosition, from: nil),
+                    options: options)
+                
+                let rightEye = self.phoneNode.hitTestWithSegment (
+                    from: self.phoneNode.convertPosition(self.eyeData!.rightEye.worldPosition, from: nil),
+                    to:  self.phoneNode.convertPosition(self.eyeData!.rightEyeEnd.worldPosition, from: nil),
+                    options: options)
+                
+                if !leftEye.isEmpty && !rightEye.isEmpty {
+                    guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
                     self.tableContentOff(tableFlg: self.tableFlg)
-
+                    
                     if self.eView.frame.origin.y > self.webView.frame.height/2 {
                         self.y += self.contentOffSetY
                     } else {
@@ -335,8 +343,8 @@ extension RARFObject: ARSCNViewDelegate {
                     self.webContentOffSetX()
                     self.webEViewSet()
                 }
+                return
             }
-            return
         }
     }
 }
