@@ -122,6 +122,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate {
 
     func eyeTracking(color: UIColor, flg: Bool) {
         eView.isHidden = false
+        texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
         #else
         if flg == false {
