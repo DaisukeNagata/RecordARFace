@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import ARKit
 import RecordARFace
 
 
@@ -34,6 +35,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if ARFaceTrackingConfiguration.isSupported {
+            print ("ARFaceTrackingConfiguration is supported. You can work with ARKit")
+        } else {
+            print ("ARFaceTrackingConfiguration is not supported. You cannot work with ARKit")
+        }
+        
+        if ARConfiguration.isSupported {
+            print ("ARConfiguration is supported. You can work with ARKit")
+        } else {
+            print ("ARConfiguration is not supported. You cannot work with ARKit")
+        }
 
         // URLSetting
          RARFUrlPath = "https://www.google.co.jp/search?q="
