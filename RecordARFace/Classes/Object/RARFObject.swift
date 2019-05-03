@@ -226,11 +226,17 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
     }
 
-    func webForward() {
+    func
+        webForward() {
         if webView.canGoForward == true {
             webView.goForward()
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
+            self.webView.scrollView.alpha = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.webView.scrollView.alpha = 1
+                self.y = self.webView.scrollView.contentOffset.y
+                self.webFlg = true
+            }
         }
     }
 
@@ -240,7 +246,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         } else {
             webView.goBack()
             webView.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
+             self.webView.scrollView.alpha = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.webView.scrollView.alpha = 1
+                self.y = self.webView.scrollView.contentOffset.y
+                self.webFlg = true
+            }
         }
     }
 
@@ -248,7 +259,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         decisionHandler(WKNavigationActionPolicy.allow)
 
         self.y = 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
+        self.webView.scrollView.alpha = 0
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.webView.scrollView.alpha = 1
+            self.y = self.webView.scrollView.contentOffset.y
+            self.webFlg = true
+        }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }

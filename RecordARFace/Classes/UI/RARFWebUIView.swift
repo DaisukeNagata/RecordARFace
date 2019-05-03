@@ -32,19 +32,19 @@ final class RARFWebUIView: UIView {
     }
 
     func originTextField(rect: CGRect, rARFObject: RARFObject) {
-    
+
         if goBt.frame.contains(rect) {
             guard rARFObject.webFlg == false else {
-                rARFObject.webBack()
                 rARFObject.webFlg = false
+                rARFObject.webBack()
                 return
             }
         }
 
         if forwardBt.frame.contains(rect) {
             guard rARFObject.webFlg == false else {
-                rARFObject.webForward()
                 rARFObject.webFlg = false
+                rARFObject.webForward()
                 return
             }
         }
