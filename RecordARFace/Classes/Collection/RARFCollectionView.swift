@@ -170,9 +170,8 @@ extension RARFCollectionView: UICollectionViewDelegate {
 extension RARFCollectionView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         if indexPath.row == KeyboardCount.number.rawValue {
-            eyeTrackStart(flg: true, color: .black)
+            eyeTrackStart(flg: false, color: .black)
             aObject.arscnView.isHidden = false
         } else if indexPath.row == KeyboardCount.luangage.rawValue {
             eyeTrackStart(flg: true, color: .black)
