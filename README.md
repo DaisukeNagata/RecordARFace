@@ -12,7 +12,7 @@ To change the mode of AR, please light the space, then track your face and eyes.
 
 Version 0.6 ~ Added the ability to make web transitions from a point of view. Please refer to the gif animation for the behavior of the scroll
 
-Version 0.8 ~ Version 0.8 ~ You can select Cell by scrolling.
+Version 0.8 ~ You can select Cell by scrolling.
 
 It is in the sample ViewDidload.
 
