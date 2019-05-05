@@ -35,11 +35,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     var webFlg = false
     var tableFlg = false
-    var numberFlg = false
 
-    var timer: Timer?
     var numTimer: Timer?
     var spellTimer: Timer?
+    var selectTimer: Timer?
+    var upDateTimer: Timer?
     var anchors: ARAnchor?
     var vc = UIViewController()
     var rARFWebUIView: RARFWebUIView!
@@ -176,7 +176,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
-        numberFlg = true
         tableFlg = false
         eView.isHidden = false
         tableView.isHidden = false
@@ -188,13 +187,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
             spellKey?.isHidden = true
             luangageKey?.isHidden = true
             numberChangeView?.isHidden = true
-            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
+            upDateTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
             numberKey.isHidden = true
             spellKey?.isHidden = false
             luangageKey?.isHidden = false
             numberChangeView?.isHidden = false
-            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
+            upDateTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
@@ -274,28 +273,26 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
     }
 
-    @objc func didSelectUpdate(timer: Timer) {
+    @objc func didSelectUpdate() {
         data.cells.cellFlg = true
-        if webFlg == true { timer.invalidate() }
-        if numberFlg == true { timer.invalidate(); numberFlg = false }
         if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView, index: data.indexPath) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
 
-    @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
+    @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: upDateTimer!) }
 
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
 
     @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
 
-    func didSelectCell() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(didSelectUpdate), userInfo: nil, repeats: true) }
+    func didSelectCell() { selectTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(didSelectUpdate), userInfo: nil, repeats: true) }
 
     func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
 
     func updateSpellKey() { spellTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(spellKeyUpdate), userInfo: nil, repeats: true) }
 
-    func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
+    func upDateluangageKey() { upDateTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
 
     private func webEViewSet() {
         if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
