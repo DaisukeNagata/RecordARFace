@@ -96,7 +96,6 @@ public final class RARFCollectionView: UIView {
     }
 
     public func webScrollTrue(color: UIColor) {
-
         aObject.eyeTrackingWebView(color: color)
         aObject.webView.scrollView.contentOffset.y = 0
         aObject.webFlg = false
@@ -118,8 +117,6 @@ public final class RARFCollectionView: UIView {
     }
 
     public func viewHidden() {
-        if aObject.timer?.isValid == true { aObject.timer!.invalidate() }
-
         tView.table.frame.origin.y -= self.frame.height
         collectionView.isHidden = false
         aObject.webView.isHidden = true
@@ -137,8 +134,6 @@ public final class RARFCollectionView: UIView {
     }
 
     private func eyeTrackStart(flg: Bool, color: UIColor? = .black) {
-        if aObject.timer?.isValid == true { aObject.timer!.invalidate() }
-
         tView.table.isHidden = true
         collectionView.isHidden = true
         aObject.arscnView.isHidden = false

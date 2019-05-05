@@ -29,7 +29,7 @@ final class RARFTableCell: UITableViewCell {
         self.addSubview(view)
     }
 
-    func didselectBt(table: UITableView,eView: UIView, index: IndexPath) {
+    func didSelectBt(table: UITableView,eView: UIView, index: IndexPath) {
         DispatchQueue.main.async {
             if self.cellFlg == true {
                 self.cellFlg = false

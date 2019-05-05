@@ -8,9 +8,9 @@
 import UIKit
 
 final public class RARFDataSourceModel: NSObject {
+    var indexNumber = 0
     var cells = RARFTableCell()
     var indexPath = IndexPath()
-    var indexNumber = 0
 }
 
 //MARK: UITableViewDelegate UITableViewDataSource
