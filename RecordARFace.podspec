@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'RecordARFace'
-  s.version          = '0.8.2'
+  s.version          = '0.8.3'
   s.summary          = 'It is an application to mask the face with AR.'
   s.homepage         = 'https://github.com/daisukenagata/RecordARFace'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }

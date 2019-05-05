@@ -134,8 +134,8 @@ extension ViewController: UITableViewDelegate {
             cView.indexNumber(index: 0)
         case .table?:
             cViewSet()
-            cView.indexNumber(index: 100)
             cView.contentOffSetY(y: 5)
+            cView.indexNumber(index: 100)
             cView.tableScrollTrue(color: .black)
             let table = cView.tableMerge()
             table.rowHeight = 200

@@ -110,7 +110,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableView.addSubview(spellKey!)
         tableView.addSubview(luangageKey!)
         tableView.addSubview(numberChangeView!)
-        
+
         let notification = NotificationCenter.default
         notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
                                  name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -254,26 +254,30 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func tableContentOff() {
         if tableFlg == true {
             if eView.frame.origin.y > tableView.contentOffset.y {
-                self.privateOffsetY += self.contentOffSetY
+                privateOffsetY += self.contentOffSetY
             } else {
-                self.privateOffsetY -= self.contentOffSetY
+                privateOffsetY -= self.contentOffSetY
             }
-            let offset = CGPoint(x: 0, y: self.privateOffsetY)
+            let offset = CGPoint(x: 0, y: privateOffsetY)
             tableView.setContentOffset(offset, animated: true)
         }
     }
 
     func tableSetFlg() {
-        if self.eView.frame.origin.x < 0 {
-            self.tableFlg = false
+        if eView.frame.origin.x < 0 {
+            privateOffsetY = tableView.contentOffset.y
+            let offset = CGPoint(x: 0, y: privateOffsetY)
+            tableView.setContentOffset(offset, animated: true)
+            tableFlg = false
         } else if eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.tableFlg = true
+            privateOffsetY = tableView.contentOffset.y
+            tableFlg = true
         }
     }
 
     @objc func didSelectUpdate() {
         cells.cellFlg = true
-        cells.didselectBt(table: tableView, eView: eView, index: indexPath)
+        if tableFlg == false { cells.didselectBt(table: tableView, eView: eView, index: indexPath) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -293,9 +297,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
 
     private func webEViewSet() {
-
         if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-            let offset = CGPoint(x: 0, y: eView.frame.origin.y + self.privateOffsetY)
+            let offset = CGPoint(x: 0, y: eView.frame.origin.y + privateOffsetY)
             webView.scrollView.setContentOffset(offset, animated: true)
             rARFWebUIView.goBt.frame.origin.y = UIScreen.main.bounds.height/2
             rARFWebUIView.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
@@ -304,12 +307,14 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     private func webContentOffSetX() {
+
         if self.eView.frame.origin.y > self.webView.frame.height/2 {
             self.privateOffsetY += self.contentOffSetY
         } else {
             self.privateOffsetY -= self.contentOffSetY
         }
-        if self.eView.frame.origin.x < 150 {
+
+        if eView.frame.origin.x < 150 {
             UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 1 }
         } else {
             UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 0 }
@@ -324,7 +329,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         if self.eView.frame.origin.x < 0 {
             webFlg = false
         } else if eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.privateOffsetY  = webView.scrollView.contentOffset.y
+            self.privateOffsetY = webView.scrollView.contentOffset.y
             webFlg = true
         }
     }
@@ -379,9 +384,7 @@ extension RARFObject: ARSCNViewDelegate {
                 if !leftEye.isEmpty && !rightEye.isEmpty {
 
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-
-                    self.eView.frame.origin.x = CGFloat(coords.x)
-                    self.eView.frame.origin.y = CGFloat(coords.y)
+                    self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
                     guard self.indexNumber == 0 else {
                         self.tableSetFlg()
