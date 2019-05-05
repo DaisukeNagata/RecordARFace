@@ -32,8 +32,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     public var indexNumber = 0
     public var contentOffSetY: CGFloat = 0
+    private var privateOffsetY: CGFloat = 0
 
-    var y: CGFloat = 0
     var webFlg = false
     var tableFlg = false
 
@@ -156,7 +156,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         decisionHandler(WKNavigationActionPolicy.allow)
 
-        self.y = 0
+        self.privateOffsetY = 0
         self.webFlg = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { self.webFlg = true }
     }
@@ -254,11 +254,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func tableContentOff() {
         if tableFlg == true {
             if eView.frame.origin.y > tableView.contentOffset.y {
-                self.y += 3
+                self.privateOffsetY += self.contentOffSetY
             } else {
-                self.y -= 3
+                self.privateOffsetY -= self.contentOffSetY
             }
-            let offset = CGPoint(x: 0, y: self.y)
+            let offset = CGPoint(x: 0, y: self.privateOffsetY)
             tableView.setContentOffset(offset, animated: true)
         }
     }
@@ -295,7 +295,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     private func webEViewSet() {
 
         if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-            let offset = CGPoint(x: 0, y: eView.frame.origin.y + self.y)
+            let offset = CGPoint(x: 0, y: eView.frame.origin.y + self.privateOffsetY)
             webView.scrollView.setContentOffset(offset, animated: true)
             rARFWebUIView.goBt.frame.origin.y = UIScreen.main.bounds.height/2
             rARFWebUIView.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
@@ -305,9 +305,9 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     private func webContentOffSetX() {
         if self.eView.frame.origin.y > self.webView.frame.height/2 {
-            self.y += self.contentOffSetY
+            self.privateOffsetY += self.contentOffSetY
         } else {
-            self.y -= self.contentOffSetY
+            self.privateOffsetY -= self.contentOffSetY
         }
         if self.eView.frame.origin.x < 150 {
             UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 1 }
@@ -324,7 +324,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         if self.eView.frame.origin.x < 0 {
             webFlg = false
         } else if eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.y = webView.scrollView.contentOffset.y
+            self.privateOffsetY  = webView.scrollView.contentOffset.y
             webFlg = true
         }
     }
