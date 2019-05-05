@@ -381,11 +381,11 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
 
                     self.eView.frame.origin.x = CGFloat(coords.x)
-                    self.eView.frame.origin.y = self.tableView.contentOffset.y
                     self.eView.frame.origin.y = CGFloat(coords.y)
 
                     guard self.indexNumber == 0 else {
                         self.tableSetFlg()
+                        self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
                         self.tableSetFlg()
