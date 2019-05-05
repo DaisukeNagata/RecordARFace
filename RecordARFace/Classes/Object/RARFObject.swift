@@ -35,7 +35,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     var webFlg = false
     var tableFlg = false
-    var numberFlg = false
 
     var timer: Timer?
     var numTimer: Timer?
@@ -176,7 +175,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
-        numberFlg = true
         tableFlg = false
         eView.isHidden = false
         tableView.isHidden = false
@@ -276,8 +274,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     @objc func didSelectUpdate(timer: Timer) {
         data.cells.cellFlg = true
-        if webFlg == true { timer.invalidate() }
-        if numberFlg == true { timer.invalidate(); numberFlg = false }
         if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView, index: data.indexPath) }
     }
 

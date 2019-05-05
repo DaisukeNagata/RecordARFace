@@ -143,7 +143,7 @@ public final class RARFCollectionView: UIView {
     }
 
     deinit {
-        layoutSubviews()
+        aObject.timer?.invalidate()
     }
 }
 
