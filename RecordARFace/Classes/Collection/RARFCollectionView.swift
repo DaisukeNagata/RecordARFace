@@ -73,7 +73,7 @@ public final class RARFCollectionView: UIView {
         super.init(coder: aDecoder)
     }
 
-    public func indexNumber(index: Int)  { aObject.indexNumber = index }
+    public func indexNumber(index: Int)  { aObject.data.indexNumber = index }
 
     public func collectionIsHeddenFalse() { collectionView.isHidden = false }
 

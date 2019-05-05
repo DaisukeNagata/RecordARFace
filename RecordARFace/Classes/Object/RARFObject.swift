@@ -30,7 +30,6 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
-    public var indexNumber = 0
     public var contentOffSetY: CGFloat = 0
     private var privateOffsetY: CGFloat = 0
 
@@ -42,12 +41,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var spellTimer: Timer?
     var anchors: ARAnchor?
     var vc = UIViewController()
-    var sc = UIScrollView()
     var rARFWebUIView: RARFWebUIView!
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
+
+    var data = RARFDataSourceModel()
 
     lazy var webView: WKWebView = {
         var webView = WKWebView()
@@ -55,7 +55,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: webConfiguration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        webView.scrollView.delegate = self
+        webView.scrollView.delegate = data
         webView.allowsBackForwardNavigationGestures = true
         return webView
     }()
@@ -66,8 +66,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableView.register(RARFTableCell.self, forCellReuseIdentifier: "RARFTableCell")
         return tableView
     }()
-    private var cells = RARFTableCell()
-    private var indexPath = IndexPath()
 
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
@@ -198,8 +196,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = data
+        tableView.dataSource = data
         eView = RARFFlameView(eView: eView, color: color).eViews
         eyeData = RARFEyeData()
         arscnView.scene.rootNode.addChildNode(eyeData!)
@@ -232,8 +230,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableFlg = true
         tableView.addSubview(eView)
         arscnView.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = data
+        tableView.dataSource = data
         didSelectCell()
         eyeTrackDataSet(color: color)
         #endif
@@ -276,8 +274,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     @objc func didSelectUpdate() {
-        cells.cellFlg = true
-        if tableFlg == false { cells.didselectBt(table: tableView, eView: eView, index: indexPath) }
+        data.cells.cellFlg = true
+        if tableFlg == false { data.cells.didselectBt(table: tableView, eView: eView, index: data.indexPath) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -386,7 +384,7 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                    guard self.indexNumber == 0 else {
+                    guard self.data.indexNumber == 0 else {
                         self.tableSetFlg()
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
@@ -404,28 +402,5 @@ extension RARFObject: ARSCNViewDelegate {
                 return
             }
         }
-    }
-}
-
-// MARK: UITableViewDataSource, UITableViewDelegate
-@available(iOS 11.0, *)
-extension RARFObject: UITableViewDataSource, UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row, "RARFTableCell")
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "RARFTableCell", for: indexPath) as? RARFTableCell {
-            cells = cell
-            self.indexPath = indexPath
-            cell.textLabel?.text = indexPath.row.description
-            return cell
-        }
-        return UITableViewCell()
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return indexNumber
     }
 }
