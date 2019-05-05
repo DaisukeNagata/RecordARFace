@@ -30,6 +30,7 @@ cView.onlyEyeData()
 ```ruby
 // Table Scroll Mehtod ->This feature hides calculator and keyboard functions.
 cViewSet()
+cView.contentOffSetY(y: 5)
 cView.indexNumber(index: 100)
 cView.tableScrollTrue(color: .black)
 let table = cView.tableMerge()
@@ -57,7 +58,7 @@ Face tracking is available only on iOS devices with a front-facing TrueDepth cam
 The function of tracking eye movements can be confirmed on the actual machine from ios 12.
 
 ## Image
-<img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/57191010-e539fa80-6f5b-11e9-8da9-df40594245f2.gif" width="285" height="700">
+<img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/57193317-8df45400-6f74-11e9-9445-8d82832ece29.gif" width="285" height="700">
 
 <img src="https://user-images.githubusercontent.com/16457165/52259146-0d1dc000-2965-11e9-9860-232657a7ba9d.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/54484843-70c6d180-48b1-11e9-93c5-9968d8dac99b.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/56879936-c936e480-6a95-11e9-8823-12c3a2daede8.gif" width="285"  height="700">
 ## Installation
