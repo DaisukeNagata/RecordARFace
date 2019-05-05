@@ -13,9 +13,10 @@
 		5318DFD301931C73B61D46C60E54CFA8 /* Pods-RecordARFace_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F92E8994D94ECBEA03F48DDD4C5AB9A2 /* Pods-RecordARFace_Example-dummy.m */; };
 		5772DF7AD1B7F9C6BA0070A29B1B549E /* Pods-RecordARFace_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0271E5BE161F4E1B39A2E358A3799E /* Pods-RecordARFace_Tests-dummy.m */; };
 		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		BB07580622772E4B0014B66D /* RARFWebUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB07580522772E4B0014B66D /* RARFWebUIView.xib */; };
 		BB07580922772E690014B66D /* RARFWebUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07580722772E640014B66D /* RARFWebUIView.swift */; };
 		BB07580A227736CD0014B66D /* RARFWebUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB07580522772E4B0014B66D /* RARFWebUIView.xib */; };
+		BB62B42E227D408600B5262A /* RARFTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62B42C227D407700B5262A /* RARFTableCell.swift */; };
+		BB62B430227D4CB300B5262A /* RARFTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB62B42F227D4CB300B5262A /* RARFTableCell.xib */; };
 		BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF73222AC29600959558 /* RARFTexturedFace.swift */; };
 		BBABDF86222AC29700959558 /* RARFNumberKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */; };
 		BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */; };
@@ -82,6 +83,8 @@
 		B483F71F85C9F72D31C83D4C1FB4B2BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BB07580522772E4B0014B66D /* RARFWebUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFWebUIView.xib; sourceTree = "<group>"; };
 		BB07580722772E640014B66D /* RARFWebUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFWebUIView.swift; sourceTree = "<group>"; };
+		BB62B42C227D407700B5262A /* RARFTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RARFTableCell.swift; sourceTree = "<group>"; };
+		BB62B42F227D4CB300B5262A /* RARFTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFTableCell.xib; sourceTree = "<group>"; };
 		BBABDF73222AC29600959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTexturedFace.swift; sourceTree = "<group>"; };
 		BBABDF75222AC29600959558 /* RARFNumberKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFNumberKeyboardView.swift; sourceTree = "<group>"; };
 		BBABDF76222AC29600959558 /* RARFNumberKeyboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RARFNumberKeyboardView.xib; sourceTree = "<group>"; };
@@ -289,8 +292,8 @@
 			isa = PBXGroup;
 			children = (
 				BBABDF7A222AC29700959558 /* RARFCollectionView.swift */,
-				BBABDF7B222AC29700959558 /* RARFCollectionViewModel.swift */,
 				BBABDF7C222AC29700959558 /* RARFCollectionCell.swift */,
+				BBABDF7B222AC29700959558 /* RARFCollectionViewModel.swift */,
 			);
 			name = Collection;
 			path = RecordARFace/Classes/Collection;
@@ -319,6 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				BBABDFA1222B920400959558 /* RARFTView.swift */,
+				BB62B42C227D407700B5262A /* RARFTableCell.swift */,
+				BB62B42F227D4CB300B5262A /* RARFTableCell.xib */,
 				BBABDF82222AC29700959558 /* RARFNumberButton.swift */,
 				BBABDF83222AC29700959558 /* RARFFlameView.swift */,
 				BBABDF84222AC29700959558 /* RARFStatusBarUI.swift */,
@@ -483,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB07580A227736CD0014B66D /* RARFWebUIView.xib in Resources */,
+				BB62B430227D4CB300B5262A /* RARFTableCell.xib in Resources */,
 				BBABDFE42233306B00959558 /* RARFNumberChangeKeyBoardView.xib in Resources */,
 				BBABDF87222AC29700959558 /* RARFNumberKeyboardView.xib in Resources */,
 				BBABDF9F222B641B00959558 /* RARFLuangageKeyBoard.xib in Resources */,
@@ -501,7 +507,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB07580622772E4B0014B66D /* RARFWebUIView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +517,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB62B42E227D408600B5262A /* RARFTableCell.swift in Sources */,
 				BBABDFE32233306B00959558 /* RARFNumberChangeKeyBoardView.swift in Sources */,
 				BBABDF90222AC29700959558 /* RARFStatusBarUI.swift in Sources */,
 				BBABDF8A222AC29700959558 /* RARFCollectionViewModel.swift in Sources */,

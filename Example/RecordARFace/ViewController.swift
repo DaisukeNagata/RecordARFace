@@ -131,17 +131,19 @@ extension ViewController: UITableViewDelegate {
         case .keyBoard?:
             cViewSet()
             cView.viewEyesTracking()
+            cView.indexNumber(index: 0)
         case .table?:
             cViewSet()
+            cView.indexNumber(index: 100)
             cView.tableScrollTrue(color: .black)
             let table = cView.tableMerge()
-            table.rowHeight = 100
+            table.rowHeight = 200
             table.backgroundColor = .white
-            view.addSubview(table)
         default: break
         }
     }
 }
+
 
 final class SampleTableView: UIView {
 

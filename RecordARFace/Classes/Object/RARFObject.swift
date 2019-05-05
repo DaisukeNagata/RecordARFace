@@ -41,12 +41,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
+    var vc = UIViewController()
+    var sc = UIScrollView()
     var rARFWebUIView: RARFWebUIView!
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard!
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
-    var vc = UIViewController()
 
     lazy var webView: WKWebView = {
         var webView = WKWebView()
@@ -62,9 +63,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.frame = UIScreen.main.bounds
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "RARFCell")
+        tableView.register(RARFTableCell.self, forCellReuseIdentifier: "RARFTableCell")
         return tableView
     }()
+    private var cells = RARFTableCell()
+    private var indexPath = IndexPath()
 
     lazy var arscnView: ARSCNView = {
         let arscnView = ARSCNView()
@@ -132,6 +135,32 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView.load(request)
     }
 
+    func webForward() {
+        if webView.canGoForward == true {
+            webView.goForward()
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
+        }
+    }
+
+    func webBack() {
+        if webView.backForwardList.backList.count == 0 {
+            webView.isHidden = true
+        } else {
+            webView.goBack()
+            webView.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
+        }
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        decisionHandler(WKNavigationActionPolicy.allow)
+
+        self.y = 0
+        self.webFlg = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { self.webFlg = true }
+    }
+
     func resetTracking() {
         if self.anchors != nil { self.arscnView.session.remove(anchor: self.anchors!) }
         UIApplication.shared.isIdleTimerDisabled = true
@@ -148,7 +177,9 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func eyeTracking(color: UIColor, flg: Bool) {
+        tableFlg = false
         eView.isHidden = false
+        tableView.isHidden = false
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
         #else
@@ -167,7 +198,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
         arscnView.addSubview(eView)
         arscnView.addSubview(tableView)
-        tableView.isHidden = false
         tableView.delegate = self
         tableView.dataSource = self
         eView = RARFFlameView(eView: eView, color: color).eViews
@@ -181,6 +211,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func eyeTrackDataSet(color: UIColor? = .white) {
+        eView.isHidden = false
+        tableView.isHidden = false
         numberKey.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
@@ -197,12 +229,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func eyeTrackingScroll(color: UIColor? = .white) {
         #if targetEnvironment(simulator)
         #else
-        tableView.isHidden = false
-
+        tableFlg = true
         tableView.addSubview(eView)
         arscnView.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        didSelectCell()
         eyeTrackDataSet(color: color)
         #endif
     }
@@ -210,7 +242,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func eyeTrackingWebView(color: UIColor? = .white) {
         #if targetEnvironment(simulator)
         #else
-        tableView.isHidden = true
+        tableFlg = false
 
         webReload()
         webView.addSubview(eView)
@@ -219,52 +251,29 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #endif
     }
 
-    func tableContentOff(tableFlg: Bool) {
+    func tableContentOff() {
         if tableFlg == true {
-            let offset = CGPoint(x: 0, y: (-self.eView.frame.origin.y)+self.tableView.frame.height/2)
-            self.tableView.setContentOffset(offset, animated: true)
-        }
-    }
-
-    func
-        webForward() {
-        if webView.canGoForward == true {
-            webView.goForward()
-        } else {
-            self.webView.scrollView.alpha = 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.webView.scrollView.alpha = 1
-                self.y = self.webView.scrollView.contentOffset.y
-                self.webFlg = true
+            if eView.frame.origin.y > tableView.contentOffset.y {
+                self.y += 3
+            } else {
+                self.y -= 3
             }
+            let offset = CGPoint(x: 0, y: self.y)
+            tableView.setContentOffset(offset, animated: true)
         }
     }
 
-    func webBack() {
-        if webView.backForwardList.backList.count == 0 {
-            webView.isHidden = true
-        } else {
-            webView.goBack()
-            webView.isHidden = false
-             self.webView.scrollView.alpha = 0
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.webView.scrollView.alpha = 1
-                self.y = self.webView.scrollView.contentOffset.y
-                self.webFlg = true
-            }
+    func tableSetFlg() {
+        if self.eView.frame.origin.x < 0 {
+            self.tableFlg = false
+        } else if eView.frame.origin.x > UIScreen.main.bounds.width {
+            self.tableFlg = true
         }
     }
 
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        decisionHandler(WKNavigationActionPolicy.allow)
-
-        self.y = 0
-        self.webView.scrollView.alpha = 0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.webView.scrollView.alpha = 1
-            self.y = self.webView.scrollView.contentOffset.y
-            self.webFlg = true
-        }
+    @objc func didSelectUpdate() {
+        cells.cellFlg = true
+        cells.didselectBt(table: tableView, eView: eView, index: indexPath)
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -274,6 +283,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
 
     @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
+
+    func didSelectCell() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(didSelectUpdate), userInfo: nil, repeats: true) }
 
     func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
 
@@ -293,6 +304,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     private func webContentOffSetX() {
+        if self.eView.frame.origin.y > self.webView.frame.height/2 {
+            self.y += self.contentOffSetY
+        } else {
+            self.y -= self.contentOffSetY
+        }
         if self.eView.frame.origin.x < 150 {
             UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 1 }
         } else {
@@ -361,17 +377,26 @@ extension RARFObject: ARSCNViewDelegate {
                     options: options)
 
                 if !leftEye.isEmpty && !rightEye.isEmpty {
+
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-                    self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-                    self.tableContentOff(tableFlg: self.tableFlg)
-                    
-                    if self.eView.frame.origin.y > self.webView.frame.height/2 {
-                        self.y += self.contentOffSetY
-                    } else {
-                        self.y -= self.contentOffSetY
+
+                    self.eView.frame.origin.x = CGFloat(coords.x)
+                    self.eView.frame.origin.y = self.tableView.contentOffset.y
+                    self.eView.frame.origin.y = CGFloat(coords.y)
+
+                    guard self.indexNumber == 0 else {
+                        self.tableSetFlg()
+                        self.eView.frame.origin.y += CGFloat(coords.y)*2
+                        self.tableContentOff()
+                        self.tableSetFlg()
+                        return
                     }
-                    self.webContentOffSetX()
-                    self.webEViewSet()
+
+                    guard self.webView.url == nil else {
+                        self.webContentOffSetX()
+                        self.webEViewSet()
+                        return
+                    }
                 }
                 return
             }
@@ -383,9 +408,18 @@ extension RARFObject: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 extension RARFObject: UITableViewDataSource, UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row, "RARFTableCell")
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RARFCell", for: indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "RARFTableCell", for: indexPath) as? RARFTableCell {
+            cells = cell
+            self.indexPath = indexPath
+            cell.textLabel?.text = indexPath.row.description
+            return cell
+        }
+        return UITableViewCell()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
