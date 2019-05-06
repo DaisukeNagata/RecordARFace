@@ -15,7 +15,7 @@
 		8591C6FD39E3C44AEB76D68EC8D4DC6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 		BB07580922772E690014B66D /* RARFWebUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB07580722772E640014B66D /* RARFWebUIView.swift */; };
 		BB07580A227736CD0014B66D /* RARFWebUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB07580522772E4B0014B66D /* RARFWebUIView.xib */; };
-		BB0B9475227F5F7D00A48658 /* RARFDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B9474227F5F7D00A48658 /* RARFDataSourceModel.swift */; };
+		BB0B947F227FB11100A48658 /* RARFDataSourceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0B947E227FB11100A48658 /* RARFDataSourceModel.swift */; };
 		BB62B42E227D408600B5262A /* RARFTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB62B42C227D407700B5262A /* RARFTableCell.swift */; };
 		BB62B430227D4CB300B5262A /* RARFTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB62B42F227D4CB300B5262A /* RARFTableCell.xib */; };
 		BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBABDF73222AC29600959558 /* RARFTexturedFace.swift */; };
@@ -84,7 +84,7 @@
 		B483F71F85C9F72D31C83D4C1FB4B2BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BB07580522772E4B0014B66D /* RARFWebUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFWebUIView.xib; sourceTree = "<group>"; };
 		BB07580722772E640014B66D /* RARFWebUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFWebUIView.swift; sourceTree = "<group>"; };
-		BB0B9474227F5F7D00A48658 /* RARFDataSourceModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFDataSourceModel.swift; path = ../RecordARFace/Classes/Model/RARFDataSourceModel.swift; sourceTree = "<group>"; };
+		BB0B947E227FB11100A48658 /* RARFDataSourceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RARFDataSourceModel.swift; sourceTree = "<group>"; };
 		BB62B42C227D407700B5262A /* RARFTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RARFTableCell.swift; sourceTree = "<group>"; };
 		BB62B42F227D4CB300B5262A /* RARFTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFTableCell.xib; sourceTree = "<group>"; };
 		BBABDF73222AC29600959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTexturedFace.swift; sourceTree = "<group>"; };
@@ -256,12 +256,12 @@
 			path = "Target Support Files/Pods-RecordARFace_Tests";
 			sourceTree = "<group>";
 		};
-		BB62B431227F24F900B5262A /* Model */ = {
+		BB0B947D227FB10100A48658 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				BB0B9474227F5F7D00A48658 /* RARFDataSourceModel.swift */,
+				BB0B947E227FB11100A48658 /* RARFDataSourceModel.swift */,
 			);
-			path = Model;
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		BBABDF72222AC29600959558 /* FaceTracking */ = {
@@ -355,8 +355,8 @@
 		FCC836FB764E6DD90B493A877BFC11B6 /* RecordARFace */ = {
 			isa = PBXGroup;
 			children = (
+				BB0B947D227FB10100A48658 /* DataModel */,
 				BBABDF79222AC29700959558 /* Collection */,
-				BB62B431227F24F900B5262A /* Model */,
 				BBABDF7F222AC29700959558 /* EyeData */,
 				BBABDF7D222AC29700959558 /* Object */,
 				BBABDF72222AC29600959558 /* FaceTracking */,
@@ -539,7 +539,7 @@
 				BBABDF89222AC29700959558 /* RARFCollectionView.swift in Sources */,
 				BBABDF9C222B641B00959558 /* RARFSpellAndKeyBoard.swift in Sources */,
 				BBABDF8C222AC29700959558 /* RARFObject.swift in Sources */,
-				BB0B9475227F5F7D00A48658 /* RARFDataSourceModel.swift in Sources */,
+				BB0B947F227FB11100A48658 /* RARFDataSourceModel.swift in Sources */,
 				BBABDF85222AC29700959558 /* RARFTexturedFace.swift in Sources */,
 				BB07580922772E690014B66D /* RARFWebUIView.swift in Sources */,
 				BBABDF8E222AC29700959558 /* RARFNumberButton.swift in Sources */,

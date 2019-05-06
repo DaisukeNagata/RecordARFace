@@ -63,6 +63,9 @@ class ViewController: UIViewController {
          view.addSubview(cView)
          view.addSubview(stView.table)
 
+         w = cView.webViewMerge(vc: self)
+         view.addSubview(w)
+
         // onlyCalculator
         // cView.onlyCalculator()
         // onlyEyeData
@@ -110,7 +113,6 @@ class ViewController: UIViewController {
             stView.table.delegate = self
             return stView
         }()
-        view.addSubview(stView.table)
     }
 }
 
@@ -123,11 +125,8 @@ extension ViewController: UITableViewDelegate {
         case .number?:
             // Web Scroll function
             RASRFWebUrlPath = "https://www.google.co.jp/"
-            cViewSet()
             cView.webScrollTrue(color: .black)
             cView.contentOffSetY(y: 3)
-            w = cView.webViewMerge(vc: self)
-            view.addSubview(w)
         case .keyBoard?:
             cViewSet()
             cView.viewEyesTracking()

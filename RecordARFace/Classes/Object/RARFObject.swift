@@ -104,10 +104,25 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!  ,numberKey: numberChangeView!)
+
+        webView.addSubview(rARFWebUIView)
+
+        arscnView.addSubview(tableView)
+
         tableView.addSubview(numberKey)
         tableView.addSubview(spellKey!)
         tableView.addSubview(luangageKey!)
         tableView.addSubview(numberChangeView!)
+
+        tableView.delegate = data
+        tableView.dataSource = data
+
+        eView = RARFFlameView(eView: eView, color: .black).eViews
+        eyeData = RARFEyeData()
+        arscnView.scene.rootNode.addChildNode(eyeData!)
+        arscnView.scene.rootNode.addChildNode(phoneNode)
+        phoneNode.geometry?.firstMaterial?.isDoubleSided = true
+        phoneNode.addChildNode(screenNode)
 
         let notification = NotificationCenter.default
         notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
@@ -177,6 +192,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func eyeTracking(color: UIColor, flg: Bool) {
         tableFlg = false
         eView.isHidden = false
+        webView.isHidden = true
         tableView.isHidden = false
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
@@ -194,33 +210,20 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
             numberChangeView?.isHidden = false
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
+        eView.removeFromSuperview()
+        eView = RARFFlameView(eView: eView, color: .black).eViews
         arscnView.addSubview(eView)
-        arscnView.addSubview(tableView)
-        tableView.delegate = data
-        tableView.dataSource = data
-        eView = RARFFlameView(eView: eView, color: color).eViews
-        eyeData = RARFEyeData()
-        arscnView.scene.rootNode.addChildNode(eyeData!)
-        arscnView.scene.rootNode.addChildNode(phoneNode)
-        phoneNode.geometry?.firstMaterial?.isDoubleSided = true
-        phoneNode.addChildNode(screenNode)
         resetTracking()
         #endif
     }
 
-    func eyeTrackDataSet(color: UIColor? = .white) {
+    func eyeTrackDataSet() {
         eView.isHidden = false
         tableView.isHidden = false
         numberKey.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
-        eView = RARFFlameView(eView: eView, color: color!).eViews
-        eyeData = RARFEyeData()
-        arscnView.scene.rootNode.addChildNode(eyeData!)
-        arscnView.scene.rootNode.addChildNode(phoneNode)
-        phoneNode.geometry?.firstMaterial?.isDoubleSided = true
-        phoneNode.addChildNode(screenNode)
         resetTracking()
     }
 
@@ -228,12 +231,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         tableFlg = true
+        webView.isHidden = true
+        eView.removeFromSuperview()
+        eView = RARFFlameView(eView: eView, color: color!).eViews
         tableView.addSubview(eView)
-        arscnView.addSubview(tableView)
-        tableView.delegate = data
-        tableView.dataSource = data
         didSelectCell()
-        eyeTrackDataSet(color: color)
+        eyeTrackDataSet()
         #endif
     }
 
@@ -241,10 +244,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         tableFlg = false
-        webReload()
+        webView.isHidden = false
+        tableView.isHidden = true
+        eView.removeFromSuperview()
+        eView = RARFFlameView(eView: eView, color: color!).eViews
         webView.addSubview(eView)
-        webView.addSubview(rARFWebUIView)
-        eyeTrackDataSet(color: color)
+        webReload()
+        eyeTrackDataSet()
         #endif
     }
 
