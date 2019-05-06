@@ -49,7 +49,6 @@ final class RARFSpellAndKeyBoard: UIView {
 
     func originTextField(rect: CGRect,timer: Timer, view: RARFLuangageKeyBoard) {
         originFrame = rect
-        originFrame!.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
         if centerKey.title(for: .normal) == "＠" { symbol(view: view, timer: timer)}
         if centerKey.title(for: .normal) == "A" { aColumn(view: view, timer: timer)}
         if centerKey.title(for: .normal) == "D" { dColumn(view: view, timer: timer)}

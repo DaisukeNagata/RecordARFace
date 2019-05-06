@@ -73,6 +73,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         arscnView.delegate = self
         arscnView.session.delegate = self
         arscnView.frame.size = CGSize(width: 0.1, height: 0.1)
+        arscnView.frame.origin.y = UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
         return arscnView
     }()
 
@@ -109,10 +110,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
         arscnView.addSubview(tableView)
 
-        tableView.addSubview(numberKey)
-        tableView.addSubview(spellKey!)
-        tableView.addSubview(luangageKey!)
-        tableView.addSubview(numberChangeView!)
+        arscnView.addSubview(numberKey)
+        arscnView.addSubview(spellKey!)
+        arscnView.addSubview(luangageKey!)
+        arscnView.addSubview(numberChangeView!)
 
         tableView.delegate = data
         tableView.dataSource = data
@@ -193,7 +194,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableFlg = false
         eView.isHidden = false
         webView.isHidden = true
-        tableView.isHidden = false
+        tableView.isHidden = true
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
         #else

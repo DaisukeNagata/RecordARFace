@@ -13,18 +13,18 @@ import RecordARFace
 
 
 class ViewController: UIViewController {
-
+    
     private var w = WKWebView()
-
+    
     private let ob = SampleTableData()
-
+    
     private var statusBar = RARFStatusBarUI().statusBar
-
+    
     private lazy var cView: RARFCollectionView = {
         let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
-
+    
     private lazy var stView: SampleTableView = {
         let stView = SampleTableView()
         stView.table.dataSource = ob
@@ -49,22 +49,19 @@ class ViewController: UIViewController {
         }
 
         // URLSetting
-         RARFUrlPath = "https://www.google.co.jp/search?q="
+        RARFUrlPath = "https://www.google.co.jp/search?q="
 
-         let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
-         button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
-         button.setTitle("EyesTrack", for: UIControl.State.normal)
-         button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
-         self.navigationItem.titleView = button
+        let button =  UIButton(type: UIButton.ButtonType.custom) as UIButton
+        button.frame = CGRect(x: 0, y: 0, width: 100, height: 40)
+        button.setTitle("EyesTrack", for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(eyesTracking), for: UIControl.Event.touchUpInside)
+        self.navigationItem.titleView = button
 
-         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
-         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
-         navigationController?.navigationBar.addSubview(statusBar)
-         view.addSubview(cView)
-         view.addSubview(stView.table)
-
-         w = cView.webViewMerge(vc: self)
-         view.addSubview(w)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Record", style: .plain, target: self, action: #selector(startRecording))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Collection", style: .plain, target: self, action: #selector(collectionSet))
+        navigationController?.navigationBar.addSubview(statusBar)
+        view.addSubview(cView)
+        view.addSubview(stView.table)
 
         // onlyCalculator
         // cView.onlyCalculator()
@@ -73,27 +70,25 @@ class ViewController: UIViewController {
     }
 
     @objc func startRecording() {
-         RARFScreenRecorder(vc: self).startRecording()
-         statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
+        RARFScreenRecorder(vc: self).startRecording()
+        statusBarUI(st: "Stop",color: .red, sec: #selector(stopRecording))
     }
 
     @objc func stopRecording() {
-         RARFScreenRecorder(vc: self).stopRecording()
-         statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
-         collectionSet()
+        RARFScreenRecorder(vc: self).stopRecording()
+        statusBarUI(st: "Record",color: .clear,sec: #selector(startRecording))
+        collectionSet()
     }
 
-    @objc func collectionSet() {
-         cView.viewHidden()
-    }
+    @objc func collectionSet() { cView.viewHidden() }
 
     @objc func eyesTracking() {
-             //cView.viewEyesTracking()
-            guard stView.table.frame.origin.y == 0 else {
-                UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y = 0 }
-                return
-            }
-            UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y -= self.view.frame.height }
+        //cView.viewEyesTracking()
+        guard stView.table.frame.origin.y == 0 else {
+            UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y = 0 }
+            return
+        }
+        UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y -= self.view.frame.height }
     }
 
     func statusBarUI(st: String, color: UIColor, sec: Selector) {
@@ -105,7 +100,7 @@ class ViewController: UIViewController {
         cView.removeFromSuperview()
         cView = RARFCollectionView(alphaSets: 0.7)
         view.addSubview(cView)
-        
+
         stView.removeFromSuperview()
         stView = {
             let stView = SampleTableView()
@@ -113,6 +108,7 @@ class ViewController: UIViewController {
             stView.table.delegate = self
             return stView
         }()
+        view.addSubview(stView.table)
     }
 }
 
@@ -125,13 +121,18 @@ extension ViewController: UITableViewDelegate {
         case .number?:
             // Web Scroll function
             RASRFWebUrlPath = "https://www.google.co.jp/"
+            cViewSet()
             cView.webScrollTrue(color: .black)
             cView.contentOffSetY(y: 3)
+            w = cView.webViewMerge(vc: self)
+            view.addSubview(w)
         case .keyBoard?:
+            w.removeFromSuperview()
             cViewSet()
             cView.viewEyesTracking()
             cView.indexNumber(index: 0)
         case .table?:
+            w.removeFromSuperview()
             cViewSet()
             cView.contentOffSetY(y: 5)
             cView.indexNumber(index: 100)
@@ -146,23 +147,23 @@ extension ViewController: UITableViewDelegate {
 
 
 final class SampleTableView: UIView {
-
+    
     lazy var table: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
         table.rowHeight = 80
         return table
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         self.frame = UIScreen.main.bounds
         table.frame = self.frame
         table.frame.origin.y = -self.frame.height
         self.addSubview(table)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -177,7 +178,7 @@ extension SampleTableData: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Count.index.rawValue
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
         switch Count(rawValue: indexPath.row) {

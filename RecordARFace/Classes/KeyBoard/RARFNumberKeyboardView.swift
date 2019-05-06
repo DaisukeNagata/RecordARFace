@@ -55,8 +55,7 @@ class RARFNumberKeyboardView: UIView {
     }
 
     func originTextField(rect: CGRect) {
-        var rectFrame = rect
-        rectFrame.origin.y -= UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+        let rectFrame = rect
 
         if one.frame.contains(rectFrame) { number(index: 1) }
         if two.frame.contains(rectFrame) { number(index: 2) }
