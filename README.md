@@ -70,6 +70,20 @@ it, simply add the following line to your Podfile:
 pod 'RecordARFace'
 ```
 
+## [Charthage](https://github.com/Carthage/Carthage)
+
+Officially supported: Carthage 0.33 and up.
+
+Add this to Cartfile
+```
+github "daisukenagata/RecordARFace"
+```
+
+Terminal command
+```bash
+$ carthage update --platform iOS
+```
+
 ## Author
 
 daisukenagata, dbank0208@gmail.com
