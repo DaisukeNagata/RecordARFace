@@ -256,7 +256,7 @@
 			path = "Target Support Files/Pods-RecordARFace_Tests";
 			sourceTree = "<group>";
 		};
-		BB0B947D227FB10100A48658 /* DataModel */ = {
+		BB0B95BA22805CAA00A48658 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
 				BB0B94B2227FCEA800A48658 /* RARFTableViewDataSource.swift */,
@@ -355,7 +355,7 @@
 		FCC836FB764E6DD90B493A877BFC11B6 /* RecordARFace */ = {
 			isa = PBXGroup;
 			children = (
-				BB0B947D227FB10100A48658 /* DataModel */,
+				BB0B95BA22805CAA00A48658 /* DataModel */,
 				BBABDF79222AC29700959558 /* Collection */,
 				BBABDF7F222AC29700959558 /* EyeData */,
 				BBABDF7D222AC29700959558 /* Object */,
