@@ -47,7 +47,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
-    var data = RARFDataSourceModel()
+    var data = RARFTableViewDataSource()
 
     lazy var webView: WKWebView = {
         var webView = WKWebView()
@@ -114,6 +114,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         arscnView.addSubview(spellKey!)
         arscnView.addSubview(luangageKey!)
         arscnView.addSubview(numberChangeView!)
+        numberKey.isHidden = true
+        spellKey?.isHidden = true
+        luangageKey?.isHidden = true
+        numberChangeView?.isHidden = true
 
         tableView.delegate = data
         tableView.dataSource = data
