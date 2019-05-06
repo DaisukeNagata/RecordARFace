@@ -13,18 +13,18 @@ import RecordARFace
 
 
 class ViewController: UIViewController {
-    
+
     private var w = WKWebView()
-    
+
     private let ob = SampleTableData()
-    
+
     private var statusBar = RARFStatusBarUI().statusBar
-    
+
     private lazy var cView: RARFCollectionView = {
         let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
-    
+
     private lazy var stView: SampleTableView = {
         let stView = SampleTableView()
         stView.table.dataSource = ob
@@ -83,7 +83,6 @@ class ViewController: UIViewController {
     @objc func collectionSet() { cView.viewHidden() }
 
     @objc func eyesTracking() {
-        //cView.viewEyesTracking()
         guard stView.table.frame.origin.y == 0 else {
             UIView.animate(withDuration: 0.5) { self.stView.table.frame.origin.y = 0 }
             return
@@ -95,7 +94,7 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: st, style: .plain, target: self, action: sec)
         statusBar.backgroundColor = color
     }
-    
+
     func cViewSet() {
         cView.removeFromSuperview()
         cView = RARFCollectionView(alphaSets: 0.7)
@@ -147,23 +146,23 @@ extension ViewController: UITableViewDelegate {
 
 
 final class SampleTableView: UIView {
-    
+
     lazy var table: UITableView = {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "SampleCell")
         table.rowHeight = 80
         return table
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         self.frame = UIScreen.main.bounds
         table.frame = self.frame
         table.frame.origin.y = -self.frame.height
         self.addSubview(table)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -178,7 +177,7 @@ extension SampleTableData: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Count.index.rawValue
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SampleCell", for: indexPath)
         switch Count(rawValue: indexPath.row) {
