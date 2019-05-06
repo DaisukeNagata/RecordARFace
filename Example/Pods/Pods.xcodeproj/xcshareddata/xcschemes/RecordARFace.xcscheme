@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ACD83607AF01CE0A01E77943DBF1A8EB"
-               BuildableName = "Pods_RecordARFace_Example.framework"
-               BlueprintName = "Pods-RecordARFace_Example"
+               BlueprintIdentifier = "F0275B5693F4A42BCDB83CF48E4B4781"
+               BuildableName = "RecordARFace.framework"
+               BlueprintName = "RecordARFace"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ACD83607AF01CE0A01E77943DBF1A8EB"
-            BuildableName = "Pods_RecordARFace_Example.framework"
-            BlueprintName = "Pods-RecordARFace_Example"
+            BlueprintIdentifier = "F0275B5693F4A42BCDB83CF48E4B4781"
+            BuildableName = "RecordARFace.framework"
+            BlueprintName = "RecordARFace"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ACD83607AF01CE0A01E77943DBF1A8EB"
-            BuildableName = "Pods_RecordARFace_Example.framework"
-            BlueprintName = "Pods-RecordARFace_Example"
+            BlueprintIdentifier = "F0275B5693F4A42BCDB83CF48E4B4781"
+            BuildableName = "RecordARFace.framework"
+            BlueprintName = "RecordARFace"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
