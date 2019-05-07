@@ -24,7 +24,6 @@ extension RARFTableViewDataSource: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "RARFTableCell", for: indexPath) as? RARFTableCell {
             cells = cell
             self.indexPath = indexPath
-            cell.textLabel?.text = indexPath.row.description
             return cell
         }
         return UITableViewCell()

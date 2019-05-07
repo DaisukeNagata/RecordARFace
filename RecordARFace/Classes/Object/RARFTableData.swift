@@ -8,9 +8,7 @@
 
 import UIKit
 
-enum KeyboardCount: Int {
-    case number, luangage, index
-}
+enum KeyboardCount: Int { case number, luangage, index }
 
 final class RARFTableData: NSObject {}
 

@@ -55,36 +55,35 @@ class RARFNumberKeyboardView: UIView {
     }
 
     func originTextField(rect: CGRect) {
-        let rectFrame = rect
 
-        if one.frame.contains(rectFrame) { number(index: 1) }
-        if two.frame.contains(rectFrame) { number(index: 2) }
-        if three.frame.contains(rectFrame) { number(index: 3) }
-        if four.frame.contains(rectFrame) { number(index: 4) }
-        if five.frame.contains(rectFrame) { number(index: 5) }
-        if six.frame.contains(rectFrame) { number(index: 6) }
-        if seven.frame.contains(rectFrame) { number(index: 7) }
-        if eight.frame.contains(rectFrame) { number(index: 8) }
-        if nine.frame.contains(rectFrame) { number(index: 9) }
-        if zero.frame.contains(rectFrame) { number(index: 0) }
+        if one.frame.contains(rect) { number(index: 1) }
+        if two.frame.contains(rect) { number(index: 2) }
+        if three.frame.contains(rect) { number(index: 3) }
+        if four.frame.contains(rect) { number(index: 4) }
+        if five.frame.contains(rect) { number(index: 5) }
+        if six.frame.contains(rect) { number(index: 6) }
+        if seven.frame.contains(rect) { number(index: 7) }
+        if eight.frame.contains(rect) { number(index: 8) }
+        if nine.frame.contains(rect) { number(index: 9) }
+        if zero.frame.contains(rect) { number(index: 0) }
 
-        if plus.frame.contains(rectFrame) { calculatorValue(index: Calculator.plus.rawValue) }
-        if minus.frame.contains(rectFrame) { calculatorValue(index: Calculator.minus.rawValue) }
-        if divite.frame.contains(rectFrame) { calculatorValue(index: Calculator.division.rawValue) }
-        if multiplication.frame.contains(rectFrame) { calculatorValue(index: Calculator.multiplication.rawValue) }
+        if plus.frame.contains(rect) { calculatorValue(index: Calculator.plus.rawValue) }
+        if minus.frame.contains(rect) { calculatorValue(index: Calculator.minus.rawValue) }
+        if divite.frame.contains(rect) { calculatorValue(index: Calculator.division.rawValue) }
+        if multiplication.frame.contains(rect) { calculatorValue(index: Calculator.multiplication.rawValue) }
 
-        if claer.frame.contains(rectFrame) {
+        if claer.frame.contains(rect) {
             plusNumber = String(textLabel.text!.dropLast(1))
             textLabel.text = String(textLabel.text!.dropLast(1))
         }
 
-        if allClaer.frame.contains(rectFrame) {
+        if allClaer.frame.contains(rect) {
             total = nil
             plusNumber = ""
             textLabel.text! = ""
         }
 
-        if enter.frame.contains(rectFrame) {
+        if enter.frame.contains(rect) {
             if total != nil {
                 let indexNumber = calculator(index: calculatorNum!,
                                              txtNumber:  Float(total!)!,
