@@ -395,7 +395,6 @@ extension RARFObject: ARSCNViewDelegate {
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
                     guard self.data.indexNumber == 0 else {
-                        self.tableSetFlg()
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
