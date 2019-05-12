@@ -12,14 +12,11 @@ import ARKit
 @available(iOS 11.0, *)
 
 public class RARFUseCase: NSObject {
-    
-    public func webViewMerge(vc: UIViewController) -> WKWebView {
-        aObject.vc = vc
-        return aObject.webView
-    }
 
-    var alphaSet: CGFloat!
-
+    lazy var aObject: RARFObject = {
+        let aObject = RARFObject()
+        return aObject
+    }()
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2-5,
@@ -30,10 +27,6 @@ public class RARFUseCase: NSObject {
         collectionView.register(RARFCollectionCell.self, forCellWithReuseIdentifier: "RARFCollectionCell")
         collectionView.frame = UIScreen.main.bounds
         return collectionView
-    }()
-    lazy var aObject: RARFObject = {
-        let aObject = RARFObject()
-        return aObject
     }()
     lazy var tView: RARFTView = {
         let tView = RARFTView()
@@ -46,6 +39,8 @@ public class RARFUseCase: NSObject {
         return scrollView
     }()
 
+    var alphaSet: CGFloat!
+
     public override init() {
         super.init()
     }
@@ -56,9 +51,16 @@ public class RARFUseCase: NSObject {
 
     public func collectionIsHeddenTrue() { collectionView.isHidden = true }
 
+    public func aObjectTableFlg() -> Bool { return aObject.tableFlg }
+
     public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
 
     public func tableMerge() -> UITableView {  return aObject.tableView }
+
+    public func webViewMerge(vc: UIViewController) -> WKWebView {
+        aObject.vc = vc
+        return aObject.webView
+    }
 
     public func tableScrollTrue(color: UIColor) {
         aObject.eyeTrackingScroll(color: color)
