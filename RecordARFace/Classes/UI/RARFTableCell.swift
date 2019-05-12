@@ -7,16 +7,16 @@
 
 import UIKit
 
-final public class RARFTableCell: UITableViewCell {
+public class RARFTableCell: UITableViewCell {
 
     var cellFlg = false
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: "RARFTableCell")
 
         loadNib()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         loadNib()
