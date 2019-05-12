@@ -30,11 +30,11 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 @available(iOS 11.0, *)
 final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
+    public var tableFlg = false
     public var contentOffSetY: CGFloat = 0
     private var privateOffsetY: CGFloat = 0
 
     var webFlg = false
-    var tableFlg = false
 
     var timer: Timer?
     var numTimer: Timer?

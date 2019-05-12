@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class RARFTableCell: UITableViewCell {
+open class RARFTableCell: UITableViewCell {
 
     var cellFlg = false
     override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
