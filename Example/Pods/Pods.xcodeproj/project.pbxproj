@@ -84,7 +84,7 @@
 		B483F71F85C9F72D31C83D4C1FB4B2BA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BB07580522772E4B0014B66D /* RARFWebUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFWebUIView.xib; sourceTree = "<group>"; };
 		BB07580722772E640014B66D /* RARFWebUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFWebUIView.swift; sourceTree = "<group>"; };
-		BB0B94B2227FCEA800A48658 /* RARFTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RARFTableViewDataSource.swift; path = ../RecordARFace/Classes/DataModel/RARFTableViewDataSource.swift; sourceTree = "<group>"; };
+		BB0B94B2227FCEA800A48658 /* RARFTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTableViewDataSource.swift; sourceTree = "<group>"; };
 		BB62B42C227D407700B5262A /* RARFTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RARFTableCell.swift; sourceTree = "<group>"; };
 		BB62B42F227D4CB300B5262A /* RARFTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RARFTableCell.xib; sourceTree = "<group>"; };
 		BBABDF73222AC29600959558 /* RARFTexturedFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RARFTexturedFace.swift; sourceTree = "<group>"; };
