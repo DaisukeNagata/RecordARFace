@@ -11,20 +11,15 @@ import WebKit
 import ARKit
 import RecordARFace
 
-
 class ViewController: UIViewController {
 
     private var w = WKWebView()
-
     private let ob = SampleTableData()
-
     private var statusBar = RARFStatusBarUI().statusBar
-
     private lazy var cView: RARFCollectionView = {
         let cView = RARFCollectionView(alphaSets: 0.7)
         return cView
     }()
-
     private lazy var stView: SampleTableView = {
         let stView = SampleTableView()
         stView.table.dataSource = ob
@@ -80,7 +75,7 @@ class ViewController: UIViewController {
         collectionSet()
     }
 
-    @objc func collectionSet() { cView.viewHidden() }
+    @objc func collectionSet() { cView.rUseCase.viewHidden() }
 
     @objc func eyesTracking() {
         guard stView.table.frame.origin.y == 0 else {
@@ -121,22 +116,22 @@ extension ViewController: UITableViewDelegate {
             // Web Scroll function
             RASRFWebUrlPath = "https://www.google.co.jp/"
             cViewSet()
-            cView.webScrollTrue(color: .black)
-            cView.contentOffSetY(y: 3)
-            w = cView.webViewMerge(vc: self)
+            cView.rUseCase.webScrollTrue(color: .black)
+            cView.rUseCase.contentOffSetY(y: 3)
+            w = cView.rUseCase.webViewMerge(vc: self)
             view.addSubview(w)
         case .keyBoard?:
             w.removeFromSuperview()
             cViewSet()
-            cView.viewEyesTracking()
-            cView.indexNumber(index: 0)
+            cView.rUseCase.viewEyesTracking()
+            cView.rUseCase.indexNumber(index: 0)
         case .table?:
             w.removeFromSuperview()
             cViewSet()
-            cView.contentOffSetY(y: 5)
-            cView.indexNumber(index: 100)
-            cView.tableScrollTrue(color: .black)
-            let table = cView.tableMerge()
+            cView.rUseCase.contentOffSetY(y: 5)
+            cView.rUseCase.indexNumber(index: 100)
+            cView.rUseCase.tableScrollTrue(color: .black)
+            let table = cView.rUseCase.tableMerge()
             table.rowHeight = 200
             table.backgroundColor = .white
         default: break
