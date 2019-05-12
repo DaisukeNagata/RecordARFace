@@ -282,6 +282,18 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
     }
 
+    func tableFlgSetTrue() {
+        privateOffsetY = tableView.contentOffset.y
+        tableFlg = true
+    }
+
+    func tableFlgSetFalse() {
+        privateOffsetY = tableView.contentOffset.y
+        let offset = CGPoint(x: 0, y: privateOffsetY)
+        tableView.setContentOffset(offset, animated: true)
+        tableFlg = false
+    }
+
     @objc func didSelectUpdate(timer: Timer) {
         data.cells.cellFlg = true
         if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView, index: data.indexPath) }

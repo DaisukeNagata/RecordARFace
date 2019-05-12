@@ -51,9 +51,9 @@ public class RARFUseCase: NSObject {
 
     public func collectionIsHeddenTrue() { collectionView.isHidden = true }
 
-    public func aObjectTableFlgFalse() { return aObject.tableFlg = false }
+    public func aObjectTableFlgFalse() { aObject.tableFlgSetFalse() }
 
-    public func aObjectTableFlgTrue() { return aObject.tableFlg = true }
+    public func aObjectTableFlgTrue() { aObject.tableFlgSetTrue() }
 
     public func contentOffSetY(y: CGFloat) { aObject.contentOffSetY = y}
 
