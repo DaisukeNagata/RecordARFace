@@ -38,8 +38,8 @@ public class RARFUseCase: NSObject {
         scrollView.addSubview(collectionView)
         return scrollView
     }()
-    var colorSet: UIColor!
-    var alphaSet: CGFloat!
+    var colorSet: UIColor?
+    var alphaSet: CGFloat?
 
     public override init() {
         super.init()
@@ -113,9 +113,9 @@ public class RARFUseCase: NSObject {
         tView.table.isHidden = true
         collectionView.isHidden = true
         aObject.arscnView.isHidden = false
-        aObject.tableView.alpha = alphaSet
+        aObject.tableView.alpha = alphaSet ?? 0
         aObject.tableView.separatorStyle = .none
-        aObject.eyeTracking(color: color!, flg: flg)
+        aObject.eyeTracking(color: color, flg: flg)
     }
 
     deinit {

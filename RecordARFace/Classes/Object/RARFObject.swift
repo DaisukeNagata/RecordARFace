@@ -193,7 +193,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         texturedFace = RARFTexturedFace(resource: color)
     }
 
-    func eyeTracking(color: UIColor, flg: Bool) {
+    func eyeTracking(color: UIColor?, flg: Bool) {
         tableFlg = false
         eView.isHidden = false
         webView.isHidden = true
