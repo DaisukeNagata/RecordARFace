@@ -38,7 +38,7 @@ public class RARFUseCase: NSObject {
         scrollView.addSubview(collectionView)
         return scrollView
     }()
-
+    var colorSet: UIColor!
     var alphaSet: CGFloat!
 
     public override init() {

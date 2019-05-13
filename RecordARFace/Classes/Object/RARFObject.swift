@@ -400,7 +400,7 @@ extension RARFObject: ARSCNViewDelegate {
                     to:  self.phoneNode.convertPosition(self.eyeData!.rightEyeEnd.worldPosition, from: nil),
                     options: options)
 
-                if !leftEye.isEmpty && !rightEye.isEmpty {
+                guard leftEye.isEmpty, rightEye.isEmpty else {
 
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
@@ -418,6 +418,7 @@ extension RARFObject: ARSCNViewDelegate {
                         self.webEViewSet()
                         return
                     }
+                    return
                 }
                 return
             }
