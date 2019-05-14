@@ -292,7 +292,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     @objc func didSelectUpdate(timer: Timer) {
         data.cells.cellFlg = true
-        if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView, index: data.indexPath) }
+        if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
