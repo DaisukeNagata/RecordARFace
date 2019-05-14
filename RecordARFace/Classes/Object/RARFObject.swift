@@ -108,7 +108,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView.addSubview(rARFWebUIView)
 
         arscnView.addSubview(tableView)
-
         arscnView.addSubview(numberKey)
         arscnView.addSubview(spellKey!)
         arscnView.addSubview(luangageKey!)
