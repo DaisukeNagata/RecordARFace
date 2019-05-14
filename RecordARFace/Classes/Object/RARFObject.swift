@@ -153,11 +153,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func webForward() {
-        if webView.canGoForward == true {
-            webView.goForward()
-        } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
-        }
+        if webView.canGoForward == true { webView.goForward() }
+        privateOffsetY = webView.scrollView.contentOffset.y
+        let offset = CGPoint(x: 0, y: privateOffsetY)
+        webView.scrollView.setContentOffset(offset, animated: true)
     }
 
     func webBack() {
@@ -166,7 +165,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         } else {
             webView.goBack()
             webView.isHidden = false
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { self.webFlg = true }
         }
     }
 
@@ -175,7 +173,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
         self.privateOffsetY = 0
         self.webFlg = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { self.webFlg = true }
     }
 
     func resetTracking() {
@@ -345,12 +342,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
             UIView.animate(withDuration: 0.3) { self.rARFWebUIView.forwardBt.alpha = 0 }
         }
 
-        if self.eView.frame.origin.x < 0 {
-            webFlg = false
-        } else if eView.frame.origin.x > UIScreen.main.bounds.width {
-            self.privateOffsetY = webView.scrollView.contentOffset.y
-            webFlg = true
-        }
+        if self.eView.frame.origin.y < 0 || eView.frame.origin.y > UIScreen.main.bounds.height{ webFlg = true }
     }
 }
 
