@@ -38,7 +38,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var timer: Timer?
     var numTimer: Timer?
     var spellTimer: Timer?
-    var anchors: ARAnchor?
     var vc: UIViewController?
     var rARFWebUIView: RARFWebUIView?
     var spellKey: RARFSpellAndKeyBoard?
@@ -112,12 +111,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView.addSubview(rARFWebUIView ?? UIView())
 
         arscnView.addSubview(tableView)
-        arscnView.addSubview(numberKey!)
         arscnView.addSubview(spellKey!)
+        arscnView.addSubview(numberKey!)
         arscnView.addSubview(luangageKey!)
         arscnView.addSubview(numberChangeView!)
-        numberKey?.isHidden = true
+
         spellKey?.isHidden = true
+        numberKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
 
@@ -178,7 +178,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     func resetTracking() {
-        if self.anchors != nil { self.arscnView.session.remove(anchor: self.anchors!) }
         UIApplication.shared.isIdleTimerDisabled = true
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
@@ -201,14 +200,14 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         if flg == false {
-            numberKey?.isHidden = false
             spellKey?.isHidden = true
+            numberKey?.isHidden = false
             luangageKey?.isHidden = true
             numberChangeView?.isHidden = true
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
-            numberKey?.isHidden = true
             spellKey?.isHidden = false
+            numberKey?.isHidden = true
             luangageKey?.isHidden = false
             numberChangeView?.isHidden = false
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
@@ -353,15 +352,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 extension RARFObject: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        anchors = anchor
-        guard texturedFace?.renderer(renderer, nodeFor: anchor) == nil else {
-            guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
-
-            nodeFace = contentNode
-            node.addChildNode(contentNode)
-            return
-        }
-        guard let contentNode = eyeData?.renderer(renderer, nodeFor: anchor) else { return }
+        guard let contentNode = texturedFace?.renderer(renderer, nodeFor: anchor) else { return }
         nodeFace = contentNode
         node.addChildNode(contentNode)
     }
