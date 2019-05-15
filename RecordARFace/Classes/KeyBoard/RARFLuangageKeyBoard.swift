@@ -42,7 +42,7 @@ final class RARFLuangageKeyBoard: UIView {
     @IBOutlet weak var testLabel: UILabel?
 
 
-    init(spellKey: RARFSpellAndKeyBoard, numberKey: RARFNumberChangeKeyBoardView) {
+    init(spellKey: RARFSpellAndKeyBoard? = nil, numberKey: RARFNumberChangeKeyBoardView? = nil) {
         super.init(frame: .zero)
         self.frame = UIScreen.main.bounds
         loadNib()

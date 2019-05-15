@@ -39,10 +39,10 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
-    var vc = UIViewController()
-    var rARFWebUIView: RARFWebUIView!
+    var vc: UIViewController?
+    var rARFWebUIView: RARFWebUIView?
     var spellKey: RARFSpellAndKeyBoard?
-    var luangageKey: RARFLuangageKeyBoard!
+    var luangageKey: RARFLuangageKeyBoard?
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
@@ -98,14 +98,17 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     override init() {
         super.init()
 
+        eyeData = RARFEyeData()
         rARFWebUIView = RARFWebUIView()
-        rARFWebUIView.goBt.alpha = 0
-        rARFWebUIView.forwardBt.alpha = 0
+
+        rARFWebUIView?.goBt.alpha = 0
+        rARFWebUIView?.forwardBt.alpha = 0
+
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
-        luangageKey = RARFLuangageKeyBoard(spellKey: spellKey!  ,numberKey: numberChangeView!)
+        luangageKey = RARFLuangageKeyBoard(spellKey: spellKey, numberKey: numberChangeView)
 
-        webView.addSubview(rARFWebUIView)
+        webView.addSubview(rARFWebUIView ?? UIView())
 
         arscnView.addSubview(tableView)
         arscnView.addSubview(numberKey)
@@ -121,7 +124,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableView.dataSource = data
 
         eView = RARFFlameView(eView: eView, color: .black).eViews
-        eyeData = RARFEyeData()
         arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
@@ -233,7 +235,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         tableFlg = true
         webView.isHidden = true
         eView.removeFromSuperview()
-        eView = RARFFlameView(eView: eView, color: color!).eViews
+        eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
         tableView.addSubview(eView)
         didSelectCell()
         eyeTrackDataSet()
@@ -247,7 +249,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView.isHidden = false
         tableView.isHidden = true
         eView.removeFromSuperview()
-        eView = RARFFlameView(eView: eView, color: color!).eViews
+        eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
         webView.addSubview(eView)
         webReload()
         eyeTrackDataSet()
@@ -297,11 +299,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
 
-    @objc func luangageKeyUpdate() { luangageKey.originTextField(rect: self.eView.frame, timer: timer!) }
+    @objc func luangageKeyUpdate() { luangageKey?.originTextField(rect: self.eView.frame, timer: timer ?? Timer()) }
 
-    @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer!) }
+    @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer ?? Timer()) }
 
-    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer!, view: luangageKey) }
+    @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer ?? Timer(), view: luangageKey ?? RARFLuangageKeyBoard()) }
 
     func didSelectCell() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(didSelectUpdate), userInfo: nil, repeats: true) }
 
@@ -315,9 +317,9 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
             let offset = CGPoint(x: 0, y: eView.frame.origin.y + privateOffsetY)
             webView.scrollView.setContentOffset(offset, animated: true)
-            rARFWebUIView.goBt.frame.origin.y = UIScreen.main.bounds.height/2
-            rARFWebUIView.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
-            rARFWebUIView.originTextField(rect: eView.frame, rARFObject: self)
+            rARFWebUIView?.goBt.frame.origin.y = UIScreen.main.bounds.height/2
+            rARFWebUIView?.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
+            rARFWebUIView?.originTextField(rect: eView.frame, rARFObject: self)
         }
     }
 
@@ -330,15 +332,15 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         }
 
         if eView.frame.origin.x < 150 {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 1 }
+            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.goBt.alpha = 1 }
         } else {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView.goBt.alpha = 0 }
+            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.goBt.alpha = 0 }
         }
 
         if self.eView.frame.origin.x > UIScreen.main.bounds.width - 150 {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView.forwardBt.alpha = 1 }
+            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.forwardBt.alpha = 1 }
         } else {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView.forwardBt.alpha = 0 }
+            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.forwardBt.alpha = 0 }
         }
 
         if self.eView.frame.origin.y < 0 || eView.frame.origin.y > UIScreen.main.bounds.height{ webFlg = true }
@@ -382,13 +384,13 @@ extension RARFObject: ARSCNViewDelegate {
                                                SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
 
                 let leftEye = self.phoneNode.hitTestWithSegment (
-                    from: self.phoneNode.convertPosition(self.eyeData!.leftEye.worldPosition, from: nil),
-                    to:  self.phoneNode.convertPosition(self.eyeData!.leftEyeEnd.worldPosition, from: nil),
+                    from: self.phoneNode.convertPosition(self.eyeData?.leftEye.worldPosition ?? SCNVector3(), from: nil),
+                    to:  self.phoneNode.convertPosition(self.eyeData?.leftEyeEnd.worldPosition ?? SCNVector3(), from: nil),
                     options: options)
 
                 let rightEye = self.phoneNode.hitTestWithSegment (
-                    from: self.phoneNode.convertPosition(self.eyeData!.rightEye.worldPosition, from: nil),
-                    to:  self.phoneNode.convertPosition(self.eyeData!.rightEyeEnd.worldPosition, from: nil),
+                    from: self.phoneNode.convertPosition(self.eyeData?.rightEye.worldPosition ?? SCNVector3(), from: nil),
+                    to:  self.phoneNode.convertPosition(self.eyeData?.rightEyeEnd.worldPosition ?? SCNVector3(), from: nil),
                     options: options)
 
                 guard leftEye.isEmpty, rightEye.isEmpty else {
