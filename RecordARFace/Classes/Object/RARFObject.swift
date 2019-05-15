@@ -43,7 +43,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     var rARFWebUIView: RARFWebUIView?
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard?
-    var numberKey = RARFNumberKeyboardView()
+    var numberKey: RARFNumberKeyboardView?
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
     var data = RARFTableViewDataSource()
@@ -104,6 +104,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         rARFWebUIView?.goBt.alpha = 0
         rARFWebUIView?.forwardBt.alpha = 0
 
+        numberKey = RARFNumberKeyboardView()
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey, numberKey: numberChangeView)
@@ -111,11 +112,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         webView.addSubview(rARFWebUIView ?? UIView())
 
         arscnView.addSubview(tableView)
-        arscnView.addSubview(numberKey)
+        arscnView.addSubview(numberKey!)
         arscnView.addSubview(spellKey!)
         arscnView.addSubview(luangageKey!)
         arscnView.addSubview(numberChangeView!)
-        numberKey.isHidden = true
+        numberKey?.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
@@ -200,13 +201,13 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         if flg == false {
-            numberKey.isHidden = false
+            numberKey?.isHidden = false
             spellKey?.isHidden = true
             luangageKey?.isHidden = true
             numberChangeView?.isHidden = true
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
-            numberKey.isHidden = true
+            numberKey?.isHidden = true
             spellKey?.isHidden = false
             luangageKey?.isHidden = false
             numberChangeView?.isHidden = false
@@ -222,7 +223,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func eyeTrackDataSet() {
         eView.isHidden = false
         tableView.isHidden = false
-        numberKey.isHidden = true
+        numberKey?.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
@@ -297,7 +298,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView) }
     }
 
-    @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
+    @objc func numberKeyUpdate() { numberKey?.originTextField(rect: self.eView.frame) }
 
     @objc func luangageKeyUpdate() { luangageKey?.originTextField(rect: self.eView.frame, timer: timer ?? Timer()) }
 
