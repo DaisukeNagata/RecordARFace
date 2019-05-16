@@ -45,7 +45,7 @@ public class RARFUseCase: NSObject {
         super.init()
     }
 
-    public func indexNumber(index: Int)  { aObject.data.indexNumber = index }
+    public func indexNumber(index: Int)  { aObject.rARFWebOb.data.indexNumber = index }
 
     public func collectionIsHeddenFalse() { collectionView.isHidden = false }
 
@@ -61,7 +61,7 @@ public class RARFUseCase: NSObject {
 
     public func webViewMerge(vc: UIViewController) -> WKWebView {
         aObject.vc = vc
-        return aObject.webView
+        return aObject.rARFWebOb.webView
     }
 
     public func tableScrollTrue(color: UIColor) {
@@ -73,10 +73,10 @@ public class RARFUseCase: NSObject {
 
     public func webScrollTrue(color: UIColor) {
         aObject.eyeTrackingWebView(color: color)
-        aObject.webView.scrollView.contentOffset.y = 0
-        aObject.webFlg = false
+        aObject.rARFWebOb.webView.scrollView.contentOffset.y = 0
+        aObject.rARFWebOb.webFlg = false
         collectionView.isHidden = true
-        aObject.webView.isHidden = false
+        aObject.rARFWebOb.webView.isHidden = false
         aObject.arscnView.isHidden = false
     }
 
@@ -95,7 +95,7 @@ public class RARFUseCase: NSObject {
     public func viewHidden() {
         tView.table.frame.origin.y -= tView.frame.height
         collectionView.isHidden = false
-        aObject.webView.isHidden = true
+        aObject.rARFWebOb.webView.isHidden = true
         aObject.arscnView.isHidden = true
         aObject.tableView.isHidden = true
     }

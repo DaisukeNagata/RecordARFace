@@ -28,36 +28,22 @@ protocol ARSCNDelegate: ARSCNViewDelegate {
 
 
 @available(iOS 11.0, *)
-final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUIDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
+final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     public var contentOffSetY: CGFloat = 0
     private var privateOffsetY: CGFloat = 0
 
-    var webFlg = false
     var tableFlg = false
     var timer: Timer?
     var numTimer: Timer?
     var spellTimer: Timer?
     var anchors: ARAnchor?
     var vc: UIViewController?
-    var rARFWebUIView: RARFWebUIView?
+    var rARFWebOb = RARFWebObject()
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard?
     var numberKey = RARFNumberKeyboardView()
     var numberChangeView: RARFNumberChangeKeyBoardView?
-
-    var data = RARFTableViewDataSource()
-
-    lazy var webView: WKWebView = {
-        var webView = WKWebView()
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), configuration: webConfiguration)
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        webView.scrollView.delegate = data
-        webView.allowsBackForwardNavigationGestures = true
-        return webView
-    }()
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -99,16 +85,11 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         super.init()
 
         eyeData = RARFEyeData()
-        rARFWebUIView = RARFWebUIView()
-
-        rARFWebUIView?.goBt.alpha = 0
-        rARFWebUIView?.forwardBt.alpha = 0
+        rARFWebOb = RARFWebObject()
 
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey, numberKey: numberChangeView)
-
-        webView.addSubview(rARFWebUIView ?? UIView())
 
         arscnView.addSubview(tableView)
         arscnView.addSubview(numberKey)
@@ -120,60 +101,14 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
 
-        tableView.delegate = data
-        tableView.dataSource = data
+        tableView.delegate = rARFWebOb.data
+        tableView.dataSource = rARFWebOb.data
 
         eView = RARFFlameView(eView: eView, color: .black).eViews
         arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
         phoneNode.addChildNode(screenNode)
-
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(keyboardWillShow(_:)),
-                                 name: UIResponder.keyboardWillShowNotification, object: nil)
-
-        let notificationHide = NotificationCenter.default
-        notificationHide.addObserver(self, selector: #selector(keyboardWillHide(_:)),
-                                     name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    @objc func keyboardWillShow(_ notification: Notification?) {
-        webFlg = false
-        let offset = CGPoint(x: 0, y: -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height))
-        webView.scrollView.setContentOffset(offset, animated: false)
-    }
-
-    @objc func keyboardWillHide(_ notification: Notification?) { webFlg = true }
-
-    func webReload() {
-        webFlg = true
-        guard let url = URL(string: RASRFWebUrlPath) else { fatalError() }
-        let request = URLRequest(url: url)
-        webView.load(request)
-    }
-
-    func webForward() {
-        if webView.canGoForward == true { webView.goForward() }
-        privateOffsetY = webView.scrollView.contentOffset.y
-        let offset = CGPoint(x: 0, y: privateOffsetY)
-        webView.scrollView.setContentOffset(offset, animated: true)
-    }
-
-    func webBack() {
-        if webView.backForwardList.backList.count == 0 {
-            webView.isHidden = true
-        } else {
-            webView.goBack()
-            webView.isHidden = false
-        }
-    }
-
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        decisionHandler(WKNavigationActionPolicy.allow)
-
-        self.privateOffsetY = 0
-        self.webFlg = false
     }
 
     func resetTracking() {
@@ -194,7 +129,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     func eyeTracking(color: UIColor?, flg: Bool) {
         tableFlg = false
         eView.isHidden = false
-        webView.isHidden = true
+        rARFWebOb.webView.isHidden = true
         tableView.isHidden = true
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
@@ -233,7 +168,7 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         tableFlg = true
-        webView.isHidden = true
+        rARFWebOb.webView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
         tableView.addSubview(eView)
@@ -246,12 +181,12 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
         #if targetEnvironment(simulator)
         #else
         tableFlg = false
-        webView.isHidden = false
+        rARFWebOb.webView.isHidden = false
         tableView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
-        webView.addSubview(eView)
-        webReload()
+        rARFWebOb.webView.addSubview(eView)
+        rARFWebOb.webReload()
         eyeTrackDataSet()
         #endif
     }
@@ -293,8 +228,8 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
     }
 
     @objc func didSelectUpdate(timer: Timer) {
-        data.cells.cellFlg = true
-        if tableFlg == false { data.cells.didSelectBt(table: tableView, eView: eView) }
+        rARFWebOb.data.cells.cellFlg = true
+        if tableFlg == false { rARFWebOb.data.cells.didSelectBt(table: tableView, eView: eView) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -313,38 +248,6 @@ final class RARFObject: NSObject, ARSessionDelegate, WKNavigationDelegate, WKUID
 
     func upDateluangageKey() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true) }
 
-    private func webEViewSet() {
-        if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-            let offset = CGPoint(x: 0, y: eView.frame.origin.y + privateOffsetY)
-            webView.scrollView.setContentOffset(offset, animated: true)
-            rARFWebUIView?.goBt.frame.origin.y = UIScreen.main.bounds.height/2
-            rARFWebUIView?.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
-            rARFWebUIView?.originTextField(rect: eView.frame, rARFObject: self)
-        }
-    }
-
-    private func webContentOffSetX() {
-
-        if self.eView.frame.origin.y > self.webView.frame.height/2 {
-            self.privateOffsetY += self.contentOffSetY
-        } else {
-            self.privateOffsetY -= self.contentOffSetY
-        }
-
-        if eView.frame.origin.x < 150 {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.goBt.alpha = 1 }
-        } else {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.goBt.alpha = 0 }
-        }
-
-        if self.eView.frame.origin.x > UIScreen.main.bounds.width - 150 {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.forwardBt.alpha = 1 }
-        } else {
-            UIView.animate(withDuration: 0.3) { self.rARFWebUIView?.forwardBt.alpha = 0 }
-        }
-
-        if self.eView.frame.origin.y < 0 || eView.frame.origin.y > UIScreen.main.bounds.height{ webFlg = true }
-    }
 }
 
 // MARK: ARSCNViewDelegate
@@ -398,7 +301,7 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                    guard self.data.indexNumber == 0 else {
+                    guard self.rARFWebOb.data.indexNumber == 0 else {
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
@@ -406,9 +309,9 @@ extension RARFObject: ARSCNViewDelegate {
                         return
                     }
 
-                    guard self.webView.url == nil else {
-                        self.webContentOffSetX()
-                        self.webEViewSet()
+                    guard self.rARFWebOb.webView.url == nil else {
+                        self.rARFWebOb.webContentOffSetX(eView: self.eView, contentOffSetY: self.contentOffSetY)
+                        self.rARFWebOb.webEViewSet(eView: self.eView)
                         return
                     }
                     return

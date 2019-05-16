@@ -31,7 +31,7 @@ final class RARFWebUIView: UIView {
         self.addSubview(view)
     }
 
-    func originTextField(rect: CGRect, rARFObject: RARFObject) {
+    func originTextField(rect: CGRect, rARFObject: RARFWebObject) {
 
         if goBt.frame.contains(rect) {
             rARFObject.webFlg = false
