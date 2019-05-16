@@ -19,7 +19,7 @@ final class RARFEyeData: SCNNode {
     var resource: UIColor
     private let numPositions = 30
     private let floatRaycastDistance: Float = 1
-    private var positions: Array<simd_float2> = Array()
+    private var positions: Array<simd_float2>
 
 
     override init() {
@@ -30,6 +30,7 @@ final class RARFEyeData: SCNNode {
         leftEyeEnd = SCNNode()
         rightEyeEnd = SCNNode()
         contentNode = SCNNode()
+        positions = Array<simd_float2>()
 
         leftEye.addChildNode(leftEyeEnd)
         leftEyeEnd.simdPosition = simd_float3(0 , 0, floatRaycastDistance)
