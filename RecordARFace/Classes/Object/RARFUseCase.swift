@@ -45,7 +45,7 @@ public class RARFUseCase: NSObject {
         super.init()
     }
 
-    public func indexNumber(index: Int)  { aObject.rARFWebOb?.data.indexNumber = index }
+    public func indexNumber(index: Int)  { aObject.rARFWebOb?.data?.indexNumber = index }
 
     public func collectionIsHeddenFalse() { collectionView.isHidden = false }
 

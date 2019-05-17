@@ -12,7 +12,7 @@ class RARFWebObject: NSObject, WKNavigationDelegate, WKUIDelegate {
 
     var webFlg = false
     var rARFWebUIView: RARFWebUIView?
-    var data = RARFTableViewDataSource()
+    var data: RARFTableViewDataSource?
 
     private var weBOffsetY: CGFloat = 0
 

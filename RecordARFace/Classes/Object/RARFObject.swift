@@ -228,8 +228,8 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     }
 
     @objc func didSelectUpdate(timer: Timer) {
-        rARFWebOb?.data.cells.cellFlg = true
-        if tableFlg == false { rARFWebOb?.data.cells.didSelectBt(table: tableView, eView: eView) }
+        rARFWebOb?.data?.cells?.cellFlg = true
+        if tableFlg == false { rARFWebOb?.data?.cells?.didSelectBt(table: tableView, eView: eView) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -301,7 +301,7 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                    guard self.rARFWebOb?.data.indexNumber == 0 else {
+                    guard self.rARFWebOb?.data?.indexNumber == 0 else {
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
