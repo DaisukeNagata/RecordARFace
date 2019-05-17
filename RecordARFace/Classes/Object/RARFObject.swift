@@ -42,7 +42,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     var rARFWebOb: RARFWebObject?
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard?
-    var numberKey = RARFNumberKeyboardView()
+    var numberKey: RARFNumberKeyboardView?
     var numberChangeView: RARFNumberChangeKeyBoardView?
 
     lazy var tableView: UITableView = {
@@ -75,28 +75,30 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         return SCNNode(geometry: screenNode)
     }()
 
-    private var nodeFace = SCNNode()
-    private var phoneNode = SCNNode()
+    private var nodeFace: SCNNode
+    private var phoneNode: SCNNode
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
 
 
     override init() {
+        nodeFace = SCNNode()
+        phoneNode = SCNNode()
         super.init()
 
         eyeData = RARFEyeData()
         rARFWebOb = RARFWebObject()
-
+        numberKey = RARFNumberKeyboardView()
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
         luangageKey = RARFLuangageKeyBoard(spellKey: spellKey, numberKey: numberChangeView)
 
         arscnView.addSubview(tableView)
-        arscnView.addSubview(numberKey)
+        arscnView.addSubview(numberKey!)
         arscnView.addSubview(spellKey!)
         arscnView.addSubview(luangageKey!)
         arscnView.addSubview(numberChangeView!)
-        numberKey.isHidden = true
+        numberKey?.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
@@ -135,13 +137,13 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #if targetEnvironment(simulator)
         #else
         if flg == false {
-            numberKey.isHidden = false
+            numberKey?.isHidden = false
             spellKey?.isHidden = true
             luangageKey?.isHidden = true
             numberChangeView?.isHidden = true
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(numberKeyUpdate), userInfo: nil, repeats: true)
         } else {
-            numberKey.isHidden = true
+            numberKey?.isHidden = true
             spellKey?.isHidden = false
             luangageKey?.isHidden = false
             numberChangeView?.isHidden = false
@@ -157,7 +159,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     func eyeTrackDataSet() {
         eView.isHidden = false
         tableView.isHidden = false
-        numberKey.isHidden = true
+        numberKey?.isHidden = true
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
@@ -228,11 +230,11 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     }
 
     @objc func didSelectUpdate(timer: Timer) {
-        rARFWebOb?.data?.cells?.cellFlg = true
-        if tableFlg == false { rARFWebOb?.data?.cells?.didSelectBt(table: tableView, eView: eView) }
+        rARFWebOb?.data.cells?.cellFlg = true
+        if tableFlg == false { rARFWebOb?.data.cells?.didSelectBt(table: tableView, eView: eView) }
     }
 
-    @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
+    @objc func numberKeyUpdate() { numberKey?.originTextField(rect: self.eView.frame) }
 
     @objc func luangageKeyUpdate() { luangageKey?.originTextField(rect: self.eView.frame, timer: timer ?? Timer()) }
 
@@ -301,7 +303,7 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                    guard self.rARFWebOb?.data?.indexNumber == 0 else {
+                    guard self.rARFWebOb?.data.indexNumber == 0 else {
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
@@ -310,8 +312,7 @@ extension RARFObject: ARSCNViewDelegate {
                     }
 
                     guard self.rARFWebOb?.webView.url == nil else {
-                        self.rARFWebOb?.webContentOffSetX(eView: self.eView, contentOffSetY: self.contentOffSetY)
-                        self.rARFWebOb?.webEViewSet(eView: self.eView)
+                        self.rARFWebOb?.webContentOffSet(eView: self.eView, contentOffSetY: self.contentOffSetY)
                         return
                     }
                     return

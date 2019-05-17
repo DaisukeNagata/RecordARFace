@@ -11,8 +11,9 @@ import WebKit
 class RARFWebObject: NSObject, WKNavigationDelegate, WKUIDelegate {
 
     var webFlg = false
+    var offset = CGPoint()
     var rARFWebUIView: RARFWebUIView?
-    var data: RARFTableViewDataSource?
+    var data = RARFTableViewDataSource()
 
     private var weBOffsetY: CGFloat = 0
 
@@ -82,7 +83,7 @@ class RARFWebObject: NSObject, WKNavigationDelegate, WKUIDelegate {
         self.webFlg = false
     }
 
-    func webContentOffSetX(eView: UIView, contentOffSetY: CGFloat) {
+    func webContentOffSet(eView: UIView, contentOffSetY: CGFloat) {
         
         if eView.frame.origin.y > webView.frame.height/2 {
             weBOffsetY += contentOffSetY
@@ -103,11 +104,9 @@ class RARFWebObject: NSObject, WKNavigationDelegate, WKUIDelegate {
         }
 
         if eView.frame.origin.y < 0 || eView.frame.origin.y > UIScreen.main.bounds.height{ webFlg = true }
-    }
 
-    func webEViewSet(eView: UIView) {
         if webFlg == true && eView.frame.origin.y > -(UINavigationController().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height) {
-            let offset = CGPoint(x: 0, y: eView.frame.origin.y + weBOffsetY)
+            offset = CGPoint(x: 0, y: eView.frame.origin.y + weBOffsetY)
             webView.scrollView.setContentOffset(offset, animated: true)
             rARFWebUIView?.goBt.frame.origin.y = UIScreen.main.bounds.height/2
             rARFWebUIView?.forwardBt.frame.origin.y = UIScreen.main.bounds.height/2
