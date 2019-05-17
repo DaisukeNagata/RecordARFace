@@ -68,10 +68,12 @@ extension RARFCollectionView: UICollectionViewDelegate {
 extension RARFCollectionView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == KeyboardCount.number.rawValue {
-            rUseCase.eyeTrackStart(flg: false, color: rUseCase.colorSet)
-        } else if indexPath.row == KeyboardCount.luangage.rawValue {
+        switch KeyboardCount(rawValue: indexPath.row) {
+        case .number?:
+           rUseCase.eyeTrackStart(flg: false, color: rUseCase.colorSet)
+        case .luangage?:
             rUseCase.eyeTrackStart(flg: true, color: rUseCase.colorSet)
+        default: break
         }
     }
 }
