@@ -13,7 +13,7 @@ import RecordARFace
 
 class ViewController: UIViewController {
 
-    private var w = WKWebView()
+    private var w: WKWebView?
     private let ob = SampleTableData()
     private var statusBar = RARFStatusBarUI().statusBar
     private lazy var cView: RARFCollectionView = {
@@ -119,14 +119,14 @@ extension ViewController: UITableViewDelegate {
             cView.rUseCase.webScrollTrue(color: .black)
             cView.rUseCase.contentOffSetY(y: 3)
             w = cView.rUseCase.webViewMerge(vc: self)
-            view.addSubview(w)
+            view.addSubview(w ?? WKWebView())
         case .keyBoard?:
-            w.removeFromSuperview()
+            w?.removeFromSuperview()
             cViewSet()
             cView.rUseCase.viewEyesTracking()
             cView.rUseCase.indexNumber(index: 0)
         case .table?:
-            w.removeFromSuperview()
+            w?.removeFromSuperview()
             cViewSet()
             cView.rUseCase.contentOffSetY(y: 5)
             cView.rUseCase.indexNumber(index: 100)

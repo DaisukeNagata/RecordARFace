@@ -39,7 +39,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     var spellTimer: Timer?
     var anchors: ARAnchor?
     var vc: UIViewController?
-    var rARFWebOb = RARFWebObject()
+    var rARFWebOb: RARFWebObject?
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard?
     var numberKey = RARFNumberKeyboardView()
@@ -101,8 +101,8 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
 
-        tableView.delegate = rARFWebOb.data
-        tableView.dataSource = rARFWebOb.data
+        tableView.delegate = rARFWebOb?.data
+        tableView.dataSource = rARFWebOb?.data
 
         eView = RARFFlameView(eView: eView, color: .black).eViews
         arscnView.scene.rootNode.addChildNode(eyeData!)
@@ -129,7 +129,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     func eyeTracking(color: UIColor?, flg: Bool) {
         tableFlg = false
         eView.isHidden = false
-        rARFWebOb.webView.isHidden = true
+        rARFWebOb?.webView.isHidden = true
         tableView.isHidden = true
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
@@ -168,7 +168,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #if targetEnvironment(simulator)
         #else
         tableFlg = true
-        rARFWebOb.webView.isHidden = true
+        rARFWebOb?.webView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
         tableView.addSubview(eView)
@@ -181,12 +181,12 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #if targetEnvironment(simulator)
         #else
         tableFlg = false
-        rARFWebOb.webView.isHidden = false
+        rARFWebOb?.webView.isHidden = false
         tableView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
-        rARFWebOb.webView.addSubview(eView)
-        rARFWebOb.webReload()
+        rARFWebOb?.webView.addSubview(eView)
+        rARFWebOb?.webReload()
         eyeTrackDataSet()
         #endif
     }
@@ -228,8 +228,8 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     }
 
     @objc func didSelectUpdate(timer: Timer) {
-        rARFWebOb.data.cells.cellFlg = true
-        if tableFlg == false { rARFWebOb.data.cells.didSelectBt(table: tableView, eView: eView) }
+        rARFWebOb?.data.cells.cellFlg = true
+        if tableFlg == false { rARFWebOb?.data.cells.didSelectBt(table: tableView, eView: eView) }
     }
 
     @objc func numberKeyUpdate() { numberKey.originTextField(rect: self.eView.frame) }
@@ -301,7 +301,7 @@ extension RARFObject: ARSCNViewDelegate {
                     guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
                     self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                    guard self.rARFWebOb.data.indexNumber == 0 else {
+                    guard self.rARFWebOb?.data.indexNumber == 0 else {
                         self.eView.frame.origin.y = self.tableView.contentOffset.y
                         self.eView.frame.origin.y += CGFloat(coords.y)*2
                         self.tableContentOff()
@@ -309,9 +309,9 @@ extension RARFObject: ARSCNViewDelegate {
                         return
                     }
 
-                    guard self.rARFWebOb.webView.url == nil else {
-                        self.rARFWebOb.webContentOffSetX(eView: self.eView, contentOffSetY: self.contentOffSetY)
-                        self.rARFWebOb.webEViewSet(eView: self.eView)
+                    guard self.rARFWebOb?.webView.url == nil else {
+                        self.rARFWebOb?.webContentOffSetX(eView: self.eView, contentOffSetY: self.contentOffSetY)
+                        self.rARFWebOb?.webEViewSet(eView: self.eView)
                         return
                     }
                     return
