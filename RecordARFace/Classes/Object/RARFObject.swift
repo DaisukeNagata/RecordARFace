@@ -75,10 +75,10 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         return SCNNode(geometry: screenNode)
     }()
 
-    private var nodeFace: SCNNode
-    private var phoneNode: SCNNode
     private var eyeData: RARFEyeData?
     private var texturedFace: RARFTexturedFace?
+    private var nodeFace: SCNNode
+    private var phoneNode: SCNNode
 
 
     override init() {
@@ -111,6 +111,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
         phoneNode.addChildNode(screenNode)
+
     }
 
     func resetTracking() {
@@ -281,40 +282,36 @@ extension RARFObject: ARSCNViewDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async {
-            guard self.eyeData?.contentNode == nil else {
-                if let arscnView = self.arscnView.pointOfView { self.phoneNode.transform = arscnView.transform }
-                let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
-                                               SCNHitTestOption.searchMode.rawValue: 1,
-                                               SCNHitTestOption.ignoreChildNodes.rawValue : false,
-                                               SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
+            let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
+                                           SCNHitTestOption.searchMode.rawValue: 1,
+                                           SCNHitTestOption.ignoreChildNodes.rawValue : false,
+                                           SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
+            
+            if let arscnView = self.arscnView.pointOfView { self.phoneNode.transform = arscnView.transform }
+            let leftEye = self.phoneNode.hitTestWithSegment (
+                from: self.phoneNode.convertPosition(self.eyeData?.leftEye.worldPosition ?? SCNVector3(), from: nil),
+                to:  self.phoneNode.convertPosition(self.eyeData?.leftEyeEnd.worldPosition ?? SCNVector3(), from: nil),
+                options: options)
 
-                let leftEye = self.phoneNode.hitTestWithSegment (
-                    from: self.phoneNode.convertPosition(self.eyeData?.leftEye.worldPosition ?? SCNVector3(), from: nil),
-                    to:  self.phoneNode.convertPosition(self.eyeData?.leftEyeEnd.worldPosition ?? SCNVector3(), from: nil),
-                    options: options)
+            let rightEye = self.phoneNode.hitTestWithSegment (
+                from: self.phoneNode.convertPosition(self.eyeData?.rightEye.worldPosition ?? SCNVector3(), from: nil),
+                to:  self.phoneNode.convertPosition(self.eyeData?.rightEyeEnd.worldPosition ?? SCNVector3(), from: nil),
+                options: options)
 
-                let rightEye = self.phoneNode.hitTestWithSegment (
-                    from: self.phoneNode.convertPosition(self.eyeData?.rightEye.worldPosition ?? SCNVector3(), from: nil),
-                    to:  self.phoneNode.convertPosition(self.eyeData?.rightEyeEnd.worldPosition ?? SCNVector3(), from: nil),
-                    options: options)
+            guard leftEye.isEmpty, rightEye.isEmpty else {
+                guard let coords = self.eyeData?.eyePosition((leftEye[0]), secondResult: (rightEye[0])) else { return }
+                self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
 
-                guard leftEye.isEmpty, rightEye.isEmpty else {
+                guard self.rARFWebOb?.data.indexNumber == 0 else {
+                    self.eView.frame.origin.y = self.tableView.contentOffset.y
+                    self.eView.frame.origin.y += CGFloat(coords.y)*2
+                    self.tableContentOff()
+                    self.tableSetFlg()
+                    return
+                }
 
-                    guard let coords = self.eyeData?.eyePosition(leftEye[0], secondResult: rightEye[0]) else { return }
-                    self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
-
-                    guard self.rARFWebOb?.data.indexNumber == 0 else {
-                        self.eView.frame.origin.y = self.tableView.contentOffset.y
-                        self.eView.frame.origin.y += CGFloat(coords.y)*2
-                        self.tableContentOff()
-                        self.tableSetFlg()
-                        return
-                    }
-
-                    guard self.rARFWebOb?.webView.url == nil else {
-                        self.rARFWebOb?.webContentOffSet(eView: self.eView, contentOffSetY: self.contentOffSetY)
-                        return
-                    }
+                guard self.rARFWebOb?.webView.url == nil else {
+                    self.rARFWebOb?.webContentOffSet(eView: self.eView, contentOffSetY: self.contentOffSetY)
                     return
                 }
                 return
