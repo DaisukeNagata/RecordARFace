@@ -107,6 +107,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         tableView.dataSource = rARFWebOb?.data
 
         eView = RARFFlameView(eView: eView, color: .black).eViews
+        arscnView.addSubview(eView)
         arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
         phoneNode.geometry?.firstMaterial?.isDoubleSided = true
@@ -150,9 +151,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
             numberChangeView?.isHidden = false
             timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(luangageKeyUpdate), userInfo: nil, repeats: true)
         }
-        eView.removeFromSuperview()
-        eView = RARFFlameView(eView: eView, color: .black).eViews
-        arscnView.addSubview(eView)
         resetTracking()
         #endif
     }
