@@ -286,7 +286,7 @@ extension RARFObject: ARSCNViewDelegate {
                                            SCNHitTestOption.searchMode.rawValue: 1,
                                            SCNHitTestOption.ignoreChildNodes.rawValue : false,
                                            SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
-            
+
             if let arscnView = self.arscnView.pointOfView { self.phoneNode.transform = arscnView.transform }
             let leftEye = self.phoneNode.hitTestWithSegment (
                 from: self.phoneNode.convertPosition(self.eyeData?.leftEye.worldPosition ?? SCNVector3(), from: nil),
@@ -299,12 +299,12 @@ extension RARFObject: ARSCNViewDelegate {
                 options: options)
 
             guard leftEye.isEmpty, rightEye.isEmpty else {
-                guard let coords = self.eyeData?.eyePosition((leftEye[0]), secondResult: (rightEye[0])) else { return }
-                self.eView.frame.origin = CGPoint(x: CGFloat(coords.x), y: CGFloat(coords.y))
+                let coords = self.eyeData?.eyePosition((leftEye[0]), secondResult: (rightEye[0]))
+                self.eView.frame.origin = CGPoint(x: CGFloat(coords?.x ?? Float(CGFloat())), y: CGFloat(coords?.y ?? Float(CGFloat())))
 
                 guard self.rARFWebOb?.data.indexNumber == 0 else {
                     self.eView.frame.origin.y = self.tableView.contentOffset.y
-                    self.eView.frame.origin.y += CGFloat(coords.y)*2
+                    self.eView.frame.origin.y += CGFloat(coords?.y ?? Float(CGFloat()))*2
                     self.tableContentOff()
                     self.tableSetFlg()
                     return
