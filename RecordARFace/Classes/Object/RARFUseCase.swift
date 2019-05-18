@@ -98,6 +98,9 @@ public class RARFUseCase: NSObject {
         aObject.rARFWebOb?.webView.isHidden = true
         aObject.arscnView.isHidden = true
         aObject.tableView.isHidden = true
+        aObject.numberKey?.isHidden = true
+        aObject.luangageKey?.isHidden = true
+        aObject.spellKey?.isHidden = true
     }
 
     public func viewEyesTracking() {
