@@ -60,7 +60,7 @@ The function of tracking eye movements can be confirmed on the actual machine fr
 ## Image
 <img src="https://user-images.githubusercontent.com/16457165/50737574-57990900-120e-11e9-9f7e-ac8d030757a8.gif"  width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/50793605-1b4bd280-130c-11e9-89bb-3db584ce6108.png" width="285" height="700"><img src="https://user-images.githubusercontent.com/16457165/57193380-5cc85380-6f75-11e9-8972-9a4c1881718e.gif" width="285" height="700">
 
-<img src="https://user-images.githubusercontent.com/16457165/52259146-0d1dc000-2965-11e9-9860-232657a7ba9d.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/54484843-70c6d180-48b1-11e9-93c5-9968d8dac99b.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/56879936-c936e480-6a95-11e9-8823-12c3a2daede8.gif" width="285"  height="700">
+<img src="https://user-images.githubusercontent.com/16457165/57976270-dd2b9180-7a16-11e9-91be-abfacfcfa213.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/54484843-70c6d180-48b1-11e9-93c5-9968d8dac99b.gif"  width="285"  height="700"><img src="https://user-images.githubusercontent.com/16457165/56879936-c936e480-6a95-11e9-8823-12c3a2daede8.gif" width="285"  height="700">
 ## Installation
 
 RecordARFace is available through [CocoaPods](https://cocoapods.org). To install
