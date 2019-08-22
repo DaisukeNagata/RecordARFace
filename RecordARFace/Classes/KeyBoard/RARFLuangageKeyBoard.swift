@@ -12,41 +12,40 @@ public var RARFUrlPath = String()
 
 final class RARFLuangageKeyBoard: UIView {
 
-    var flg = false
-    var rectFrame: CGRect!
-    var spell: RARFSpellAndKeyBoard?
-    var number: RARFNumberChangeKeyBoardView?
+    var flg       = false
+    var rectFrame : CGRect!
+    var spell     : RARFSpellAndKeyBoard?
+    var number    : RARFNumberChangeKeyBoardView?
 
-    @IBOutlet weak var arrow: RARFNumberButton?
-    @IBOutlet weak var reload: RARFNumberButton?
-    @IBOutlet weak var change: RARFNumberButton?
-    @IBOutlet weak var symbol: RARFNumberButton?
-    @IBOutlet weak var aColumn: RARFNumberButton?
-    @IBOutlet weak var dColumn: RARFNumberButton?
-    @IBOutlet weak var backColumn: RARFNumberButton?
+    @IBOutlet weak var arrow       : RARFNumberButton?
+    @IBOutlet weak var reload      : RARFNumberButton?
+    @IBOutlet weak var change      : RARFNumberButton?
+    @IBOutlet weak var symbol      : RARFNumberButton?
+    @IBOutlet weak var aColumn     : RARFNumberButton?
+    @IBOutlet weak var dColumn     : RARFNumberButton?
+    @IBOutlet weak var backColumn  : RARFNumberButton?
     @IBOutlet weak var reloadColumn: RARFNumberButton?
-    @IBOutlet weak var gColumn: RARFNumberButton?
-    @IBOutlet weak var jColumn: RARFNumberButton?
-    @IBOutlet weak var mColumn: RARFNumberButton?
-    @IBOutlet weak var space: RARFNumberButton?
-    @IBOutlet weak var numColumn: RARFNumberButton?
-    @IBOutlet weak var pColumn: RARFNumberButton?
-    @IBOutlet weak var tColumn: RARFNumberButton?
-    @IBOutlet weak var wColumn: RARFNumberButton?
-    @IBOutlet weak var openColumn: RARFNumberButton?
-    @IBOutlet weak var lower: RARFNumberButton?
-    @IBOutlet weak var darkSpot: RARFNumberButton?
-    @IBOutlet weak var what: RARFNumberButton?
-    @IBOutlet weak var openWeb: RARFNumberButton?
-
-    @IBOutlet weak var testLabel: UILabel?
+    @IBOutlet weak var gColumn     : RARFNumberButton?
+    @IBOutlet weak var jColumn     : RARFNumberButton?
+    @IBOutlet weak var mColumn     : RARFNumberButton?
+    @IBOutlet weak var space       : RARFNumberButton?
+    @IBOutlet weak var numColumn   : RARFNumberButton?
+    @IBOutlet weak var pColumn     : RARFNumberButton?
+    @IBOutlet weak var tColumn     : RARFNumberButton?
+    @IBOutlet weak var wColumn     : RARFNumberButton?
+    @IBOutlet weak var openColumn  : RARFNumberButton?
+    @IBOutlet weak var lower       : RARFNumberButton?
+    @IBOutlet weak var darkSpot    : RARFNumberButton?
+    @IBOutlet weak var what        : RARFNumberButton?
+    @IBOutlet weak var openWeb     : RARFNumberButton?
+    @IBOutlet weak var testLabel   : UILabel?
 
 
     init(spellKey: RARFSpellAndKeyBoard? = nil, numberKey: RARFNumberChangeKeyBoardView? = nil) {
         super.init(frame: .zero)
         self.frame = UIScreen.main.bounds
         loadNib()
-        spell = spellKey
+        spell  = spellKey
         number = numberKey
         number?.views = self
     }
@@ -104,12 +103,13 @@ final class RARFLuangageKeyBoard: UIView {
         }
 
         if openWeb?.frame.contains(rectFrame) ?? false {
+            guard testLabel?.text != "" else { return }
             let tex = testLabel?.text ?? ""
             if let url = URL(string: RARFUrlPath + tex) {
  
                 guard !UIApplication.shared.canOpenURL(url) else {
                     UIApplication.shared.open(url)
-                    rectFrame.origin.y = 0
+                    testLabel?.text = ""
                     return
                 }
             }
