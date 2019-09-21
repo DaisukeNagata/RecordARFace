@@ -118,19 +118,15 @@ extension ViewController: UITableViewDelegate {
             cViewSet()
             cView.rUseCase.webScrollTrue(color: .black)
             cView.rUseCase.contentOffSetY(y: 3)
-            w = cView.rUseCase.webViewMerge(vc: self)
             view.addSubview(w ?? WKWebView())
-            cView.rUseCase.indexNumber(index: 0)
         case .keyBoard?:
             w?.removeFromSuperview()
             cViewSet()
             cView.rUseCase.viewEyesTracking()
-            cView.rUseCase.indexNumber(index: 0)
         case .table?:
             w?.removeFromSuperview()
             cViewSet()
             cView.rUseCase.contentOffSetY(y: 5)
-            cView.rUseCase.indexNumber(index: 100)
             cView.rUseCase.tableScrollTrue(color: .black)
             let table = cView.rUseCase.tableMerge()
             table.rowHeight = 200

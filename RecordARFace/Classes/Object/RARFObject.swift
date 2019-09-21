@@ -39,7 +39,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     var spellTimer: Timer?
     var anchors: ARAnchor?
     var vc: UIViewController?
-    var rARFWebOb: RARFWebObject?
     var spellKey: RARFSpellAndKeyBoard?
     var luangageKey: RARFLuangageKeyBoard?
     var numberKey: RARFNumberKeyboardView?
@@ -48,6 +47,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.frame = UIScreen.main.bounds
+        tableView.backgroundColor = .clear
         tableView.register(RARFTableCell.self, forCellReuseIdentifier: "RARFTableCell")
         return tableView
     }()
@@ -87,7 +87,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         super.init()
 
         eyeData = RARFEyeData()
-        rARFWebOb = RARFWebObject()
         numberKey = RARFNumberKeyboardView()
         spellKey = RARFSpellAndKeyBoard(ob: self)
         numberChangeView = RARFNumberChangeKeyBoardView(ob: self)
@@ -102,9 +101,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         spellKey?.isHidden = true
         luangageKey?.isHidden = true
         numberChangeView?.isHidden = true
-
-        tableView.delegate = rARFWebOb?.data
-        tableView.dataSource = rARFWebOb?.data
 
         eView = RARFFlameView(eView: eView, color: .black).eViews
         arscnView.addSubview(eView)
@@ -133,7 +129,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     func eyeTracking(color: UIColor?, flg: Bool) {
         tableFlg = false
         eView.isHidden = false
-        rARFWebOb?.webView.isHidden = true
         tableView.isHidden = true
         texturedFace = RARFTexturedFace(resource: .clear)
         #if targetEnvironment(simulator)
@@ -169,11 +164,9 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #if targetEnvironment(simulator)
         #else
         tableFlg = true
-        rARFWebOb?.webView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
         tableView.addSubview(eView)
-        didSelectCell()
         eyeTrackDataSet()
         #endif
     }
@@ -182,12 +175,9 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #if targetEnvironment(simulator)
         #else
         tableFlg = false
-        rARFWebOb?.webView.isHidden = false
         tableView.isHidden = true
         eView.removeFromSuperview()
         eView = RARFFlameView(eView: eView, color: color ?? UIColor()).eViews
-        rARFWebOb?.webView.addSubview(eView)
-        rARFWebOb?.webReload()
         eyeTrackDataSet()
         #endif
     }
@@ -228,11 +218,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         tableFlg = false
     }
 
-    @objc func didSelectUpdate(timer: Timer) {
-        rARFWebOb?.data.cells?.cellFlg = true
-        if tableFlg == false { rARFWebOb?.data.cells?.didSelectBt(table: tableView, eView: eView) }
-    }
-
     @objc func numberKeyUpdate() { numberKey?.originTextField(rect: self.eView.frame) }
 
     @objc func luangageKeyUpdate() { luangageKey?.originTextField(rect: self.eView.frame, timer: timer ?? Timer()) }
@@ -240,8 +225,6 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     @objc func numBarUpdate() { numberChangeView?.originTextField(rect: self.eView.frame, timer: numTimer ?? Timer()) }
 
     @objc func spellKeyUpdate() { spellKey?.originTextField(rect: self.eView.frame, timer: spellTimer ?? Timer(), view: luangageKey ?? RARFLuangageKeyBoard()) }
-
-    func didSelectCell() { timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(didSelectUpdate), userInfo: nil, repeats: true) }
 
     func updateNumber() { numTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(numBarUpdate), userInfo: nil, repeats: true) }
 
@@ -281,7 +264,7 @@ extension RARFObject: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async {
             let options : [String: Any] = [SCNHitTestOption.backFaceCulling.rawValue: false,
-                                           SCNHitTestOption.searchMode.rawValue: 1,
+                                           SCNHitTestOption.searchMode.rawValue: 0,
                                            SCNHitTestOption.ignoreChildNodes.rawValue : false,
                                            SCNHitTestOption.ignoreHiddenNodes.rawValue : false]
 
@@ -300,18 +283,6 @@ extension RARFObject: ARSCNViewDelegate {
                 let coords = self.eyeData?.eyePosition((leftEye[0]), secondResult: (rightEye[0]))
                 self.eView.frame.origin = CGPoint(x: CGFloat(coords?.x ?? Float(CGFloat())), y: CGFloat(coords?.y ?? Float(CGFloat())))
 
-                guard self.rARFWebOb?.data.indexNumber == 0 else {
-                    self.eView.frame.origin.y = self.tableView.contentOffset.y
-                    self.eView.frame.origin.y += CGFloat(coords?.y ?? Float(CGFloat()))*2
-                    self.tableContentOff()
-                    self.tableSetFlg()
-                    return
-                }
-
-                guard self.rARFWebOb?.webView.url == nil else {
-                    self.rARFWebOb?.webContentOffSet(eView: self.eView, contentOffSetY: self.contentOffSetY)
-                    return
-                }
                 return
             }
         }
