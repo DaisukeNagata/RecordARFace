@@ -112,7 +112,7 @@ public class RARFUseCase: NSObject {
         UIView.animate(withDuration: 0.5) { self.tView.table.frame.origin.y -= self.tView.table.frame.height }
     }
     
-    func eyeTrackStart(flg: Bool, color: UIColor? = .black) {
+    func eyeTrackStart(flg: Bool, color: UIColor? = .lightGray) {
         tView.table.isHidden = true
         collectionView.isHidden = true
         aObject.arscnView.isHidden = false

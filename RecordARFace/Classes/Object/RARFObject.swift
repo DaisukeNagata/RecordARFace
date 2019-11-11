@@ -106,7 +106,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         tableView.delegate = rARFWebOb?.data
         tableView.dataSource = rARFWebOb?.data
 
-        eView = RARFFlameView(eView: eView, color: .black).eViews
+        eView = RARFFlameView(eView: eView, color: .lightGray).eViews
         arscnView.addSubview(eView)
         arscnView.scene.rootNode.addChildNode(eyeData!)
         arscnView.scene.rootNode.addChildNode(phoneNode)
@@ -165,7 +165,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         resetTracking()
     }
 
-    func eyeTrackingScroll(color: UIColor? = .white) {
+    func eyeTrackingScroll(color: UIColor? = .lightGray) {
         #if targetEnvironment(simulator)
         #else
         tableFlg = true
@@ -178,7 +178,7 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
         #endif
     }
 
-    func eyeTrackingWebView(color: UIColor? = .white) {
+    func eyeTrackingWebView(color: UIColor? = .lightGray) {
         #if targetEnvironment(simulator)
         #else
         tableFlg = false
