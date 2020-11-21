@@ -116,7 +116,7 @@ extension ViewController: UITableViewDelegate {
             // Web Scroll function
             RASRFWebUrlPath = "https://www.google.co.jp/"
             cViewSet()
-            cView.rUseCase.webScrollTrue(color: .black)
+            cView.rUseCase.webScrollTrue(color: .lightGray)
             cView.rUseCase.contentOffSetY(y: 3)
             view.addSubview(w ?? WKWebView())
         case .keyBoard?:
@@ -128,6 +128,8 @@ extension ViewController: UITableViewDelegate {
             cViewSet()
             cView.rUseCase.contentOffSetY(y: 5)
             cView.rUseCase.tableScrollTrue(color: .black)
+            cView.rUseCase.indexNumber(index: 100)
+            cView.rUseCase.tableScrollTrue(color: .lightGray)
             let table = cView.rUseCase.tableMerge()
             table.rowHeight = 200
             table.backgroundColor = .white

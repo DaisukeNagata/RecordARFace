@@ -72,7 +72,7 @@ pod 'RecordARFace'
 
 ## [Charthage](https://github.com/Carthage/Carthage)
 
-Officially supported: Carthage 0.33 and up.
+Officially supported: Carthage 0.34 and up.
 
 Add this to Cartfile
 ```
