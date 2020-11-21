@@ -84,9 +84,7 @@ extension RARFEyeData: ARSCNDelegate {
 
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         let  anchor = anchor as! ARFaceAnchor
-        if #available(iOS 12.0, *) {
-            leftEye.simdTransform = anchor.leftEyeTransform
-            rightEye.simdTransform = anchor.rightEyeTransform
-        }
+        leftEye.simdTransform = anchor.leftEyeTransform
+        rightEye.simdTransform = anchor.rightEyeTransform
     }
 }

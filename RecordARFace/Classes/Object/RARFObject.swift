@@ -53,12 +53,16 @@ final class RARFObject: NSObject, ARSessionDelegate, UITextFieldDelegate, UIGest
     }()
 
     lazy var arscnView: ARSCNView = {
+        var statusBarHeight: CGFloat  = 0
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+
         let arscnView = ARSCNView()
         arscnView.automaticallyUpdatesLighting = true
         arscnView.delegate = self
         arscnView.session.delegate = self
         arscnView.frame.size = CGSize(width: 0.1, height: 0.1)
-        arscnView.frame.origin.y = UINavigationController.init().navigationBar.frame.height + UIApplication.shared.statusBarFrame.height
+        arscnView.frame.origin.y = UINavigationController.init().navigationBar.frame.height + statusBarHeight
         return arscnView
     }()
 
