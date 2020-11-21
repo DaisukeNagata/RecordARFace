@@ -16,5 +16,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/daisukenagata/RecordARFace.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/dbank0208'
   s.ios.deployment_target = '14.2'
+  s.swift_versions = '5.3.1'
   s.source_files = 'RecordARFace/Classes/**/*'
 end
